@@ -1,0 +1,11 @@
+Facundo,
+
+Te paso algunas modificaciones necesarias para que el documento sea aprobado:
+
+1. Incluir un objetivo específico donde se tengan en cuenta mecanismos de control a incorporar para las encuestas.
+2. Incluir como entregable el documento de diseño a desarrollar.
+3. Reordenar la justificación. Mejorar la redacción.
+4. No se comprende cómo se resuelve la geolocalización. Se asume que cada persona va a estar en su casa al momento de responder la encuesta? 
+Saludos.
+
+Lucila

@@ -1,0 +1,21 @@
+Facundo
+
+Te paso algunas sugerencias para mejorar el documento
+
+1. Modificar la justificación ya que los requerimientos no se encuentran completamente identificados en documento JOA. Deberías educir y analizar requerimientos como parte de la metodología.
+
+2. Recomiendo usar CUs como técnica para análisis de requerimientos.
+
+3. Falta definir criterios de aceptación en los casos en que no depende solo de la opinión del director.
+
+4. Cuál sería el entregable del hito 6 relacionado con testing?
+
+5. Controlar fechas de entrega que no caigan en receso.
+
+6. Sugiero desglosar informes 1 y 2.
+
+ 
+
+Saludos
+
+Lucila

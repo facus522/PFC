@@ -1,0 +1,12 @@
+-Tomar acciones rápidas con la toma de datos.
+-Responder encuesta con internet o no y despues volcar a la base de datos.
+-El encuestador crear las encuestas y realizarlas personalmente.
+-Compartir las encuestas en la aplicacion y que la gente desde sus casas las responda.
+-En funcion de los datos obtenidos hacer estadisticas y guardar la posicion geografica del encuestado.
+-Además de encuestas, en campañas de difusión explicarle algo más al paciente.
+-Clave en guardar y exportar los datos georeferenciales de la base de datos.
+-Tratamiento de datos con la gente de bio-estadistica.
+-Como le serviria a ellos que estos datos vengan para analizarlos ya que luego lo volvan en un software de estadistica.
+-Enviar alertas en zonas de conflictos.
+-Zonas donde no llegan las encuestas, pueden ser encuestadas ya que todos tienen celulares.
+-Enviar notificaciones de nuevas encuestas.

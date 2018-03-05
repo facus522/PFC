@@ -1,0 +1,42 @@
+JUSTIFICACION
+-Actualidad de como se reservan taxis.
+-problema que tiene la reserva actual, la inseguridad.
+-negativa ambiental al usar mucho papel.
+
+-teniendo en cuenta los importantes avances tecnologicos en dispositivos moviles, brindando a los usuarios distintas
+funcionalidades para desenvolverse en la rutina cotidiana.
+
+-las personas tienen la posibilidad de acceder por medio de smartphones, tables, entre otros dispositivos moviles.
+
+-con lo que se propone se pretende resolver el problema.
+
+-para llevar a cabo el proyecto se propone realizar el mismo sobre la plataforma androir, teniendo en cuenta
+que a nivel nacional es la mas usada y aceptada en relacion a otros como windows o ios, debido a los costos
+de adquisicion de un dispositivo con este sistema operativo esta al alcance de cualquier persona sea cual sea la clase
+determinando de esta forma un gran numero de usuarios del sistema. Ademas se trata de una plataforma de codigo abierto
+que birnda a los desarrolladores la capacidad de crear su aplicacion de manera gratuita con un amplio conjunto de 
+herramientas de desarrollo y librerias a su disposicion cada una con una interesante guia de soporte.
+
+-las app para dispositivos tienen la posibilidad de acceder a todas las caracteristicas del hardware del movil.
+
+-hecho en otros paises y una similar en argentina.
+-modulo web para gestion de empleados y vehiculos, y modulo android para la app.
+- me ahorra la impresion de formularios, cmpartiendo las mismas por la app y al alcance de toda la poblacion
+-ahorro de trabajo manual, para procesar las encuestas, entender la escritura, pasar a excel
+-rapidez en el diseño de encuestas
+-mayor alcance
+-resultados inmediatos
+-si le pifiaste de preguntas cagaste, aca actualizas al toque
+
+
+OBJETIVOS ESPECIFICOS:
+-web service para alta, modificacion eliminar o peticidon de informacion entre la aplicacion android y el servidor.
+-algoritmos necesarios para visualizar la localiacion del vehiculo.
+-evaluar las prestaciones necesarias por el dispositivo para que la app funcione correctamente.
+
+ALCANCES
+-desarrollar app para dispositivos.
+-desarrollo sobre plataforma android.
+-permitira obtener info del dispositivo
+-logueo en la app
+-se subira la app a play store para disponer de descarga

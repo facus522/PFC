@@ -1,0 +1,22 @@
+Facundo,
+
+Te sugiero algunas modificaciones para mejorar tu informe.
+
+1. Diferenciar estrategias de mitigación de planes de contingencia. La estrategia de mitigación hace referencia a la 
+disminución de la probabilidad de ocurrencia de un riesgo o a la disminución del impacto correspondiente. 
+Los planes de contingencia hacen referencia a un riesgo efectivizado (ocurrió) y lo que se va a hacer al respecto.
+2. Revisar la aceptación del riesgo de la falta de disponibilidad del director considerando la posibilidad de mitigar 
+el mismo y de establecer un plan de contingencia.
+3. Idem con el riesgo de falta de fiabilidad del material de información. Este riesgo se puede evitar o mitigar.
+4. Idem R005.
+
+Lo que se describe en R004 es un plan de contingencia ya que si se
+
+1. Siempre se deben hacer buenos análisis de requerimientos. Redefinir la estrategia y el plan de contingencia haciendo 
+referencia al uso alternativo de herramientas de educción de requerimientos.
+2. Incluir tabla con presupuesto.
+ 
+
+ 
+
+Lucila

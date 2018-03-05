@@ -1,0 +1,15 @@
+Facundo,
+
+Si bien el informe está aprobado, te sugiero que realices una nueva revisión de la justificación ya que persiste desorden 
+en las ideas propuestas. Es decir, la nueva versión mejoró sustancialmente de la versión anterior pero deberías controlar 
+el orden de lo expuesto y estructuras gramaticales.
+
+Ejemplo:
+
+Se menciona una “funcionalidad extra” cuando en realidad las funcionalidades del software a desarrollar se menciona en el párrafo siguiente.
+En cuanto a estructuras el cuarto párrafo es incomprensible por etenso y por ausencia de división en oraciones.
+Para todo esto te sugiero que te contactes con la profesora Mattioli.
+
+Saludos.
+
+Lucila

@@ -1,0 +1,74 @@
+METODOLOGIA
+analisis: estudio de mercado apps relacionadas a la realizadr. se plasma en un doc toda la especificacion requerida
+estudiar tecnologias a utilizar, como lenguaje prog java, sdk de android. acceso a provedor gps del dispositivo a traves de android
+
+diseño: en base a lo analizado inicialmente se utilizan los requisitos recopilados y la declaracion del alcance para 
+concretar el diseño de la implementacion. funcionalidaes y herraientas a desarrollas, tecnologias a utilizar, interfaces.
+solo un enfoque inicial para abordar la solucion, probables ajustes luego de adquierir mayor marco teorico principalmente
+en la experimentacion final.
+diseño de toda la arquitectura de la aplicacion
+diagramas de clases y diag de casos de uso de la app y diseño logico y fisico de la base de datos.
+
+desarrollo: relaizar las actividades referidas al desarrollo de la app. se desarrolla la interfaz. especial enfasis
+en la documentacion de todos los modulos de manera q sirva de guia clarra a los desarrolladores con proposito de reutilizacion.
+luego se procedera a integrar las distintas funcionalidades desarrolladas para la app android
+
+testing: evaluar individualmente cada modulo para luego evaluar su integracion.
+validaciony verificacion del funcionamiento de los distintos modulos desarrollados y del sistema integrado en su totalidad.
+evaluar si cada funcionalidad responde de manera adecuada, si posee o no errores de codificacion o diseño. 
+lo mismo en las pruebas correspondientes al sistema completo, donde se ejecuta un proceso de evaluacion para determinar
+si los componentes integrados cumplen con las especificaciones y requerimientos obtenidos en fase de diesño.
+pruebas experimentales de la app sobre distintos dispositivos moviles para determinar el rendimiendo obtenido.
+
+PLAN DE TAREAS
+cada etapa se desglosa en actividades, realizadas en un lim de hs establecidas.
+
+analisis: recabar informacion para q la app haga lo q tenga q hacer.
+producto generado: documento de analisis, doc de requerimientos con especificaciones funcionales y requerimientos
+informe donde se epresaran los conocimientos aprendidos sobre las distintas tecnologias a utilizar y justificar porque se eijen.
+criterio aceptacion presentar todos los requisitos con su clasificación y tiene q ser congruente con el alcance
+ del proyecto  y abarcar todos sus aspectos. 
+-identificar y analizar los requerimietnos funcionales  y no funcinoales: req a cumplir la app con funcionalidad
+comunicacion e interfaz.
+
+diseño: 
+producto generaado
+documento de diseño, diagramas de clases, diagramas de secuencia, tablas de la base de datos, diseño interfaz grafica
+y arquitectura de la app.
+“definición arquitectura de la aplicación” aceptación el mismo debe ser acorde con el alcance y los objetivos del proyecto,
+ asi como abarcar todos los requisitos documentados. 
+-diseño base de datos.
+-diseño app. usando el documento de analisis,
+-diseño interfaz.
+
+desarrollo: producto generado. codigo fuente utilizando doc diseño. se analiza q cumpla todos los req y alcances.
+“app desarrollada y en funcionamiento” criterio aceptación todos los modulos documentados en el código fuente. 
+todos los modulos documentados en el codigo fuente.
+-config del servidor donde estara la base de datos.
+-desrrollo de la app.
+
+testing: comprobar el correcto funcionamiento de la app y odos los modulos. conclusiones y si se cumplen los objetivos.
+prod genrado. reporte de pruebas, rtados de las pruebas.
+criterio de aceptacion correcto en todos los modulos y los integrados.
+indicar correcciones efectuadas en caso de encontrar errores.
+analisis y comparacion on lo existente informe final del proyeto.
+-evaluacion de la app
+-identificar cambios y ajustes a realizar.
+criterio de aceptacion. debe contener todo el marco teorico y practico abarcado y presentar los resultados y conclusiones.
+Informe final: el q da por concluido el proyecto.
+
+CRONOGRAMA
+fecha de inicio 31/octubre, cuantas semanas, hs por semana, hs por dia, fecha finalizacion 04/julio tiempo neto total.
+Actividades en sus respectivas etapas, dias, inicio, final y el Gant.
+
+PUNTOS DE CONTROL Y ENTREGABLES.
+se fijan conjunto de hitos donde se presentan informe de avances. detalles, etapas q abarcan y fecha estimativa.
+Hito 1 (analisis) interiorizacion en los aspectos a trabajar en el proyecto, con información sufiiente del estado de arte y posibles soluciones a ofrecer.
+hito 1 (analisis)resumen analisis, doc de analisis rtados de etapa de analisis con req y analisis del cliente. fecha y hs estimadas.
+Hito 2 (diseño) determinacion de las particularidades del proecto con el diseño de soluciones consiso y medible para el control durante la ejecución del trabajo.
+hito (analisis puede ser)disposicion de todos los recursos y conocimientos necesarios para efectuar el trabajo del proyecto.
+Hito (desarrollo) softeare en funionamiento adecuado. Correcto funcionamietntp.
+Hito (testing) implementacion de app finalizada y validada.
+Hito (testing) investigacion sobre el caso de app finalizada y culminacion del trabajo de proyecto.
+
+

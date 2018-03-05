@@ -1,0 +1,20 @@
+SEGUNDA DEVOLUCIÓN - 29/5/2017
+
+Facundo,
+
+Si bien el documento está aprobado, te hago algunas sugerencias para que lo mejores.
+
+1- Revisá los criterios de aceptación en general ya que la aprobación va a depender, de acuerdo a tus expresiones, 
+de cuestiones subjetivas.
+Ejemplo:
+
+“que el diseño sea eficiente para luego en las etapas de desarrollo no queden márgenes de dudas y no se pierda tiempo 
+sobre cuestiones que no se hayan definido claramente.”
+
+Cómo se podrá determinar si el diseño es eficiente?
+
+Deberías incluir como entregables un diagrama de clases, diseño arquitectónico, mockups (lo que mencionás en el párrafo anterior).
+
+Saludos.
+
+Lucila

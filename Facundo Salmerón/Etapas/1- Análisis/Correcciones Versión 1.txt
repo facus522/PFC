@@ -1,0 +1,9 @@
+Hola Facundo,
+Tu informe requiere modificaciones en cuanto a al aplicación de la técnica de Casos de uso.
+Lo que presentás como "anexo" supongo que sería el informe.
+No son correctas las flechas que utilizás para vincular los actores con los casos de uso. A las relaciones de inclusión y extensión les falta la orientacion /navegabilidad).
+Faltan las invocaciones a casos de uso  en las fichas, curso normal/alternativo según relación de inclusión/extensión.
+Falta tu firma en el informe.
+
+Saludos.
+Lucila

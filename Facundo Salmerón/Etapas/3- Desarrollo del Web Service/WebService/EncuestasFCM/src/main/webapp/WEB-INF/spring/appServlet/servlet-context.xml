@@ -18,8 +18,6 @@
 		<beans:property name="password" value="root" />
 	</beans:bean>
 	
-	<context:property-placeholder location="classpath:configurations.properties" />
-
 	<!-- Hibernate 4 SessionFactory Bean definition -->
 	<beans:bean id="hibernate4AnnotatedSessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">

@@ -12,8 +12,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
-@Entity(name = "resultado")
-@Table(name = "resultado")
+@Entity(name = "RESULTADO")
+@Table(name = "RESULTADO")
 public class Resultado extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 
 	private Double latitud;

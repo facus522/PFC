@@ -11,8 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
-@Entity(name = "encuesta")
-@Table(name = "encuesta")
+@Entity(name = "ENCUESTA")
+@Table(name = "ENCUESTA")
 public class Encuesta extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 
 	private String titulo;

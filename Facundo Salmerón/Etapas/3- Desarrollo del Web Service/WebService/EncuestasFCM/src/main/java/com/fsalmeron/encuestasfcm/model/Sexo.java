@@ -10,8 +10,8 @@ import javax.persistence.Table;
 
 
 @SuppressWarnings("serial")
-@Entity(name = "sexo")
-@Table(name = "sexo")
+@Entity(name = "SEXO")
+@Table(name = "SEXO")
 public class Sexo extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 
 	private String descripcion;

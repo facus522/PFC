@@ -8,7 +8,7 @@ import com.fsalmeron.encuestasfcm.model.TipoUsuario;
 
 public class UsuarioFilter extends BaseFilter<Integer>{
 	
-	private Long id;
+	private Integer id;
 	
 	private String nombreUsuario;
 	
@@ -24,11 +24,11 @@ public class UsuarioFilter extends BaseFilter<Integer>{
 	
 	private TipoUsuario tipoUsuario;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

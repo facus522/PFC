@@ -5,7 +5,7 @@ import com.fsalmeron.encuestasfcm.model.Respuesta;
 import com.fsalmeron.encuestasfcm.model.Usuario;
 
 public class ResultadoFilter extends BaseFilter<Integer>{
-	private Long id;
+	private Integer id;
 	
 	private Double latitud;
 	
@@ -19,11 +19,11 @@ public class ResultadoFilter extends BaseFilter<Integer>{
 	
 	private Respuesta respuesta;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

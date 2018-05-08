@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fsalmeron.encuestasfcm.filter.UsuarioFilter;
 import com.fsalmeron.encuestasfcm.model.Usuario;
 import com.fsalmeron.encuestasfcm.service.SexoService;
 import com.fsalmeron.encuestasfcm.service.TipoUsuarioService;
@@ -64,6 +65,37 @@ public class UserController {
 		usuario.setSexo(sexoService.getById(sexo));
 		usuario.setTipoUsuario(tipoUsuarioService.getById(tipoUsuario));
 		JSONObject response = usuarioService.save(usuario);
+		logger.debug(response.toString());
+		return response.toString();
+	}
+	
+	@RequestMapping(value = "/loginUser", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String loginUsuario(@RequestParam("nombre") String nombre, @RequestParam("password") String password) {
+		UsuarioFilter usuarioFilter = new UsuarioFilter();
+		usuarioFilter.setActivo(1);
+		usuarioFilter.setNombreUsuario(nombre);
+		
+		Usuario usuario = usuarioService.filterUnique(usuarioFilter);
+		JSONObject response = new JSONObject();
+		
+		if (usuario != null) {
+			if (usuario.getPassword().equals(password)) {
+				response.put("exito", Boolean.TRUE);
+				response.put("id", usuario.getId());
+				response.put("nombre", usuario.getNombreUsuario());
+				response.put("sexo", usuario.getSexo().getId());
+				response.put("tipoUsuario", usuario.getTipoUsuario().getId());
+			} else {
+				response.put("exito", Boolean.FALSE);
+				response.put("error", "La contraseña ingresada es incorrecta");
+			}
+		} else {
+			response.put("exito", Boolean.FALSE);
+			response.put("error", "El nombre de usuario ingresado es incorrecto");
+		}
+		
+		logger.debug(response.toString());
 		return response.toString();
 	}
 	

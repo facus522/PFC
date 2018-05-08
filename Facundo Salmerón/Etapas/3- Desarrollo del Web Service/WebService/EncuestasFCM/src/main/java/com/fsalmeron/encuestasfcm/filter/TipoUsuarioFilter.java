@@ -3,15 +3,15 @@ package com.fsalmeron.encuestasfcm.filter;
 import com.fsalmeron.encuestasfcm.base.BaseFilter;
 
 public class TipoUsuarioFilter extends BaseFilter<Integer>{
-	private Long id;
+	private Integer id;
 	
 	private String nombreTipoUsuario;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

@@ -23,7 +23,7 @@ private String titulo;
 	
 	private Date fechaEliminacion;
 	
-	private Long id;
+	private Integer id;
 
 	public String getTitulo() {
 		return titulo;
@@ -97,11 +97,11 @@ private String titulo;
 		this.fechaEliminacion = fechaEliminacion;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	

@@ -81,7 +81,9 @@ public abstract class BaseDaoImpl<T extends Persistence<PK>, PK extends Serializ
 
 	@Override
 	public void saveOrUpdate(T entity) {
+		Transaction tx = getSession().beginTransaction();
 		getSession().saveOrUpdate(entity);
+		tx.commit();
 	}
 
 	public void setSessionFactory(SessionFactory sessionFactory) {

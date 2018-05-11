@@ -16,5 +16,9 @@ public interface BaseService<T extends Persistence<PK>, PK extends Serializable>
 	void saveOrUpdate(T entity);
 
 	T filterUnique(BaseFilter<PK> filter);
+	
+	void removeById(Serializable id);
+	
+	void remove(T entity);
 
 }

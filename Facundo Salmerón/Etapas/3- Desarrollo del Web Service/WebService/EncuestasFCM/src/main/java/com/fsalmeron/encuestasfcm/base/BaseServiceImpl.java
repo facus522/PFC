@@ -49,6 +49,15 @@ public class BaseServiceImpl<T extends Persistence<PK>, PK extends Serializable>
 		List<T> results = (List<T>) filter(filter);
 		return results.isEmpty() ? null : results.get(0);
 	}
+	
+	@Override
+	public void removeById(Serializable id) {
+		dao.removeById(id);
+	}
 
+	@Override
+	public void remove(T entity) {
+		dao.remove(entity);
+	}
 
 }

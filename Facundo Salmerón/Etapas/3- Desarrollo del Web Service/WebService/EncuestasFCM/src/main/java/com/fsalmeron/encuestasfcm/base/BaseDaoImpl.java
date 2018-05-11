@@ -178,4 +178,20 @@ public abstract class BaseDaoImpl<T extends Persistence<PK>, PK extends Serializ
 	public T merge(T entity) {
 		return (T) getSession().merge(entity);
 	}
+
+	@Override
+	public void removeById(Serializable id) {
+		if (id != null) {
+			T entity = getById(id);
+			remove(entity);
+		}
+		
+	}
+
+	@Override
+	public void remove(T entity) {
+		Transaction tx = getSession().beginTransaction();
+		getSession().delete(entity);
+		tx.commit();
+	}
 }

@@ -12,10 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fsalmeron.encuestasfcm.filter.EncuestaFilter;
 import com.fsalmeron.encuestasfcm.model.Encuesta;
+import com.fsalmeron.encuestasfcm.model.Pregunta;
 import com.fsalmeron.encuestasfcm.service.EncuestaService;
 
 @Controller
@@ -27,6 +29,7 @@ public class EncuestaController {
 	@Autowired
 	private EncuestaService encuestaService;
 	
+	//http://localhost:8080/EncuestasFCM/encuestas/getAll
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
 	public String getEncuestas() {
@@ -51,6 +54,27 @@ public class EncuestaController {
 		}
 		
 		response.put("response", responseArray);
+		logger.debug(response.toString());
+		return response.toString();
+	}
+	
+	//http://localhost:8080/EncuestasFCM/encuestas/openEncuesta?idEncuesta=1
+	@RequestMapping(value = "/openEncuesta", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String abrirEncuesta(@RequestParam("idEncuesta") Integer idEncuesta) {
+		Encuesta encuesta = encuestaService.getById(idEncuesta);
+		JSONObject response = new JSONObject();
+		JSONArray responseArray = new JSONArray();
+		response.put("id", encuesta.getId());
+		response.put("titulo", encuesta.getTitulo());
+		response.put("descripcion", encuesta.getDescripcion());
+		for (Pregunta pregunta : encuesta.getPreguntas()) {
+			JSONObject json = new JSONObject();
+			json.put("idPregunta", pregunta.getId());
+			json.put("descripcionPregunta", pregunta.getDescripcion());
+			responseArray.put(json);
+		}
+		response.put("preguntas", responseArray);
 		logger.debug(response.toString());
 		return response.toString();
 	}

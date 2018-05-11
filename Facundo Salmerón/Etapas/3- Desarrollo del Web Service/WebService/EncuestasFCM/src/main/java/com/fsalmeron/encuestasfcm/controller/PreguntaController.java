@@ -1,0 +1,62 @@
+package com.fsalmeron.encuestasfcm.controller;
+
+import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fsalmeron.encuestasfcm.model.Pregunta;
+import com.fsalmeron.encuestasfcm.service.EncuestaService;
+import com.fsalmeron.encuestasfcm.service.PreguntaService;
+
+@Controller
+@RequestMapping(value = "/preguntas")
+public class PreguntaController {
+
+	private static final Logger logger = LoggerFactory.getLogger(PreguntaController.class);
+	
+	@Autowired
+	private EncuestaService encuestaService;
+	
+	@Autowired
+	private PreguntaService preguntaService;
+	
+	//http://localhost:8080/EncuestasFCM/preguntas/savePregunta?descripcion=%C2%BFPregunta%20Web%20Service?&idEncuesta=2&idUsuario=2
+	@RequestMapping(value = "/savePregunta", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String crearPregunta(@RequestParam("descripcion") String descripcion , @RequestParam("idEncuesta") Integer idEncuesta, @RequestParam("idUsuario") Integer idUsuario) {
+		Pregunta pregunta = new Pregunta();
+		pregunta.setDescripcion(descripcion);
+		pregunta.setEncuesta(encuestaService.getById(idEncuesta));
+		JSONObject response = preguntaService.save(pregunta, idUsuario);
+		logger.debug(response.toString());
+		return response.toString();
+	}
+	
+	//http://localhost:8080/EncuestasFCM/preguntas/updatePregunta?idPregunta=5&descripcion=Probando%20el%20update??&idEncuesta=2&idUsuario=2
+	@RequestMapping(value = "/updatePregunta", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String modificarPregunta(@RequestParam("idPregunta") Integer idPregunta, @RequestParam("descripcion") String descripcion , @RequestParam("idEncuesta") Integer idEncuesta, @RequestParam("idUsuario") Integer idUsuario) {
+		Pregunta pregunta = preguntaService.getById(idPregunta);
+		pregunta.setDescripcion(descripcion);
+		JSONObject response = preguntaService.save(pregunta, idUsuario);
+		logger.debug(response.toString());
+		return response.toString();
+	}
+	
+	//http://localhost:8080/EncuestasFCM/preguntas/deletePregunta?idPregunta=5&idEncuesta=2&idUsuario=3
+	@RequestMapping(value = "/deletePregunta", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String eliminarPregunta(@RequestParam("idPregunta") Integer idPregunta, @RequestParam("idEncuesta") Integer idEncuesta, @RequestParam("idUsuario") Integer idUsuario) {
+		Pregunta pregunta = preguntaService.getById(idPregunta);
+		JSONObject response = preguntaService.delete(pregunta, idUsuario);
+		logger.debug(response.toString());
+		return response.toString();
+	}
+	
+}

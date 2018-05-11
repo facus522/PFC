@@ -19,4 +19,8 @@ public interface BaseDao<T extends Persistence<PK>, PK extends Serializable> {
 
 	public T merge(T entity);
 
+	public void removeById(Serializable id);
+	
+	public void remove(T entity);
+
 }

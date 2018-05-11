@@ -27,7 +27,12 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Integer> implem
 		JSONObject resultado = new JSONObject();
 		if (validarUsuarioNuevo(usuario, resultado)) {
 			resultado.put("exito", Boolean.TRUE);
-			saveOrUpdate(usuario);
+			try {
+				saveOrUpdate(usuario);
+			} catch (Exception e) {
+				resultado.put("error", e.getMessage());
+			}
+			
 		}
 		return resultado;
 	}

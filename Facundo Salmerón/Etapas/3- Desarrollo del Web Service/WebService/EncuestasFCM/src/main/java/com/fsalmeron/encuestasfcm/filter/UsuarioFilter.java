@@ -18,7 +18,7 @@ public class UsuarioFilter extends BaseFilter<Integer>{
 	
 	private String mail;
 	
-	private Integer activo;
+	private Boolean activo;
 	
 	private Sexo sexo;
 	
@@ -64,11 +64,11 @@ public class UsuarioFilter extends BaseFilter<Integer>{
 		this.mail = mail;
 	}
 
-	public Integer getActivo() {
+	public Boolean getActivo() {
 		return activo;
 	}
 
-	public void setActivo(Integer activo) {
+	public void setActivo(Boolean activo) {
 		this.activo = activo;
 	}
 

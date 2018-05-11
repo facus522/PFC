@@ -31,8 +31,8 @@ public class RespuestaDaoImpl extends BaseDaoImpl<Respuesta, Integer> implements
 			criteria.add(Restrictions.eq("tipoRespuesta", filter.getTipoRespuesta()));
 		}
 		
-		if (filter.getEncuestaPregunta() != null) {
-			criteria.add(Restrictions.eq("encuestaPregunta", filter.getEncuestaPregunta()));
+		if (filter.getPregunta() != null) {
+			criteria.add(Restrictions.eq("pregunta", filter.getPregunta()));
 		}
 		
 		return criteria;

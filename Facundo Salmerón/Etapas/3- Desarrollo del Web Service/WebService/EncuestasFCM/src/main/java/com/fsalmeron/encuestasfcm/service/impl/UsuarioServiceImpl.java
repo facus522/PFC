@@ -34,7 +34,7 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Integer> implem
 	
 	private Boolean validarUsuarioNuevo(Usuario usuario, JSONObject errors) {
 		UsuarioFilter usuarioFilter = new UsuarioFilter();
-		usuarioFilter.setActivo(1);
+		usuarioFilter.setActivo(Boolean.TRUE);
 		usuarioFilter.setNombreUsuario(usuario.getNombreUsuario());
 		
 		if (!CollectionUtils.isEmpty(filter(usuarioFilter))) {
@@ -52,6 +52,14 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Integer> implem
 		if (usuario.getPassword().length() < 6) {
 			errors.put("exito", Boolean.FALSE);
 			errors.put("error", "La contraseña debe tener al menos 6 caracteres.");
+			return Boolean.FALSE;
+		}
+		
+		usuarioFilter.setNombreUsuario(null);
+		usuarioFilter.setMail(usuario.getMail());
+		if (!CollectionUtils.isEmpty(filter(usuarioFilter))) {
+			errors.put("exito", Boolean.FALSE);
+			errors.put("error", "El mail ingresado ya ha registrado una cuenta de usuario.");
 			return Boolean.FALSE;
 		}
 		

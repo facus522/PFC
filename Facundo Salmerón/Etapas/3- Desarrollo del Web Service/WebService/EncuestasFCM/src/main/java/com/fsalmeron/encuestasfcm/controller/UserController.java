@@ -56,7 +56,7 @@ public class UserController {
 	//http://localhost:8080/EncuestasFCM/usuarios/saveUser?nombre=usuarioEjemplo&password=123456&fechaNacimiento=1995/05/23&mail=ejemplo@mail.com.ar&activo=1&sexo=1&tipoUsuario=2
 	@RequestMapping(value = "/saveUser", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String crearUsuario(@RequestParam("nombre") String nombre, @RequestParam("password") String password, @RequestParam("fechaNacimiento") Date fechaNacimiento, @RequestParam("mail") String mail, @RequestParam("activo") Integer activo, @RequestParam("sexo") Integer sexo, @RequestParam("tipoUsuario") Integer tipoUsuario) {
+	public String crearUsuario(@RequestParam("nombre") String nombre, @RequestParam("password") String password, @RequestParam("fechaNacimiento") Date fechaNacimiento, @RequestParam("mail") String mail, @RequestParam("activo") Boolean activo, @RequestParam("sexo") Integer sexo, @RequestParam("tipoUsuario") Integer tipoUsuario) {
 		Usuario usuario = new Usuario();
 		usuario.setNombreUsuario(nombre);
 		usuario.setPassword(password);
@@ -75,7 +75,7 @@ public class UserController {
 	@ResponseBody
 	public String loginUsuario(@RequestParam("nombre") String nombre, @RequestParam("password") String password) {
 		UsuarioFilter usuarioFilter = new UsuarioFilter();
-		usuarioFilter.setActivo(1);
+		usuarioFilter.setActivo(Boolean.TRUE);
 		usuarioFilter.setNombreUsuario(nombre);
 		
 		Usuario usuario = usuarioService.filterUnique(usuarioFilter);

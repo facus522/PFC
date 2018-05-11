@@ -33,7 +33,7 @@ public class EncuestaController {
 		JSONObject response = new JSONObject();
 		JSONArray responseArray = new JSONArray();
 		EncuestaFilter encuestaFilter = new EncuestaFilter();
-		encuestaFilter.setActivo(1);
+		encuestaFilter.setActivo(Boolean.TRUE);
 		List<Encuesta> encuestas = (List<Encuesta>) encuestaService.filter(encuestaFilter);
 		Collections.sort(encuestas, new Comparator<Encuesta>() {
 		    @Override

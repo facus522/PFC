@@ -1,7 +1,7 @@
 package com.fsalmeron.encuestasfcm.filter;
 
 import com.fsalmeron.encuestasfcm.base.BaseFilter;
-import com.fsalmeron.encuestasfcm.model.EncuestaPregunta;
+import com.fsalmeron.encuestasfcm.model.Pregunta;
 import com.fsalmeron.encuestasfcm.model.TipoRespuesta;
 
 public class RespuestaFilter extends BaseFilter<Integer>{
@@ -10,7 +10,7 @@ public class RespuestaFilter extends BaseFilter<Integer>{
 	
 	private String descripcion;
 	
-	private EncuestaPregunta encuestaPregunta;
+	private Pregunta pregunta;
 	
 	private TipoRespuesta tipoRespuesta;
 
@@ -30,12 +30,12 @@ public class RespuestaFilter extends BaseFilter<Integer>{
 		this.descripcion = descripcion;
 	}
 
-	public EncuestaPregunta getEncuestaPregunta() {
-		return encuestaPregunta;
+	public Pregunta getPregunta() {
+		return pregunta;
 	}
 
-	public void setEncuestaPregunta(EncuestaPregunta encuestaPregunta) {
-		this.encuestaPregunta = encuestaPregunta;
+	public void setPregunta(Pregunta pregunta) {
+		this.pregunta = pregunta;
 	}
 
 	public TipoRespuesta getTipoRespuesta() {

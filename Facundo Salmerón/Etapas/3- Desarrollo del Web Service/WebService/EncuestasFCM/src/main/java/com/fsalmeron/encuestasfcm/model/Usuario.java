@@ -26,7 +26,7 @@ public class Usuario extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	
 	private String mail;
 	
-	private Integer activo;
+	private Boolean activo;
 	
 	private Sexo sexo;
 	
@@ -86,11 +86,11 @@ public class Usuario extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	}
 
 	@Column(name = "ACTIVO")
-	public Integer getActivo() {
+	public Boolean getActivo() {
 		return activo;
 	}
 
-	public void setActivo(Integer activo) {
+	public void setActivo(Boolean activo) {
 		this.activo = activo;
 	}
 

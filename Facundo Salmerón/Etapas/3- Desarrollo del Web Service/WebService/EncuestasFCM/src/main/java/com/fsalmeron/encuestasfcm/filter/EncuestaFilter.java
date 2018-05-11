@@ -9,7 +9,7 @@ private String titulo;
 	
 	private String descripcion;
 	
-	private Integer activo;
+	private Boolean activo;
 	
 	private Integer idUsuarioAlta;
 	
@@ -41,11 +41,11 @@ private String titulo;
 		this.descripcion = descripcion;
 	}
 
-	public Integer getActivo() {
+	public Boolean getActivo() {
 		return activo;
 	}
 
-	public void setActivo(Integer activo) {
+	public void setActivo(Boolean activo) {
 		this.activo = activo;
 	}
 

@@ -19,7 +19,7 @@ public class Encuesta extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	
 	private String descripcion;
 	
-	private Integer activo;
+	private Boolean activo;
 	
 	private Integer idUsuarioAlta;
 	
@@ -69,11 +69,11 @@ public class Encuesta extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	}
 
 	@Column(name = "ACTIVO")
-	public Integer getActivo() {
+	public Boolean getActivo() {
 		return activo;
 	}
 
-	public void setActivo(Integer activo) {
+	public void setActivo(Boolean activo) {
 		this.activo = activo;
 	}
 

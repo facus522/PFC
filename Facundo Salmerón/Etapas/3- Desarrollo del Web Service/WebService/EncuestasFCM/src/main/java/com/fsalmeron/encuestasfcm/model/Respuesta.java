@@ -18,7 +18,7 @@ public class Respuesta extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	
 	private String descripcion;
 	
-	private EncuestaPregunta encuestaPregunta;
+	private Pregunta pregunta;
 	
 	private TipoRespuesta tipoRespuesta;
 	
@@ -49,13 +49,13 @@ public class Respuesta extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IDENCUESTAPREGUNTA")
-	public EncuestaPregunta getEncuestaPregunta() {
-		return encuestaPregunta;
+	@JoinColumn(name = "IDPREGUNTA")
+	public Pregunta getPregunta() {
+		return pregunta;
 	}
 
-	public void setEncuestaPregunta(EncuestaPregunta encuestaPregunta) {
-		this.encuestaPregunta = encuestaPregunta;
+	public void setpregunta(Pregunta pregunta) {
+		this.pregunta = pregunta;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -27,6 +27,10 @@ public class PreguntaDaoImpl extends BaseDaoImpl<Pregunta, Integer> implements P
 			criteria.add(Restrictions.eq("descripcion", filter.getDescripcion()));
 		}
 		
+		if (filter.getEncuesta() != null) {
+			criteria.add(Restrictions.eq("encuesta", filter.getEncuesta()));
+		}
+		
 		return criteria;
 	}
 	

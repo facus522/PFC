@@ -38,10 +38,10 @@ public class PreguntaController {
 		return response.toString();
 	}
 	
-	//http://localhost:8080/EncuestasFCM/preguntas/updatePregunta?idPregunta=5&descripcion=Probando%20el%20update??&idEncuesta=2&idUsuario=2
+	//http://localhost:8080/EncuestasFCM/preguntas/updatePregunta?idPregunta=5&descripcion=Probando%20el%20update??&idUsuario=2
 	@RequestMapping(value = "/updatePregunta", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String modificarPregunta(@RequestParam("idPregunta") Integer idPregunta, @RequestParam("descripcion") String descripcion , @RequestParam("idEncuesta") Integer idEncuesta, @RequestParam("idUsuario") Integer idUsuario) {
+	public String modificarPregunta(@RequestParam("idPregunta") Integer idPregunta, @RequestParam("descripcion") String descripcion, @RequestParam("idUsuario") Integer idUsuario) {
 		Pregunta pregunta = preguntaService.getById(idPregunta);
 		pregunta.setDescripcion(descripcion);
 		JSONObject response = preguntaService.save(pregunta, idUsuario);
@@ -49,10 +49,10 @@ public class PreguntaController {
 		return response.toString();
 	}
 	
-	//http://localhost:8080/EncuestasFCM/preguntas/deletePregunta?idPregunta=5&idEncuesta=2&idUsuario=3
+	//http://localhost:8080/EncuestasFCM/preguntas/deletePregunta?idPregunta=5&idUsuario=3
 	@RequestMapping(value = "/deletePregunta", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String eliminarPregunta(@RequestParam("idPregunta") Integer idPregunta, @RequestParam("idEncuesta") Integer idEncuesta, @RequestParam("idUsuario") Integer idUsuario) {
+	public String eliminarPregunta(@RequestParam("idPregunta") Integer idPregunta, @RequestParam("idUsuario") Integer idUsuario) {
 		Pregunta pregunta = preguntaService.getById(idPregunta);
 		JSONObject response = preguntaService.delete(pregunta, idUsuario);
 		logger.debug(response.toString());

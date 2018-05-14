@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fsalmeron.encuestasfcm.filter.EncuestaFilter;
+import com.fsalmeron.encuestasfcm.filter.RespuestaFilter;
 import com.fsalmeron.encuestasfcm.model.Encuesta;
 import com.fsalmeron.encuestasfcm.model.Pregunta;
+import com.fsalmeron.encuestasfcm.model.Respuesta;
 import com.fsalmeron.encuestasfcm.service.EncuestaService;
+import com.fsalmeron.encuestasfcm.service.RespuestaService;
 
 @Controller
 @RequestMapping(value = "/encuestas")
@@ -28,6 +31,9 @@ public class EncuestaController {
 
 	@Autowired
 	private EncuestaService encuestaService;
+	
+	@Autowired
+	private RespuestaService respuestaService;
 	
 	//http://localhost:8080/EncuestasFCM/encuestas/getAll
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
@@ -73,6 +79,17 @@ public class EncuestaController {
 			json.put("idPregunta", pregunta.getId());
 			json.put("descripcionPregunta", pregunta.getDescripcion());
 			responseArray.put(json);
+			RespuestaFilter filterRespuesta = new RespuestaFilter();
+			filterRespuesta.setPregunta(pregunta);
+			List<Respuesta> listaRespuestas = (List<Respuesta>) respuestaService.filter(filterRespuesta);
+			JSONArray respuestasArray = new JSONArray();
+			for (Respuesta respuesta : listaRespuestas) {
+				JSONObject jsonRespuesta = new JSONObject();
+				jsonRespuesta.put("descripcionRespuesta", respuesta.getDescripcion());
+				jsonRespuesta.put("idTipoRespuesta", respuesta.getTipoRespuesta().getId());
+				respuestasArray.put(jsonRespuesta);
+			}
+			json.put("respuesta", respuestasArray);
 		}
 		response.put("preguntas", responseArray);
 		logger.debug(response.toString());

@@ -1,6 +1,7 @@
 package com.fsalmeron.encuestasfcm.service.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,12 @@ import org.springframework.stereotype.Service;
 
 import com.fsalmeron.encuestasfcm.base.BaseServiceImpl;
 import com.fsalmeron.encuestasfcm.dao.PreguntaDao;
+import com.fsalmeron.encuestasfcm.filter.RespuestaFilter;
 import com.fsalmeron.encuestasfcm.model.Pregunta;
+import com.fsalmeron.encuestasfcm.model.Respuesta;
 import com.fsalmeron.encuestasfcm.service.EncuestaService;
 import com.fsalmeron.encuestasfcm.service.PreguntaService;
+import com.fsalmeron.encuestasfcm.service.RespuestaService;
 
 @Service
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
@@ -20,6 +24,9 @@ public class PreguntaServiceImpl extends BaseServiceImpl<Pregunta, Integer> impl
 
 	@Autowired
 	private EncuestaService encuestaService;
+	
+	@Autowired
+	private RespuestaService respuestaService;
 	
 	@Autowired
 	public void setDao(PreguntaDao dao) {
@@ -46,7 +53,15 @@ public class PreguntaServiceImpl extends BaseServiceImpl<Pregunta, Integer> impl
 	public JSONObject delete(Pregunta pregunta, Integer idUsuario) {
 		JSONObject resultado = new JSONObject();
 		try {
+			RespuestaFilter filterRespuesta = new RespuestaFilter();
+			filterRespuesta.setPregunta(pregunta);
+			List<Respuesta> respuestasAsociadas = (List<Respuesta>) respuestaService.filter(filterRespuesta);
+			for (Respuesta respuesta : respuestasAsociadas) {
+				respuestaService.remove(respuesta);
+			}
+			
 			remove(pregunta);
+			
 			pregunta.getEncuesta().setFechaModificacion(new Date());
 			pregunta.getEncuesta().setIdUsuarioModificacion(idUsuario);
 			encuestaService.saveOrUpdate(pregunta.getEncuesta());

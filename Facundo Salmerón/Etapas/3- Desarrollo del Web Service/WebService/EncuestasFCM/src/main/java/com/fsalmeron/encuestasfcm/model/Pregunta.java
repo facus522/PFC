@@ -1,5 +1,8 @@
 package com.fsalmeron.encuestasfcm.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -19,6 +23,8 @@ public class Pregunta extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	private String descripcion;
 	
 	private Encuesta encuesta;
+	
+	private List<Respuesta> respuestas = new ArrayList<Respuesta>();
 	
 	public Pregunta() {
 		
@@ -54,6 +60,15 @@ public class Pregunta extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 
 	public void setEncuesta(Encuesta encuesta) {
 		this.encuesta = encuesta;
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pregunta")
+	public List<Respuesta> getRespuestas() {
+		return respuestas;
+	}
+
+	public void setRespuestas(List<Respuesta> respuestas) {
+		this.respuestas = respuestas;
 	}
 	
 }

@@ -6,11 +6,11 @@ INSERT INTO tipo_usuario (NOMBRETIPOUSUARIO) VALUES ("Usuario Especifico");
 INSERT INTO tipo_usuario (NOMBRETIPOUSUARIO) VALUES ("Usuario Comun");
 
 INSERT INTO usuario (NOMBREUSUARIO, PASSWORD, FECHANACIMIENTO, MAIL, ACTIVO, IDSEXO, IDTIPOUSUARIO) 
-VALUES ("admin", "1234", DATE '1992-01-14', "admin@test.com", 1, 1, 1);
+VALUES ("admin", "bZOnEJcdujc=", DATE '1992-01-14', "admin@test.com", 1, 1, 1);
 INSERT INTO usuario (NOMBREUSUARIO, PASSWORD, FECHANACIMIENTO, MAIL, ACTIVO, IDSEXO, IDTIPOUSUARIO) 
-VALUES ("facusalmeron", "proyectofinal", DATE '1998-01-05', "facusalmeron@gmail.com", 1, 1, 1);
+VALUES ("facusalmeron", "xVsG5QUezQdHijjRFeRzNw==", DATE '1998-01-05', "facusalmeron@gmail.com", 1, 1, 1);
 INSERT INTO usuario (NOMBREUSUARIO, PASSWORD, FECHANACIMIENTO, MAIL, ACTIVO, IDSEXO, IDTIPOUSUARIO) 
-VALUES ("mujer1", "545454", DATE '2003-01-25', "hola@jajaslm.com", 1, 2, 2);
+VALUES ("mujer1", "PHqNhlQ6EEg=", DATE '2003-01-25', "hola@jajaslm.com", 1, 2, 2);
 
 INSERT INTO tipo_respuesta (NOMBRE) VALUES ("Multiple Choise");
 INSERT INTO tipo_respuesta (NOMBRE) VALUES ("Unica");

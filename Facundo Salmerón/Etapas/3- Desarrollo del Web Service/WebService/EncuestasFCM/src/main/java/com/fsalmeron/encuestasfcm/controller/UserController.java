@@ -20,6 +20,7 @@ import com.fsalmeron.encuestasfcm.model.Usuario;
 import com.fsalmeron.encuestasfcm.service.SexoService;
 import com.fsalmeron.encuestasfcm.service.TipoUsuarioService;
 import com.fsalmeron.encuestasfcm.service.UsuarioService;
+import com.fsalmeron.encuestasfcm.utils.EncryptionUtil;
 
 @Controller
 @RequestMapping(value = "/usuarios")
@@ -60,7 +61,7 @@ public class UserController {
 	public String crearUsuario(@RequestParam("nombre") String nombre, @RequestParam("password") String password, @RequestParam("fechaNacimiento") Date fechaNacimiento, @RequestParam("mail") String mail, @RequestParam("activo") Boolean activo, @RequestParam("sexo") Integer sexo, @RequestParam("tipoUsuario") Integer tipoUsuario) {
 		Usuario usuario = new Usuario();
 		usuario.setNombreUsuario(nombre);
-		usuario.setPassword(password);
+		usuario.setPassword(EncryptionUtil.encode(password));
 		usuario.setFechaNacimiento(fechaNacimiento);
 		usuario.setMail(mail);
 		usuario.setActivo(activo);
@@ -83,7 +84,7 @@ public class UserController {
 		JSONObject response = new JSONObject();
 		
 		if (usuario != null) {
-			if (usuario.getPassword().equals(password)) {
+			if (usuario.getPassword().equals(EncryptionUtil.encode(password))) {
 				response.put("exito", Boolean.TRUE);
 				response.put("id", usuario.getId());
 				response.put("nombre", usuario.getNombreUsuario());

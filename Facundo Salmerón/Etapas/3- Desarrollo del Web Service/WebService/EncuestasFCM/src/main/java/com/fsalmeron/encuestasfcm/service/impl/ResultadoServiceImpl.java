@@ -1,5 +1,7 @@
 package com.fsalmeron.encuestasfcm.service.impl;
 
+
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -17,6 +19,19 @@ public class ResultadoServiceImpl extends BaseServiceImpl<Resultado, Integer> im
 	@Autowired
 	public void setDao(ResultadoDao dao) {
 		this.dao = dao;
+	}
+
+	@Override
+	public JSONObject save(Resultado resultado) {
+		JSONObject json = new JSONObject();
+		try {
+			saveOrUpdate(resultado);
+			json.put("exito", Boolean.TRUE);
+		} catch (Exception e) {
+			json.put("exito", Boolean.FALSE);
+			json.put("error", e.getMessage());
+		}
+		return json;
 	}
 	
 }

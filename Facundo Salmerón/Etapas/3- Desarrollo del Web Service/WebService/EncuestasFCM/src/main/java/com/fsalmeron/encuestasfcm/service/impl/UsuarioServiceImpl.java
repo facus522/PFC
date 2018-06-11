@@ -26,9 +26,9 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Integer> implem
 	public JSONObject save(Usuario usuario) {
 		JSONObject resultado = new JSONObject();
 		if (validarUsuarioNuevo(usuario, resultado)) {
-			resultado.put("exito", Boolean.TRUE);
 			try {
 				saveOrUpdate(usuario);
+				resultado.put("exito", Boolean.TRUE);
 			} catch (Exception e) {
 				resultado.put("error", e.getMessage());
 			}
@@ -44,19 +44,37 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Integer> implem
 		
 		if (!CollectionUtils.isEmpty(filter(usuarioFilter))) {
 			errors.put("exito", Boolean.FALSE);
-			errors.put("error", "El nombre de usuario escogido ya se encuentra en uso.");
+			errors.put("error", "El Nombre de Usuario escogido ya se encuentra en uso.");
 			return Boolean.FALSE;
 		}
 		
 		if (usuario.getNombreUsuario().length() < 6) {
 			errors.put("exito", Boolean.FALSE);
-			errors.put("error", "El nombre de usuario debe tener al menos 6 caracteres.");
+			errors.put("error", "El Nombre de Usuario debe tener al menos 6 caracteres.");
+			return Boolean.FALSE;
+		}
+		
+		if (usuario.getNombreUsuario().length() > 100) {
+			errors.put("exito", Boolean.FALSE);
+			errors.put("error", "El Nombre de Usuario debe tener como máximo 100 caracteres.");
 			return Boolean.FALSE;
 		}
 		
 		if (usuario.getPassword().length() < 6) {
 			errors.put("exito", Boolean.FALSE);
-			errors.put("error", "La contraseña debe tener al menos 6 caracteres.");
+			errors.put("error", "La Contraseña debe tener al menos 6 caracteres.");
+			return Boolean.FALSE;
+		}
+		
+		if (usuario.getPassword().length() > 100) {
+			errors.put("exito", Boolean.FALSE);
+			errors.put("error", "La Contraseña debe tener como máximo 100 caracteres.");
+			return Boolean.FALSE;
+		}
+		
+		if (!usuario.getNombreUsuario().matches("^[a-zA-Z0-9._-]{3,}$")) {
+			errors.put("exito", Boolean.FALSE);
+			errors.put("error", "Existen caracteres inválidos en el Nombre de Usuario.");
 			return Boolean.FALSE;
 		}
 		
@@ -64,7 +82,7 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Integer> implem
 		usuarioFilter.setMail(usuario.getMail());
 		if (!CollectionUtils.isEmpty(filter(usuarioFilter))) {
 			errors.put("exito", Boolean.FALSE);
-			errors.put("error", "El mail ingresado ya ha registrado una cuenta de usuario.");
+			errors.put("error", "El Mail ingresado ya ha registrado una cuenta de usuario.");
 			return Boolean.FALSE;
 		}
 		

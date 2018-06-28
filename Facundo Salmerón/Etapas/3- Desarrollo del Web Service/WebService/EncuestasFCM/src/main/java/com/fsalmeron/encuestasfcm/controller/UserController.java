@@ -37,7 +37,7 @@ public class UserController {
 	@Autowired
 	private TipoUsuarioService tipoUsuarioService;
 	
-	//http://localhost:8080/EncuestasFCM/usuario/getAll
+	//http://localhost:8080/EncuestasFCM/usuarios/getAll
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
 	public String getUsuarios() {

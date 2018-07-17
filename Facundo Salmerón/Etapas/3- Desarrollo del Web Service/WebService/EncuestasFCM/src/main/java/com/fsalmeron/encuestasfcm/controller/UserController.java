@@ -93,10 +93,12 @@ public class UserController {
 			} else {
 				response.put("exito", Boolean.FALSE);
 				response.put("error", "La contraseña ingresada es incorrecta");
+				response.put("nroError", 2);
 			}
 		} else {
 			response.put("exito", Boolean.FALSE);
 			response.put("error", "El nombre de usuario ingresado es incorrecto");
+			response.put("nroError", 1);
 		}
 		
 		logger.debug(response.toString());

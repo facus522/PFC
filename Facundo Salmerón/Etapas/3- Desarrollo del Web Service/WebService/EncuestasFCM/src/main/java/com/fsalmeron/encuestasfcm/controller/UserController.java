@@ -1,5 +1,7 @@
 package com.fsalmeron.encuestasfcm.controller;
 
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -55,10 +57,10 @@ public class UserController {
 		return response.toString();
 	}
 	
-	//http://localhost:8080/EncuestasFCM/usuarios/saveUser?nombre=usuarioEjemplo&password=123456&fechaNacimiento=1995/05/23&mail=ejemplo@mail.com.ar&activo=1&sexo=1&tipoUsuario=2
+	//http://localhost:8080/EncuestasFCM/usuarios/saveUser?nombre=usuarioEjemplo&password=123456&fechaNacimiento=1995/05/23&mail=ejemplo@mail.com.ar&activo=1&sexo=1&tipoUsuario=2&validar=
 	@RequestMapping(value = "/saveUser", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String crearUsuario(@RequestParam("nombre") String nombre, @RequestParam("password") String password, @RequestParam("fechaNacimiento") Date fechaNacimiento, @RequestParam("mail") String mail, @RequestParam("activo") Boolean activo, @RequestParam("sexo") Integer sexo, @RequestParam("tipoUsuario") Integer tipoUsuario) {
+	public String crearUsuario(@RequestParam("nombre") String nombre, @RequestParam("password") String password, @RequestParam("fechaNacimiento") Date fechaNacimiento, @RequestParam("mail") String mail, @RequestParam("activo") Boolean activo, @RequestParam("sexo") Integer sexo, @RequestParam("tipoUsuario") Integer tipoUsuario, @RequestParam("validar") String validar) {
 		Usuario usuario = new Usuario();
 		usuario.setNombreUsuario(nombre);
 		usuario.setPassword(EncryptionUtil.encode(password));
@@ -67,7 +69,7 @@ public class UserController {
 		usuario.setActivo(activo);
 		usuario.setSexo(sexoService.getById(sexo));
 		usuario.setTipoUsuario(tipoUsuarioService.getById(tipoUsuario));
-		JSONObject response = usuarioService.save(usuario);
+		JSONObject response = usuarioService.save(usuario, validar);
 		logger.debug(response.toString());
 		return response.toString();
 	}
@@ -90,6 +92,7 @@ public class UserController {
 				response.put("nombre", usuario.getNombreUsuario());
 				response.put("sexo", usuario.getSexo().getId());
 				response.put("tipoUsuario", usuario.getTipoUsuario().getId());
+				response.put("edad", calcularEdad(usuario.getFechaNacimiento()));
 			} else {
 				response.put("exito", Boolean.FALSE);
 				response.put("error", "La contraseña ingresada es incorrecta");
@@ -103,6 +106,11 @@ public class UserController {
 		
 		logger.debug(response.toString());
 		return response.toString();
+	}
+	
+	private Integer calcularEdad(Date fechaNacimiento) {
+		Date hoy = new Date();
+		return Period.between(fechaNacimiento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), hoy.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()).getYears();
 	}
 	
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fsalmeron.encuestasfcm.model.Encuesta;
 import com.fsalmeron.encuestasfcm.model.InformacionNoticia;
 import com.fsalmeron.encuestasfcm.service.InformacionNoticiaService;
 
@@ -34,6 +35,7 @@ public class InformacionNoticiaController {
 		List<InformacionNoticia> info = (List<InformacionNoticia>) informacionNoticiaService.findAll();
 		for(InformacionNoticia i : info) {
 			JSONObject json = new JSONObject();
+			json.put("id", i.getId());
 			json.put("titulo", i.getTitulo());
 			json.put("descripcion", i.getDescripcion());
 			json.put("url", i.getUrl());
@@ -55,6 +57,17 @@ public class InformacionNoticiaController {
 		info.setIdUsuarioAlta(idUsuario);
 		info.setFechaAlta(new Date());
 		JSONObject response = informacionNoticiaService.save(info);
+		logger.debug(response.toString());
+		return response.toString();
+	}
+	
+	@RequestMapping(value = "/removeInfo", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String eliminarInfoNoticia(@RequestParam("idInfo") Integer idInfo) {
+		InformacionNoticia info = informacionNoticiaService.getById(idInfo);
+		informacionNoticiaService.remove(info);
+		JSONObject response = new JSONObject();
+		response.put("exito", Boolean.TRUE);
 		logger.debug(response.toString());
 		return response.toString();
 	}

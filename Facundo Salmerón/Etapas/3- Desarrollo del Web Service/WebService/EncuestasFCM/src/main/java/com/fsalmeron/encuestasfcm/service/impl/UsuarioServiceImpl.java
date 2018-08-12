@@ -47,42 +47,49 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Integer> implem
 
 		if (usuario.getTipoUsuario().getId().equals(TipoUsuarioEnum.USUARIO_ESPECIAL.getCodigo()) && !validar.equals("FCM2018")) {
 			errors.put("exito", Boolean.FALSE);
+			errors.put("idError", 1);
 			errors.put("error", "El código de validación ingresado como Usuario de Medicina es incorrecto!");
 			return Boolean.FALSE;
 		}
 		
 		if (!CollectionUtils.isEmpty(filter(usuarioFilter))) {
 			errors.put("exito", Boolean.FALSE);
+			errors.put("idError", 2);
 			errors.put("error", "El Nombre de Usuario escogido ya se encuentra en uso.");
 			return Boolean.FALSE;
 		}
 		
 		if (usuario.getNombreUsuario().length() < 6) {
 			errors.put("exito", Boolean.FALSE);
+			errors.put("idError", 3);
 			errors.put("error", "El Nombre de Usuario debe tener al menos 6 caracteres.");
 			return Boolean.FALSE;
 		}
 		
 		if (usuario.getNombreUsuario().length() > 100) {
 			errors.put("exito", Boolean.FALSE);
+			errors.put("idError", 4);
 			errors.put("error", "El Nombre de Usuario debe tener como máximo 100 caracteres.");
 			return Boolean.FALSE;
 		}
 		
 		if (EncryptionUtil.decode(usuario.getPassword()).length() < 6) {
 			errors.put("exito", Boolean.FALSE);
+			errors.put("idError", 5);
 			errors.put("error", "La Contraseña debe tener al menos 6 caracteres.");
 			return Boolean.FALSE;
 		}
 		
 		if (EncryptionUtil.decode(usuario.getPassword()).length() > 100) {
 			errors.put("exito", Boolean.FALSE);
+			errors.put("idError", 6);
 			errors.put("error", "La Contraseña debe tener como máximo 100 caracteres.");
 			return Boolean.FALSE;
 		}
 		
 		if (!usuario.getNombreUsuario().matches("^[a-zA-Z0-9._-]{3,}$")) {
 			errors.put("exito", Boolean.FALSE);
+			errors.put("idError", 7);
 			errors.put("error", "Existen caracteres inválidos en el Nombre de Usuario.");
 			return Boolean.FALSE;
 		}
@@ -91,6 +98,7 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Integer> implem
 		usuarioFilter.setMail(usuario.getMail());
 		if (!CollectionUtils.isEmpty(filter(usuarioFilter))) {
 			errors.put("exito", Boolean.FALSE);
+			errors.put("idError", 8);
 			errors.put("error", "El Mail ingresado ya ha registrado una cuenta de usuario.");
 			return Boolean.FALSE;
 		}

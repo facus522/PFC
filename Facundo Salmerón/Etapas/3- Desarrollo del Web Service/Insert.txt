@@ -16,6 +16,7 @@ INSERT INTO tipo_respuesta (NOMBRE) VALUES ("Multiple Choise");
 INSERT INTO tipo_respuesta (NOMBRE) VALUES ("Unica");
 INSERT INTO tipo_respuesta (NOMBRE) VALUES ("Numerica");
 INSERT INTO tipo_respuesta (NOMBRE) VALUES ("Texto");
+INSERT INTO tipo_respuesta (NOMBRE) VALUES ("Escala");
 
 INSERT INTO encuesta (TITULO, DESCRIPCION, ACTIVO, IDUSUARIOALTA, FECHAALTA, IDUSUARIOMODIFICACION, FECHAMODIFICACION, IDUSUARIOBAJA, FECHABAJA)
 VALUES ("Primer encuesta", "En esta encuesta se van a hacer pruebas", 1, 1, NOW(), NULL, NULL, NULL, NULL);

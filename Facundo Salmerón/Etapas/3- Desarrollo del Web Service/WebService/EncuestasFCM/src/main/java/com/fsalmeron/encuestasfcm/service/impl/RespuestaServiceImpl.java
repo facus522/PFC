@@ -35,6 +35,7 @@ public class RespuestaServiceImpl extends BaseServiceImpl<Respuesta, Integer> im
 			respuesta.getPregunta().getEncuesta().setIdUsuarioModificacion(idUsuario);
 			encuestaService.saveOrUpdate(respuesta.getPregunta().getEncuesta());
 			resultado.put("exito", Boolean.TRUE);
+			resultado.put("idAsignado", respuesta.getId());
 		} catch (Exception e) {
 			resultado.put("exito", Boolean.FALSE);
 			resultado.put("error", e.getMessage());

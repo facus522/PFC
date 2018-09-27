@@ -42,6 +42,7 @@ public class EncuestaServiceImpl extends BaseServiceImpl<Encuesta, Integer> impl
 			}
 			saveOrUpdate(encuesta);
 			resultado.put("exito", Boolean.TRUE);
+			resultado.put("idAsignado", encuesta.getId());
 		} catch (Exception e) {
 			resultado.put("exito", Boolean.FALSE);
 			resultado.put("error", e.getMessage());

@@ -40,6 +40,7 @@ public class PreguntaServiceImpl extends BaseServiceImpl<Pregunta, Integer> impl
 			pregunta.getEncuesta().setIdUsuarioModificacion(idUsuario);
 			encuestaService.saveOrUpdate(pregunta.getEncuesta());
 			resultado.put("exito", Boolean.TRUE);
+			resultado.put("idAsignado", pregunta.getId());
 		} catch (Exception e) {
 			resultado.put("exito", Boolean.FALSE);
 			resultado.put("error", e.getMessage());

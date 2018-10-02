@@ -74,6 +74,7 @@ public class EncuestaController {
 			JSONObject json = new JSONObject();
 			json.put("idPregunta", pregunta.getId());
 			json.put("descripcionPregunta", pregunta.getDescripcion());
+			json.put("idTipoRespuesta", pregunta.getTipoRespuesta().getId());
 			responseArray.put(json);
 			JSONArray respuestasArray = new JSONArray();
 			for (Respuesta respuesta : pregunta.getRespuestas()) {

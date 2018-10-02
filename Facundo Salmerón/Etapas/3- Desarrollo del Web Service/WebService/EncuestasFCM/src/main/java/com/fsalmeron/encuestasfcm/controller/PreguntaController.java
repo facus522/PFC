@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fsalmeron.encuestasfcm.model.Pregunta;
 import com.fsalmeron.encuestasfcm.service.EncuestaService;
 import com.fsalmeron.encuestasfcm.service.PreguntaService;
+import com.fsalmeron.encuestasfcm.service.TipoRespuestaService;
 
 @Controller
 @RequestMapping(value = "/preguntas")
@@ -24,15 +25,19 @@ public class PreguntaController {
 	private EncuestaService encuestaService;
 	
 	@Autowired
+	private TipoRespuestaService tipoRespuestaService;
+	
+	@Autowired
 	private PreguntaService preguntaService;
 	
-	//http://localhost:8080/EncuestasFCM/preguntas/savePregunta?descripcion=%C2%BFPregunta%20Web%20Service?&idEncuesta=2&idUsuario=2
+	//http://localhost:8080/EncuestasFCM/preguntas/savePregunta?descripcion=%C2%BFPregunta%20Web%20Service?&idEncuesta=2&idTipoRespuesta=2&idUsuario=2
 	@RequestMapping(value = "/savePregunta", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String crearPregunta(@RequestParam("descripcion") String descripcion , @RequestParam("idEncuesta") Integer idEncuesta, @RequestParam("idUsuario") Integer idUsuario) {
+	public String crearPregunta(@RequestParam("descripcion") String descripcion , @RequestParam("idEncuesta") Integer idEncuesta, @RequestParam("idTipoRespuesta") Integer idTipoRespuesta, @RequestParam("idUsuario") Integer idUsuario) {
 		Pregunta pregunta = new Pregunta();
 		pregunta.setDescripcion(descripcion);
 		pregunta.setEncuesta(encuestaService.getById(idEncuesta));
+		pregunta.setTipoRespuesta(tipoRespuestaService.getById(idTipoRespuesta));
 		JSONObject response = preguntaService.save(pregunta, idUsuario);
 		logger.debug(response.toString());
 		return response.toString();

@@ -1,6 +1,10 @@
 ALTER TABLE pfc_encuestas.pregunta
 	ADD COLUMN IDTIPORESPUESTA int(11) NOT NULL;
 
+ALTER TABLE pfc_encuestas.pregunta
+	ADD COLUMN NUMERO_ESCALA INT;
+
+
 INSERT INTO sexo (DESCRIPCION) VALUES ("Masculino");
 INSERT INTO sexo (DESCRIPCION) VALUES ("Femenino");
 

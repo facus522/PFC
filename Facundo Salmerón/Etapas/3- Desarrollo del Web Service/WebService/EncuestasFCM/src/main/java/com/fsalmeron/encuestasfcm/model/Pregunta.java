@@ -27,7 +27,18 @@ public class Pregunta extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	private List<Respuesta> respuestas = new ArrayList<Respuesta>();
 	
 	private TipoRespuesta tipoRespuesta;
+
+	private Integer numeroEscala;
 	
+	@Column(name = "NUMERO_ESCALA")
+	public Integer getNumeroEscala() {
+		return numeroEscala;
+	}
+
+	public void setNumeroEscala(Integer numeroEscala) {
+		this.numeroEscala = numeroEscala;
+	}
+
 	public Pregunta() {
 		
 	}

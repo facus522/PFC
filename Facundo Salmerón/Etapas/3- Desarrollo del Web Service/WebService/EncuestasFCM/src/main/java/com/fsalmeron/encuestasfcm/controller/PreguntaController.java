@@ -30,23 +30,24 @@ public class PreguntaController {
 	@Autowired
 	private PreguntaService preguntaService;
 	
-	//http://localhost:8080/EncuestasFCM/preguntas/savePregunta?descripcion=%C2%BFPregunta%20Web%20Service?&idEncuesta=2&idTipoRespuesta=2&idUsuario=2
+	//http://localhost:8080/EncuestasFCM/preguntas/savePregunta?descripcion=%C2%BFPregunta%20Web%20Service?&idEncuesta=2&numeroEscala=2&idTipoRespuesta=2&idUsuario=2
 	@RequestMapping(value = "/savePregunta", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String crearPregunta(@RequestParam("descripcion") String descripcion , @RequestParam("idEncuesta") Integer idEncuesta, @RequestParam("idTipoRespuesta") Integer idTipoRespuesta, @RequestParam("idUsuario") Integer idUsuario) {
+	public String crearPregunta(@RequestParam("descripcion") String descripcion, @RequestParam("idEncuesta") Integer idEncuesta, @RequestParam("numeroEscala") Integer numeroEscala, @RequestParam("idTipoRespuesta") Integer idTipoRespuesta, @RequestParam("idUsuario") Integer idUsuario) {
 		Pregunta pregunta = new Pregunta();
 		pregunta.setDescripcion(descripcion);
 		pregunta.setEncuesta(encuestaService.getById(idEncuesta));
 		pregunta.setTipoRespuesta(tipoRespuestaService.getById(idTipoRespuesta));
+		pregunta.setNumeroEscala(numeroEscala);
 		JSONObject response = preguntaService.save(pregunta, idUsuario);
 		logger.debug(response.toString());
 		return response.toString();
 	}
 	
-	//http://localhost:8080/EncuestasFCM/preguntas/updatePregunta?idPregunta=5&descripcion=Probando%20el%20update??&idUsuario=2
+	//http://localhost:8080/EncuestasFCM/preguntas/updatePregunta?idPregunta=5&descripcion=Probando%20el%20update??&numeroEscala=2&idUsuario=2
 	@RequestMapping(value = "/updatePregunta", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String modificarPregunta(@RequestParam("idPregunta") Integer idPregunta, @RequestParam("descripcion") String descripcion, @RequestParam("idUsuario") Integer idUsuario) {
+	public String modificarPregunta(@RequestParam("idPregunta") Integer idPregunta, @RequestParam("descripcion") String descripcion, @RequestParam("numeroEscala") Integer numeroEscala, @RequestParam("idUsuario") Integer idUsuario) {
 		Pregunta pregunta = preguntaService.getById(idPregunta);
 		pregunta.setDescripcion(descripcion);
 		JSONObject response = preguntaService.save(pregunta, idUsuario);

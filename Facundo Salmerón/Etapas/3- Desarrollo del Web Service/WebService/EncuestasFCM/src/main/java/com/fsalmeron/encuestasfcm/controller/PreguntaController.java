@@ -50,6 +50,7 @@ public class PreguntaController {
 	public String modificarPregunta(@RequestParam("idPregunta") Integer idPregunta, @RequestParam("descripcion") String descripcion, @RequestParam("numeroEscala") Integer numeroEscala, @RequestParam("idUsuario") Integer idUsuario) {
 		Pregunta pregunta = preguntaService.getById(idPregunta);
 		pregunta.setDescripcion(descripcion);
+		pregunta.setNumeroEscala(numeroEscala);
 		JSONObject response = preguntaService.save(pregunta, idUsuario);
 		logger.debug(response.toString());
 		return response.toString();

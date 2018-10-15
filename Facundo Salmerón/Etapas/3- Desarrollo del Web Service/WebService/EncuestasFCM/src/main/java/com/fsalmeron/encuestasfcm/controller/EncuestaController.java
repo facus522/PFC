@@ -1,5 +1,6 @@
 package com.fsalmeron.encuestasfcm.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -21,6 +22,7 @@ import com.fsalmeron.encuestasfcm.model.Encuesta;
 import com.fsalmeron.encuestasfcm.model.Pregunta;
 import com.fsalmeron.encuestasfcm.model.Respuesta;
 import com.fsalmeron.encuestasfcm.service.EncuestaService;
+import com.fsalmeron.encuestasfcm.service.UsuarioService;
 
 @Controller
 @RequestMapping(value = "/encuestas")
@@ -30,6 +32,9 @@ public class EncuestaController {
 
 	@Autowired
 	private EncuestaService encuestaService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	//http://localhost:8080/EncuestasFCM/encuestas/getAll
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
@@ -52,6 +57,10 @@ public class EncuestaController {
 			json.put("id", encuesta.getId());
 			json.put("titulo", encuesta.getTitulo());
 			json.put("descripcion", encuesta.getDescripcion());
+			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+			json.put("usuario", usuarioService.getById(encuesta.getIdUsuarioAlta()).getNombreUsuario());
+			json.put("fecha", format.format(encuesta.getFechaAlta()));
+			json.put("resoluciones", encuesta.getResoluciones());
 			responseArray.put(json);
 		}
 		

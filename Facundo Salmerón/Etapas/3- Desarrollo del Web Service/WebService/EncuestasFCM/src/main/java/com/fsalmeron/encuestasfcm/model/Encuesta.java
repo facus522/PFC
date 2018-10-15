@@ -36,6 +36,8 @@ public class Encuesta extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	private Integer idUsuarioEliminacion;
 	
 	private Date fechaEliminacion;
+
+	private Integer resoluciones;
 	
 	private List<Pregunta> preguntas = new ArrayList<Pregunta>();
 	
@@ -144,6 +146,15 @@ public class Encuesta extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 
 	public void setPreguntas(List<Pregunta> preguntas) {
 		this.preguntas = preguntas;
+	}
+
+	@Column(name = "RESOLUCIONES")
+	public Integer getResoluciones() {
+		return resoluciones;
+	}
+
+	public void setResoluciones(Integer resoluciones) {
+		this.resoluciones = resoluciones;
 	}
 	
 }

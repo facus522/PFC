@@ -4,6 +4,11 @@ ALTER TABLE pfc_encuestas.pregunta
 ALTER TABLE pfc_encuestas.pregunta
 	ADD COLUMN NUMERO_ESCALA INT;
 
+ALTER TABLE pfc_encuestas.encuesta
+	ADD COLUMN RESOLUCIONES INT
+	DEFAULT 0;
+
+
 
 INSERT INTO sexo (DESCRIPCION) VALUES ("Masculino");
 INSERT INTO sexo (DESCRIPCION) VALUES ("Femenino");

@@ -23,6 +23,17 @@ public class UsuarioFilter extends BaseFilter<Integer>{
 	private Sexo sexo;
 	
 	private TipoUsuario tipoUsuario;
+	
+	private Integer dni;
+	
+
+	public Integer getDni() {
+		return dni;
+	}
+
+	public void setDni(Integer dni) {
+		this.dni = dni;
+	}
 
 	public Integer getId() {
 		return id;

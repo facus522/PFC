@@ -103,6 +103,15 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Integer> implem
 			return Boolean.FALSE;
 		}
 		
+		usuarioFilter.setMail(null);
+		usuarioFilter.setDni(usuario.getDni());
+		if (!CollectionUtils.isEmpty(filter(usuarioFilter))) {
+			errors.put("exito", Boolean.FALSE);
+			errors.put("idError", 9);
+			errors.put("error", "El DNI ingresado ya se encuentra en uso.");
+			return Boolean.FALSE;
+		}
+		
 		return Boolean.TRUE;
 	}
 	

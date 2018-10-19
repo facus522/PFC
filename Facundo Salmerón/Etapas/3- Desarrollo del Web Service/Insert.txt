@@ -8,7 +8,26 @@ ALTER TABLE pfc_encuestas.encuesta
 	ADD COLUMN RESOLUCIONES INT
 	DEFAULT 0;
 
+ALTER TABLE pfc_encuestas.usuario
+	ADD COLUMN NOMBRE varchar(255) NOT NULL 
+	DEFAULT 'NN';
 
+ALTER TABLE pfc_encuestas.usuario
+	ADD COLUMN APELLIDO varchar(255) NOT NULL 
+	DEFAULT 'NN';
+
+ALTER TABLE pfc_encuestas.usuario
+	ADD COLUMN DNI int(11) NOT NULL 
+	DEFAULT 0;
+
+ALTER TABLE pfc_encuestas.usuario
+	ALTER COLUMN NOMBRE DROP DEFAULT;
+
+ALTER TABLE pfc_encuestas.usuario
+	ALTER COLUMN APELLIDO DROP DEFAULT;
+
+ALTER TABLE pfc_encuestas.usuario
+	ALTER COLUMN DNI DROP DEFAULT;
 
 INSERT INTO sexo (DESCRIPCION) VALUES ("Masculino");
 INSERT INTO sexo (DESCRIPCION) VALUES ("Femenino");

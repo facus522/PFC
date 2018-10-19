@@ -23,6 +23,10 @@ public class UsuarioDaoImpl extends BaseDaoImpl<Usuario, Integer> implements Usu
 			criteria.add(Restrictions.eq("id", filter.getId()));
 		}
 		
+		if (filter.getDni() != null) {
+			criteria.add(Restrictions.eq("dni", filter.getDni()));
+		}
+		
 		if (!StringUtils.isEmpty(filter.getNombreUsuario())) {
 			criteria.add(Restrictions.eq("nombreUsuario", filter.getNombreUsuario()));
 		}

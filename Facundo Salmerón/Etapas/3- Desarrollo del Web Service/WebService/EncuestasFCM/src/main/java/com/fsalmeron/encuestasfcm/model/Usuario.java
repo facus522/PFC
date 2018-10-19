@@ -32,6 +32,12 @@ public class Usuario extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	
 	private TipoUsuario tipoUsuario;
 	
+	private String nombre;
+	
+	private String apellido;
+	
+	private Integer dni;
+	
 	public Usuario() {
 		
 	}
@@ -47,6 +53,33 @@ public class Usuario extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	@SequenceGenerator(name = "Usuario_Generator", sequenceName = "Usuario_Generator")
 	public Integer getId() {
 		return id;
+	}
+	
+	@Column(name = "NOMBRE")
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	@Column(name = "APELLIDO")
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	@Column(name = "DNI")
+	public Integer getDni() {
+		return dni;
+	}
+
+	public void setDni(Integer dni) {
+		this.dni = dni;
 	}
 
 	@Column(name = "NOMBREUSUARIO")

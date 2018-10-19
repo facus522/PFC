@@ -21,6 +21,7 @@ import com.fsalmeron.encuestasfcm.filter.EncuestaFilter;
 import com.fsalmeron.encuestasfcm.model.Encuesta;
 import com.fsalmeron.encuestasfcm.model.Pregunta;
 import com.fsalmeron.encuestasfcm.model.Respuesta;
+import com.fsalmeron.encuestasfcm.model.Usuario;
 import com.fsalmeron.encuestasfcm.service.EncuestaService;
 import com.fsalmeron.encuestasfcm.service.UsuarioService;
 
@@ -58,7 +59,8 @@ public class EncuestaController {
 			json.put("titulo", encuesta.getTitulo());
 			json.put("descripcion", encuesta.getDescripcion());
 			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-			json.put("usuario", usuarioService.getById(encuesta.getIdUsuarioAlta()).getNombreUsuario());
+			Usuario user = usuarioService.getById(encuesta.getIdUsuarioAlta());
+			json.put("usuario", user.getNombre() + " " + user.getApellido());
 			json.put("fecha", format.format(encuesta.getFechaAlta()));
 			json.put("resoluciones", encuesta.getResoluciones());
 			responseArray.put(json);

@@ -60,9 +60,12 @@ public class UserController {
 	//http://localhost:8080/EncuestasFCM/usuarios/saveUser?nombre=usuarioEjemplo&password=123456&fechaNacimiento=1995/05/23&mail=ejemplo@mail.com.ar&activo=1&sexo=1&tipoUsuario=2&validar=
 	@RequestMapping(value = "/saveUser", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String crearUsuario(@RequestParam("nombre") String nombre, @RequestParam("password") String password, @RequestParam("fechaNacimiento") Date fechaNacimiento, @RequestParam("mail") String mail, @RequestParam("activo") Boolean activo, @RequestParam("sexo") Integer sexo, @RequestParam("tipoUsuario") Integer tipoUsuario, @RequestParam("validar") String validar) {
+	public String crearUsuario(@RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido, @RequestParam("dni") Integer dni, @RequestParam("nombreUsuario") String nombreUsuario, @RequestParam("password") String password, @RequestParam("fechaNacimiento") Date fechaNacimiento, @RequestParam("mail") String mail, @RequestParam("activo") Boolean activo, @RequestParam("sexo") Integer sexo, @RequestParam("tipoUsuario") Integer tipoUsuario, @RequestParam("validar") String validar) {
 		Usuario usuario = new Usuario();
-		usuario.setNombreUsuario(nombre);
+		usuario.setNombre(nombre);
+		usuario.setApellido(apellido);
+		usuario.setDni(dni);
+		usuario.setNombreUsuario(nombreUsuario);
 		usuario.setPassword(EncryptionUtil.encode(password));
 		usuario.setFechaNacimiento(fechaNacimiento);
 		usuario.setMail(mail);
@@ -89,10 +92,13 @@ public class UserController {
 			if (usuario.getPassword().equals(EncryptionUtil.encode(password))) {
 				response.put("exito", Boolean.TRUE);
 				response.put("id", usuario.getId());
-				response.put("nombre", usuario.getNombreUsuario());
+				response.put("nombreUsuario", usuario.getNombreUsuario());
 				response.put("sexo", usuario.getSexo().getId());
 				response.put("tipoUsuario", usuario.getTipoUsuario().getId());
 				response.put("edad", calcularEdad(usuario.getFechaNacimiento()));
+				response.put("nombre", usuario.getNombre());
+				response.put("apellido", usuario.getApellido());
+				response.put("dni", usuario.getDni());
 			} else {
 				response.put("exito", Boolean.FALSE);
 				response.put("error", "La contraseña ingresada es incorrecta");

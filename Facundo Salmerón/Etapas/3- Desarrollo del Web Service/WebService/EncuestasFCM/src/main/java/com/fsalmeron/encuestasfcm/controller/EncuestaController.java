@@ -62,6 +62,7 @@ public class EncuestaController {
 			Usuario user = usuarioService.getById(encuesta.getIdUsuarioAlta());
 			json.put("usuario", user.getNombre() + " " + user.getApellido());
 			json.put("fecha", format.format(encuesta.getFechaAlta()));
+			json.put("geolocalizada", encuesta.getIsGeolicalizada());
 			json.put("resoluciones", encuesta.getResoluciones());
 			responseArray.put(json);
 		}
@@ -106,11 +107,13 @@ public class EncuestaController {
 	//http://localhost:8080/EncuestasFCM/encuestas/saveEncuesta?titulo=nombre&descripcion=nombre&idUsuario=2
 	@RequestMapping(value = "/saveEncuesta", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String crearEncuesta(@RequestParam("titulo") String titulo , @RequestParam("descripcion") String descripcion, @RequestParam("idUsuario") Integer idUsuario) {
+	public String crearEncuesta(@RequestParam("titulo") String titulo , @RequestParam("descripcion") String descripcion, @RequestParam("isGeolocalizada") Boolean isGeolocalizada, @RequestParam("idUsuario") Integer idUsuario) {
 		Encuesta encuesta = new Encuesta();
 		encuesta.setActivo(Boolean.TRUE);
 		encuesta.setTitulo(titulo);
 		encuesta.setDescripcion(descripcion);
+		encuesta.setResoluciones(0);
+		encuesta.setIsGeolicalizada(isGeolocalizada);
 		encuesta.setFechaAlta(new Date());
 		encuesta.setIdUsuarioAlta(idUsuario);
 		JSONObject response = encuestaService.save(encuesta, idUsuario);
@@ -121,10 +124,11 @@ public class EncuestaController {
 	//http://localhost:8080/EncuestasFCM/encuestas/updateEncuesta?idEncuesta=3&titulo=nuevo%20titulo&descripcion=nueva%20descripcion&idUsuario=3
 	@RequestMapping(value = "/updateEncuesta", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String modificarEncuesta(@RequestParam("idEncuesta") Integer idEncuesta, @RequestParam("titulo") String titulo, @RequestParam("descripcion") String descripcion, @RequestParam("idUsuario") Integer idUsuario) {
+	public String modificarEncuesta(@RequestParam("idEncuesta") Integer idEncuesta, @RequestParam("titulo") String titulo, @RequestParam("descripcion") String descripcion, @RequestParam("isGeolocalizada") Boolean isGeolocalizada, @RequestParam("idUsuario") Integer idUsuario) {
 		Encuesta encuesta = encuestaService.getById(idEncuesta);
 		encuesta.setTitulo(titulo);
 		encuesta.setDescripcion(descripcion);
+		encuesta.setIsGeolicalizada(isGeolocalizada);
 		JSONObject response = encuestaService.save(encuesta, idUsuario);
 		logger.debug(response.toString());
 		return response.toString();

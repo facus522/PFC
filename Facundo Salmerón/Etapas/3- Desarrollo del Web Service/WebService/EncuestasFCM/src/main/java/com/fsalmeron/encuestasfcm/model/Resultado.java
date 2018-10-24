@@ -28,6 +28,8 @@ public class Resultado extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	
 	private Respuesta respuesta;
 	
+	private String descripcion;
+	
 	public Resultado() {
 		
 	}
@@ -43,6 +45,15 @@ public class Resultado extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	@SequenceGenerator(name = "Resultado_Generator", sequenceName = "Resultado_Generator")
 	public Integer getId() {
 		return id;
+	}
+
+	@Column(name = "DESCRIPCION")
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	@Column(name = "LATITUD")

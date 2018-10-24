@@ -39,6 +39,17 @@ public class Encuesta extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 
 	private Integer resoluciones;
 	
+	private Boolean isGeolicalizada;
+	
+	@Column(name = "ISGEOLOCALIZADA")
+	public Boolean getIsGeolicalizada() {
+		return isGeolicalizada;
+	}
+
+	public void setIsGeolicalizada(Boolean isGeolicalizada) {
+		this.isGeolicalizada = isGeolicalizada;
+	}
+
 	private List<Pregunta> preguntas = new ArrayList<Pregunta>();
 	
 	public Encuesta() {

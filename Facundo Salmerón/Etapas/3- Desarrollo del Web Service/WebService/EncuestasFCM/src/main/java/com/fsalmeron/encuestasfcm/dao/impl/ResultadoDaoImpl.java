@@ -3,6 +3,7 @@ package com.fsalmeron.encuestasfcm.dao.impl;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import com.fsalmeron.encuestasfcm.base.BaseDaoImpl;
 import com.fsalmeron.encuestasfcm.base.BaseFilter;
@@ -22,11 +23,11 @@ public class ResultadoDaoImpl extends BaseDaoImpl<Resultado, Integer> implements
 			criteria.add(Restrictions.eq("id", filter.getId()));
 		}
 		
-		if (filter.getLatitud() != null) {
+		if (!StringUtils.isEmpty(filter.getLatitud())) {
 			criteria.add(Restrictions.eq("latitud", filter.getLatitud()));
 		}
 		
-		if (filter.getLongitud() != null) {
+		if (!StringUtils.isEmpty(filter.getLongitud())) {
 			criteria.add(Restrictions.eq("longitud", filter.getLongitud()));
 		}
 		

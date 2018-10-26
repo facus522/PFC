@@ -16,9 +16,9 @@ import javax.persistence.Table;
 @Table(name = "RESULTADO")
 public class Resultado extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 
-	private Double latitud;
+	private String latitud;
 	
-	private Double longitud;
+	private String longitud;
 	
 	private Integer edadEncuestado;
 	
@@ -57,20 +57,20 @@ public class Resultado extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	}
 
 	@Column(name = "LATITUD")
-	public Double getLatitud() {
+	public String getLatitud() {
 		return latitud;
 	}
 
-	public void setLatitud(Double latitud) {
+	public void setLatitud(String latitud) {
 		this.latitud = latitud;
 	}
 
 	@Column(name = "LONGITUD")
-	public Double getLongitud() {
+	public String getLongitud() {
 		return longitud;
 	}
 
-	public void setLongitud(Double longitud) {
+	public void setLongitud(String longitud) {
 		this.longitud = longitud;
 	}
 

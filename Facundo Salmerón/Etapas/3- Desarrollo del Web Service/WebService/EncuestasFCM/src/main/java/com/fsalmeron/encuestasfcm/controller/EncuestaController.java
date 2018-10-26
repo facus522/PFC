@@ -163,4 +163,16 @@ public class EncuestaController {
 		logger.debug(response.toString());
 		return response.toString();
 	}
+	
+	@RequestMapping(value = "/incrementarResolucion", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String incrementarResolucionEncuesta(@RequestParam("idEncuesta") Integer idEncuesta) {
+		Encuesta encuesta = encuestaService.getById(idEncuesta);
+		encuesta.setResoluciones(encuesta.getResoluciones() + 1);
+		encuestaService.saveOrUpdate(encuesta);
+		JSONObject response = new JSONObject();
+		response.put("exito", Boolean.TRUE);
+		logger.debug(response.toString());
+		return response.toString();
+	}
 }

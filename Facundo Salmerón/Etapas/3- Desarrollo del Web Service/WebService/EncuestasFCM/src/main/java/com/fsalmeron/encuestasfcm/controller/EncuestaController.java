@@ -1,5 +1,6 @@
 package com.fsalmeron.encuestasfcm.controller;
 
+import java.nio.file.attribute.UserPrincipalLookupService;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
@@ -18,11 +19,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fsalmeron.encuestasfcm.filter.EncuestaFilter;
+import com.fsalmeron.encuestasfcm.filter.ResultadoFilter;
 import com.fsalmeron.encuestasfcm.model.Encuesta;
 import com.fsalmeron.encuestasfcm.model.Pregunta;
 import com.fsalmeron.encuestasfcm.model.Respuesta;
+import com.fsalmeron.encuestasfcm.model.Resultado;
 import com.fsalmeron.encuestasfcm.model.Usuario;
 import com.fsalmeron.encuestasfcm.service.EncuestaService;
+import com.fsalmeron.encuestasfcm.service.ResultadoService;
 import com.fsalmeron.encuestasfcm.service.UsuarioService;
 
 @Controller
@@ -36,6 +40,9 @@ public class EncuestaController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@Autowired
+	private ResultadoService resultadoService;
 	
 	//http://localhost:8080/EncuestasFCM/encuestas/getAll
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
@@ -103,6 +110,49 @@ public class EncuestaController {
 		logger.debug(response.toString());
 		return response.toString();
 	}
+	
+	@RequestMapping(value = "/openEncuestaValidar", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String abrirEncuestaValidar(@RequestParam("idEncuesta") Integer idEncuesta, @RequestParam("idUsuario") Integer idUsuario) {
+		Encuesta encuesta = encuestaService.getById(idEncuesta);
+		JSONObject response = new JSONObject();
+		
+		ResultadoFilter filter = new ResultadoFilter();
+		filter.setUsuario(usuarioService.getById(idUsuario));
+		
+		List<Resultado> resultado = (List<Resultado>) resultadoService.filter(filter);
+		
+		if (!resultado.isEmpty()) {
+			response.put("respondida", Boolean.TRUE);
+		} else {
+			JSONArray responseArray = new JSONArray();
+			response.put("id", encuesta.getId());
+			response.put("titulo", encuesta.getTitulo());
+			response.put("descripcion", encuesta.getDescripcion());
+			for (Pregunta pregunta : encuesta.getPreguntas()) {
+				JSONObject json = new JSONObject();
+				json.put("idPregunta", pregunta.getId());
+				json.put("descripcionPregunta", pregunta.getDescripcion());
+				json.put("idTipoRespuesta", pregunta.getTipoRespuesta().getId());
+				json.put("numeroEscala", pregunta.getNumeroEscala() != null ? pregunta.getNumeroEscala() : 0);
+				responseArray.put(json);
+				JSONArray respuestasArray = new JSONArray();
+				for (Respuesta respuesta : pregunta.getRespuestas()) {
+					JSONObject jsonRespuesta = new JSONObject();
+					jsonRespuesta.put("idRespuesta", respuesta.getId());
+					jsonRespuesta.put("descripcionRespuesta", respuesta.getDescripcion());
+					jsonRespuesta.put("idTipoRespuesta", respuesta.getTipoRespuesta().getId());
+					respuestasArray.put(jsonRespuesta);
+				}
+				json.put("respuesta", respuestasArray);
+			}
+			response.put("preguntas", responseArray);
+		}
+		
+		logger.debug(response.toString());
+		return response.toString();
+	}
+	
 	
 	//http://localhost:8080/EncuestasFCM/encuestas/saveEncuesta?titulo=nombre&descripcion=nombre&idUsuario=2
 	@RequestMapping(value = "/saveEncuesta", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")

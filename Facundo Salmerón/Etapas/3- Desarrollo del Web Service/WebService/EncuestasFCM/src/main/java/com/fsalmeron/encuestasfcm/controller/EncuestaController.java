@@ -117,16 +117,14 @@ public class EncuestaController {
 		Encuesta encuesta = encuestaService.getById(idEncuesta);
 		JSONObject response = new JSONObject();
 		
-		ResultadoFilter filter = new ResultadoFilter();
-		filter.setUsuario(usuarioService.getById(idUsuario));
+		Integer cantidad = resultadoService.getResultadosByUsuario(idUsuario, idEncuesta);
 		
-		List<Resultado> resultado = (List<Resultado>) resultadoService.filter(filter);
-		
-		if (!resultado.isEmpty()) {
+		if (cantidad > 0) {
 			response.put("respondida", Boolean.TRUE);
 		} else {
 			JSONArray responseArray = new JSONArray();
 			response.put("id", encuesta.getId());
+			response.put("respondida", Boolean.FALSE);
 			response.put("titulo", encuesta.getTitulo());
 			response.put("descripcion", encuesta.getDescripcion());
 			for (Pregunta pregunta : encuesta.getPreguntas()) {

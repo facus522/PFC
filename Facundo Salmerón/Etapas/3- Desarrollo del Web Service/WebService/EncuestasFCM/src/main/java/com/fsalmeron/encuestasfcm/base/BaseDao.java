@@ -3,10 +3,18 @@ package com.fsalmeron.encuestasfcm.base;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Transaction;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
+
+import com.fsalmeron.encuestasfcm.model.Resultado;
+
 public interface BaseDao<T extends Persistence<PK>, PK extends Serializable> {
 
 	public long count(final BaseFilter<PK> filter);
 
+	public Integer getResultadosByUsuario(Integer idUsuario, Integer idEncuesta);
+	
 	public List<T> filter(BaseFilter<PK> filter);
 
 	public List<T> findAll(String... orderBy);

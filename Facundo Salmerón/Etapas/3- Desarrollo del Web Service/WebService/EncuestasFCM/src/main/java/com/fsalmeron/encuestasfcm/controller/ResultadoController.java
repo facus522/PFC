@@ -32,7 +32,7 @@ public class ResultadoController {
 	
 	@RequestMapping(value = "/saveResultado", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String crearResultado(@RequestParam("latitud") String latitud , @RequestParam("longitud") String longitud, @RequestParam("edadEncuestado") Integer edadEncuestado , @RequestParam("sexoEncuestado") Integer sexoEncuestado , @RequestParam("idUsuario") Integer idUsuario , @RequestParam("idRespuesta") Integer idRespuesta, @RequestParam("descripcion") String descripcion) {
+	public String crearResultado(@RequestParam("latitud") String latitud , @RequestParam("longitud") String longitud, @RequestParam("edadEncuestado") Integer edadEncuestado , @RequestParam("sexoEncuestado") Integer sexoEncuestado , @RequestParam("idUsuario") Integer idUsuario , @RequestParam("idRespuesta") Integer idRespuesta, @RequestParam("descripcion") String descripcion, @RequestParam("idEncuesta") Integer idEncuesta) {
 		Resultado resultado = new Resultado();
 		resultado.setLatitud(latitud);
 		resultado.setLongitud(longitud);
@@ -41,6 +41,7 @@ public class ResultadoController {
 		resultado.setUsuario(usuarioService.getById(idUsuario));
 		resultado.setRespuesta(respuestaService.getById(idRespuesta));
 		resultado.setDescripcion(descripcion);
+		resultado.setIdEncuesta(idEncuesta);
 		JSONObject response = resultadoService.save(resultado);
 		logger.debug(response.toString());
 		return response.toString();

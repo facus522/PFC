@@ -34,4 +34,8 @@ public class ResultadoServiceImpl extends BaseServiceImpl<Resultado, Integer> im
 		return json;
 	}
 	
+	@Override
+	public Integer getResultadosByUsuario(Integer idUsuario, Integer idEncuesta) {
+		return dao.getResultadosByUsuario(idUsuario, idEncuesta);
+	}
 }

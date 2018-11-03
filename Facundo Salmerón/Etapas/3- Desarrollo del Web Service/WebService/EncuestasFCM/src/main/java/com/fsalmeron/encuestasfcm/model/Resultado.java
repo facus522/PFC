@@ -30,6 +30,8 @@ public class Resultado extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	
 	private String descripcion;
 	
+	private Integer idEncuesta;
+	
 	public Resultado() {
 		
 	}
@@ -111,6 +113,17 @@ public class Resultado extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	public void setRespuesta(Respuesta respuesta) {
 		this.respuesta = respuesta;
 	}
+
+	@Column(name = "IDENCUESTA")
+	public Integer getIdEncuesta() {
+		return idEncuesta;
+	}
+
+	public void setIdEncuesta(Integer idEncuesta) {
+		this.idEncuesta = idEncuesta;
+	}
+	
+	
 	
 	
 }

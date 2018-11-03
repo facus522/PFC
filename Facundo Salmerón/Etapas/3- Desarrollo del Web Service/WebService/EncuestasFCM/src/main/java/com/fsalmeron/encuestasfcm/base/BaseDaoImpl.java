@@ -19,6 +19,8 @@ import org.hibernate.sql.JoinType;
 import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fsalmeron.encuestasfcm.model.Resultado;
+
 public abstract class BaseDaoImpl<T extends Persistence<PK>, PK extends Serializable> implements BaseDao<T, PK> {
 
 	private Class<T> persistentClass;
@@ -29,6 +31,17 @@ public abstract class BaseDaoImpl<T extends Persistence<PK>, PK extends Serializ
 	@SuppressWarnings("unchecked")
 	public BaseDaoImpl() {
 		this.persistentClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+	}
+	
+	@Override
+	public Integer getResultadosByUsuario(Integer idUsuario, Integer idEncuesta) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(Resultado.class);
+		criteria.add(Restrictions.eq("usuario.id", idUsuario));
+		criteria.add(Restrictions.eq("idEncuesta", idEncuesta));
+		Transaction tx = getSession().beginTransaction();
+		List<Resultado> result = criteria.getExecutableCriteria(getSession()).list();
+		tx.commit();
+		return result.size();
 	}
 
 	@SuppressWarnings("unchecked")

@@ -41,6 +41,10 @@ public class Encuesta extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	
 	private Boolean isGeolicalizada;
 	
+	private Integer isEdadRestriction;
+	
+	private Integer isSexoRestriction;
+	
 	@Column(name = "ISGEOLOCALIZADA")
 	public Boolean getIsGeolicalizada() {
 		return isGeolicalizada;
@@ -49,6 +53,27 @@ public class Encuesta extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	public void setIsGeolicalizada(Boolean isGeolicalizada) {
 		this.isGeolicalizada = isGeolicalizada;
 	}
+	
+	
+	@Column(name = "ISEDADRESTRICTION")
+	public Integer getIsEdadRestriction() {
+		return isEdadRestriction;
+	}
+
+	public void setIsEdadRestriction(Integer isEdadRestriction) {
+		this.isEdadRestriction = isEdadRestriction;
+	}
+
+	@Column(name = "ISSEXORESTRICTION")
+	public Integer getIsSexoRestriction() {
+		return isSexoRestriction;
+	}
+
+	public void setIsSexoRestriction(Integer isSexoRestriction) {
+		this.isSexoRestriction = isSexoRestriction;
+	}
+
+
 
 	private List<Pregunta> preguntas = new ArrayList<Pregunta>();
 	

@@ -15,6 +15,8 @@ public interface BaseDao<T extends Persistence<PK>, PK extends Serializable> {
 
 	public Integer getResultadosByUsuario(Integer idUsuario, Integer idEncuesta);
 	
+	public List<Resultado> getResultadosEncuesta(Integer idEncuesta);
+	
 	public List<T> filter(BaseFilter<PK> filter);
 
 	public List<T> findAll(String... orderBy);

@@ -1,6 +1,8 @@
 package com.fsalmeron.encuestasfcm.service.impl;
 
 
+import java.util.List;
+
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -38,4 +40,11 @@ public class ResultadoServiceImpl extends BaseServiceImpl<Resultado, Integer> im
 	public Integer getResultadosByUsuario(Integer idUsuario, Integer idEncuesta) {
 		return dao.getResultadosByUsuario(idUsuario, idEncuesta);
 	}
+
+	@Override
+	public List<Resultado> getResultadosEncuesta(Integer idEncuesta) {
+		return dao.getResultadosEncuesta(idEncuesta);
+	}
+	
+	
 }

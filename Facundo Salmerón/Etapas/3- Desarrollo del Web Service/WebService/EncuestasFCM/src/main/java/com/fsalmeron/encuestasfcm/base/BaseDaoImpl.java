@@ -43,6 +43,16 @@ public abstract class BaseDaoImpl<T extends Persistence<PK>, PK extends Serializ
 		tx.commit();
 		return result.size();
 	}
+	
+	@Override
+	public List<Resultado> getResultadosEncuesta(Integer idEncuesta) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(Resultado.class);
+		criteria.add(Restrictions.eq("idEncuesta", idEncuesta));
+		Transaction tx = getSession().beginTransaction();
+		List<Resultado> result = criteria.getExecutableCriteria(getSession()).list();
+		tx.commit();
+		return result;
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

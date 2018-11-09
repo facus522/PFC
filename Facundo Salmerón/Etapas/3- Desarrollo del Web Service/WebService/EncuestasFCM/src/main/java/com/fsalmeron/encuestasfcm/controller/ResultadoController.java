@@ -69,6 +69,8 @@ public class ResultadoController {
 			json.put("longitud", resultado.getLongitud());
 			json.put("idRespuesta", resultado.getRespuesta().getId());
 			json.put("descripcion", resultado.getDescripcion());
+			json.put("sexo", resultado.getSexoEncuestado());
+			json.put("edad", resultado.getEdadEncuestado());
 			responseArray.put(json);
 		}
 		

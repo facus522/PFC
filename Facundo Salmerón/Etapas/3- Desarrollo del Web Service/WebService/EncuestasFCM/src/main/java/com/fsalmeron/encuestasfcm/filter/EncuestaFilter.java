@@ -11,6 +11,8 @@ private String titulo;
 	
 	private Boolean activo;
 	
+	private Boolean habilitada;
+	
 	private Integer idUsuarioAlta;
 	
 	private Date fechaAlta;
@@ -103,6 +105,14 @@ private String titulo;
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Boolean getHabilitada() {
+		return habilitada;
+	}
+
+	public void setHabilitada(Boolean habilitada) {
+		this.habilitada = habilitada;
 	}
 	
 	

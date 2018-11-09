@@ -51,9 +51,10 @@ public class EncuestaServiceImpl extends BaseServiceImpl<Encuesta, Integer> impl
 	}
 
 	@Override
-	public JSONObject inhabilitar(Encuesta encuesta, Integer idUsuario) {
+	public JSONObject bajaSoftware(Encuesta encuesta, Integer idUsuario) {
 		JSONObject resultado = new JSONObject();
 		encuesta.setActivo(Boolean.FALSE);
+		encuesta.setHabilitada(Boolean.FALSE);
 		encuesta.setIdUsuarioEliminacion(idUsuario);
 		encuesta.setFechaEliminacion(new Date());
 		try {
@@ -67,11 +68,25 @@ public class EncuestaServiceImpl extends BaseServiceImpl<Encuesta, Integer> impl
 	}
 	
 	@Override
+	public JSONObject inhabilitar(Encuesta encuesta, Integer idUsuario) {
+		JSONObject resultado = new JSONObject();
+		encuesta.setHabilitada(Boolean.FALSE);
+		encuesta.setIdUsuarioModificacion(idUsuario);
+		encuesta.setFechaModificacion(new Date());
+		try {
+			saveOrUpdate(encuesta);
+			resultado.put("exito", Boolean.TRUE);
+		} catch (Exception e) {
+			resultado.put("exito", Boolean.FALSE);
+			resultado.put("error", e.getMessage());
+		}
+		return resultado;
+	}
+	
+	@Override
 	public JSONObject habilitar(Encuesta encuesta, Integer idUsuario) {
 		JSONObject resultado = new JSONObject();
-		encuesta.setActivo(Boolean.TRUE);
-		encuesta.setIdUsuarioEliminacion(null);
-		encuesta.setFechaEliminacion(null);
+		encuesta.setHabilitada(Boolean.TRUE);
 		encuesta.setIdUsuarioModificacion(idUsuario);
 		encuesta.setFechaModificacion(new Date());
 		try {

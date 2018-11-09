@@ -73,6 +73,7 @@ public class EncuestaController {
 			json.put("resoluciones", encuesta.getResoluciones());
 			json.put("isSexoRestriccion", encuesta.getIsSexoRestriction() != null ? encuesta.getIsSexoRestriction() : 0);
 			json.put("isEdadRestriccion", encuesta.getIsEdadRestriction() != null ? encuesta.getIsEdadRestriction() : 0);
+			json.put("habilitada", encuesta.getHabilitada());
 			responseArray.put(json);
 		}
 		
@@ -80,6 +81,45 @@ public class EncuestaController {
 		logger.debug(response.toString());
 		return response.toString();
 	}
+	
+	//http://localhost:8080/EncuestasFCM/encuestas/getAll
+		@RequestMapping(value = "/getAllHabilitadas", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+		@ResponseBody
+		public String getEncuestasHabilitadas() {
+			JSONObject response = new JSONObject();
+			JSONArray responseArray = new JSONArray();
+			EncuestaFilter encuestaFilter = new EncuestaFilter();
+			encuestaFilter.setActivo(Boolean.TRUE);
+			encuestaFilter.setHabilitada(Boolean.TRUE);
+			List<Encuesta> encuestas = (List<Encuesta>) encuestaService.filter(encuestaFilter);
+			Collections.sort(encuestas, new Comparator<Encuesta>() {
+			    @Override
+			    public int compare(Encuesta e1, Encuesta e2) {
+			        return e1.getTitulo().compareTo(e2.getTitulo());
+			    }
+			});
+			
+			for(Encuesta encuesta : encuestas) {
+				JSONObject json = new JSONObject();
+				json.put("id", encuesta.getId());
+				json.put("titulo", encuesta.getTitulo());
+				json.put("descripcion", encuesta.getDescripcion());
+				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+				Usuario user = usuarioService.getById(encuesta.getIdUsuarioAlta());
+				json.put("usuario", user.getNombre() + " " + user.getApellido());
+				json.put("fecha", format.format(encuesta.getFechaAlta()));
+				json.put("geolocalizada", encuesta.getIsGeolicalizada());
+				json.put("resoluciones", encuesta.getResoluciones());
+				json.put("isSexoRestriccion", encuesta.getIsSexoRestriction() != null ? encuesta.getIsSexoRestriction() : 0);
+				json.put("isEdadRestriccion", encuesta.getIsEdadRestriction() != null ? encuesta.getIsEdadRestriction() : 0);
+				json.put("habilitada", encuesta.getHabilitada());
+				responseArray.put(json);
+			}
+			
+			response.put("response", responseArray);
+			logger.debug(response.toString());
+			return response.toString();
+		}
 	
 	//http://localhost:8080/EncuestasFCM/encuestas/openEncuesta?idEncuesta=1
 	@RequestMapping(value = "/openEncuesta", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
@@ -160,6 +200,7 @@ public class EncuestaController {
 	public String crearEncuesta(@RequestParam("titulo") String titulo , @RequestParam("descripcion") String descripcion, @RequestParam("isGeolocalizada") Boolean isGeolocalizada, @RequestParam("isSexo") Integer isSexo, @RequestParam("isEdad") Integer isEdad, @RequestParam("idUsuario") Integer idUsuario) {
 		Encuesta encuesta = new Encuesta();
 		encuesta.setActivo(Boolean.TRUE);
+		encuesta.setHabilitada(Boolean.FALSE);
 		encuesta.setTitulo(titulo);
 		encuesta.setDescripcion(descripcion);
 		encuesta.setResoluciones(0);
@@ -187,6 +228,15 @@ public class EncuestaController {
 		logger.debug(response.toString());
 		return response.toString();
 	}
+	
+		@RequestMapping(value = "/removeEncuesta", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+		@ResponseBody
+		public String removeEncuesta(@RequestParam("idEncuesta") Integer idEncuesta, @RequestParam("idUsuario") Integer idUsuario) {
+			Encuesta encuesta = encuestaService.getById(idEncuesta);
+			JSONObject response = encuestaService.bajaSoftware(encuesta, idUsuario);
+			logger.debug(response.toString());
+			return response.toString();
+		}
 	
 	//http://localhost:8080/EncuestasFCM/encuestas/disableEncuesta?idEncuesta=3&idUsuario=2
 	@RequestMapping(value = "/disableEncuesta", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")

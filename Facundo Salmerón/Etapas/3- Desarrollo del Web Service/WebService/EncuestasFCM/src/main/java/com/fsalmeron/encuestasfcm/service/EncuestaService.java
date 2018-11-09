@@ -11,6 +11,8 @@ public interface EncuestaService extends BaseService<Encuesta, Integer>{
 
 	JSONObject delete(Encuesta encuesta);
 
+	JSONObject bajaSoftware(Encuesta encuesta, Integer idUsuario);
+	
 	JSONObject inhabilitar(Encuesta encuesta, Integer idUsuario);
 
 	JSONObject habilitar(Encuesta encuesta, Integer idUsuario);

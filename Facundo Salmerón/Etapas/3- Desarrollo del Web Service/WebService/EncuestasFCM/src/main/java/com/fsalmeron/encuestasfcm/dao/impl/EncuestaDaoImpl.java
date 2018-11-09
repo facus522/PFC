@@ -35,6 +35,10 @@ public class EncuestaDaoImpl extends BaseDaoImpl<Encuesta, Integer> implements E
 			criteria.add(Restrictions.eq("activo", filter.getActivo()));
 		}
 		
+		if (filter.getHabilitada() != null) {
+			criteria.add(Restrictions.eq("habilitada", filter.getHabilitada()));
+		}
+		
 		if (filter.getIdUsuarioAlta() != null) {
 			criteria.add(Restrictions.eq("idUsuarioAlta", filter.getIdUsuarioAlta()));
 		}

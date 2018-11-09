@@ -45,6 +45,17 @@ public class Encuesta extends com.fsalmeron.encuestasfcm.base.Entity<Integer>{
 	
 	private Integer isSexoRestriction;
 	
+	private Boolean habilitada;
+	
+	@Column(name = "HABILITADA")
+	public Boolean getHabilitada() {
+		return habilitada;
+	}
+
+	public void setHabilitada(Boolean habilitada) {
+		this.habilitada = habilitada;
+	}
+
 	@Column(name = "ISGEOLOCALIZADA")
 	public Boolean getIsGeolicalizada() {
 		return isGeolicalizada;

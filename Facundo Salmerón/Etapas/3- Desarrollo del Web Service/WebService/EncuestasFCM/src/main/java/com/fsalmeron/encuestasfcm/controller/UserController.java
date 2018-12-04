@@ -1,10 +1,15 @@
 package com.fsalmeron.encuestasfcm.controller;
 
+import java.io.IOException;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
+import javax.servlet.ServletInputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -12,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +29,7 @@ import com.fsalmeron.encuestasfcm.service.SexoService;
 import com.fsalmeron.encuestasfcm.service.TipoUsuarioService;
 import com.fsalmeron.encuestasfcm.service.UsuarioService;
 import com.fsalmeron.encuestasfcm.utils.EncryptionUtil;
+import com.google.gson.Gson;
 
 @Controller
 @RequestMapping(value = "/usuarios")
@@ -75,6 +82,26 @@ public class UserController {
 		JSONObject response = usuarioService.save(usuario, validar);
 		logger.debug(response.toString());
 		return response.toString();
+	}
+	
+	
+	@RequestMapping(value = "/prueba", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String pruebaPost(HttpServletRequest http) throws IOException {
+		StringBuilder stringBuilder = new StringBuilder(1000);
+		Scanner scanner = new Scanner(http.getInputStream());
+		while (scanner.hasNextLine()) {
+			stringBuilder.append(scanner.nextLine());
+		}
+		
+		String body = stringBuilder.toString();
+		System.out.println(body);
+		
+		body = body.substring(body.indexOf("{"));
+		System.out.println(body);		
+		Usuario usuario = new Gson().fromJson(body, Usuario.class);
+		logger.debug(body);
+		return "";
 	}
 	
 	//http://localhost:8080/EncuestasFCM/usuarios/loginUser?nombre=facusalmeron&password=proyectofinal

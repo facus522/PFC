@@ -1,11 +1,15 @@
 package com.fsalmeron.encuestasfcm.controller;
 
+import java.io.IOException;
 import java.nio.file.attribute.UserPrincipalLookupService;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -26,8 +30,11 @@ import com.fsalmeron.encuestasfcm.model.Respuesta;
 import com.fsalmeron.encuestasfcm.model.Resultado;
 import com.fsalmeron.encuestasfcm.model.Usuario;
 import com.fsalmeron.encuestasfcm.service.EncuestaService;
+import com.fsalmeron.encuestasfcm.service.PreguntaService;
+import com.fsalmeron.encuestasfcm.service.RespuestaService;
 import com.fsalmeron.encuestasfcm.service.ResultadoService;
 import com.fsalmeron.encuestasfcm.service.UsuarioService;
+import com.google.gson.Gson;
 
 @Controller
 @RequestMapping(value = "/encuestas")
@@ -43,6 +50,12 @@ public class EncuestaController {
 	
 	@Autowired
 	private ResultadoService resultadoService;
+	
+	@Autowired
+	private PreguntaService preguntaService;
+	
+	@Autowired
+	private RespuestaService respuestaService;
 	
 	//http://localhost:8080/EncuestasFCM/encuestas/getAll
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
@@ -120,7 +133,128 @@ public class EncuestaController {
 			logger.debug(response.toString());
 			return response.toString();
 		}
-	
+
+		@RequestMapping(value = "/almacenarEncuesta", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+		@ResponseBody
+		public String persistirEncuesta(HttpServletRequest http) throws IOException {
+			StringBuilder stringBuilder = new StringBuilder(1000);
+			Scanner scanner = new Scanner(http.getInputStream(), "UTF-8");
+			while (scanner.hasNextLine()) {
+				stringBuilder.append(scanner.nextLine());
+			}
+			
+			String body = stringBuilder.toString();
+			System.out.println(body);
+			
+			body = body.substring(body.indexOf("{"));
+			System.out.println(body);		
+			Encuesta encuesta = new Gson().fromJson(body, Encuesta.class);
+			encuesta.setActivo(Boolean.TRUE);
+			encuesta.setFechaAlta(new Date());
+			encuesta.setHabilitada(Boolean.FALSE);
+			encuesta.setResoluciones(0);
+			encuestaService.saveOrUpdate(encuesta);
+			for (Pregunta pregunta : encuesta.getPreguntas()) {
+				pregunta.setEncuesta(encuesta);
+				preguntaService.saveOrUpdate(pregunta);
+				for (Respuesta respuesta : pregunta.getRespuestas()) {
+					respuesta.setpregunta(pregunta);
+					respuestaService.saveOrUpdate(respuesta);
+				}
+			}
+			
+			JSONObject response = new JSONObject();
+			response.put("exito", Boolean.TRUE);
+			response.put("idAsignado", encuesta.getId());
+			logger.debug(response.toString());
+			return response.toString();
+		}
+		
+		@RequestMapping(value = "/removePreguntas", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+		@ResponseBody
+		public String borrandoPreguntas(HttpServletRequest http) throws IOException {
+			StringBuilder stringBuilder = new StringBuilder(1000);
+			Scanner scanner = new Scanner(http.getInputStream(), "UTF-8");
+			while (scanner.hasNextLine()) {
+				stringBuilder.append(scanner.nextLine());
+			}
+			
+			String body = stringBuilder.toString();
+			System.out.println(body);
+			
+			body = body.substring(body.indexOf("{"));
+			System.out.println(body);		
+			Encuesta encuesta = new Gson().fromJson(body, Encuesta.class);
+			
+			for (Pregunta pregunta : encuesta.getPreguntas()) {
+				for (Respuesta respuesta : pregunta.getRespuestas()) {
+					respuestaService.remove(respuesta);
+				}
+				preguntaService.remove(pregunta);
+			}
+			
+			JSONObject response = new JSONObject();
+			response.put("exito", Boolean.TRUE);
+			logger.debug(response.toString());
+			return response.toString();
+		}
+		
+		
+		@RequestMapping(value = "/modificarEncuesta", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+		@ResponseBody
+		public String cambiarEncuesta(HttpServletRequest http) throws IOException {
+			StringBuilder stringBuilder = new StringBuilder(1000);
+			Scanner scanner = new Scanner(http.getInputStream(), "UTF-8");
+			while (scanner.hasNextLine()) {
+				stringBuilder.append(scanner.nextLine());
+			}
+			
+			String body = stringBuilder.toString();
+			System.out.println(body);
+			
+			body = body.substring(body.indexOf("{"));
+			System.out.println(body);		
+			Encuesta encuesta = new Gson().fromJson(body, Encuesta.class);
+			
+			Encuesta persistida = encuestaService.getById(encuesta.getId());
+			persistida.setFechaModificacion(new Date());
+			persistida.setDescripcion(encuesta.getDescripcion());
+			persistida.setIdUsuarioModificacion(encuesta.getIdUsuarioModificacion());
+			persistida.setTitulo(encuesta.getTitulo());
+			persistida.setIsEdadRestriction(encuesta.getIsEdadRestriction());
+			persistida.setIsGeolicalizada(encuesta.getIsGeolicalizada());
+			persistida.setIsSexoRestriction(encuesta.getIsSexoRestriction());
+			
+			encuestaService.saveOrUpdate(persistida);
+			for (Pregunta pregunta : encuesta.getPreguntas()) {
+				if (pregunta.getId() == null) {
+					pregunta.setEncuesta(encuesta);
+					preguntaService.saveOrUpdate(pregunta);
+				} else {
+					Pregunta ppersistida = preguntaService.getById(pregunta.getId());
+					ppersistida.setDescripcion(pregunta.getDescripcion());
+					ppersistida.setNumeroEscala(pregunta.getNumeroEscala());
+					preguntaService.saveOrUpdate(ppersistida);
+				}
+				for (Respuesta respuesta : pregunta.getRespuestas()) {
+					if (respuesta.getId() == null) {
+						respuesta.setpregunta(pregunta);
+						respuestaService.saveOrUpdate(respuesta);
+					} else {
+						Respuesta rpersistida = respuestaService.getById(respuesta.getId());
+						rpersistida.setDescripcion(respuesta.getDescripcion());
+						respuestaService.saveOrUpdate(rpersistida);
+					}
+					
+				}
+			}
+			
+			JSONObject response = new JSONObject();
+			response.put("exito", Boolean.TRUE);
+			response.put("idAsignado", encuesta.getId());
+			logger.debug(response.toString());
+			return response.toString();
+		}
 	//http://localhost:8080/EncuestasFCM/encuestas/openEncuesta?idEncuesta=1
 	@RequestMapping(value = "/openEncuesta", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody

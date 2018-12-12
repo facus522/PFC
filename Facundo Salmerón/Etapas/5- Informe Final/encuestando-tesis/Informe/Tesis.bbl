@@ -1,0 +1,225 @@
+\begin{thebibliography}{10}
+
+\bibitem{abadi2016tensorflow}
+M.~Abadi, P.~Barham, J.~Chen, Z.~Chen, A.~Davis, J.~Dean, M.~Devin,
+  S.~Ghemawat, G.~Irving, M.~Isard, et~al.
+\newblock Tensorflow: a system for large-scale machine learning.
+\newblock In {\em OSDI}, volume~16, pages 265--283, 2016.
+
+\bibitem{mvp2017guide}
+J.~Ali.
+\newblock {Essential Guide For Designing Your Android App Architecture}.
+\newblock
+  \url{https://blog.mindorks.com/essential-guide-for-designing-your-android-app-architecture-mvp-part-1-74efaf1cda40}.
+\newblock Accedido: 02/04/2018.
+
+\bibitem{alpaydin2009introduction}
+E.~Alpaydin.
+\newblock {\em Introduction to machine learning}.
+\newblock MIT press, 2009.
+
+\bibitem{appsLifeCycle}
+Android.
+\newblock Actividades.
+\newblock \url{https://developer.android.com/guide/components/activities},
+  2018.
+\newblock Online, Accedido: 26/10/2018.
+
+\bibitem{androidRuntimeART}
+Android.
+\newblock {ART and Dalvik}.
+\newblock \url{https://source.android.com/devices/tech/dalvik}, 2018.
+\newblock Online, Accedido: 14/05/2018.
+
+\bibitem{appFundamentals}
+Android.
+\newblock Aspectos fundamentales de la aplicacion.
+\newblock \url{https://developer.android.com/guide/components/fundamentals},
+  2018.
+\newblock Online, Accedido: 30/03/2018.
+
+\bibitem{appSigning}
+Android.
+\newblock Firmar tu aplicacion.
+\newblock \url{https://developer.android.com/studio/publish/app-signing}, 2018.
+\newblock Online, Accedido: 18/03/2018.
+
+\bibitem{numberAndroidApps}
+AppBrain.
+\newblock {Number of Android Apps on Google Play}.
+\newblock \url{https://www.appbrain.com/stats/number-of-android-apps}.
+\newblock Accedido: 15/10/2018.
+
+\bibitem{WordNet}
+M.~Barning.
+\newblock {WordNet and ImageNet}.
+\newblock \url{https://www.web3.lu/wordnet-imagenet/}.
+\newblock Accedido: 13/12/2017.
+
+\bibitem{androidStudioOficial}
+A.~Bermudez.
+\newblock {Android Studio 2.0 ya es oficial}.
+\newblock
+  \url{https://andro4all.com/2016/04/android-studio-2-0-novedades-caracteristicas},
+  2016.
+\newblock Online, Accedido: 26/10/2017.
+
+\bibitem{beynon1999rapid}
+P.~Beynon-Davies, C.~Carne, H.~Mackay, and D.~Tudhope.
+\newblock Rapid application development (rad): an empirical review.
+\newblock {\em European Journal of Information Systems}, 8(3):211--223, 1999.
+
+\bibitem{burns1985selecting}
+R.~N. Burns and A.~R. Dennis.
+\newblock Selecting the appropriate application development methodology.
+\newblock {\em ACM SIGMIS Database: the DATABASE for Advances in Information
+  Systems}, 17(1):19--23, 1985.
+
+\bibitem{programacionMobile}
+C.~Casado.
+\newblock Alternativas en la programacion para dispositivos moviles.
+\newblock
+  \url{http://multimedia.uoc.edu/blogs/fem/es/alternativas-en-la-programacion-para-dispositivos-moviles/},
+  2017.
+\newblock Online, Accedido: 30/09/2018.
+
+\bibitem{chollet2017deep}
+F.~Chollet.
+\newblock {\em Deep learning with python}.
+\newblock Manning Publications Co., 2017.
+
+\bibitem{DLOpenSourceLibraries}
+D.~Clark.
+\newblock {Top 16 Open Source Deep Learning Libraries and Platforms}.
+\newblock
+  \url{https://www.kdnuggets.com/2018/04/top-16-open-source-deep-learning-libraries.html},
+  2018.
+\newblock Online, Accedido: 28/08/2018.
+
+\bibitem{dimarzio2008programmer}
+J.~DiMarzio and A.~Android.
+\newblock Programmers guide, 2008.
+
+\bibitem{fayad1997object}
+M.~Fayad and D.~C. Schmidt.
+\newblock Object-oriented application frameworks.
+\newblock {\em Communications of the ACM}, 40(10):32--38, 1997.
+
+\bibitem{learninspy2016tesis}
+L.~Ferrado.
+\newblock {\em {Implementacion de un framework para la construccion de redes
+  neuronales con aprendizaje profundo. Caso de aplicacion: clasificacion de
+  seniales cerebrales}}.
+\newblock {Degree} dissertation, Universidad Nacional del Litoral, 2016.
+
+\bibitem{gonzalezWoods}
+R.~C. Gonz{\'a}lez and R.~E.Woods.
+\newblock {\em Digital Image Processing, 3rd. ed.}
+\newblock Prentice-Hall, 2008.
+
+\bibitem{historyML}
+V.~Gonzalez.
+\newblock A brief history of machine learning.
+\newblock
+  \url{http://www.synergicpartners.com/en/espanol-una-breve-historia-del-machine-learning},
+  2018.
+\newblock Online, Accedido: 15/09/2018.
+
+\bibitem{haseman2009android}
+C.~Haseman.
+\newblock {\em Android Essentials}.
+\newblock Apress, 2009.
+
+\bibitem{nativeApplications}
+O.~Hosting.
+\newblock Ventajas y desventajas de las aplicaciones moviles nativas.
+\newblock
+  \url{https://okhosting.com/blog/ventajas-desventajas-de-las-aplicaciones-moviles-nativas},
+  2017.
+\newblock Online, Accedido: 22/01/2018.
+
+\bibitem{howard2017mobilenets}
+A.~G. Howard, M.~Zhu, B.~Chen, D.~Kalenichenko, W.~Wang, T.~Weyand,
+  M.~Andreetto, and H.~Adam.
+\newblock Mobilenets: Efficient convolutional neural networks for mobile vision
+  applications.
+\newblock {\em arXiv preprint arXiv:1704.04861}, 2017.
+
+\bibitem{karami2017image}
+E.~Karami, S.~Prasad, and M.~Shehata.
+\newblock Image matching using sift, surf, brief and orb: performance
+  comparison for distorted images.
+\newblock {\em arXiv preprint arXiv:1710.02726}, 2017.
+
+\bibitem{kogan2007introduction}
+J.~Kogan.
+\newblock {\em Introduction to clustering large and high-dimensional data}.
+\newblock Cambridge University Press, 2007.
+
+\bibitem{le2013building}
+Q.~V. Le.
+\newblock Building high-level features using large scale unsupervised learning.
+\newblock In {\em Acoustics, Speech and Signal Processing (ICASSP), 2013 IEEE
+  International Conference on}, pages 8595--8598. IEEE, 2013.
+
+\bibitem{organize2017google}
+M.~Lewontin.
+\newblock How google photos uses machine learning to create customized albums.
+\newblock
+  \url{https://www.csmonitor.com/Technology/2016/0324/How-Google-Photos-uses-machine-learning-to-create-customized-albums/}.
+\newblock Accedido: 02/10/2018.
+
+\bibitem{boomML}
+S.~Lohr.
+\newblock Ibm is counting on its bet on watson, and paying big money for it.
+\newblock
+  \url{https://www.nytimes.com/2016/10/17/technology/ibm-is-counting-on-its-bet-on-watson-and-paying-big-money-for-it.html},
+  2016.
+\newblock Online, Accedido: 01/11/2018.
+
+\bibitem{AImobileTechnology}
+M.~Malhotra.
+\newblock How artificial intelligence (ai) is transforming mobile technology?
+\newblock
+  \url{https://hackernoon.com/how-artificial-intelligence-ai-is-transforming-mobile-technology-9f810d734d35},
+  2018.
+\newblock Online, Accedido: 13/08/2018.
+
+\bibitem{androidVSios}
+L.~redaccion.
+\newblock {Android vs iOS: quien gana la batalla}.
+\newblock
+  \url{https://www.lanacion.com.ar/1900814-android-vs-ios-quien-gana-la-batalla}.
+\newblock Accedido: 07/04/2017.
+
+\bibitem{ImageNet}
+{Standford Vision Lab, Standord University}.
+\newblock {ImageNet}.
+\newblock \url{http://image-net.org/about-overview}.
+\newblock Accedido: 12/12/2017.
+
+\bibitem{taigman2014deepface}
+Y.~Taigman, M.~Yang, M.~Ranzato, and L.~Wolf.
+\newblock Deepface: Closing the gap to human-level performance in face
+  verification.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 1701--1708, 2014.
+
+\bibitem{introCNN}
+{TensorFlow}.
+\newblock {Intro to Convolutional Neural Networks}.
+\newblock \url{https://www.tensorflow.org/tutorials/estimators/cnn}, 2018.
+\newblock Online, Accedido: 15/02/2018.
+
+\bibitem{TFliteOverview}
+{TensorFlow}.
+\newblock {Introduction to TensorFlow Lite}.
+\newblock \url{https://www.tensorflow.org/lite/overview}, 2018.
+\newblock Online, Accedido: 11/06/2018.
+
+\bibitem{van2000graph}
+S.~M. Van~Dongen.
+\newblock {\em Graph clustering by flow simulation}.
+\newblock PhD thesis, 2000.
+
+\end{thebibliography}

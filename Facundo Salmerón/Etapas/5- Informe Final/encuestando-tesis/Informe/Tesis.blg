@@ -1,0 +1,66 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Tesis.aux
+A level-1 auxiliary file: Cascaras/cover.aux
+A level-1 auxiliary file: Cascaras/resumen.aux
+A level-1 auxiliary file: TeXiS/TeXiS_toc.aux
+A level-1 auxiliary file: Capitulos/Parte1.aux
+A level-1 auxiliary file: Capitulos/01Capitulo1.aux
+A level-1 auxiliary file: Capitulos/01Capitulo2.aux
+A level-1 auxiliary file: Capitulos/Parte2.aux
+A level-1 auxiliary file: Capitulos/02Capitulo1.aux
+A level-1 auxiliary file: Cascaras/bibliografia.aux
+The style file: abbrv.bst
+A level-1 auxiliary file: TeXiS/TeXiS_acron.aux
+A level-1 auxiliary file: Apendices/ParteAnexos.aux
+Database file #1: citasCapitulo1.bib
+Database file #2: citasCapitulo2.bib
+Warning--I didn't find a database entry for "ocr2007recognition"
+Warning--I didn't find a database entry for "gonzalez1995redes"
+Warning--I didn't find a database entry for "haykin2004comprehensive"
+Warning--I didn't find a database entry for "bayer2016climin"
+Warning--I didn't find a database entry for "ng2012ufldl"
+Warning--I didn't find a database entry for "li2015cs231n"
+Warning--empty school in van2000graph
+You've used 35 entries,
+            2118 wiz_defined-function locations,
+            714 strings with 10122 characters,
+and the built_in function-call counts, 9341 in all, are:
+= -- 912
+> -- 399
+< -- 4
++ -- 164
+- -- 128
+* -- 442
+:= -- 1579
+add.period$ -- 124
+call.type$ -- 35
+change.case$ -- 162
+chr.to.int$ -- 0
+cite$ -- 36
+duplicate$ -- 344
+empty$ -- 819
+format.name$ -- 128
+if$ -- 1999
+int.to.chr$ -- 0
+int.to.str$ -- 35
+missing$ -- 18
+newline$ -- 196
+num.names$ -- 70
+pop$ -- 283
+preamble$ -- 1
+purify$ -- 133
+quote$ -- 0
+skip$ -- 261
+stack$ -- 0
+substring$ -- 351
+swap$ -- 70
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 130
+warning$ -- 1
+while$ -- 85
+width$ -- 37
+write$ -- 391
+(There were 7 warnings)

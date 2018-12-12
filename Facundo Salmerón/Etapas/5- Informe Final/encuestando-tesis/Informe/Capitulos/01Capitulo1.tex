@@ -1,0 +1,162 @@
+%---------------------------------------------------------------------
+%
+%                          Capítulo 1
+%
+%---------------------------------------------------------------------
+
+\chapter{Introducción}
+
+\begin{FraseCelebre}
+	\begin{Frase}
+		La simplicidad es la máxima sofisticación.
+	\end{Frase}
+	\begin{Fuente}
+		Leonardo da Vinci
+	\end{Fuente}
+\end{FraseCelebre}
+
+
+\begin{resumen}
+En este capítulo se presenta la motivación del trabajo y los elementos que componen la especificación del proyecto. Se hace una reseña de la motivación del proyecto y cómo se justifica el trabajo realizado, aclarando los objetivos planteados y las restricciones tenidas en cuenta para el alcance y las tecnologías utilizadas.
+\end{resumen}
+
+%-------------------------------------------------------------------
+\section{Motivación}
+%-------------------------------------------------------------------
+\label{cap1:sec:motivation}
+
+%La Ingeniería en Informática abarca muchas y diferentes áreas de estudio, por lo que existen diversas opciones a la hora de decidir que temática abordar para realizar el proyecto final de carrera. A lo largo de años de cursado, trabajos prácticos y exámenes, los estudiantes transitan por diferentes materias que ayudan a marcar el perfil del futuro profesional, según los campos de interés o preferencia. Por dar algunos ejemplos, se incorporan conocimientos en programación y desarrollo de software en diferentes paradigmas, Ingeniería y arquitectura del Software, Algoritmos y Estructuras de Datos, Base de Datos, Redes y Comunicaciones, Mecánica Computacional, Procesamiento digital de señales e imágenes, Inteligencia Computacional, entre otras.
+El aprendizaje maquinal (\textbf{ML}: del inglés, \textit{"machine learning"}) es el subcampo de las ciencias de la computación y una rama de la inteligencia artificial, cuyo objetivo es desarrollar técnicas que permitan que las computadoras aprendan. De forma más concreta, se trata de crear programas capaces de generalizar comportamientos a partir de información suministrada en forma de ejemplos.
+
+Hace ya unos años, la industria de la información y la tecnología (IT) está viviendo grandes logros y consiguiendo enormes inversiones monetarias en lo que refiere a ML\cite{boomML}. La realidad es que este campo no siempre ha sido tan prolífico, alternando épocas de altas expectativas y avances con ``inviernos'' donde sufría severos estancamientos. A partir del 2006, gracias al aumento de la potencia de cálculo junto con la gran abundancia de datos disponibles, han vuelto a lanzar el campo del aprendizaje maquinal. Numerosas empresas están transformando sus negocios hacia el dato y están incorporando estas técnicas en sus procesos, productos y servicios para obtener ventajas competitivas sobre la competencia\cite{historyML}.
+
+Una disciplina que pertenece al aprendizaje maquinal, la cual incluye métodos para adquirir, procesar, analizar y comprender las imágenes del mundo real con el fin de producir información numérica o simbólica para que puedan ser tratados por un ordenador, se denomina visión artificial (\textbf{CV}: del inglés, \textit{computer vision}). Tal y como los humanos usamos nuestros ojos y cerebros para comprender el mundo que nos rodea, la CV trata de producir el mismo efecto para que los ordenadores puedan percibir y comprender una imagen o secuencia de imágenes y actuar según convenga en una determinada situación\cite{gonzalezWoods}. Esta comprensión se consigue gracias a distintos campos como la geometría, la estadística, la física y otras disciplinas.
+
+El auge de las aplicaciones para dispositivos móviles ha traído consigo la necesidad de incorporar este tipo de tecnologías. La evolución de los teléfonos inteligentes y su uso masivo, hicieron que empresas de desarrollo de software se acoplen a esta demanda, ofreciendo productos y servicios para que todas las personas puedan utilizarlos en sus propios dispositivos\cite{AImobileTechnology}. El área que comprende el procesamiento de imágenes y aprendizaje maquinal no escapa a esta ola tecnológica, por lo que un conjunto de bibliotecas que permiten el procesamiento de imágenes, empezaron a estar disponibles para su uso y adaptabilidad de una manera optimizada y preparada para que dispositivos de todo tipo de gama puedan aprovechar de sus beneficios. A continuación, se listan algunas aplicaciones destacadas que utilizan procesamiento de imágenes e inteligencia computacional:
+
+\begin{itemize}
+	
+	\item Google entrenó una red neuronal profunda que logró reconocer con buena precisión tanto rostros y cuerpos humanos como también  gatos en videos de YouTube, lo cual se obtuvo de forma no supervisada sin utilizar información de clases (es decir, nunca se le daba información de lo que estaba aprendiendo) \cite{le2013building}. 
+	
+	\item El sistema DeepFace de Facebook alcanzó una precisión de 97.35\% con redes neuronales profundas sobre el conjunto de datos \textit{Labeled Faces in the Wild} (LFW), reduciendo el error del actual estado del arte en más de un 27\% y acercándose a la precisión de un humano en reconocimiento de rostros (que es de aproximadamente un 97.53\%) \cite{taigman2014deepface}.
+	
+	\item Google, a través de su producto \textit{Google Photos}, ofrece una solución denominada \textit{Organize}, la cual realiza tareas de organización sobre las imágenes de sus usuarios. Ésta proporciona distintos conjuntos de imágenes basándose en características u objetos que tengan en común, como pueden ser perros, autos, el cielo, etc\cite{organize2017google}.
+	
+	\item La aplicación fotos, perteneciente al sistema operativo Windows 10, permite buscar texto en las imágenes. La misma utiliza una tecnología denominada OCR\cite{ocr2007recognition} (reconocimiento óptico de caracteres), la cual permite detectar no sólo a la palabra, sino también la posición tiene en la imagen. 
+	
+	
+\end{itemize}
+
+Todos los ejemplos enumerados y la gran mayoría de soluciones, realizan el procesamiento de la información (texto, imágenes o videos) aprovechando los recursos que ofrece la "nuble" (\textit{cloud}). Para el usuario final, esto tiene un costo no menor, el cual significa aceptar que su información será compartida (y quizás utilizada) con la compañía que le esté brindando el servicio. Es por ello que una restricción principal para este proyecto fue decidir que la misma será \textit{on premise}, lo que significa que el procesamiento de la información se realizará exclusivamente en el dispositivo, sin la necesidad de establecer una conexión a Internet para poder aprovechar alguna de sus funcionalidades.
+
+%-------------------------------------------------------------------
+\section{Justificación}
+%-------------------------------------------------------------------
+\label{cap1:sec:justificacion}
+
+Lo que se busca en este proyecto es implementar una aplicación que asista al usuario en la tarea de organizar las imágenes de su dispositivo. Como etapa inicial, la aplicación provee una estructura de directorios mediante una metodología basada en algoritmos de visión artificial, formando grupos de imágenes según el grado de similitud que comparten. Luego, una vez realizado el procesamiento, el usuario podrá interactuar con el resultado (e.g eliminar un grupo obtenido, renombrar carpetas, ingresar en un grupo y eliminar alguna imagen en particular, etc.) para lograr la estructura/el agrupamiento que desee.
+
+
+La aplicación es de código abierto, con el fin de poder hacer una contribución a la comunidad del software libre y que pueda ser continuamente mejorada o versionada y personalizada en base a distintos desarrolladores que presenten interés por la misma. Como se dijo en la sección anterior, se propone que sea \textit{on premise} (i.e. el proceso se realiza únicamente en el dispositivo móvil) en lugar de ser un servicio \textit{cloud}. De esta manera se puede asegurar la confidencialidad de los datos que se manejan, al mismo tiempo lograr que el despliegue y mantenimiento del sistema sean aspectos más sencillos y económicos. 
+
+Por último, será implementada para la plataforma Android, dado que es un sistema operativo muy popular y gratuito. Esta decisión se basa en que, a nivel mundial, Android es el líder indiscutido por cantidad de usuarios, y lo mismo sucede en la Argentina, ya que se encuentra en el 85\% de los equipos, según datos del mercado \cite{androidVSios}. Además, es destacable que se trata de una plataforma de código abierto que brinda a los desarrolladores un amplio conjunto de herramientas de desarrollo y librerías a su disposición, las cuales a su vez cuentan con extensa documentación de respaldo.
+
+%-------------------------------------------------------------------
+\section{Objetivos}
+%-------------------------------------------------------------------
+\label{cap1:sec:objetivos}
+Para desarrollar este proyecto, se plantearon los siguientes objetivos:
+
+\subsection{Objetivos generales}
+\begin{itemize}
+	\item Desarrollar una aplicación móvil sobre la plataforma Android que, a partir de	imágenes almacenadas en el dispositivo, sugiera una estructura de directorios para organizar el conjunto, según una medida de similitud calculada entre los elementos.
+	\item Proveer al sistema funcionalidades que le permitan al usuario la interacción con el resultado, para desempeñar distintas tareas de administración sobre el almacenamiento comprendido por las imágenes.
+\end{itemize}
+
+\subsection{Objetivos específicos}
+\begin{itemize}
+	\item Analizar distintos algoritmos y métodos tanto para la extracción de características de las imágenes como para el clustering de las mismas.
+	\item Definir la función o noción de similitud que se deba computar entre las imágenes a agrupar.
+	\item Definir un conjunto de imágenes a utilizar en experimentos, que sea lo más fiel posible a la problemática tratada en el marco de dispositivos móviles.
+	\item Desarrollar un protocolo de experimentación en base al conjunto de datos definido, para evaluar el desempeño de las técnicas investigadas.
+	\item Llevar adelante las pruebas definidas en el protocolo de experimentación.
+	\item Analizar y definir la metodología de visión artificial a implementar en el sistema, priorizando las técnicas según su desempeño en la experimentación así como la posibilidad de ajustarse a los recursos con los que cuentan la mayoría de los dispositivos.
+	\item Lograr una interfaz de usuario sobre la cual podrá elegir el directorio/directorios a procesar, y que sea suficiente para la administración e interacción necesaria con el resultado del clustering.
+\end{itemize}
+
+%-------------------------------------------------------------------
+\section{Alcance}
+%-------------------------------------------------------------------
+\label{cap1:sec:alcance}
+Se definen las siguientes cuestiones para el alcance de este proyecto:
+\begin{itemize}
+	\item Se implementará el algoritmo de preprocesamiento y extracción de características de las imágenes, utilizando las ventajas y funcionalidades que provee la biblioteca TensorFlow para Android.
+	\item La aplicación será desarrollada sobre la plataforma Android, contemplando en lo posible aquellas versiones que se encuentren instaladas en la mayoría de los dispositivos móviles actuales.
+	\item La aplicación no realizará las tareas de administración de forma autónoma. Ésta asistirá al usuario brindando una estructura de directorios en la que las imágenes serán ordenadas por grado de similitud o contexto, para luego facilitar opciones de administración sobre los mismos.
+\end{itemize}
+
+%-------------------------------------------------------------------
+\section{Tecnologías utilizadas}
+%-------------------------------------------------------------------
+\label{cap1:sec:tecnologias}
+%-------------------------------------------------------------------
+\subsection{Restricciones}
+%-------------------------------------------------------------------
+\label{cap1:subsec:restricciones}
+
+Se realizó la documentación de la Especificación de Requisitos del Software (ERS) siguiendo el estándar IEEE 830-1998 (ver Anexo), y en la misma se encuentra la especificación completa de las tecnologías utilizadas. No obstante, se listan a continuación:
+\begin{itemize}
+	\item \textbf{Sistema operativo}: Android
+	\item \textbf{Versiones}: Android KitKat (4.4) en adelante
+	\item \textbf{Lenguaje de programación}: JAVA 1.8.0
+	\item \textbf{Paradigmas de programación}: 
+	\begin{itemize}
+		\item Orientado a objetos
+		\item Funcional
+		\item Imperativo
+	\end{itemize}
+	\item \textbf{IDE}: Android Studio 3.0.1
+	\item \textbf{Dependencias externas}:
+	\begin{itemize}
+		\item TensorFlow Lite 0.1.7
+		\item Storage Chooser 2.0 ! \footnote{Repositorio oficial: \url{https://github.com/codekidX/storage-chooser}}
+		\item Apache Commons\footnote{Repositorio oficial: \url{http://commons.apache.org/}}:
+		\begin{itemize}
+			\item Maths 3.6.1
+			\item IO 2.4
+		\end{itemize}
+		\item Efficient Java Matrix Library\footnote{Repositorio oficial: \url{http://ejml.org/wiki/index.php}} 0.33
+		\item Snatik Storage\footnote{Repositorio oficial: \url{https://github.com/sromku/android-storage}} 2.1.0
+		\item ZGallery\footnote{Repositorio oficial: \url{https://github.com/mzelzoghbi/ZGallery}} 0.3
+		\item NumberProgressBar\footnote{Repositorio oficial: \url{https://github.com/daimajia/NumberProgressBar}} 1.4
+	\end{itemize}
+	\item \textbf{Interfaz de usuario}: XML 1.1
+	\item \textbf{Control de versiones}: Git v2.7.4
+
+\end{itemize}
+
+%-------------------------------------------------------------------
+\subsection{Evolución previsible}
+%-------------------------------------------------------------------
+\label{cap1:subsec:evolucion}
+
+Se prevén las siguientes cuestiones tecnológicas a mejorar o integrar en el futuro del producto:
+
+\begin{itemize}
+	\item Incorporar otras características que complementen la descripción de las imágenes para el procesamiento, afín de que ayuden a obtener mejores resultados de agrupamiento. 
+	\item Agilizar la reorganización de imágenes en los grupos obtenidos, agregando nuevas funcionalidades a la hora de tratar el resultado final las cuales mejoren la experiencia de usuario.
+	\item Mejorar el proceso de la aplicación, con el objetivo de ahorrar espacio en disco mientras el usuario mantenga los resultados temporales sin confirmar (de momento, duplica las imágenes mientras no se confirmen o descarten los resultados temporales). 
+	\item Ofrecer al usuario la posibilidad de configurar ciertos parámetros que incidirán en el resultado del agrupamiento, según sus preferencias.
+	\item Implementar un proceso de integración continua para mejorar los mecanismos de pruebas y despliegue de la aplicación.
+\end{itemize}
+
+% TODO!!! Anexar el anteproyecto entregado.
+% Usar el export en PDF de read the docs para adjuntar la documentación
+
+% Variable local para emacs, para  que encuentre el fichero maestro de
+% compilación y funcionen mejor algunas teclas rápidas de AucTeX
+%%%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../Tesis.tex"
+%%% End:

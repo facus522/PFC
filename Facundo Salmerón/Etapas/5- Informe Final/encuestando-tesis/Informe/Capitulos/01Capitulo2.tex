@@ -1,0 +1,954 @@
+%---------------------------------------------------------------------
+%
+%                          Capítulo 2
+%
+%---------------------------------------------------------------------
+
+\chapter{Fundamentos teóricos}
+
+\begin{FraseCelebre}
+\begin{Frase}
+Uno de los grandes descubrimientos que un hombre puede hacer, una de sus grandes sorpresas, es encontrar que puede hacer lo que temía que no podía hacer.
+\end{Frase}
+\begin{Fuente}
+Henry Ford
+\end{Fuente}
+\end{FraseCelebre}
+
+\begin{resumen}
+%Este capítulo pretende refrescar conocimientos, e introducir otros, para entender las bases teóricas utilizadas en todo el trabajo realizado. Inicialmente, se exhibe la noción de aprendizaje maquinal en sistemas de regresión y clasificación, desde la forma supervisada hasta la no supervisada, y cómo las redes neuronales se utilizan para componer dichos sistemas. Finalmente se profundiza en aspectos del aprendizaje profundo, lo cual en conjunto con todos los fundamentos presentados abarcan las características implementadas para este trabajo.
+En este capítulo se presenta al sistema operativo Android, plataforma en la que se realizó el desarrollo y despliegue de la aplicación. También, se expondrán los fundamentos del aprendizaje profundo referido al enfoque utilizado en este proyecto respecto a visión computacional. Por último, se introducirán contenidos acerca de algoritmos de clustering, en especial conceptos que abarcan las características del algoritmo implementado para este trabajo.
+
+\end{resumen}
+ 
+%En los últimos años, el ``aprendizaje maquinal'' (mejor conocido en inglés como \textit{machine learning}) adquirió bastante popularidad, presentando algoritmos que aproximan en diversas tareas el concepto de inteligencia artificial \cite{bengio2009learning}. Este campo estudia técnicas para construir sistemas capaces de aprender a partir de datos a realizar diversos tipos de tareas sin requerir que se les indique cómo hacerlas. Esto se emplea en una gran cantidad de aplicaciones en donde no es factible diseñar y programar de forma explícita algoritmos para realizar tareas complejas, como visión computacional, motores de búsqueda, reconocimiento de voz, predicción de fraudes, etc. 
+%
+%Los tipos de sistemas que se diseñan para realizar estas tareas mencionadas por lo general siguen dos tipos de aprendizaje: supervisado, y no supervisado \cite{bishop2006pattern}. A su vez, dichas tareas a realizar sobre datos se suelen clasificar típicamente en las siguientes categorías: a) clasificación, donde el sistema aprende de forma supervisada a asignar clases; b) regresión, aprendiendo supervisadamente a predecir una variable continua; c) agrupamiento o \textit{clustering}, para dividir los datos en grupos pero de forma no supervisada; d) reducción de dimensiones, mapeando los datos de entrada en un espacio de menor dimensión. En la siguiente sección de este capítulo se detallan los contenidos referidos a la construcción de estos sistemas, para conocer cómo se implementan los algoritmos de aprendizaje maquinal a partir de un conjunto de datos.
+
+
+
+%------------------------------------------------------------------
+\section{Programación en dispositivos móviles}
+%-------------------------------------------------------------------
+\label{cap2:sec:dispositivos-moviles}
+
+[DONE]Uno de los ámbitos multimedia con más crecimiento en los últimos años ha sido el de los dispositivos móviles. La llegada de los \textit{smartphones} disparó en su momento la creación de aplicaciones móviles que aprovechan la capacidad multimedia de estos dispositivos. La aparición y el despegue poco después de las tabletas ha convertido el desarrollo de aplicaciones para dispositivos móviles en un pilar de la industria multimedia.
+
+[DONE]Existen lenguajes o \textit{frameworks} que nos permiten la creación de programas multidispositivo (se programa una vez y se ejecuta en cualquier dispositivo), pero para aplicaciones complejas que requieren un gran rendimiento, la programación suele hacerse en los lenguajes nativos de cada sistema operativo, con lo que debe reescribirse la aplicación para cada uno de ellos\cite{programacionMobile}. Como se ha dicho anteriormente, para la realización de este trabajo el desarrollo de la aplicación se hizo sobre el lenguaje nativo del sistema operativo Android.
+%------------------------------------------------------------------
+\subsection{Plataforma Android}
+%-------------------------------------------------------------------
+\label{cap2:subsec:plataforma-android}
+[DONE]Es un sistema operativo diseñado para dispositivos móviles, desarrollado inicialmente por \textit{Android Inc.}, una empresa comprada por Google en 2005. El lanzamiento se realizó el 5 de noviembre de 2007 y Google liberó la mayoría de código Android bajo licencia Apache, conocida por ser libre y de código abierto \cite{dimarzio2008programmer}.
+
+[DONE]Actualmente, se pueden encontrar más de 2.500.000 de aplicaciones desarrolladas para esta plataforma \cite{numberAndroidApps}. Además, cuenta con un entorno de desarrollo integrado oficial (IDE), denominado \textit{Android Studio}, realizado por la empresa JetBrain. El mismo fue anunciado en mayo de 2013 y reemplazó a Eclipse como IDE oficial para el desarrollo de aplicaciones \cite{androidStudioOficial}.
+
+A continuación, se mencionan algunas de las características más destacables de la plataforma de desarrollo:
+
+\begin{itemize}
+	
+	\item Java es el lenguaje de programación en el que están escritas todas las aplicaciones Android nativas \cite{nativeApplications}.
+	
+	\item Es Open Source, por lo que no es necesario pagar ninguna licencia para poder utilizar la plataforma.
+	
+	\item Existe una gran comunidad activa en comparación al desarrollo en otros sistemas operativos móviles, por lo que cuenta con mantenimiento y actualizaciones continuas.  
+	
+	\item Las aplicaciones se proveen a través de los \textit{Android Application Package} (APK), similar a los archivos con extensión .exe en Windows. Las mismas deben ser firmadas digitalmente antes de poder ser desplegadas pero no tienen ninguna restricción en comparación a las que tienen otros sistemas operativos, agilizando en términos de desarrollo y testing ya que una opción es firmar la aplicación en modo depuración\cite{appSigning}.
+	
+	\item Provee de renderizado en tiempo real.
+	
+	\item Consola de desarrollador: consejos de optimización, ayuda para la traducción, estadísticas de uso.
+	
+	\item Dispositivo virtual de Android que se utiliza para ejecutar y probar aplicaciones. 
+\end{itemize}
+
+
+%------------------------------------------------------------------
+\subsection{Entorno ejecución Android Runtime}
+%-------------------------------------------------------------------
+\label{cap2:subsec:maquinavirtual-ART}
+
+[DONE]Android Runtime (ART) es el entorno actual de ejecución de aplicaciones utilizado por el sistema operativo móvil Android. ART reemplaza a Dalvik, que es la máquina virtual utilizada originalmente por Android, y lleva a cabo la transformación de la aplicación en instrucciones de máquina, que luego son ejecutadas por el entorno de ejecución nativo del dispositivo.
+
+[DONE]A diferencia de Dalvik, que utiliza \textit{just- in-time} (JIT) para compilar el código cada vez que se inicia una aplicación, ART introduce el uso de \textit{ahead-of-time} (AOT), que crea un archivo de compilación posterior a la instalación de la aplicación. Este archivo es utilizado al abrir la aplicación, por lo que se evita que la aplicación se compile continuamente, cada vez que ésta es ejecutada. Al reducir la cantidad global de compilaciones realizadas por cada aplicación, el uso del procesador del dispositivo móvil se reduce y aumenta la duración de la batería. Al mismo tiempo, ART trae mejoras en el rendimiento, tales como la recolección de basura, aplicaciones de depuración y perfilado\cite{androidRuntimeART}.
+
+[DONE]Para mantener la compatibilidad con versiones anteriores, ART utiliza el mismo código de bytes de entrada que Dalvik. En la Figura \ref{fig:dalvikvsART} se pueden apreciar las diferencias que existe entre la compilación que se hacía con la maquina virtual \textit{Dalvik} y como se hace hoy en día con \textit{Android Runtime}
+
+\begin{figure}[t]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/DalvikVSART}
+		\caption{Compilación con Dalvik-VM y compilación con ART-VM. Recuperado de: \url{https://es.wikipedia.org/wiki/Android_Runtime}}
+		\label{fig:dalvikvsART}
+	\end{center}
+\end{figure}
+
+%------------------------------------------------------------------
+\subsection{[DONE]Componentes básicos de una aplicación Android}
+%-------------------------------------------------------------------
+\label{cap2:subsec:componentes-basicos-app-android}
+
+Existen cinco componentes con los que se puede crear una aplicación Android, y ellos son: Activities, Services, Intents, Content Provider y Broadcast Receivers\cite{appFundamentals}. Android facilita la creación de aplicaciones gracias al uso de un conjunto de componentes de software reutilizables. A continuación, se detallará que función cumple cada uno de ellos:
+
+\begin{itemize}
+	\item \textbf{Activity:} componente principal de la interfaz gráfica de una aplicación. A cada Activity se le asigna una ventana en la cual se dibuja la interfaz de usuario, con la cual éste podrá interaccionar para realizar las diversas acciones que hayamos contemplado en la aplicación. 
+	
+	Para construir la interfaz gráfica, existen componentes denominados Views (vistas) con los que se dispone de numerosos controles básicos, como por ejemplo, botones, listas desplegables o cuadros de texto, pudiendo extender la funcionalidad de estos controles o crear otros personalizados.
+	
+	Por lo general, una aplicación está formada por diferentes \textit{activities}, que están más o menos relacionadas entre sí. Siempre existe la Actividad Principal, quien es la encargada de iniciar la aplicación. Para crear una nueva actividad, se debe crear una nueva clase la cual heredará de la clase Activity, definiendo su propia interfaz de usuario y las funcionalidades que esta aportará a la aplicación.
+	
+	Por último, es importante mencionar que existen componentes que funcionan dentro del ámbito de una Activity, denominados \textit{Fragments}, los cuales amplían y enriquecen las posibilidades de interacción con el usuario.
+	
+	\item \textbf{Service:} componente sin interfaz gráfica que se ejecuta en segundo plano. Son llamados a través de otro componente, como puede ser una Activity, y seguirán ejecutándose en segundo plano aunque la Activity haya finalizado o, incluso, aunque se haya salido de la aplicación. Un ejemplo es una aplicación para reproducir música, la cual sigue funcionando mientras el usuario navega por otras aplicaciones.
+	
+	\item \textbf{Intent:} Un intent es el elemento básico de comunicación entre los componentes que estamos describiendo, es decir, mediante este objeto se puede llamar a un Activity, iniciar un servicio, enviar un mensaje broadcast, incluso se podría iniciar otra aplicación si así se necesitara. El uso más importante de este componente es el de iniciar Activities, por lo que puede considerarse como la \textit{unión} entre ellas.
+	
+	Las intent están formados por un paquete de información. Contienen detalle de interés para el componente que las recibe, como la acción que será ejecutada y los datos necesarios, más información de interés para el sistema Android, como la categoría del componente que maneja el intent y las intrucciones de cómo lanzar la Activity.
+	
+	\item \textbf{Content Provider:} es un objeto destinado a compartir datos entre aplicaciones. Dichos datos pueden ser almacenados en el sistema de archivos, en una base de datos o en cualquier otro lugar que sea accesible desde la aplicación.
+	
+	Un ejemplo de Content Provider es el que utiliza Android para gestionar la información de un contacto, mediante el cual cualquier otra aplicación podrá acceder a ellos haciendo una petición sobre la interfaz que gestiona dicha herramienta (\textit{ContentResolver})
+	
+	\item \textbf{Broadcast Receiver:} es un componente que detecta y reacciona frente a mensajes globales del sistema, como puede ser batería baja, SMS recibido, llamada perdida, etc. Además de esto, una aplicación puede iniciar un Broadcast Receiver (por ejemplo, para saber si se han descargado datos al dispositivo y poder ser usados por esa aplicación). Al igual que ocurre con los Services, un Broadcast Receiver tampoco muestra ninguna interfaz gráfica.
+\end{itemize}
+
+
+%------------------------------------------------------------------
+\subsection{[DONE]Aplicaciones: actividades y ciclo de vida}
+%-------------------------------------------------------------------
+\label{cap2:subsec:activity-lifecycle}
+
+En Android, el tiempo de vida de las aplicaciones está generalmente controlado por el sistema operativo y no por el usuario como es usual. Cada aplicación se ejecuta en un proceso y si el sistema operativo lo cree necesario lo elimina, como por ejemplo si necesita liberar memoria\cite{haseman2009android}.
+
+Como se dijo en la sección anterior, una \textit{activity} es un componente de la aplicación que contiene una pantalla con la que los usuarios pueden interactuar. A cada actividad se le asigna una ventana en la que puede "dibujar" su interfaz de usuario.
+
+Una aplicación generalmente consiste en múltiples actividades vinculadas de forma flexible entre sí. Normalmente, una actividad en una aplicación se especifica como la "principal", lo que significa que se presentará al usuario cuando éste inicia la aplicación por primera vez. Cada una de ellas puede a su vez iniciar otra actividad para poder realizar diferentes acciones. Cada vez que se inicia una nueva, se detiene la actividad anterior, pero el sistema las conserva en una pila (la "pila de actividades"). Cuando se inicia una actividad nueva, se la incluye en la pila y capta el foco del usuario. La pila de actividades cumple con el mecanismo \textit{LIFO}: el último en entrar es el primero en salir, por lo que, cuando el usuario termina de interactuar con la actividad actual y presiona el botón Atrás, se quita de la pila (se destruye) y se reanuda la actividad anterior.
+
+Administrar el ciclo de vida de las actividades mediante la implementación de métodos \textit{callbacks} es fundamental para desarrollar aplicaciones potentes y flexibles. El ciclo de vida de una actividad se ve directamente afectado por su asociación con otras actividades, con sus tareas y con la pila de actividades\cite{appsLifeCycle}.
+
+Una actividad puede existir básicamente en tres estados:
+\begin{itemize}
+	\item \textbf{Reanudada:} La actividad se encuentra en el primer plano de la pantalla y tiene la atención del usuario. (A veces, este estado también se denomina en ejecución).
+	
+	\item \textbf{Pausada:} Otra actividad se encuentra en el primer plano y tiene la atención del usuario, pero ésta todavía está visible. Es decir, otra actividad está por encima de ésta y esa actividad es parcialmente transparente o no cubre toda la pantalla. Una actividad pausada está completamente "viva" (el objeto \textit{activity} se conserva en la memoria, mantiene toda la información de estado y miembro y continúa anexado al administrador de ventanas), pero el sistema puede eliminarla en situaciones en que la memoria sea extremadamente baja.
+	
+	\item \textbf{Detenida:} La actividad está completamente opacada por otra (se encuentra en "segundo plano"). Una actividad detenida también permanece "viva" (el objeto se conserva en memoria, mantiene toda la información de estado y miembro, pero no está anexado al administrador de ventanas). Sin embargo, ya no está visible para el usuario y el sistema puede eliminarla.
+\end{itemize}
+
+Cuando una actividad entra y sale de los diferentes estados que se describieron arriba, esto se notifica a través de diferentes métodos \textit{callback}. En conjunto, estos métodos definen el ciclo de vida completo de una actividad, como se puede observar en la Figura \ref{fig:activity-lifecycle}.
+
+\begin{figure}[t]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/activity_lifecycle}
+		\caption{Ciclo de vida de una actividad. Recuperado de: \url{https://developer.android.com/guide/components/activities}}
+		\label{fig:activity-lifecycle}
+	\end{center}
+\end{figure}
+
+A continuación, se explicarán brevemente cada uno de estos métodos:
+
+\begin{itemize}
+	\item \textbf{onCreate:} se llama cuando se crea la actividad por primera vez. El siguiente método es onStart.
+	
+	\item \textbf{onRestart:} se llama después de que ha parado la actividad y antes de volver a comenzarla. El próximo método es onStart.
+	
+	\item \textbf{onStart:} se llama cuando la actividad debe ser visible para el usuario. El próximo método será onResume u onStop.
+	
+	\item \textbf{onResume:} se llama antes de que la actividad comience a interactuar con el usuario. El método que le sigue es onPause.
+	
+	\item \textbf{onPause:} se llama cuando el sistema quiere ejecutar otra actividad como principal. El siguiente método será onResume u onStop.
+	
+	\item \textbf{onStop:} este método es llamdo cuando la actividad deja de estar visible para el usuario. El siguiente método es onStart u onDestroy.
+	
+	\item \textbf{onDestroy:} se llama cuando se desea destruir la actividad. Es el último método que recibe la actividad.
+\end{itemize}
+
+
+%%-------------------------------------------------------------------
+%\section{Redes Neuronales Artificiales}
+%%-------------------------------------------------------------------
+%\label{cap2:sec:redesneuronales}
+%
+%
+%Dentro del campo científico de la Inteligencia Artificial, las \textit{Redes Neuronales Artificiales} (\textbf{RNA}) comprenden una rama antigua pero destacada, especialmente en la actualidad luego del surgimiento del aprendizaje produndo. Se entiende como \textbf{RNA} a un sistema con elementos procesadores de información de cuyas interacciones locales depende su comportamiento en conjunto \cite{gonzalez1995redes}. Dicho sistema trata de emular el comportamiento del cerebro humano, adquiriendo conocimiento de su entorno mediante un proceso de aprendizaje y almacenándolo para disponer de su uso \cite{haykin2004comprehensive}. 
+%
+%
+%\begin{table}[h!]
+%	\begin{center}
+%		\caption{Diferencias entre cerebro humano y computadora convencional}
+%		\label{tab:table1}
+%		\begin{tabular}{|c|c|c|}
+%			\hline
+%			Características & 
+%			Cerebro humano & 
+%			\begin{tabular}{@{}c@{}}Computadora \\ convencional \end{tabular} \\
+%			\hline
+%			Velocidad de proceso & 
+%			Entre $10^{-3}$ y $10^{-2}$ seg & 
+%			Entre $10^{-9}$ y $10^{-8}$ seg\\
+%			\hline
+%			Nivel de procesamiento & 
+%			Altamente paralelo & 
+%			\begin{tabular}{@{}c@{}}Poco o nulo \\ paralelizado\end{tabular} \\
+%			\hline
+%			Número de procesadores & 
+%			Entre $10^{11}$ y $10^{14}$ & 
+%			Entre 4 y 8\\
+%			\hline
+%			Conexiones & 
+%			10.000 por procesador & 
+%			Pocas\\
+%			\hline
+%			\begin{tabular}{@{}c@{}}Almacenamiento \\ del conocimiento\end{tabular} &
+%			Distribuido & 
+%			En posiciones precisas\\
+%			\hline
+%			Tolerancia a fallos & 
+%			Amplia & 
+%			Poca o nula\\
+%			\hline
+%			\begin{tabular}{@{}c@{}}Consumo de energía \\ en una operación/seg\end{tabular} &
+%			$10^{-16}$ Julios & 
+%			$10^{-6}$ Julios\\
+%			\hline
+%		\end{tabular}
+%	\end{center}
+%\end{table}
+%
+%
+%Las \textbf{RNA}s son implementadas en computadoras para imitar la estructura neuronal de un cerebro, tanto en programas de software como en arquitecturas de hardware, por lo cual se utilizan para componer un sistema de aprendizaje maquinal. No obstante, sólo consiste en una aproximación debido a las diferencias significativas que se presentan en la Tabla \ref{tab:table1} \cite{lopez2008redes}.
+%
+%Por lo general, las computadoras presentan una arquitectura de tipo Von Neumann basada en un microprocesador muy rápido capaz de ejecutar en serie instrucciones complejas de forma fiable, mientras que el cerebro está compuesto por millones de procesadores elementales o neuronas, que se interconectan formando redes. Además, las neuronas biológicas no adquieren conocimiento por ser programadas sino que lo hacen a partir de estímulos que reciben de su entorno, y operan mediante un esquema masivamente paralelo distinto al serializado o poco paralelo de la computadoras convencionales. 
+%
+%%-------------------------------------------------------------------
+%\subsection{Arquitectura}
+%%-------------------------------------------------------------------
+%\label{cap2:subsec:arquitectura}
+%
+%\iffalse
+%\begin{figure}[t]
+%	\begin{center}
+%		\includegraphics[width=0.7\textwidth]%
+%		{Imagenes/Bitmap/neuron}
+%		\caption{Estructura biológica de una neurona.}
+%		\label{fig:neurona}
+%	\end{center}
+%\end{figure}
+%\fi
+%
+%La unidad básica de cómputo en el cerebro es una neurona, la cual recibe señales de entrada desde sus dendritas y las procesa en su cuerpo, llamado soma, para producir señales de salida mediante un único axón. Estas últimas a su vez interactúan por sinápsis con las dendritas de otras neuronas y con ello se logra la comunicación de estímulos en todo el cerebro. %En la Figura \ref{fig:neurona} se visualiza la estructura de una neurona detallando los componentes mencionados. 
+%
+%\begin{figure}[t]
+%	\begin{center}
+%		\includegraphics[width=0.7\textwidth]%
+%		{Imagenes/Bitmap/neuron_model}
+%		\caption{Modelo matemático de una neurona.}
+%		\label{fig:neurona_modelo}
+%	\end{center}
+%\end{figure}
+%
+%
+%Para modelar el comportamiento de las neuronas, la idea es que las sinápsis que producen pueden controlarse mediante \textit{pesos sinápticos} que definan una magnitud de la influencia que ejerce una con otra (y también dirección, al poder excitar o inhibir mediante pesos positivos o negativos, correspondientemente). Los pesos sinápticos $w_0$ multiplican las señales de entrada $x_0$ que llegan por las dendritas para ejercer una suma ponderada en el soma, y si el resultado supera un cierto umbral la neurona se ``activa'' enviando un estímulo a lo largo de su axón. Dicha suma puede incorporar además un término de sesgo $b$ que participa sin multiplicarse por la entrada. En este modelo se considera que no interesa conocer el preciso tiempo en que se activa la neurona sino la frecuencia en que ocurre, por lo cual ello es representado mediante una \textit{función de activación} \cite{haykin2004comprehensive}. En la Figura \ref{fig:neurona_modelo} se representa gráficamente el modelo explicado, el cual constituye lo que se denomina como ``perceptrón simple'. 
+%
+%%La manera en que las neuronas de una red se estructuran están íntimamente relacionadas con el algoritmo de aprendizaje que se use para entrenar dicha red...
+%
+%
+%Para modelar una red neuronal artificial las neuronas se agrupan en capas, de forma tal que todas las unidades de una capa se conectan con todas las neuronas de sus capas próximas para formar una estructura interconectada. En la forma más simple, se tiene una capa de entrada que proyecta la señal entrante en una capa de salida. Cuando se incorporan capas intermedias (denominadas capas ocultas), la red adquiere más niveles de procesamiento entre su entrada y salida, y lo que se forma es un ``perceptrón multicapa'' (conocido en inglés como \textit{Multi Layer Perceptron} o \acs{MLP}) \cite{haykin2004comprehensive}. En esta configuración, para producir la salida de la red se computan sucesivamente todas las activaciones una capa tras otra, donde puede notarse que una red con $n$ capas equivale a tener $n$ perceptrones simples en cascada, donde la salida del primero es la entrada del segundo y así sucesivamente. Además, cada capa puede tener diferente número de neuronas, e incluso distinta función de activación. 
+%
+%\begin{figure}[t]
+%	\begin{center}
+%		\includegraphics[width=0.85\textwidth]%
+%		{Imagenes/Bitmap/arq-mlp}
+%		\caption{Arquitectura básica de un MLP con 4 capas.}
+%		\label{fig:mlp}
+%	\end{center}
+%\end{figure}
+%
+%Siguiendo el modelo matemático de un perceptrón simple, los pesos sinápticos ahora pueden expresarse en conjunto de forma vectorial como matrices, así como también el sesgo se representa como un vector. Por lo tanto, dada un vector de entrada $x$, la suma ponderada efectuada en una capa se expresa como un producto entre la matriz de pesos sinápticos $W$ y dicha entrada $x$, en la cual también se suma el vector de sesgo o \textit{bias} $b$. Al resultado de esto se le aplica la función de activación, con lo cual se produce la salida final de la capa. En la Figura \ref{fig:mlp} se representa la arquitectura de un perceptrón multicapa, mostrando las interacciones que tienen sus unidades desde la entrada hasta su salida. 
+%
+%%Para lo vectorial, indicar que representan los subindices
+%
+%%-------------------------------------------------------------------
+%\subsection{Funciones de activación}
+%%-------------------------------------------------------------------
+%\label{cap2:subsec:funactiv}
+%
+%Una función de activación determina cómo se transforman las entradas a través de la red neuronal, lo cual es determinante para que logre su capacidad de aprender funciones complejas. En general, se caracterizan por ser \textit{no lineales} ya que incrementan el poder de expresión y con ello se pueden obtener interesantes representaciones de las entradas que ayuden a la tarea designada para la red. La razón por la cual no es conveniente que sean lineales es porque de esa forma no tendría sentido que la red posea más de una capa, ya que la combinación de funciones lineales tiene un resultado lineal. Además, las redes neuronales están pensadas principalmente para tratar tanto problemas de clasificación en donde las clases no son linealmente separables como problemas en donde no se logra una precisión deseable mediante un modelo lineal.
+%
+%Como se anticipó anteriormente en la arquitectura de una red, cada unidad o neurona de una capa recibe una entrada que es ponderada por sus pesos sinápticos para luego producir una salida activada que sirve como entrada a todas las neuronas de la capa siguiente (o en el caso de ser la última capa, que es el resultado final de la activación completa de la red). 
+%Dado un vector $x$ de entrada para una capa de la red, se le aplica una transformación afín (i.e. una transformación lineal por la matriz de pesos W, seguido de una traslación por el vector b) cuyo resultado es la salida lineal $z$. Dicha salida es la que recibe la función de activación $f$ para producir la salida final de la capa $a$, lo cual se expresa como :
+%
+%\begin{equation} 
+%\label{eq:activ}
+%\begin{split}
+%	z &= W x + b \\
+%	a &= f(z)
+%\end{split}
+%\end{equation}
+%
+%
+%Originalmente las funciones de activación más utilizadas eran las sigmoideas, las cuales son la \textit{sigmoidea} ($\sigma$) y la \textit{tangente hiperbólica} ($tanh$). Las mismas tienen una inspiración biológica y están delimitadas por un mínimo y un máximo valor, lo cual causa que las neuronas se saturen en las últimas capas de la red neuronal \cite{van2014analysis}. Ambas funciones se definen analíticamente como.
+%
+%\begin{equation}
+%\label{eq:sigmoideas}
+%	\sigma(z)=\frac{1}{1+e^{-z}}, \qquad
+%	tanh(z)=\frac{e^{z}-e^{-z}}{e^{z}+e^{-z}}
+%\end{equation}
+%
+%Otra función de activación que ha sido muy utilizada en muchas aplicaciones es la \textit{lineal rectificada} o \ac{ReLU}, la cual comprende una no linealidad simple: resulta en 0 para entradas negativas, y para valores positivos se mantiene intacta, por lo cual no tiene valores límites como las funciones sigmoideas. El gradiente de la \ac{ReLU} es 1 para todos los valores positivos y 0 para los negativos, lo cual hace que, durante la optimización de la red, los gradientes negativos no sean usados para actualizar los pesos sinápticos correspondientes. Además, el hecho de que el gradiente sea 1 para cualquier valor positivo hace que el entrenamiento sea más rápido que con otras funciones de activación no lineales. Por ejemplo, la función sigmoidea tiene muy pequeños gradientes para grandes valores positivos y negativos, por lo que el aprendizaje practicamente se frena o ``estanca'' en dichas regiones \cite{dettmers2015deep}. Es preciso notar que las \ac{ReLU}s poseen una discontinuidad en 0, por lo cual no es derivable allí la función. No obstante se fuerza a que allí la derivada sea igual a 0, y el hecho de que allí la activación sea 0 otorga buenas propiedades de ralez a la red \cite{van2014analysis}. Una función que aproxima a la \ac{ReLU} es la \textit{softplus}, que además de ser continua su derivada es la función \textit{sigmoidea}. Ambas funciones entonces se expresan como: %No obstante, las \ac{ReLU}s son mayormente usadas debido a que ... 
+%
+%\begin{equation}
+%relu(z)=max(0,z), \qquad
+%softplus(z)=\log{(1+e^z)} 
+%\end{equation}
+%
+%En la Figura \ref{fig:activaciones} se visualizan las funciones de activación explicadas en un dominio definido, mientras que en la Tabla \ref{tab:activaciones} se presentan todas las funciones de activación mencionadas con la respectiva derivada de cada una.
+%
+%
+%
+%\begin{figure}[t]
+%	\begin{center}
+%		\includegraphics[width=0.75\textwidth]%
+%		{Imagenes/Bitmap/activaciones}
+%		\caption{Visualización de las funciones de activación para $-3 \leq z \leq 3$.}
+%		\label{fig:activaciones}
+%	\end{center}
+%\end{figure}
+%
+%
+%\begin{table}[h!]
+%	\begin{center}
+%		\caption{Funciones de activación desarrolladas, detallando para cada una tanto su expresión la de su respectiva derivada analítica.}
+%		\label{tab:activaciones}
+%		\begin{tabular}{|c|c|c|}
+%			\hline
+%			\textbf{Nombre} & \textbf{Función} & \textbf{Derivada}\\
+%			\hline
+%			$Sigmoidea$ & 
+%			$f(z) = \dfrac{1}{1+e^{-z}} $& 
+%			$f^\prime(z) =\dfrac{e^z - e^{-z}}{e^z + e^{-z}} $\\
+%			\hline
+%			\begin{tabular}{@{}c@{}}\textit{Tangente} \\ \textit{Hiperbólica}\end{tabular} &
+%			$f(z) = \dfrac{e^z - e^{-z}}{e^z + e^{-z}}$& 
+%			$f^\prime(z) = 1-tanh^2(z) $\\
+%			\hline
+%			$ReLU$ & 
+%			$f(z) = max(0,z) $& 
+%			$f^\prime(z) = 
+%			\begin{cases}
+%			1 & z > 0 
+%			\\ 0 & z \leq 0
+%			\end{cases}$\\
+%			\hline
+%			$Softplus$ & 
+%			$f(z) = \log{(1+e^z)}$& 
+%			$f^\prime(z) = \sigma(z) = \dfrac{1}{1 + e^{-z}}$\\
+%			\hline
+%		\end{tabular}
+%	\end{center}
+%\end{table}
+%
+%En el caso de que la red neuronal tratada esté diseñada para realizar tareas de clasificación, se debe tener en cuenta que la última capa tenga una salida conveniente para ello. Es por eso que la función allí debe ser de clasificación, y para ello se suele utilizar la función \textit{softmax} explicada en la Sección \ref{cap2:sec:supervisado}. 
+%
+%%\textbf{COMPLETAR}:
+%%Explicar lo del bias mejor, quizás con
+%
+%%\url{https://en.wikipedia.org/wiki/Artificial_neuron}
+%
+%%VER http://lamda.nju.edu.cn/weixs/project/CNNTricks/CNNTricks.html
+%%Usar bastante http://cs231n.github.io/neural-networks-2/
+%
+%
+%%-------------------------------------------------------------------
+%\subsection{Retropropagación}
+%%-------------------------------------------------------------------
+%\label{cap2:subsubsec:backprop}
+%
+%La propagación hacia atrás de errores o retropropagación (en inglés, \textit{backpropagation}) es un algoritmo de aprendizaje utilizado para efectuar el entrenamiento de redes neuronales. Fue introducido originalmente en la década del 1970, pero cobró realmente importancia y utilidad en el 1986 mediante una publicación que describía el trabajo con distintas redes neuronales donde este algoritmo alcanzaba un aprendizaje bastante más rápido que otros enfoques \cite{williams1986learning}. A raíz de ello se logró resolver problemas que antes no estaban resueltos, y actualmente es casi un estándar para la optimización de redes neuronales.
+%
+%%En líneas generales, primero se aplica un patrón de entrada como estímulo para la primera capa de la red, el cual se va propagando a través de todas las capas superiores hasta generar una salida final que se compara con la deseada para medir un error. A continuación, este error se transmite hacia atrás, partiendo de la capa de salida hacia todas las neuronas de la capa intermedia que contribuyan directamente a la salida. Este proceso se repite, capa por capa, hasta que todas las neuronas de la red hayan recibido un error que describa su aportación relativa al error total. Basándose en el valor del error recibido, se reajustan los pesos de conexión de cada neurona, de manera que en la siguiente vez que se presente el mismo patrón, la salida esté más cercana a la deseada. 
+%
+%El procedimiento consiste en que, dado un patrón $(x, y)$, primero se realiza un ``paso hacia adelante'' para computar todas las activaciones de cada capa a través de la red hasta calcular la salida final de la misma. A partir de esto se puede utilizar la salida deseada $y$ para computar el valor de la función objetivo y su gradiente respecto a la salida, los cuales son necesarios para conocer cuánto deben variar todos los parámetros de la red. Para ello, se calcula en cada unidad $i$ de cada capa $l$ un ``término de error'' que mide cuánto afectó cada una en las salidas calculadas. Para la capa de salida, dicho término se calcula en base al gradiente ya computado, y a partir de ello se efectúa el ``paso hacia atrás'' del algoritmo de la siguiente forma: desde la penúltima capa hasta la primera (sin contar la de entrada), se computa cada término de error en base al correspondiente de la capa siguiente (usado para multiplicar los pesos sinápticos dados) y al gradiente de la activación dada, y a partir de ello se puede computar el gradiente de la función objetivo respecto a los parámetros de la red tratados. Se puede notar que el término de error se va propagando desde el final de la red hasta el principio para poder computar el gradiente de la función objetivo respecto a cada parámetro de la red, y en dicho cálculo se aplica la regla de la cadena sucesivamente para derivar estos valores desde las activaciones obtenidas.
+%
+%Finalmente, el resultado de este algoritmo es el valor de la función de costo y su gradiente respecto a todos los parámetros de la red, lo cual es de utilidad en algoritmos de optimización basados en gradientes como los descriptos en la Sección \ref{cap2:subsec:optimizacion}. Detalles específicos de la implementación se pueden encontrar en tutoriales de redes neuronales \cite{nielsen2015neural} \cite{ng2012ufldl}, y en el Algoritmo \ref{alg:backpropagation} del Apéndice \ref{ap1:algoritmos} se resume este proceso explicado.
+%
+%\iffalse
+%\begin{algorithm}
+%	\caption{Algoritmo de retropropagación para redes neuronales}\label{alg:backpropagation2}
+%	\begin{algorithmic}
+%		\Require Matrices de pesos sinápticos $W$, vectores de bias $b$, n\textordmasculine de capas $L$.
+%		\Function{backpropagation}{$x$, $y$} \Comment{\textit{Parámetros}: Patrón de entrada $x$; salida deseada $y$.}
+%		\State \textbf{1) Entrada}: 
+%		\State $a^{(1)} = f(x) $ \Comment{Calcular la activación para la capa de entrada }
+%		\State \textbf{2) Paso hacia adelante}: 
+%		\For{$l = 2, 3, \dots, L$}
+%		\State $z^{(l)} = W^{(l)}a^{(l-1)} + b^{(l)}$ \Comment{Salida lineal de la capa.}
+%		\State $a^{(l)} = f(z^{(l)})$ \Comment{Salida activada de la capa.}
+%		\EndFor
+%		\State \textbf{3) Error en salida} 
+%		\State \( \phantom{\nabla_a J} \mathllap{J} = loss(a^{(L)}, y)  \) \Comment{Aplicar función de costo}
+%		\State \(\nabla_a J = d\_loss(a^{(L)}, y)\) \Comment{Gradiente del costo respecto a la activación.}
+%		\State \(\phantom{\nabla_a J} \mathllap{\delta^L} = \nabla_a J \odot f'(z^{(l)})\)
+%		\Comment{Computar el vector derivada de la salida}
+%		\State \textbf{4) Retropropagar el error y computar gradientes}:
+%		\For{$l = L-1, L-2, \dots, 2$}
+%		\State \( \phantom{\nabla_{W^{(l)}} J} \mathllap{ \delta^{(l)}}= (W^{(l+1)})^{\top} \delta^{(l+1)} \odot f'(z^{(l)}) \)
+%		\State \( \nabla_{W^{(l)}} J = \delta^{(l+1)} (a^{(l)})^\top \) \Comment{Respecto al parámetro $W$ de la capa $l$} 
+%		\State \( \phantom{\nabla_{W^{(l)}} J} \mathllap{\nabla_{b^{(l)}} J} = \delta^{(l+1)} \) \Comment{Respecto al parámetro $b$ de la capa $l$} 
+%		\EndFor
+%		\State \Return $J, \nabla_{W} J, \nabla_{b} J  $ \Comment{Devuelve el costo de la red y los gradientes}
+%		\EndFunction
+%	\end{algorithmic}
+%\end{algorithm}
+%\fi
+
+
+%-------------------------------------------------------------------
+\section{[WIP]Fundamentos del aprendizaje profundo}
+%-------------------------------------------------------------------
+\label{cap2:sec:deeplearning}
+
+%A partir de la introducción sobre  \textit{deep learning} realizada en la sección Resumen de este trabajo, así como los antecedentes de sus aplicaciones exitosas mencionados en la Sección \ref{cap1:sec:background}, en los siguiente apartados se procede a profundizar acerca de las características que ofrece en el modelado a diferencia de las redes neuronales básicas ya detalladas. 
+En la siguiente sección, se realizará una introducción sobre conceptos relacionados a redes neuronales, aprendizaje maquinal y aprendizaje profundo, conceptos que pertenecen a la inteligencia artificial. El último de ellos, en particular, fue fundamental en el desarrollo de este proyecto, ya que a partir de uno de sus conceptos se logra la caracterización las imágenes en la aplicación.
+
+%ya hace un tiempo estuvo tomando relevancia en el mundo informático gracias al constante avance que se logra en la resolución de problemas relacionados al reconocimiento e interpretación de imágenes.
+
+%-------------------------------------------------------------------
+\subsection{Ingeligencia Artificial, aprendizaje maquinal y aprendizaje profundo}
+%-------------------------------------------------------------------
+\label{cap2:subsec:ai-ml-dl}
+
+Para comenzar, se debe definir claramente de que se está hablando cuando se menciona a la inteligencia artificial. ¿De que se tratan los conceptos de inteligencia artificial (\textbf{AI}, del inglés \textit{``Artificial Intelligence''}), aprendizaje maquinal (\textbf{ML}) y aprendizaje profundo (\textbf{DL}, del inglés \textit{``Deep Learning''}) (ver Figura \ref{fig:ai-ml-dl})? ¿Cómo están relacionados entre ellos?
+
+\begin{figure}[t]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/ai-ml-dl}
+		\caption{Inteligencia artificial, aprendizaje maquinal, y aprendizaje profundo}
+		\label{fig:ai-ml-dl}
+	\end{center}
+\end{figure}
+
+%-------------------------------------------------------------------
+\subsubsection{Ingeligencia Artificial}
+%-------------------------------------------------------------------
+\label{cap2:subsec:inteligencia-artificial}
+
+La inteligencia artificial nació en los años 1950s, cuando un conjunto de pioneros dedicados al campo de las ciencias de la computación se comenzaron a preguntar como las computadoras podrían ser hechas para "pensar". Una concisa definición del campo podría ser la que sigue: \textit{el esfuerzo de automatizar tareas intelectuales, normalmente realizadas por humanos}. Como tal, la AI es un campo general que incluye al aprendizaje maquinal y al profundo, pero que también incluye muchos más conceptos que no involucran ningún \textit{aprendizaje}. Los primeros juegos de ajedrez por computadora, por ejemplo, sólo envolvían un montón de reglas preestablecidas escritas por programadores con un alto nivel de conocimiento y de ayuda proveniente de expertos en la materia. Este concepto es conocido como ``inteligencia artificial simbólica'', y fue muy popular entre los años 50 y 80 gracias al boom de los sistemas expertos creados en esos años.\cite{chollet2017deep}
+
+Aunque la AI simbólica provee buenas resoluciones para problemas bien definidos, lógicos, tales como el ajedrez, estos no sirven para obtener buenas aproximaciones a problemas relacionados a la clasificación de imágenes, reconocimiento del habla y traducción de lenguaje, entre otros. Por lo que una nueva aproximación tomó el lugar de la AI simbólica: el aprendizaje maquinal (en ingles: \textit{Machine Learning}).
+
+%-------------------------------------------------------------------
+\subsubsection{Aprendizaje Maquinal}
+%-------------------------------------------------------------------
+\label{cap2:subsec:aprendizaje-maquinal}
+
+El aprendizaje maquinal surge a partir de esta pregunta: ¿puede una computadora ir mas allá ``de lo que los humanos saben'' con el objetivo de conseguir mejores resultados y aprender por ella misma como mejorar tareas concretas, sin que se le especifique cómo hacerlo?
+
+Esta pregunta abrió la puerta a un nuevo paradigma de programación. En la programación clásica, como por ejemplo la inteligencia artificial simbólica, el humano escribe todas las reglas (a través de sus programas) y los datos se procesan acorde a lo que ellas dicen, y luego se obtiene una posible respuesta (ver Figura \ref{fig:machinelearningnewparadigm}). En cambio, con el \textit{machine learning}, los datos de entrada por parte de los humanos son tan bien conocidos como la respuesta esperada por ellos, por lo que verdaderamente importa son las reglas que se obtienen, ya que estas serán aplicadas a nuevos datos de entrada para producir respuestas originales.\cite{chollet2017deep}
+
+\begin{figure}[t]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/machinelearningnewparadigm}
+		\caption{Aprendizaje maquinal: nuevo paradigma de programación}
+		\label{fig:machinelearningnewparadigm}
+	\end{center}
+\end{figure}
+
+
+%TODO imagen!!!
+
+Un sistema realizado bajo el paradigma del aprendizaje maquinal es \textit{entrenado} más que explícitamente programado. Es decir, se le presentan un montón de ejemplos relevantes a una tarea, y él por sus propios medios encontrará la estructura estadística más acorde para obtener la respuesta esperada a ellos. Por lo tanto, una vez que ya se encuentra bien entrenado, permitirá resolver tareas de ese tipo de manera automática.
+
+Un ejemplo podría ser automatizar la tarea de etiquetar aquellas imágenes que se corresponden a unas vacaciones. Lo que se debe hacer es presentar al sistema de aprendizaje maquinal un montón de imágenes que ya fueron etiquetadas por humanos, y éste aprendería reglas estadísticas para asociar aquellas que se corresponden a este tipo de imágenes diferenciando de aquellas que no se corresponderían a este grupo.
+
+La tarea descripta arriba es un claro ejemplo de un problema de \textbf{clasificación}, altamente relacionado a la problemática tratada en este proyecto donde el ML encuadra perfectamente como opción de resolución. Otros ejemplos de aplicación podrían ser problemas de Regresión, Aprendizaje no Supervisado, \textit{Reinforcement Learning}, etc.\cite{alpaydin2009introduction}
+
+%-------------------------------------------------------------------
+\subsubsection{Aprendizaje Profundo}
+%-------------------------------------------------------------------
+\label{cap2:subsec:aprendizaje-profundo}
+
+El \textit{deep learning} es un subcampo específico del aprendizaje maquinal: una nueva manera de aprender representación desde los datos poniendo énfasis en sucesivas \textit{capas} desde las cuales se van obteniendo representaciones cada vez más significativas. Lo profundo (\textit{deep}) en este subcampo del aprendizaje maquinal no hace referencia a ningún tipo de entendimiento profundo logrado por este enfoque, sino que está por la idea de sucesivas capas de representación por las que van pasando los datos. Modelos actuales envuelven entre diez o incluso miles de capaz sucesivas de representación y todas ellas aprenden de manera automática a partir de ser expuestas a los datos de entrada.
+
+Estas capas de representación están conformadas por modelos llamados \textit{redes neuronales}. Este término está referenciado en la neurobiología, pero aunque algunos de los conceptos centrales en el aprendizaje profundo fueran desarrollados en parte tomando como inspiración el entendimiento humano del cerebro, los modelos \textit{deep learning} no son modelos del cerebro. No existe evidencia de que el cerebro humano implemente algo parecido a lo que se hace en esta ciencia de la computación.\cite{chollet2017deep}
+
+%-------------------------------------------------------------------
+\subsubsection{Redes neuronales}
+%-------------------------------------------------------------------
+\label{cap2:subsec:redes-neuronales}
+
+Las \textit{Redes Neuronales Artificiales} (\textbf{RNA}) comprenden una rama antigua pero destacada, especialmente en la actualidad luego del surgimiento del aprendizaje produndo. Se entiende como \textbf{RNA} a un sistema con elementos que procesan información de cuyas interacciones locales depende su comportamiento global \cite{gonzalez1995redes}. Este sistema trata de emular el comportamiento del cerebro humano, adquiriendo conocimiento de su entorno mediante un proceso de aprendizaje y almacenándolo para disponer de su uso \cite{haykin2004comprehensive}.
+
+Las \textbf{RNA}s son implementadas en computadoras, tanto en programas de software como en arquitecturas de hardware, por lo cual se utilizan para componer un sistema de aprendizaje maquinal. 
+
+\begin{figure}[t]
+	\begin{center}
+		\includegraphics[width=0.7\textwidth]%
+		{Imagenes/Bitmap/neuron_model}
+		\caption{Modelo matemático de una neurona.}
+		\label{fig:neurona_modelo}
+	\end{center}
+\end{figure}
+
+Para modelar el comportamiento de las neuronas, la idea es que las sinápsis que producen puedan controlarse mediante \textit{pesos sinápticos} que definan una magnitud de la influencia que ejerce una con otra (y también dirección, al poder excitar o inhibir mediante pesos positivos o negativos, correspondientemente). Los pesos sinápticos $w_0$ multiplican las señales de entrada $x_0$ para ejercer una suma ponderada en el soma, y si el resultado supera un cierto umbral la neurona se ``activa'' enviando un estímulo hacia su salida. Dicha suma puede incorporar además un término de sesgo $b$ que participa sin multiplicarse por la entrada \cite{learninspy2016tesis}. En este modelo se considera que no interesa conocer el preciso tiempo en que se activa la neurona sino la frecuencia en que ocurre, por lo cual ello es representado mediante una \textit{función de activación} \cite{haykin2004comprehensive}. En la Figura \ref{fig:neurona_modelo} se representa gráficamente el modelo explicado, el cual constituye lo que se denomina como ``perceptrón simple'. 
+
+Para modelar una red neuronal artificial las neuronas se agrupan en capas, de forma tal que todas las unidades de una capa se conectan con todas las neuronas de sus capas próximas para formar una estructura interconectada. En la forma más simple, se tiene una capa de entrada que proyecta la señal entrante en una capa de salida. Cuando se incorporan capas intermedias (denominadas capas ocultas), la red adquiere más niveles de procesamiento entre su entrada y salida, y lo que se forma es un ``perceptrón multicapa'' (conocido en inglés como \textit{Multi Layer Perceptron} o \acs{MLP}) \cite{haykin2004comprehensive}. En esta configuración, para producir la salida de la red se computan sucesivamente todas las activaciones una capa tras otra, donde puede notarse que una red con $n$ capas equivale a tener $n$ perceptrones simples en cascada, donde la salida del primero es la entrada del segundo y así sucesivamente. Además, cada capa puede tener diferente número de neuronas, e incluso distinta función de activación. 
+
+\begin{figure}[t]
+	\begin{center}
+		\includegraphics[width=0.85\textwidth]%
+		{Imagenes/Bitmap/arq-mlp}
+		\caption{Arquitectura básica de un MLP con 4 capas.}
+		\label{fig:mlp}
+	\end{center}
+\end{figure}
+
+Siguiendo el modelo matemático de un perceptrón simple, los pesos sinápticos ahora pueden expresarse en conjunto de forma vectorial como matrices, así como también el sesgo se representa como un vector. Por lo tanto, dada un vector de entrada $x$, la suma ponderada efectuada en una capa se expresa como un producto entre la matriz de pesos sinápticos $W$ y dicha entrada $x$, en la cual también se suma el vector de sesgo o \textit{bias} $b$. Al resultado de esto se le aplica la función de activación, con lo cual se produce la salida final de la capa. En la Figura \ref{fig:mlp} se representa la arquitectura de un perceptrón multicapa, mostrando las interacciones que tienen sus unidades desde la entrada hasta su salida \cite{learninspy2016tesis}. 
+
+%-------------------------------------------------------------------
+\section{[WIP]Aprendizaje profundo aplicado en problemas de visión computacional}
+%-------------------------------------------------------------------
+\label{cap2:sec:deeplearning-for-computer-vision}
+
+A partir de la introducción sobre \textit{computer vision} realizada en la sección Motivación de este documento, así como los antecedentes de sus aplicaciones exitosas mencionados allí también, se procede a profundizar acerca de las diferencias que ofrece la resolución de problemas de visión computacional aplicando técnicas de aprendizaje profundo, en comparación con las metodologías convencionales y utilizadas para el procesamiento digital de imágenes.
+
+El proceso se conoce como \textbf{extracción de características}, y la elegancia del procesamiento de señales y procesamiento digital de imágenes es que los algoritmos han sido diseñados para adquirir y extraer características de las imágenes, tal como contornos, bordes, texturas, etc. Existen una gran variedad de técnicas y algoritmos, tanto libres como con licencia. Por ejemplo: SIFT y SURF los cuales se encuentran bajo patente, y ORB, FAST y BRISK los cuales son libres \cite{karami2017image}. Todos ellos, describen de alguna manera a las imágenes y son usados como entrada para algoritmos de aprendizaje maquinal, por los cuales se hará la creación de funciones hipótesis (modelos), que luego pueden ser utilizados para resolver ejemplos diferentes a los que se usaron como entrenamiento. 
+
+Por otro lado, los algoritmos de visión computacional que aplican aprendizaje profundo, transforman las imágenes digitales en representaciones que son diferentes a la imagen original e incrementan la información acerca del resultado final. Se puede pensar a una red profunda como una operación de muchas etapas donde la información se va destilando, ya que los datos pasan a través de sucesivos filtros y sale \textit{purificada} (ver Figura \ref{fig:deepRepresentation}) \cite{chollet2017deep}.
+
+\begin{figure}[t]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/deepRepresentation}
+		\caption{Representación de un modelo de aprendizaje profundo, para clasificación de dígitos manuscritos. Recuperado de \cite{chollet2017deep}}
+		\label{fig:deepRepresentation}
+	\end{center}
+\end{figure}
+
+Estas redes se denominan convolucionales (\textbf{CNN}) y actualmente son el estado del arte en lo que refiere a problemas de clasificación de imágenes \cite{introCNN}. CNN aplica una serie de filtros sobre los datos crudos de las imágenes (píxeles) para extraer y aprender características, las cuales luego el modelo usará para clasificar. Estas redes está compuestas por tres componentes:
+
+\begin{itemize}
+	\item \textbf{Capas convolucionales:} son las encargadas de aplicar una serie de filtros en la imagen. Para cada subregión de la misma, se aplican un conjunto de operaciones matemáticas que producen un valor único por cada una de ellas.
+	\item \textbf{Capas pooling:} obtienen los datos extraídos por las capas convolucionales con el objetivo de reducir la dimensión en orden de acortar los tiempos de proceso.
+	\item \textbf{Capas densas (totalmente conectadas):} realizan la clasificación de las características extraídas por las capas convolucionales y reducidas por las capas de pooling. En una capa densa, cada nodo de la capa está conectado a cada nodo de la capa anterior.
+\end{itemize}
+
+Normalmente, una CNN se compone de una pila de módulos convolucionales que realizan la extracción de características. Cada módulo consta de una capa convolucional seguida de una capa pooling. El último módulo convolucional es seguido por una o más capas densas que realizan la clasificación. La última capa densa en una CNN contiene un solo nodo para cada clase de objetivo en el modelo (todas las clases posibles que el modelo puede predecir), la cual a través de una función de activación genera un valor entre 0-1 para cada nodo (la suma de todos estos valores es igual a 1), lo cual representa en que porcentaje se corresponde a cada clase (ver Figura \ref{fig:cnn}) \cite{introCNN}. 
+
+\begin{figure}[t]
+	\begin{center}
+		\includegraphics[width=0.85\textwidth]%
+		{Imagenes/Bitmap/convolutionalneuralnetwork}
+		\caption{Red neuronal convolucional (CNN)}
+		\label{fig:cnn}
+	\end{center}
+\end{figure}
+
+Hoy en día el \textit{Deep Learning} sigue en constante crecimiento. Al ser un concepto relativamente nuevo, la gran cantidad de recursos que existen puede ser un punto abrumador, para aquellos que buscan entrar en el campo. Una buena manera de mantenerse al día con las últimas tendencias es interactuar con la comunidad, y saber qué herramientas la industria brinda a desarrolladores para poder llevar adelante sus propios proyectos y desafíos \cite{DLOpenSourceLibraries}. 
+
+A continuación, se presentará la biblioteca TensorFlow, la cual fue utilizada en esta tesis como herramienta principal para la descripción y extracción de características de las imágenes que se procesarán en los dispositivos móviles.
+
+\subsection{TensorFlow}
+
+Es una biblioteca de código abierto para aprendizaje automático a través de un rango de tareas. Fue desarrollada por Google para satisfacer sus necesidades de sistemas capaces de construir y entrenar redes neuronales para detectar y descifrar patrones y correlaciones, análogos al aprendizaje y razonamiento usados por los humanos. Actualmente es utilizado tanto en la investigación como en los productos de Google. Fue originalmente desarrollado por el equipo de Google Brain para uso interno de la compañía antes de ser publicado bajo la licencia de código abierto Apache 2.0 el 9 de noviembre de 2015 \cite{abadi2016tensorflow}. TensorFlow es multiplataforma, funciona tanto en GPUs como CPUs -incluyendo plataformas móviles y embebidas- e incluso unidades de procesamiento tensorial (TPUs), que son un hardware especializado en realizar cálculos tensoriales. 
+
+Entre sus distintas soluciones se puede encontrar TensorFlow Lite, la cual es de gran utilidad a la hora de correr modelos de ML en dispositivos móviles o embebidos, sin la necesidad de contar con una conexión a Internet, ya que utiliza técnicas para lograr baja latencia, performance y modelos que ocupan poco almacenamiento. Uno de los modelos propuestos por la biblioteca fue utilizado para este proyecto final de carrera, y se denomina \textit{MobileNets} \cite{TFliteOverview}.
+
+\subsubsection{MobileNets}
+
+Son una familia de modelos de redes neuronales profundas utilizadas en problemas de visión computacional, diseñados para maximizar la precisión de forma efectiva, teniendo en cuenta los recursos restringidos para una aplicación integrada en un dispositivo móvil. Son modelos pequeños, de baja latencia y baja potencia, parametrizados para satisfacer las limitaciones de recursos de una gran variedad de casos de uso. Se pueden utilizar para la clasificación, detección, incrustación y segmentación de imágenes \cite{howard2017mobilenets}. Las MobileNet están basadas en los modelos Inception V3, pero son más pequeñas y con una exactitud (\textit{accuracy}) un poco más baja. Estos modelos pueden ser descargados y ajustados a proyectos de manera libre y gratuita, y existen diferentes tipos, variando sobretodo en la optimización que se necesite para cada caso de aplicación. En el siguiente capítulo se ahondará sobre el uso particular que tiene en este proyecto final de carrera. 
+
+
+
+
+%-------------------------------------------------------------------
+\section{[WIP] Análisis de agrupamiento}
+%-------------------------------------------------------------------
+\label{cap2:sec:clustering-analysis}
+
+El análisis de agrupamiento (\textit{clustering}) es la tarea de agrupar un conjunto de objetos de tal manera que los miembros del mismo grupo (llamado clúster) sean más similares, en algún sentido o bajo algún criterio. Es la tarea principal de la minería de datos exploratoria y es una técnica común en el análisis de datos estadísticos. Es utilizada en múltiples campos como el aprendizaje automático, la bioinformática, la compresión de datos y la computación gráfica \cite{kogan2007introduction}.
+
+El análisis de grupos no consiste en un algoritmo específico. Se puede hacer el agrupamiento utilizando varios de ellos, los cuales difieren significativamente en su idea de qué constituye un grupo y cómo encontrarlos eficientemente. Las ideas clásicas de grupo incluyen distancias pequeñas entre los miembros del mismo, áreas densas del espacio de datos, intervalos o distribuciones estadísticas particulares. El algoritmo apropiado y los valores de los parámetros (incluyendo valores como la función de distancia para utilizar, un umbral de densidad o el número de grupos esperado) depende del conjunto de datos que se analiza y el uso que se le dará a los resultados. El \textit{clustering} como tal, no es una tarea automática, sino un proceso iterativo de minería de datos que implica prueba y fracaso. A menudo es necesario hacer un pre-procesamiento de los datos y un ajuste de los parámetros del modelo hasta que el resultado tenga las propiedades deseadas. 
+
+\subsection{Agrupamiento basado en grafos}
+
+Para este proyecto, el algoritmo de agrupamiento utilizado pertenece a un modelo basado en grafos (en ingles: \textit{graph clustering}). Los grafos son estructuras de datos en las cuales los nodos representan entidades, y las aristas representan relaciones (ver Figura \ref{fig:graph-cluster}). Por ejemplo, una persona podría construir un grafo sobre las conexiones que existen entre sus amigos en Facebook. Allí, cada nodo se correspondería con sus amigos, y las aristas representarían una relación de amistad entre dos de ellos.
+
+\begin{figure}[t]
+	\begin{center}
+		\includegraphics[width=0.50\textwidth]%
+		{Imagenes/Bitmap/cluster-graph}
+		\caption{Agrupamiento basado en grafos}
+		\label{fig:graph-cluster}
+	\end{center}
+\end{figure}
+
+Para el caso de aplicación abordado durante este proyecto, se pensó a cada imagen como una entidad y a cada arista como el grado de similitud o contexto que existe entre ellas. El algoritmo utilizado para llevar adelante esta tarea encuadra dentro de esta categoría y se denomina  ``Algoritmo de agrupamiento de Markov'' (\textbf{MCL}: \textit{Markov Cluster Algorithm}), el cual se introduce a continuación.
+
+\subsubsection{Algorítmo de agrupamiento de Markov}
+
+El algoritmo MCL es la abreviatura de \textit{Markov Cluster Algorithm}, un algoritmo de clúster rápido y escalable para grafos (también conocido como redes) basado en la simulación del flujo (estocástico) en grafos \cite{van2000graph}. Fue inventado por Stijn van Dongen en el Centro de Matemáticas e Informática (CWI) en Holanda. La tesis doctoral \textit{Graph clustering by flow simulation} se centra en este algoritmo, siendo los temas principales la teoría matemática que lo sustenta, su posición en el análisis de clústeres y en la agrupación de grafos, las cuestiones relacionadas con la escalabilidad, la implementación, y los criterios de rendimiento para la agrupación de grafos en general. El trabajo para esta tesis se llevó a cabo bajo la supervisión de Jan van Eijck y Michiel Hazewinkel.
+
+El algoritmo simula el flujo usando dos operaciones algebraicas simples en matrices. No requiere instrucciones de procedimiento para ensamblar, unir o dividir los grupos. La estructura se inicia a través de un proceso de flujo que se ve afectado de manera inherente por cualquier estructura de grupo presente \cite{van2000graph}.
+
+La primera operación utilizada es la expansión, que coincide con la multiplicación normal de la matriz. La expansión modela la dispersión del flujo, convirtiéndose más homogénea. La segunda es la inflación, que es, matemáticamente hablando, una potencia de Hadamard seguida de una escala diagonal. La inflación modela la contracción del flujo, haciéndose más espesa en las regiones de mayor corriente y más delgada en las regiones de menor corriente. El proceso MCL hace que el flujo se extienda dentro de los cúmulos naturales y se evapore entre los diferentes cúmulos. En la Figura \ref{fig:mcl} se puede observar un ejemplo de 4 iteraciones de un proceso MCL.
+
+\begin{figure}[t]
+	\begin{center}
+		\includegraphics[width=0.85\textwidth]%
+		{Imagenes/Bitmap/mcl}
+		\caption{Representación gráfica del algoritmo de Markov}
+		\label{fig:mcl}
+	\end{center}
+\end{figure}
+
+Variando un solo parámetro, se pueden encontrar agrupaciones en diferentes escalas de granularidad. El número de grupos no puede y no necesita ser especificado de antemano, pero el algoritmo puede ser adaptado a diferentes contextos. La cuestión de ``¿cuántos grupos se obtendrán?'' no se trata de manera arbitraria, sino más bien mediante una fuerte lógica interna. La estructura de cada grupo deja sus marcas en el proceso de flujo simulado por el algoritmo, y los parámetros de flujo controlan la granularidad de la impresión del cluster.
+
+El límite del proceso es en general extremadamente escaso. Esto da los medios para escalar el algoritmo drásticamente, lo que conduce a una complejidad que en el peor de los casos es del orden O(N k2), donde N es el número de nodos del grafo de entrada, y k es un umbral para el número de recursos asignados a cada nodo \cite{van2000graph}.
+
+MCL ha sido aplicado en un gran conjunto de diferentes dominios, mayormente en problemas relacionados a la bioinformática y en el próximo capítulo se explicará en detalle su implementación y adaptación para la resolución de este trabajo.
+
+
+%%DEEEEEEEP LEARNING
+%Existen ciertas particularidades en las redes profundas que despertaron su interés e incrementaron su estudio. Principalmente, se puede demostrar que hay funciones que una red de $n$ capas puede representar de forma compacta (con un número de unidades ocultas que es polinomio del número de entradas) pero una red de $n-1$ capas no puede representar a menos que tenga una gran cantidad exponencial de unidades ocultas, y esto quiere decir que las redes profundas pueden representar significativamente más conjuntos de funciones que las redes de una o pocas capas ocultas \cite{ng2012ufldl}. Además, una red profunda puede aprender a representar los datos mediante descomposiciones por partes. %En el caso de imágenes, la primera capa podría aprender a agrupar píxeles de forma que se detecten bordes, la segunda capa podría agrupar dichos bordes para detectar contornos largos o partes de algún objeto, y con más capas quizás se consiga incluso revelar más características complejas. En el caso de señales de EEG, se podría esperar el mismo comportamiento donde en cada capa se separe el ruido de la señal de interés para luego poder interpretar esta última de una forma significativa \cite{walker2015deep}. %Finalmente, siendo fiel a la inspiración biológica del cerebro, se sabe que los cómputos corticales también tienen múltiples capas de procesamiento por lo que puede justificarse la cantidad de niveles de representación que necesitan los datos para aplicaciones complejas como las tareas que realiza la mente (como procesar imágenes visuales) (ya veo como lo redacto mejor).
+%
+%La profundidad definida para una red neuronal en la práctica es arbitraria, y depende mucho de la tarea a realizar y los datos disponibles para el ajuste: si la red es poco profunda (e.g. 2 o 3 capas), la misma tendrá menor poder de representación y además se corre el riesgo de \textit{overfitting} si la cantidad de unidades en la capa oculta es grande respecto a la dimensión de entrada; si la red es bastante profunda (e.g. 10 o más capas), se tiene mayor capacidad para el aprendizaje, aunque la gran cantidad de niveles en la red puede ocasionar un problema típico de este modelado denominado \textit{vanishing gradient}. Este último ocurre en el entrenamiento de redes neuronales mediante aprendizaje basado en gradiente y retropropagación, y afecta no sólo a las del tipo multicapa sino también a aquellas del tipo recurrente \cite{hochreiter2001gradient}. 
+%
+%El \textit{vanishing gradient} se debe a que la señal de error a retropropagar para el ajuste de parámetros decrece exponencialmente con la cantidad de capas, por lo cual las capas que estén más cerca de la entrada se entrenan muy lentamente. Las funciones de activacion utilizadas influyen bastante en este problema: si la imagen del gradiente abarca valores chicos (e.g. sigmoidea, tangente hiperbólica), se corre mayor riesgo de que se ``desvanezcan'' las actualizaciones para las primeras capas; si dicha imagen comprende valores altos (e.g. ReLU), existe el riesgo de que las actualizaciones sean inestables y dificulten la convergencia de la optimización (problema denominado \textit{exploding gradient}) \cite{nielsen2015neural}. 
+%
+%A raíz de esto, se originaron varias propuestas para mitigar este problema: 
+%
+%\begin{enumerate}
+%	\item El ``pre-entrenamiento'' de las redes neuronales mediante aprendizaje no supervisado para inicializar los pesos sinápticos capa-por-capa posibilitó arquitecturas de múltiples niveles que sólo requerían de un pequeño ajuste en forma supervisada para obtener buenos resultados \cite{bengio2009learning} \cite{erhan2010does}.
+%	
+%	%The first solution to this problem was layer-by-layer pretraining, where the model is built in a layer-by-layer fashion by using unsupervised learning so that the features in early layers are already initialized or ?pretrained? with some suitable features (weights). Pretrained features in early layers only need to be adjusted slightly during supervised learning to achieve good results. 
+%	
+%	\item Las redes recurrentes LSTM (\textit{Long short-term memory}) componen una arquitectura específicamente diseñada para combatir el \textit{vanishing gradient} \cite{hochreiter1997long}, y actualmente son implementadas a nivel industrial en sistemas de visión computacional y reconocimiento de voz debido a la gran precisión que obtiene en dichas tareas.
+%	
+%	\item El aprendizaje residual compone una metodología propuesta para entrenar redes de gran profundidad (de cientos o miles de capas) disminuyendo importantemente el problema mencionado y mostrando resultados competitivos en tareas de visión computacional
+%\end{enumerate}
+%
+%%las redes recurrentes LSTM (\textit{Long short-term memory}) componen una arquitectura específicamente diseñada para combatir el \textit{vanishing gradient} \cite{hochreiter1997long}, y actualmente son implementadas a nivel industrial en sistemas de visión computacional y reconocimiento de voz debido a la gran precisión que obtiene en dichas tareas; el aprendizaje residual compone una metodología propuesta para entrenar redes de gran profundidad (de cientos o miles de capas) disminuyendo importantemente el problema mencionado y mostrando resultados competitivos en tareas de visión computacional;
+%
+%En las siguientes secciones se profundiza acerca de la primer propuesta mencionada, pero primero se procede a detallar un procedimiento realizado en cualquier tipo de red neuronal para mejorar la calidad del ajuste de parámetros.
+
+%%-------------------------------------------------------------------
+%\subsection{Tratamiento sobre los pesos sinápticos}
+%%-------------------------------------------------------------------
+%\label{cap2:subsec:pesos-sinapticos}
+%
+%Para mitigar el problem de \textit{overfitting} mencionado, especialmente cuando la red tiene tantos parámetros libres (i.e. pesos sinápticos y sesgo) que pueden ajustarse demasiado a los datos de entrenamiento, siempre resulta conveniente que estos parámetros reciban un tratamiento apropiado desde que se instancian hasta que se optimizan. A continuación se describen dos formas de realizar esto, las cuales adquirieron especial importancia con el origen del aprendizaje profundo debido a la cantidad de parámetros que poseen las redes de ese tipo.
+
+
+%%-------------------------------------------------------------------
+%\subsubsection{Inicialización}
+%%-------------------------------------------------------------------
+%\label{cap2:subsubsec:init-pesos}
+%
+%La inicialización de los pesos sinápticos en una red neuronal influye mucho en su desempeño y el tiempo que se requiere para optimizarlo. %Un error común es asumir que, siguiendo la idea de que aproximadamente la mitad de los pesos deben ser negativos y la otra mitad positivos, sería razonable inicializarlos a todos con valor 0. Esto es erróneo, ya que la actualización de los pesos siempre será la misma si la salida de todas las neuronas es la misma, con lo cual se frena la optimización de forma  temprana. 
+%Lo deseable es que los pesos sinápticos se inicialicen con valores cercanos (pero no iguales) a 0, por lo cual puede pensarse en que dichos valores se obtengan de un muestreo sobre una distribución de probabilidades que tenga media igual a 0 y una varianza pequeña para que los valores sean cercanos a 0. Dicha distribución puede ser normal o uniforme, y se ha comprobado que en la práctica la elección de una u otra tiene relativamente poco impacto en el desempeño final. En cuanto a que los valores sean pequeños, se debe tener cuidado ya que eso implica también que, durante la retropropagación, los gradientes utilizados para actualizar los pesos también sean pequeños (ya que son proporcionales) y con ello las actualizaciones se ``desvanezcan'' en la propagación, especialmente con redes profundas. 
+%
+%Por lo tanto para inicializar los pesos de esta forma se debe controlar la varianza de la distribución a muestrear, y que además su valor tenga relación con la dimensión de entrada que tienen los pesos sinápticos. Una recomendación es la de escalar la varianza a $\frac{1}{\sqrt{n}}$, siendo $n$ el número de entradas que tiene la matriz de pesos %, y tanto el desarrollo en fórmulas como la explicación de porqué se asegura que todas la neuronas en la red inicialmente tienen aproximadamente la misma distribución de salida (y con ello empíricamente mejora la tasa de convergencia) se encuentra en un tutorial de redes neuronales de Stanford 
+%\cite{li2015cs231n}. En la práctica, es muy utilizado que la varianza sea $\sqrt{\frac{2}{n}}$, lo cual muestra buen comportamiento en redes neuronales profundas (especialmente cuando la función de activación es una \ac{ReLU}) \cite{he2015delving}. Otra forma de inicializar los pesos, recomendada para las funciones de activación sigmoideas, es la de utilizar para el muestreo una distribución uniforme que esté en el rango $\pm \sqrt{\frac{6}{n_{in}+n_{out}}}$ para la función Tanh, y en el rango $\pm 4.0 \sqrt{\frac{6}{n_{in}+n_{out}}}$ para la sigmoidea \cite{glorot2010understanding}. En cuanto al vector de sesgo, por lo general se suelen inicializar todos sus valores iguales (o muy aproximado, según algunos trabajos) a $0$. No se requiere ninguna técnica de muestreo ya que, según muchos estudios, el mayor impacto en la inicialización de los parámetros está dado por los pesos sinápticos \cite{li2015cs231n}.
+%
+%%Initializing the biases. It is possible and common to initialize the biases to be zero, since the asymmetry breaking is provided by the small random numbers in the weights. For ReLU non-linearities, some people like to use small constant value such as 0.01 for all biases because this ensures that all ReLU units fire in the beginning and therefore obtain and propagate some gradient. However, it is not clear if this provides a consistent improvement (in fact some results seem to indicate that this performs worse) and it is more common to simply use 0 bias initialization.
+
+%%-------------------------------------------------------------------
+%\subsubsection{Regularización}
+%%-------------------------------------------------------------------
+%\label{cap2:subsubsec:reg-pesos}
+%
+%
+%%Adding regularization to a learning algorithm avoids overfitting. 
+%%Regularization penalizes the complexity of a learning model.
+%%Sparseness is one way to measure complexity. Sparse parameter vectors have few non-zero entries
+%
+%%In principle, adding a regularization term to the loss will encourage smooth network mappings in a neural network (by penalizing large values of the parameters, which decreases the amount of nonlinearity that the network models).
+%
+%Como se ha dicho anteriormente, es deseable que las redes neuronales sean capaces de generalizar las aptitudes adquiridas durante el entrenamiento para tener un buen desempeño al presentarse patrones nunca vistos. Para prevenir el problema del \textit{overfitting}, un buen tratamiento es incoporar términos de regularización sobre los pesos sinápticos. Con ello se penaliza la complejidad del modelo en términos del ajuste a los datos de entrenamiento, de forma que pueda obtenerse generalización sobre los datos de prueba. Entre las formas de regularización más utilizadas, se destacan tres técnicas:
+%
+%\hfil
+%
+%\textbf{Norma $L_1$}
+%
+%Término que se agrega a la función objetivo a optimizar en la red neuronal, y que tiene la particularidad de conducir a que la matriz de pesos sea ``rala'' (es decir, que algunos valores sean muy cercanos o iguales a 0). Esta propiedad puede ser deseable para que se utilicen sólo un subconjunto ralo de las entradas más importantes y se produzca robustez ante entradas con ruido \cite{li2015cs231n}. Agregando este término, la función de costo y su gradiente quedan:
+%	
+%\begin{equation}
+%	\begin{split}
+%		L &= L_0 + \lambda_1 \sum_l \sum_i \sum_j |W^{(l)}_{ji}|  \\
+%		\nabla L &= \nabla L_0 + \lambda_1 \sum_l \sum_i \sum_j sign(W^{(l)}_{ji})
+%	\end{split}
+%\end{equation}
+%
+%Aquí, se define a $sign(x)$ como una función que retorna $1$ si x es positivo, $-1$ si es negativo ó $0$ en caso que $x$ sea nulo.
+%	
+%\hfil
+%	
+%\textbf{Norma $L_2$}
+%
+%Es la regularización más común que se incorpora en los pesos de una red neuronal, y tiene el efecto de penalizar fuertemente las matrices de pesos con picos o diferencias importantes entre valores, con lo cual se fuerza a que los pesos sean pequeños \cite{nielsen2015neural}. Al incorporar este término en el costo de la red resulta:
+%	
+%	
+%\begin{equation}
+%	\begin{split}
+%		L &= L_0 + \lambda_2 \sum_l \sum_i \sum_j \frac{1}{2}(W^{(l)}_{ji})^2  \\
+%		\nabla L &= \nabla L_0 + \lambda_2 \sum_l \sum_i \sum_j W^{(l)}_{ji}
+%	\end{split}
+%\end{equation}
+%	
+%Notar que a partir de ello, durante la actualización de los pesos sinápticos en la optimización, la regularización por norma $L_2$ produce que cada peso decaiga linealmente a $0$ (i.e. $W = W - \lambda_2 * W$) \cite{li2015cs231n}.
+%	
+%\hfil
+%	
+%\textbf{Dropout}
+%
+%Es un algoritmo extremadamente simple y muy efectivo para lograr la propiedad de generalización sobre redes neuronales \cite{srivastava2014dropout}. A diferencia de las normas $L_1$ y $L_2$ no se basa en modificar la función de costo para penalizarla durante la optimización de la red, sino que consiste en modificar la red para regularizarla y hacerla más robusta a información faltante o corrupta. 
+%
+%Dado un patrón de entrada en el entrenamiento (ya que nunca se debe usar durante la etapa de prueba o para hacer predicciones), se permite la activación de una neurona con una cierta probabilidad $p$ definida como parámetro, o de lo contrario se le asigna valor 0 a la salida de la misma. Esto provoca que sólo una fracción del total de neuronas produzca una activación en la salida, con lo que el proceso puede entenderse como que en cada iteración de la optimización se toma un muestreo de la red neuronal completa, y se actualizan sólo los parámetros de dicha red muestreada \cite{baldi2014dropout}. Durante la etapa de prueba %, se puede interpretar como que se evalúa una predicción promedio a lo largo de un ensamble de todas las subredes que surgen del muestreo mencionado, y es por ello que 
+%no debe aplicarse dropout para que la evaluación sea total en la red. A su vez, en esta etapa es importante realizar un escalado de los pesos en cada capa por $p$ ya que se quiere que las salidas generadas sean idénticas a las salidas esperadas en la etapa de entrenamiento. Para ello, es recomendado hacerlo durante el entrenamiento de forma que el procedimiento para realizar predicciones quede inalterado \cite{li2015cs231n}, por lo que se deben dividir por $p$ las activaciones producidas en cada capa luego de aplicar Dropout. En ese mismo procedimiento se debe retornar además la máscara binaria producida para saber exactamente cuáles fueron las unidades ``tiradas'' con el Dropout, así no se actualizan durante el proceso de optimización. En la Figura \ref{fig:dropout} se puede apreciar gráficamente cómo afecta el Dropout a las conexiones de una red neuronal, y el Algoritmo \ref{alg:dropout} del Apéndice \ref{ap1:algoritmos} refleja el procedimiento a realizar para lograr esto durante el entrenamiento de una red.
+%	
+%\begin{figure}
+%	\centering
+%	\subfloat[Red neuronal estándar]{{\includegraphics[width=4cm]
+%			{Imagenes/Bitmap/dropout-a} }}%
+%	\qquad
+%	\subfloat[Luego de aplicar Dropout]{{\includegraphics[width=4cm]
+%			{Imagenes/Bitmap/dropout-b} }}%
+%	\caption{Figura tomada de , donde se representa la anulación de las salidas de cada neurona donde se aplicó dropout.}%
+%	\label{fig:dropout}
+%\end{figure}
+%	
+%	
+%\iffalse	
+%\begin{algorithm}
+%	\caption{Salida de una capa de neuronas a la que se le aplica Dropout}\label{alg:dropout2}
+%	\begin{algorithmic}
+%		\Require Capa de neuronas $l_{W,b}$.
+%		\Function{dropoutput}{$x$, $p$} \Comment{\textit{Parámetros}: patrón de entrada $x$; probabilidad de activación $p \in (0, 1)$.}
+%		\State \text{$a = output(l_{W,b}$, $x$) }  \Comment{Computar salida de capa $l_{W,b}$ ante la entrada $x$.}
+%		\State \text{$v = random(size(a$))} \Comment{Generar vector del mismo tamaño que $a$, con valores aleatorios entre 0 y 1.}
+%		\State \text{$m = v > p$} \Comment{Calcular máscara binaria del vector $v$, donde se asigna 1 a los valores de $v$ mayores a $p$ y 0 al resto.}
+%		\State \text{$d = (a \odot m) / p$} \Comment{Aplicar máscara binaria sobre el vector de activaciones, escalando a $p$.}
+%		\State \Return{$d, m$}
+%		\EndFunction
+%	\end{algorithmic}
+%\end{algorithm}
+%\fi
+%
+%
+%%Citar
+%%Hinton, G. E., Srivastava, N., Krizhevsky, A., Sutskever, I., and Salakhutdinov, R. R. (2012b). Improving neural networks by preventing co-adaptation of feature detectors. Technical Report arXiv:1207.0580.
+%%Ba, J. and Frey, B. (2013). Adaptive dropout for training deep neural networks. In Advances in Neural Information Processing Systems (NIPS), pages 3084?3092.
+%%Baldi, P. and Sadowski, P. (2014). The dropout learning algorithm. Artificial Intelligence, 210C:78?122.
+%
+%A partir de todas estas técnicas explicadas, se consideran la siguientes recomendaciones prácticas para obtener resultados buenos en la optimización de una red neuronal:
+%
+%\begin{itemize}
+%	\item En la práctica, es mayormente utilizada la regularización mediante la norma $L_2$, aunque se suele incorporar también en menor proporción la norma $L_1$ para lograr también ciertas propiedades de ``raleza'' sobre los pesos sinápticos. Esta combinación constituye lo que se denomina \textit{regularización de red elástica}\cite{zou2005regularization}.
+%	
+%	\item Como se puede notar, la regularización nunca afecta al vector de sesgo $b$. Esto se debe a que el mismo no interactúa con los datos de forma multiplicativa, y como sólo produce una traslación en el espacio de soluciones no se considera que regularizar dicho vector produzca una moderación importante sobre la solución respecto al ajuste \cite{li2015cs231n}. 
+%	
+%	\item Por lo general, por cada norma se utiliza la misma constante de penalización $\lambda$ en todas las capas de la red.
+%	
+%	\item Como regla general, el Dropout se suele aplicar con $p = 0.5$ para todas las capas ocultas, aunque también se puede probar sobre la entrada con $p = 0.2$ \cite{arora2015deep} \cite{hinton2012improving}.
+%\end{itemize}
+%
+%%Batch Normalization. A recently developed technique by Ioffe and Szegedy called Batch Normalization alleviates a lot of headaches with properly initializing neural networks by explicitly forcing the activations throughout a network to take on a unit gaussian distribution at the beginning of the training. The core observation is that this is possible because normalization is a simple differentiable operation. In the implementation, applying this technique usually amounts to insert the BatchNorm layer immediately after fully connected layers (or convolutional layers, as we'll soon see), and before non-linearities. We do not expand on this technique here because it is well described in the linked paper, but note that it has become a very common practice to use Batch Normalization in neural networks. In practice networks that use Batch Normalization are significantly more robust to bad initialization. Additionally, batch normalization can be interpreted as doing preprocessing at every layer of the network, but integrated into the network itself in a differentiably manner. Neat!
+%
+%	
+%%\item Consejo en Quora para saber cuantas capas elegir: \url{https://www.quora.com/Deep-Learning-How-do-I-select-the-optimal-number-of-layers-and-neurons} y el de Hinton en \url{https://www.cs.toronto.edu/~hinton/absps/guideTR.pdf}
+%	
+
+%%-------------------------------------------------------------------
+%\subsection{Aprendizaje no supervisado}
+%%-------------------------------------------------------------------
+%\label{cap2:subsec:no-supervisado}
+%
+%En las anteriores secciones, se presentaron técnicas para modelar sistemas con aprendizaje maquinal siguiendo únicamente un enfoque supervisado. A diferencia de ello, el aprendizaje no supervisado busca modelar la función hipótesis basándose únicamente en la entrada, lo cual puede expresarse como $h(x) \approx x$. En el caso de las redes neuronales, se traduce en que no requieren otra información más que el vector de entrada para ajustar los pesos de las conexiones entre neuronas (i.e. se prescinde de entradas etiquetadas). % La red no recibe ninguna información por parte del entorno que indique si la salida generada es o no correcta, asi que existen varias posibilidades en cuanto a la interpretación de la salida de estas redes.
+%En algunos casos, la salida representa el grado de similitud entre la información que se le está ingresando y la que ya se le ha mostrado anteriormente. En otro caso podría realizar una codificación de los datos de entrada, generando a la salida una versión codificada de la entrada (e.g. con menos bits, pero manteniendo la información relevante de los datos), y también algunas redes pueden lograr un mapeo de características, obteniéndose en la salida una disposición geométrica o representación topográfica de los datos de entrada \cite{gonzalez1995redes}. 
+%
+%Como se mencionó al principio del presente capítulo, este enfoque del aprendizaje maquinal se utiliza generalmente en dos tipos de aplicaciones: en \textit{clustering}, y en reducción de dimensiones.
+%Para lograr esto último, un método muy popular que se utiliza es el análisis de componentes principales (en inglés, \textit{Principal Component Analysis} o \acs{PCA}) que se basa en proyectar los datos en un espacio de dimensión menor tratando de maximizar la varianza de estos en cada una de las componentes obtenidas \cite{bishop2006pattern}. Dichas componentes resultan de aplicar una descomposición en valores singulares (SVD) a la matriz formada con los datos, y cada componente es un autovector que se caracteriza por la varianza que retiene de la proyección mediante su correspondiente autovalor. Por lo tanto, para lograr la reducción de dimensiones se toman las componentes que mayor varianza producen (ordenadas por autovalor) y además se puede conocer la proporción de varianza que retuvo la reducción mediante la proporción total de autovalores retenidos respecto al total de la proyección. También se utiliza para extracción de características sobre un conjunto de datos, ya que las componentes principales se pueden como los vectores que mayor información proveen sobre dichos datos y por ende aportan mayor discriminación para otros algoritmos clasificadores o de regresión \cite{haykin2004comprehensive}. Cuando se aplica \textit{whitening} a la salida del PCA, cada una de las componentes es escalada al dividir sus dimensiones por el respectivo autovalor, y al resultado de esto se lo suele denominar ZCA \cite{li2015cs231n}. 
+%
+%
+%En los algoritmos de aprendizaje profundo, el enfoque no supervisado es frecuentemente considerado crucial para obtener un buen desempeño con las redes neuronales entrenadas. Esto se debe a que puede ayudar a lograr la generalización buscada en la red, ya que gran parte de la información que definen sus parámetros provienen de modelar los datos de entrada. Luego la información de las etiquetas puede ser usada para ajustar los parámetros obtenidos, los cuales ya descubrieron las características importantes de forma no supervisada.
+%
+%La ventaja del pre-entrenamiento no supervisado como regularizador respecto a una inicialización aleatoria de parámetros ha sido claramente demostrada en distintas comparaciones estadísticas \cite{erhan2010does} \cite{bengio2009learning} \cite{glorot2010understanding}. De esta forma, las redes pueden aprender a extraer características por sí solas, por lo cual sus entradas suelen ser datos crudos sin mucho pre-procesamiento, y la idea de inyectar una señal de entrenamiento no supervisado por cada capa puede ayudar a guiar a sus respectivos parámetros hacia mejores regiones en el espacio de búsqueda \cite{bengio2009learning}.
+%
+
+
+
+%El aprendizaje profundo se trata directamente de aprender representaciones, lo cual implica extraer conceptos intermedios, características o variables latentes que son útiles para capturar las dependencias estadísticas que importan en la tarea que desea realizar. Por ejemplo, el aprendizaje supervisado se suele utilizar para enseñarle a una red neuronal que aprenda conceptos intemedios (como categorías) que son importantes para resolver una tarea de interés en particular. No obstante, se observa que en el proceso además se descubren interesantes conceptos intermedios en las capas de dicha red sin que se fuerce a ello. El aprendizaje no supervisado es similar salvo que se le pide al modelo que capture todas las posibles dependencias entre todas las variables observadas, sin hacer distinción de entradas y salidas entre capas. Para lograr un salto importante en la Inteligencia Artificial con aprendizaje supervisado, probablemente se requiera ``enseñarle'' a la computadora todos los conceptos importantes mostrándole toneladas de ejemplos en donde éstos ocurren. Aunque en muchos casos (como el lenguaje) se suelen adquirir nuevos conceptos mediante ejemplos que los ilustran, el humano no suele aprender de lo que observa mediante ejemplos etiquetados provenientes de su entorno (al menos inicialmente). Por lo general, se extrae la mayor parte de la información mediante simple observación (ya que por ejemplo no es requerido que se explicite qué representa cada punto presente en una imagen, ni todos los objetos contenidos en la misma) y eso es lo que el aprendizaje no supervisado realiza en principio. Lo que se espera es que dicha técnica en aprendizaje profundo sea capaz de descubrir (quizás con una pequeña ayuda de algunos pocos ejemplos etiquetados) todos los conceptos y causas subyacentes que importan para explicar lo que se observa de un entorno. % https://www.quora.com/Why-is-unsupervised-learning-important
+
+
+
+	
+%\item Hablar de las mil pasadas de aprendizaje no supervisado.
+
+
+%\item Usar quizás el review Deep Learning in Neural Networks: An Overview, Jurgen Schmidhuber
+
+
+%%-------------------------------------------------------------------
+%\subsection{Autocodificadores}
+%%-------------------------------------------------------------------
+%\label{cap2:subsec:autoencoder}
+%
+%Un autoasociador o autocodificador (en inglés, conocido como \textit{AutoEncoder} o \acs{AE}) es un tipo de red neuronal de tres capas, donde su entrada y salida tienen igual dimensión y se fuerza a que sean iguales (es decir, que la red aprenda a reconstruir la entrada en la salida). Esto constituye un esquema no supervisado ya que se trata de aproximar la función identidad (i.e. y = x), pero además se imponen ciertas restricciones en la configuración que permiten capturar una estructura de los datos que la ajustan. Estas restricciones se hacen sobre términos que penalicen la red (e.g. normas de regularización) y sobre la dimensión de la capa oculta, que por lo general se dispone que sea distinta a la de entrada.
+%
+%
+%\begin{figure}[t]
+%	\begin{center}
+%		\includegraphics[width=0.6\textwidth]%
+%		{Imagenes/Bitmap/autoencoder_arq}
+%		\caption{Arquitectura básica de un autocodificador.}
+%		\label{fig:autoencoder_arq}
+%	\end{center}
+%\end{figure} 
+%
+%Un autocodificador entonces consiste de dos partes: el codificador, que produce la transformación de la entrada en la dimensión dada por la capa oculta, y el decodificador que vuelve a reconstruir la entrada a partir de la representación codificada. %Sean $W^l$ y $b^l$ los parámetros de la capa \textit{l} (pesos sinápticos y bias, respectivamente), entonces un autocodificador singular está compuesto por el conjunto de parámetros $(W, b) = W^1, b^1, W^2, b^2$. La parte de codificación está compuesta por los parámetros $W^1$ y $b^1$ que conectan la capa de entrada con la capa oculta, mientras que la decodificación se compone de $W^2$ y $b^2$ que representan la conexión entre la capa oculta y la capa de salida.
+%Para lograr la reconstrucción, esta red se entrena mediante retropropagación para minimizar el error de reconstrucción (generalmente medido con MSE), por lo cual supone un sistema de regresión. En la Figura \ref{fig:autoencoder_arq} se puede apreciar la arquitectura de un autocodificador tal como fue detallada.
+%
+%
+%Una aplicación muy estudiada de los autocodificadores consiste en la reducción de dimensiones sobre un conjunto de datos. En comparación con PCA, los autocodificadores se asemejan a dicho método cuando la dimensión de salida en la red es menor a la de entrada, pero se diferencian en que la transformación producida es no lineal, lo cual en muchos estudios produce mejores representaciones de los datos a reducir \cite{hinton2006reducing}.  % Hinton et al. defined an autoencoder as a nonlinear generalization of principal components analysis (PCA) which uses an adaptive, multilayer ?encoder? network to transform the high-dimensional input data into a low-dimensional code, while a similar ?decoder? network is able to recover the data from the code (Hinton & Salakhutdinov, 2006). That is, an autoencoder network with the same number of hidden units as input and output units would be a (linear) PCA model.
+
+
+%Hay otras formas en las que se puede prevenir que un autocodificador sobre-completo aprenda la función identidad, capturando una representación útil de la entrada. 
+
+
+%Existen ciertas formas de extender el diseño de un autocodificador para asegurar que capture una representación útil de la entrada. Una es agregar ``raleza'' (en inglés, \textit{sparsity}) que significa forzar a que muchas unidades ocultas sean iguales o cercanas a cero, lo cual ha sido explotado en muchas aplicaciones exitosas \cite{marc2007efficient}. Otra forma es agregar aleatoriedad en la codificación de la entrada a reconstruir, como en los \textit{denoising autoencoders} que adicionan ruido a la entrada para que la red aprenda a anularlo o limpiarlo en la salida \cite{vincent2008extracting}. También existe un enfoque distinto definido por \textit{variational autoencoders}, en el que la representación latente aprendida compone un modelo generativo con el cual se puede realizar un muestreo a partir de una entrada dada \cite{kingma2013auto}.
+
+ 
+\iffalse
+-----------------------------------
+Deep learning via  sparse autoencoders for automated voxel
+
+
+Optimizar los pesos sinápticos de un autocodificador es una tarea desafiante. Pesos grandes iniciales conducen a un mínimo local pobre, mientras que pesos chicos iniciales resultan en gradientes muy pequeños que dificultan el uso en redes profundas (vanish gradient) (Hinton \& Salakhutdinov, 2006). Para ello, se considera una técnica efectiva de pre-entrenamiento la del "greedy layer-wise"(Hinton \& Salakhutdinov, 2006).
+
+-----------------
+Learning deep architectures for AI
+
+Si la capa oculta produce una transformación no lineal, el autocodificador se comporta diferente al PCA ya que es capaz de capturar aspectos multi-modales de la distribución de entrada (Japkowicz et al., 2000).
+
+Un problema de los autocodificadores es que, sin alguna restricción o penalización debida en sus parámetros, con una entrada n-dimensional y una dimensión de la capa oculta de al menos n puede conllevar a sólo aprender la función identidad. Esto supone que el autocodificar sólamente aprende a copiar la entrada en una dimensión igual o mayor, lo cual se vuelve poco útil para redes profundas. No obstante, experimentos reportados sugieren que en la práctica, cuando se entrena mediante SGD, los autocodificadores no lineales con más unidades en la capa oculta que en la capa de entrada (llamados ``sobre-completos''?) conllevan a representaciones de los datos que son útiles en términos de extracción de características para otra red logrando bajo error en la tarea asignada. [Bengio07]. 
+
+
+A simple
+explanation is based on the observation that stochastic gradient descent with early stopping is similar to an
+l 2 regularization of the parameters (Zinkevich, 2003; Collobert \& Bengio, 2004). To achieve perfect re-
+construction of continuous inputs, a one-hidden layer auto-encoder with non-linear hidden units needs very
+small weights in the first layer (to bring the non-linearity of the hidden units in their linear regime) and very arge weights in the second layer. With binary inputs, very large weights are also needed to completely
+minimize the reconstruction error. Since the implicit or explicit regularization makes it difficult to reach
+large-weight solutions, the optimization algorithm finds encodings which only work well for examples simi-
+lar to those in the training set, which is what we want. It means that the representation is exploiting statistical
+regularities present in the training set, rather than learning to replicate the identity function. 
+
+---------------
+From https://arxiv.org/pdf/1404.7828v4.pdf
+
+La idea de este tipos de redes con aprendizaje no supervisado fue concebida en 1987, donde también se trataba de mapear la entrada a una capa oculta pero mediante un algoritmo diferente al de retropropagación (que era más rápido pero no buscaba profundidad en la arquitectura para la extracción de características).
+
+
+1987: UL Through Autoencoder (AE) Hierarchies (Compare Sec. 5.15)
+Perhaps the first work to study potential benefits of UL-based pre-training was published in 1987. It
+proposed unsupervised AE hierarchies (Ballard, 1987), closely related to certain post-2000 feedforward
+Deep Learners based on UL (Sec. 5.15). The lowest-level AE NN with a single hidden layer is
+trained to map input patterns to themselves. Its hidden layer codes are then fed into a higher-level AE
+of the same type, and so on. The hope is that the codes in the hidden AE layers have properties that
+facilitate subsequent learning. In one experiment, a particular AE-specific learning algorithm (different
+from traditional BP of Sec. 5.5.1) was used to learn a mapping in an AE stack pre-trained by
+this type of UL (Ballard, 1987). This was faster than learning an equivalent mapping by BP through
+a single deeper AE without pre-training. On the other hand, the task did not really require a deep
+AE, that is, the benefits of UL were not that obvious from this experiment. Compare an early survey
+(Hinton, 1989) and the somewhat related Recursive Auto-Associative Memory (RAAM) (Pollack,
+1988, 1990; Melnik et al., 2000), originally used to encode sequential linguistic structures of arbitrary
+size through a fixed number of hidden units. More recently, RAAMs were also used as unsupervised
+pre-processors to facilitate deep credit assignment for RL (Gisslen et al., 2011) (Sec. 6.4).
+In principle, many UL methods (Sec. 5.6.4) could be stacked like the AEs above, the historycompressing
+RNNs of Sec. 5.10, the Restricted Boltzmann Machines (RBMs) of Sec. 5.15, or hierarchical
+Kohonen nets (Sec. 5.6.4), to facilitate subsequent SL. Compare Stacked Generalization
+(Wolpert, 1992; Ting and Witten, 1997), and FNNs that profit from pre-training by competitive
+UL (e.g., Rumelhart and Zipser, 1986) prior to BP-based fine-tuning (Maclin and Shavlik, 1995). See
+also more recent methods using UL to improve subsequent SL (e.g., Behnke, 1999, 2003a; EscalanteB.
+and Wiskott, 2013).
+
+
+
+
+---------------
+- Explicar concepto de greedy layer-wise 
+- Mencionar brevemente otras técnicas relacionadas que se derivan? (deep autoencoders, denoising autoencoders, sparse autoencoder, variational autoencoders)
+- Mencionar comparación con RBMs? debería..
+
+
+$\hat{x}$
+
+\fi
+
+\hfil
+
+%\textbf{Autocodificadores apilados}
+%
+%%-------------------------------------------------------------------
+%%\subsection{Autocodificadores apilados}
+%%-------------------------------------------------------------------
+%%\label{cap2:subsec:stacked-autoencoder}
+%
+%
+%\begin{figure}[t]
+%	\begin{center}
+%		\includegraphics[width=0.6\textwidth]%
+%		{Imagenes/Bitmap/SAE-mql5}
+%		\caption{Construcción de un autocodificador apilado.}
+%		\label{fig:stacked-autoencoder}
+%	\end{center}
+%\end{figure}
+%
+%Una vez que el autocodificador se entrenó de forma no supervisada, se pueden utilizar las características que aprendió (i.e. la codificación de la entrada) para realizar una tarea supervisada de regresión o clasificación. En ese caso, suele resultar conveniente ajustar la red ya entrenada utilizando patrones etiquetados de datos para mejorar el desempeño en dicha tarea. De esta forma, el entrenamiento de una red neuronal se puede componer en dos etapas: 
+%
+%\begin{enumerate}[a)]
+%	\item Un \textit{pre-entrenamiento} de forma no supervisada, para extraer características de los datos y obtener una representación codificada de ellos.
+%	
+%	\item Un \textit{ajuste fino} de forma supervisada, para modificar los parámetros de forma que mejore la tarea asignada a la red en base a ello.
+%\end{enumerate}
+%
+%
+%Para extraer distintos niveles de representación sobre los datos, los AEs son combinados en otro tipo de red denominada ``autocodificador apilado'' (más conocida en inglés como \textit{Stacked AutoEncoder} o \acs{SAE}). A partir de ello es que se pueden construir redes neuronales profundas, compuestas de múltiples capas para extraer características de distintos niveles sobre los datos.
+
+%Para entender la estructura de un autocodificador apilado, primero se procede a detallar la arquitectura de un autoencoder singular como el que se aprecia en la Figura \ref{fig:autoencoder_arq}. Sean $W^l$ y $b^l$ los parámetros de la capa \textit{l} (pesos sinápticos y bias, respectivamente), entonces un autocodificador singular está compuesto por el conjunto de parámetros $(W, b) = W^1, b^1, W^2, b^2$. La parte de codificación está compuesta por los parámetros $W^1$ y $b^1$ que conectan la capa de entrada con la capa oculta, mientras que la decodificación se compone de $W^2$ y $b^2$ que representan la conexión entre la capa oculta y la capa de salida. 
+
+%Dado un autocodificador ya entrenado, se puede apilar éste con otro para conformar un autocodificador apilado. No obstante, no se utiliza en su totalidad sino que se aprovecha sólo la parte de codificación. Es decir que la activación producida en la capa oculta de un autocodificador (i.e. las características detectadas) alimentan la entrada del autocodificador siguiente que es agregado a la pila, como se esquematiza en la Figura \ref{fig:stacked-autoencoder}. Esto quiere decir que cada AE de esta pila trata de reconstruir la salida producida por el AE precedente, y a partir de ello las representaciones de los datos adquieren distintos niveles a lo largo de esta estructura. A este proceso de entrenar un autocodificador a partir del otro se lo suele denominar en inglés como \textit{greedy layer-wise}, y se considera crucial para pre-entrenar redes profundas de forma no supervisada asegurando que cada nivel de las mismas reciba actualizaciones adecuadas durante la optimización \cite{bengio2009learning}.
+%
+%Una vez ejecutado el pre-entrenamiento de un SAE, se puede realizar el ajuste fino mencionado con datos etiquetados en forma supervisada. Esto equivale a inicializar los parámetros de un perceptrón multicapa en forma no supervisada, lo cual mejora importantemente el desempeño del modelo en muchas aplicaciones estudiadas respecto a la inicialización estándar \cite{bengio2009learning}. Con ello se procede a ajustar el modelo para una tarea en particular, y la combinación de estas dos etapas es muy explotada en diversas aplicaciones de aprendizaje profundo para obtener modelos con buen desempeño en tareas de gran complejidad.
+%
+
+
+\iffalse
+------------------------------------
+
+JAIIO45
+
+Para extraer abstracciones de alto nivel sobre los datos, los AEs son combinados en una red formando un Stacked Auto-Encoder (SAE). De esta forma,se busca capturar una representacion interna de los datos en una red neuronal cuyos parámetros (pesos sinápticos y bias) se inicializan mejor que de forma estocástica. Entrenar redes profundas con esta técnica consta de dos etapas:
+
+1. Pre-entrenamiento: El SAE se entrena de forma no supervisada secuencialmente, de forma que la salida de un AE es la entrada para entrenar el siguiente. Luego, la capa oculta de cada autoasociador se utiliza para inicializar las de una red neuronal estándar.
+2. Ajuste fino: Una vez formada la red neuronal con sus parámetros inicializados, se sigue su entrenamiento supervisado convencionalmente. Se supone que con un buen pre-entrenamiento, el siguiente ajuste fino lleva poco tiempo para lograr valores óptimos en la salida.
+
+En la Figura 2 se presenta la estructura de un AE y cómo se utiliza para
+construir SAEs. Es preciso destacar que la capa de salida sólo se entrena en la etapa de ajuste fino, y la misma puede ser de clasificación o regresión dependiendo de la tarea asignada para la red.
+
+
+CITAS?
+\fi
+
+
+% Variable local para emacs, para  que encuentre el fichero maestro de
+% compilación y funcionen mejor algunas teclas rápidas de AucTeX
+%%%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../Tesis.tex"
+%%% End:

@@ -6,43 +6,33 @@
 
 \chapter{Introducción}
 
-\begin{FraseCelebre}
-	\begin{Frase}
-		La simplicidad es la máxima sofisticación.
-	\end{Frase}
-	\begin{Fuente}
-		Leonardo da Vinci
-	\end{Fuente}
-\end{FraseCelebre}
 
-
-\begin{resumen}
-En este capítulo se presenta la motivación del trabajo y los elementos que componen la especificación del proyecto. Se hace una reseña de la motivación del proyecto y cómo se justifica el trabajo realizado, aclarando los objetivos planteados y las restricciones tenidas en cuenta para el alcance y las tecnologías utilizadas.
-\end{resumen}
+%\begin{resumen}
+En el presente capítulo se detallarán las motivaciones que llevaron a la concepción de éste proyecto, junto a los elementos que componen el mismo exponiendo los objetivos y alcances pretendidos. Se realiza una reseña introductoria al contexto, dejando expuesta la importancia de resolución que se presenta.
+%\end{resumen}
 
 %-------------------------------------------------------------------
 \section{Motivación}
 %-------------------------------------------------------------------
 \label{cap1:sec:motivation}
+La realización de encuestas es una técnica sumamente utilizada a lo largo de los años, ya que se trata de una herramienta indispensable a la hora de obtener datos en relación a una determinada población de interés. Su realización es llevada a cabo sobre una muestra específica de la misma, la cual debe ser representativa, ya que a partir de allí los resultados serán generalizados hacia el resto de la población\cite{poblacionEncuestas}. Obteniendo como resultado una estimación con cierto grado de certeza sobre cuál es la tendencia de opinión. Ésto es llevado a cabo mediante diferentes estudios estadísticos de selección aleatoria, de manera tal que permita poseer un intervalo de confianza alto, es decir donde la tasa de error en relación a la muestra con la población total sea muy baja.
+\\
 
-%La Ingeniería en Informática abarca muchas y diferentes áreas de estudio, por lo que existen diversas opciones a la hora de decidir que temática abordar para realizar el proyecto final de carrera. A lo largo de años de cursado, trabajos prácticos y exámenes, los estudiantes transitan por diferentes materias que ayudan a marcar el perfil del futuro profesional, según los campos de interés o preferencia. Por dar algunos ejemplos, se incorporan conocimientos en programación y desarrollo de software en diferentes paradigmas, Ingeniería y arquitectura del Software, Algoritmos y Estructuras de Datos, Base de Datos, Redes y Comunicaciones, Mecánica Computacional, Procesamiento digital de señales e imágenes, Inteligencia Computacional, entre otras.
-El aprendizaje maquinal (\textbf{ML}: del inglés, \textit{"machine learning"}) es el subcampo de las ciencias de la computación y una rama de la inteligencia artificial, cuyo objetivo es desarrollar técnicas que permitan que las computadoras aprendan. De forma más concreta, se trata de crear programas capaces de generalizar comportamientos a partir de información suministrada en forma de ejemplos.
+Hace ya unos años, la industria de la información y la tecnología (IT) está viviendo grandes logros y consiguiendo enormes inversiones monetarias en lo que refiere a ML. La realidad es que este campo no siempre ha sido tan prolífico, alternando épocas de altas expectativas y avances con ``inviernos'' donde sufría severos estancamientos. A partir del 2006, gracias al aumento de la potencia de cálculo junto con la gran abundancia de datos disponibles, han vuelto a lanzar el campo del aprendizaje maquinal. Numerosas empresas están transformando sus negocios hacia el dato y están incorporando estas técnicas en sus procesos, productos y servicios para obtener ventajas competitivas sobre la competencia.
 
-Hace ya unos años, la industria de la información y la tecnología (IT) está viviendo grandes logros y consiguiendo enormes inversiones monetarias en lo que refiere a ML\cite{boomML}. La realidad es que este campo no siempre ha sido tan prolífico, alternando épocas de altas expectativas y avances con ``inviernos'' donde sufría severos estancamientos. A partir del 2006, gracias al aumento de la potencia de cálculo junto con la gran abundancia de datos disponibles, han vuelto a lanzar el campo del aprendizaje maquinal. Numerosas empresas están transformando sus negocios hacia el dato y están incorporando estas técnicas en sus procesos, productos y servicios para obtener ventajas competitivas sobre la competencia\cite{historyML}.
+Una disciplina que pertenece al aprendizaje maquinal, la cual incluye métodos para adquirir, procesar, analizar y comprender las imágenes del mundo real con el fin de producir información numérica o simbólica para que puedan ser tratados por un ordenador, se denomina visión artificial (\textbf{CV}: del inglés, \textit{computer vision}). Tal y como los humanos usamos nuestros ojos y cerebros para comprender el mundo que nos rodea, la CV trata de producir el mismo efecto para que los ordenadores puedan percibir y comprender una imagen o secuencia de imágenes y actuar según convenga en una determinada situación. Esta comprensión se consigue gracias a distintos campos como la geometría, la estadística, la física y otras disciplinas.
 
-Una disciplina que pertenece al aprendizaje maquinal, la cual incluye métodos para adquirir, procesar, analizar y comprender las imágenes del mundo real con el fin de producir información numérica o simbólica para que puedan ser tratados por un ordenador, se denomina visión artificial (\textbf{CV}: del inglés, \textit{computer vision}). Tal y como los humanos usamos nuestros ojos y cerebros para comprender el mundo que nos rodea, la CV trata de producir el mismo efecto para que los ordenadores puedan percibir y comprender una imagen o secuencia de imágenes y actuar según convenga en una determinada situación\cite{gonzalezWoods}. Esta comprensión se consigue gracias a distintos campos como la geometría, la estadística, la física y otras disciplinas.
-
-El auge de las aplicaciones para dispositivos móviles ha traído consigo la necesidad de incorporar este tipo de tecnologías. La evolución de los teléfonos inteligentes y su uso masivo, hicieron que empresas de desarrollo de software se acoplen a esta demanda, ofreciendo productos y servicios para que todas las personas puedan utilizarlos en sus propios dispositivos\cite{AImobileTechnology}. El área que comprende el procesamiento de imágenes y aprendizaje maquinal no escapa a esta ola tecnológica, por lo que un conjunto de bibliotecas que permiten el procesamiento de imágenes, empezaron a estar disponibles para su uso y adaptabilidad de una manera optimizada y preparada para que dispositivos de todo tipo de gama puedan aprovechar de sus beneficios. A continuación, se listan algunas aplicaciones destacadas que utilizan procesamiento de imágenes e inteligencia computacional:
+El auge de las aplicaciones para dispositivos móviles ha traído consigo la necesidad de incorporar este tipo de tecnologías. La evolución de los teléfonos inteligentes y su uso masivo, hicieron que empresas de desarrollo de software se acoplen a esta demanda, ofreciendo productos y servicios para que todas las personas puedan utilizarlos en sus propios dispositivos. El área que comprende el procesamiento de imágenes y aprendizaje maquinal no escapa a esta ola tecnológica, por lo que un conjunto de bibliotecas que permiten el procesamiento de imágenes, empezaron a estar disponibles para su uso y adaptabilidad de una manera optimizada y preparada para que dispositivos de todo tipo de gama puedan aprovechar de sus beneficios. A continuación, se listan algunas aplicaciones destacadas que utilizan procesamiento de imágenes e inteligencia computacional:
 
 \begin{itemize}
 	
-	\item Google entrenó una red neuronal profunda que logró reconocer con buena precisión tanto rostros y cuerpos humanos como también  gatos en videos de YouTube, lo cual se obtuvo de forma no supervisada sin utilizar información de clases (es decir, nunca se le daba información de lo que estaba aprendiendo) \cite{le2013building}. 
+	\item Google entrenó una red neuronal profunda que logró reconocer con buena precisión tanto rostros y cuerpos humanos como también  gatos en videos de YouTube, lo cual se obtuvo de forma no supervisada sin utilizar información de clases (es decir, nunca se le daba información de lo que estaba aprendiendo). 
 	
-	\item El sistema DeepFace de Facebook alcanzó una precisión de 97.35\% con redes neuronales profundas sobre el conjunto de datos \textit{Labeled Faces in the Wild} (LFW), reduciendo el error del actual estado del arte en más de un 27\% y acercándose a la precisión de un humano en reconocimiento de rostros (que es de aproximadamente un 97.53\%) \cite{taigman2014deepface}.
+	\item El sistema DeepFace de Facebook alcanzó una precisión de 97.35\% con redes neuronales profundas sobre el conjunto de datos \textit{Labeled Faces in the Wild} (LFW), reduciendo el error del actual estado del arte en más de un 27\% y acercándose a la precisión de un humano en reconocimiento de rostros (que es de aproximadamente un 97.53\%).
 	
-	\item Google, a través de su producto \textit{Google Photos}, ofrece una solución denominada \textit{Organize}, la cual realiza tareas de organización sobre las imágenes de sus usuarios. Ésta proporciona distintos conjuntos de imágenes basándose en características u objetos que tengan en común, como pueden ser perros, autos, el cielo, etc\cite{organize2017google}.
+	\item Google, a través de su producto \textit{Google Photos}, ofrece una solución denominada \textit{Organize}, la cual realiza tareas de organización sobre las imágenes de sus usuarios. Ésta proporciona distintos conjuntos de imágenes basándose en características u objetos que tengan en común, como pueden ser perros, autos, el cielo, etc.
 	
-	\item La aplicación fotos, perteneciente al sistema operativo Windows 10, permite buscar texto en las imágenes. La misma utiliza una tecnología denominada OCR\cite{ocr2007recognition} (reconocimiento óptico de caracteres), la cual permite detectar no sólo a la palabra, sino también la posición tiene en la imagen. 
+	\item La aplicación fotos, perteneciente al sistema operativo Windows 10, permite buscar texto en las imágenes. La misma utiliza una tecnología denominada OCR (reconocimiento óptico de caracteres), la cual permite detectar no sólo a la palabra, sino también la posición tiene en la imagen. 
 	
 	
 \end{itemize}
@@ -59,7 +49,7 @@ Lo que se busca en este proyecto es implementar una aplicación que asista al usu
 
 La aplicación es de código abierto, con el fin de poder hacer una contribución a la comunidad del software libre y que pueda ser continuamente mejorada o versionada y personalizada en base a distintos desarrolladores que presenten interés por la misma. Como se dijo en la sección anterior, se propone que sea \textit{on premise} (i.e. el proceso se realiza únicamente en el dispositivo móvil) en lugar de ser un servicio \textit{cloud}. De esta manera se puede asegurar la confidencialidad de los datos que se manejan, al mismo tiempo lograr que el despliegue y mantenimiento del sistema sean aspectos más sencillos y económicos. 
 
-Por último, será implementada para la plataforma Android, dado que es un sistema operativo muy popular y gratuito. Esta decisión se basa en que, a nivel mundial, Android es el líder indiscutido por cantidad de usuarios, y lo mismo sucede en la Argentina, ya que se encuentra en el 85\% de los equipos, según datos del mercado \cite{androidVSios}. Además, es destacable que se trata de una plataforma de código abierto que brinda a los desarrolladores un amplio conjunto de herramientas de desarrollo y librerías a su disposición, las cuales a su vez cuentan con extensa documentación de respaldo.
+Por último, será implementada para la plataforma Android, dado que es un sistema operativo muy popular y gratuito. Esta decisión se basa en que, a nivel mundial, Android es el líder indiscutido por cantidad de usuarios, y lo mismo sucede en la Argentina, ya que se encuentra en el 85\% de los equipos, según datos del mercado. Además, es destacable que se trata de una plataforma de código abierto que brinda a los desarrolladores un amplio conjunto de herramientas de desarrollo y librerías a su disposición, las cuales a su vez cuentan con extensa documentación de respaldo.
 
 %-------------------------------------------------------------------
 \section{Objetivos}

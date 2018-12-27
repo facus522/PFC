@@ -12,44 +12,44 @@ The style file: abbrv.bst
 A level-1 auxiliary file: TeXiS/TeXiS_acron.aux
 A level-1 auxiliary file: Apendices/ParteAnexos.aux
 Database file #1: citasCapitulo1.bib
-You've used 1 entry,
+You've used 5 entries,
             2118 wiz_defined-function locations,
-            512 strings with 4075 characters,
-and the built_in function-call counts, 233 in all, are:
-= -- 21
-> -- 7
+            538 strings with 4986 characters,
+and the built_in function-call counts, 1171 in all, are:
+= -- 114
+> -- 35
 < -- 0
-+ -- 3
-- -- 2
-* -- 7
-:= -- 45
-add.period$ -- 4
-call.type$ -- 1
-change.case$ -- 4
++ -- 15
+- -- 10
+* -- 47
+:= -- 204
+add.period$ -- 18
+call.type$ -- 5
+change.case$ -- 19
 chr.to.int$ -- 0
-cite$ -- 1
-duplicate$ -- 7
-empty$ -- 23
-format.name$ -- 2
-if$ -- 48
+cite$ -- 5
+duplicate$ -- 44
+empty$ -- 116
+format.name$ -- 10
+if$ -- 249
 int.to.chr$ -- 0
-int.to.str$ -- 1
-missing$ -- 0
-newline$ -- 9
-num.names$ -- 2
-pop$ -- 10
+int.to.str$ -- 5
+missing$ -- 3
+newline$ -- 31
+num.names$ -- 10
+pop$ -- 40
 preamble$ -- 1
-purify$ -- 3
+purify$ -- 15
 quote$ -- 0
-skip$ -- 5
+skip$ -- 28
 stack$ -- 0
-substring$ -- 5
-swap$ -- 1
+substring$ -- 50
+swap$ -- 5
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 4
+type$ -- 18
 warning$ -- 0
-while$ -- 2
-width$ -- 2
-write$ -- 13
+while$ -- 12
+width$ -- 6
+write$ -- 56

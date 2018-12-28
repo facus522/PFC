@@ -21,7 +21,7 @@ La realización de encuestas es una técnica sumamente utilizada a lo largo de los
 Específicamente a nivel salud, la realización de encuestas logra identificar y medir necesidades sanitarias de la correspondiente población de estudio, conformando de tal manera un primer paso para la planificación de políticas de salubridad. Es por ello que se considera a esta metodología de obtención de datos como una herramienta imprescindible a la hora de identificar necesidades \cite{importanciaEncuestas}. Con la recopilación de dicha información, se llegan a tomar medidas tanto preventivas como informativas, logrando de esta forma una reducción en las enfermedades y muertes causadas por distintas epidemiologías por ejemplo, así como también una mejora en la calidad de vida, por supuesto que mediante la aplicación de una adecuada política de estado. Además, proporciona denominadores poblacionales útiles para el cálculo de tasas y estimaciones del número de personas a riesgo.
 \\
 
-Algunos de los motivos que llevan a la realización de encuestas en el ámbito de la salud, se presentan a continuación:
+Algunos de los motivos que llevan a la realización de encuestas en el ámbito de la salud, se presentan a continuación \cite{itemsImportancia}:
 \begin{itemize}
 	
 	\item Conocer problemas de salud percibida y conductas relacionadas a la salud de la	población.
@@ -37,17 +37,17 @@ Algunos de los motivos que llevan a la realización de encuestas en el ámbito de 
 \end{itemize}
 
 Enfocándonos más precisamente en la Facultad de Ciencias Médicas de la Universidad Nacional del Litoral (\textit{FCM - UNL}), a
-la hora de realizar encuestas para obtener información de la población, actualmente se viene trabajando con las denominadas \textit{``salidas a terreno''}, es decir recorriendo diversos sectores o barrios y realizando dichas encuestas de la manera tradicional (\textit{``papel y lápiz''}).
+la hora de realizar encuestas para obtener información de la población, actualmente se viene trabajando con las denominadas \textit{``salidas a terreno''}, es decir recorriendo diversos sectores o barrios y realizando dichas encuestas de la manera tradicional: \textit{``papel y lápiz''}.
 \\
 
-El empleo de ésta metodología en la forma tradicional trae aparejada una serie de dificultades, ya que la misma estará propensa a errores y se aumentará la dificultad de aplicarlo en grandes escalas. Esto se debe, por ejemplo, a los elevados costos de la transacción y al gran inconveniente del análisis de los datos, ya que los mismos, una vez obtenidos deben cargarse a una base de datos en forma manual, produciendo que ésta tarea resulte tediosa, se prolongue por mucho tiempo e introduzca posibles errores en la carga. Ésto lleva a una reducción del alcance de los formularios para no tener que lidiar con inconvenientes mencionados, generando una mayor tasa de error por sobre lo obtenido.
+El empleo de ésta metodología en la forma tradicional trae aparejada una serie de dificultades, ya que la misma está propensa a errores y se aumenta la dificultad de aplicarlo en grandes escalas. Esto se debe, por ejemplo, a los elevados costos de la transacción y al gran inconveniente del análisis de los datos, ya que los mismos, una vez obtenidos deben cargarse a una base de datos en forma manual, produciendo que ésta tarea resulte tediosa, se prolongue por mucho tiempo e introduzca posibles errores en la carga. Ésto lleva a una reducción del alcance de los formularios para no tener que lidiar con inconvenientes mencionados, generando una mayor tasa de error por sobre lo obtenido.
 
 %-------------------------------------------------------------------
 \section{Justificación}
 %-------------------------------------------------------------------
 \label{cap1:sec:justificacion}
 
-Las tecnologías de la información y de la comunicación(TIC) han sido un pilar importante en la transformación del mundo contemporáneo, a través de los avances significativos a lo largo de los años. La humanidad ha evolucionado los modos de comunicar, de entretener, de trabajar, de negociar, de gobernar y de socializar, sobre la base de la difusión y uso de las TIC a escala global \cite{introduccionTICS}. Específicamente, la industria de los dispositivos móviles (smartphones, tablets, etc.), está atravesando un período de rápida transformación mediante el desarrollo de aplicaciones móviles las cuáles tienen la posibilidad de acceder a todas las características del hardware que posee el móvil, como por ejemplo el GPS, conexiones, cámara, etc.
+Las tecnologías de la información y de la comunicación(TIC) han sido un pilar importante en la transformación del mundo contemporáneo, a través de los avances significativos a lo largo de los años. La humanidad ha evolucionado los modos de comunicar, de entretener, de trabajar, de negociar, de gobernar y de socializar, sobre la base de la difusión y uso de las TIC a escala global \cite{introduccionTICS}. Específicamente, la industria de los dispositivos móviles (smartphones, tablets, etc.), está atravesando un período de rápida transformación mediante el desarrollo de aplicaciones móviles, las cuáles tienen la posibilidad de acceder a todas las características que posee el hardware, como por ejemplo el GPS, conexiones, cámara, etc.
 \\
 
 Por lo tanto, lo que se busca en éste proyecto es llevar a cabo el desarrollo de una aplicación móvil que digitalice las encuestas a realizar por la facultad de Ciencias Médicas de la UNL, logrando de esta forma subsanar muchos de los problemas mencionados anteriormente.
@@ -62,36 +62,39 @@ Es por ello que con la distribución de la aplicación se logrará tener un mayor a
 La aplicación a realizar constará de dos formatos a tener en cuenta: por un lado, se encontrarán los denominados \textit{``usuarios específicos''}, es decir los encuestadores (usuarios de la Facultad de Cs. Médicas), que mediante validaciones en el registro obtendrán permisos de administrador logrando llevar a cabo el alta, baja y modificación (ABM) de las encuestas, y resolver las mismas de manera indefinida (salidas a terreno). Por otro lado, están los denominados \textit{``usuarios comunes''} que son la población en general, los cuales podrán acceder a la aplicación y responder cada encuesta disponible en una sola ocasión. En ambos casos, junto a la resolución se almacenará el lugar de residencia del encuestado (latitud y longitud), obteniendo los datos geo-localizados gracias al componente hardware del GPS que poseen los móviles.
 \\
 
-Se llevarán a cabo distintos mecanismos de control con la finalidad de obtener datos útiles. En primer lugar, en relación a la geo-localización del usuario, con el fin de obtener los datos correspondientes a su localización de residencia, para el posterior análisis por zonas. Es decir, al responder la encuesta desde un dispositivo móvil, la persona no necesariamente puede resolverla desde su casa, por lo tanto se verificará que la misma se encuentre en su hogar, caso contrario se solicitará introducir manualmente la dirección de residencia, mediante el API de Google Maps.  Por otro lado, en cuanto a la resolución de encuestas por parte de "usuarios comunes? se permitirá a la hora de su creación introducir limitantes de resolución, como por ejemplo el sexo y la edad mínima del encuestado.
-\\
-
-Uno de las inconvenientes principales que vendría a solucionar la aplicación es la inmediatez para responder las encuestas y la obtención automática de los resultados, donde en el contexto mencionado sería muy importante para la toma de decisiones inmediatas en función de verdaderas prioridades. Además, se contará con un ahorro en la impresión de formularios para su posterior distribución, al responder las encuestas directamente desde un dispositivo electrónico, lo cual llevará a una menor cantidad de trabajo manual y evitar problemas mencionados anteriormente, como por ejemplo entender la escritura del encuestado. Se tendrá una mayor rapidez en el diseño y modificación de estos formularios, ya que por ejemplo, si de la manera tradicional se realizan los mismos y luego se determina que dichas preguntas no presentan de forma concreta la información que se requería analizar, se tendrían que volver a rediseñar, nuevamente llevar a cabo su impresión, distribución y procesamiento, lo cual demandaría el doble de tiempo.
+Se aplicarán distintos mecanismos de control con la finalidad de obtener datos útiles. En primer lugar, en relación a la geo-localización del usuario, cuyo objetivo es el de obtener los datos correspondientes a su localización de residencia, para el posterior análisis por zonas. Es decir, al responder una encuesta desde un dispositivo móvil, la persona no necesariamente puede resolverla desde su casa, por lo tanto se verificará que la misma se encuentre en su hogar, caso contrario se solicitará introducir manualmente la dirección de residencia, mediante el API de Google Maps.  Por otro lado, en cuanto a la resolución de encuestas por parte de ``usuarios comunes'' se permitirá a la hora de su creación introducir limitantes de resolución, como por ejemplo el sexo y la edad mínima del encuestado.
 \\
 
 Se llevará a cabo el diseño y desarrollo de un Web Service, que será el encargado de comunicar y persistir los datos en base de datos mediante la aplicación móvil. Es importante que toda ésta información se encuentre alojada en un servicio externo para que la aplicación sea independiente a los datos y no quede atada a constantes actualizaciones. Posteriormente, éstos datos podrán exportarse
 en distintos formatos para que especialistas médicos y bio-estadísticos trabajen con ellos en los respectivos software de estadística que usan habitualmente, para luego una toma de decisiones.
+\\
+
+Uno de las inconvenientes principales que vendría a solucionar la aplicación es la inmediatez para responder las encuestas y la obtención automática de los resultados, donde en el contexto mencionado sería muy importante para la toma de decisiones inmediatas en función de verdaderas prioridades. Además, se contará con un ahorro en la impresión de formularios para su posterior distribución, al responder las encuestas directamente desde un dispositivo electrónico, lo cual llevará a una menor cantidad de trabajo manual y evitar problemas mencionados anteriormente. Se tendrá una mayor rapidez en el diseño y modificación de estos formularios, ya que por ejemplo, si de la manera tradicional se realizan los mismos y luego se determina que dichas preguntas no presentan de forma concreta la información que se requería analizar, se tendrían que volver a rediseñar, nuevamente llevar a cabo su impresión, distribución y procesamiento, lo cual demandaría el doble de tiempo.
+
 
 %-------------------------------------------------------------------
 \section{Objetivos}
 %-------------------------------------------------------------------
 \label{cap1:sec:objetivos}
-Para desarrollar este proyecto, se plantearon los siguientes objetivos:
+Para el desarrollo del proyecto se definieron los siguientes objetivos generales y específicos, que marcaron el proceso del mismo:
 
 \subsection{Objetivos generales}
 \begin{itemize}
-	\item Desarrollar una aplicación móvil sobre la plataforma Android que, a partir de	imágenes almacenadas en el dispositivo, sugiera una estructura de directorios para organizar el conjunto, según una medida de similitud calculada entre los elementos.
-	\item Proveer al sistema funcionalidades que le permitan al usuario la interacción con el resultado, para desempeñar distintas tareas de administración sobre el almacenamiento comprendido por las imágenes.
+	\item Diseñar y desarrollar una aplicación móvil en la plataforma Android, para la confección, resolución y procesamiento de encuestas digitales en la Facultad de Ciencias Médicas de la Universidad Nacional del Litoral.
 \end{itemize}
 
 \subsection{Objetivos específicos}
 \begin{itemize}
-	\item Analizar distintos algoritmos y métodos tanto para la extracción de características de las imágenes como para el clustering de las mismas.
-	\item Definir la función o noción de similitud que se deba computar entre las imágenes a agrupar.
-	\item Definir un conjunto de imágenes a utilizar en experimentos, que sea lo más fiel posible a la problemática tratada en el marco de dispositivos móviles.
-	\item Desarrollar un protocolo de experimentación en base al conjunto de datos definido, para evaluar el desempeño de las técnicas investigadas.
-	\item Llevar adelante las pruebas definidas en el protocolo de experimentación.
-	\item Analizar y definir la metodología de visión artificial a implementar en el sistema, priorizando las técnicas según su desempeño en la experimentación así como la posibilidad de ajustarse a los recursos con los que cuentan la mayoría de los dispositivos.
-	\item Lograr una interfaz de usuario sobre la cual podrá elegir el directorio/directorios a procesar, y que sea suficiente para la administración e interacción necesaria con el resultado del clustering.
+	\item Definir las funcionalidades y el diseño del producto.
+	\item Investigar sobre la conveniencia de distintos tipos de implementaciones de Web Service para el caso.
+	\item Diseñar y desarrollar la base de datos que contará con la información obtenida en la resolución de las encuestas.
+	\item Desarrollar el Web Service que se encargará de la comunicación entre la aplicación Android y la base de datos.
+	\item Diseñar y desarrollar la aplicación móvil desde la parte de los ``usuarios específicos''.
+	\item Diseñar y desarrollar la aplicación móvil desde la parte de los ``usuarios comunes''.
+	\item Aplicar un mecanismo de control para la resolución de encuestas por parte de los ``usuarios comunes'', a fin de obtener datos solamente de la población de interés.
+	\item Aplicar un mecanismo de control sobre la geo-localización de los usuarios, a fin de obtener su correcta localización de residencia.
+	\item Exportar datos obtenidos en formato Excel.
+	\item Enviar notificaciones a los usuarios sobre alertas y novedades.
 \end{itemize}
 
 %-------------------------------------------------------------------

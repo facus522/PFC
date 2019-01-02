@@ -59,10 +59,10 @@ La misma será realizada sobre la plataforma Android, teniendo en cuenta que a ni
 Es por ello que con la distribución de la aplicación se logrará tener un mayor acceso poblacional para la resolución de las encuestas desde sus dispositivos móviles, ya que la misma va a estar disponible para el público en general, pudiendo ser resueltas por personas a las que muy probablemente no sean alcanzadas en las \textit{``Salidas a Terreno''}. Cabe aclarar que a su vez se llevará a cabo un control adecuado que limite el acceso a todas las encuestas, para que de ésta forma los datos no sean tergiversados y que los obtenidos sean realmente de interés. 
 \\
 
-La aplicación a realizar constará de dos formatos a tener en cuenta: por un lado, se encontrarán los denominados \textit{``usuarios específicos''}, es decir los encuestadores (usuarios de la Facultad de Cs. Médicas), que mediante validaciones en el registro obtendrán permisos de administrador logrando llevar a cabo el alta, baja y modificación (ABM) de las encuestas, y resolver las mismas de manera indefinida (salidas a terreno). Por otro lado, están los denominados \textit{``usuarios comunes''} que son la población en general, los cuales podrán acceder a la aplicación y responder cada encuesta disponible en una sola ocasión. En ambos casos, junto a la resolución se almacenará el lugar de residencia del encuestado (latitud y longitud), obteniendo los datos geo-localizados gracias al componente hardware del GPS que poseen los móviles.
+La aplicación a realizar constará de dos formatos a tener en cuenta: por un lado, se encontrarán los denominados \textit{``usuarios específicos''}, es decir los encuestadores (usuarios de la Facultad de Cs. Médicas), que mediante validaciones en el registro obtendrán permisos de administrador logrando llevar a cabo el alta, baja y modificación (ABM) de las encuestas, y resolver las mismas de manera indefinida (salidas a terreno). Por otro lado, están los denominados \textit{``usuarios comunes''} que son la población en general, los cuales podrán acceder a la aplicación y responder cada encuesta disponible en una sola ocasión. En ambos casos, junto a la resolución se almacenará el lugar de residencia del encuestado (latitud y longitud), obteniendo los datos geolocalizados gracias al componente hardware del GPS que poseen los móviles.
 \\
 
-Se aplicarán distintos mecanismos de control con la finalidad de obtener datos útiles. En primer lugar, en relación a la geo-localización del usuario, cuyo objetivo es el de obtener los datos correspondientes a su localización de residencia, para el posterior análisis por zonas. Es decir, al responder una encuesta desde un dispositivo móvil, la persona no necesariamente puede resolverla desde su casa, por lo tanto se verificará que la misma se encuentre en su hogar, caso contrario se solicitará introducir manualmente la dirección de residencia, mediante el API de Google Maps.  Por otro lado, en cuanto a la resolución de encuestas por parte de ``usuarios comunes'' se permitirá a la hora de su creación introducir limitantes de resolución, como por ejemplo el sexo y la edad mínima del encuestado.
+Se aplicarán distintos mecanismos de control con la finalidad de obtener datos útiles. En primer lugar, en relación a la geolocalización del usuario, cuyo objetivo es el de obtener los datos correspondientes a su localización de residencia, para el posterior análisis por zonas. Es decir, al responder una encuesta desde un dispositivo móvil, la persona no necesariamente puede resolverla desde su casa, por lo tanto se verificará que la misma se encuentre en su hogar, caso contrario se solicitará introducir manualmente la dirección de residencia, mediante el API de Google Maps.  Por otro lado, en cuanto a la resolución de encuestas por parte de ``usuarios comunes'' se permitirá a la hora de su creación introducir limitantes de resolución, como por ejemplo el sexo y la edad mínima del encuestado.
 \\
 
 Se llevará a cabo el diseño y desarrollo de un Web Service, que será el encargado de comunicar y persistir los datos en base de datos mediante la aplicación móvil. Es importante que toda ésta información se encuentre alojada en un servicio externo para que la aplicación sea independiente a los datos y no quede atada a constantes actualizaciones. Posteriormente, éstos datos podrán exportarse
@@ -92,7 +92,7 @@ Para el desarrollo del proyecto se definieron los siguientes objetivos generales
 	\item Diseñar y desarrollar la aplicación móvil desde la parte de los ``usuarios específicos''.
 	\item Diseñar y desarrollar la aplicación móvil desde la parte de los ``usuarios comunes''.
 	\item Aplicar un mecanismo de control para la resolución de encuestas por parte de los ``usuarios comunes'', a fin de obtener datos solamente de la población de interés.
-	\item Aplicar un mecanismo de control sobre la geo-localización de los usuarios, a fin de obtener su correcta localización de residencia.
+	\item Aplicar un mecanismo de control sobre la geolocalización de los usuarios, a fin de obtener su correcta localización de residencia.
 	\item Exportar datos obtenidos en formato Excel.
 	\item Enviar notificaciones a los usuarios sobre alertas y novedades.
 \end{itemize}
@@ -101,66 +101,51 @@ Para el desarrollo del proyecto se definieron los siguientes objetivos generales
 \section{Alcance}
 %-------------------------------------------------------------------
 \label{cap1:sec:alcance}
-Se definen las siguientes cuestiones para el alcance de este proyecto:
+Dentro de las limitaciones a tener en cuenta en el proyecto se destacan las siguientes:
 \begin{itemize}
-	\item Se implementará el algoritmo de preprocesamiento y extracción de características de las imágenes, utilizando las ventajas y funcionalidades que provee la biblioteca TensorFlow para Android.
-	\item La aplicación será desarrollada sobre la plataforma Android, contemplando en lo posible aquellas versiones que se encuentren instaladas en la mayoría de los dispositivos móviles actuales.
-	\item La aplicación no realizará las tareas de administración de forma autónoma. Ésta asistirá al usuario brindando una estructura de directorios en la que las imágenes serán ordenadas por grado de similitud o contexto, para luego facilitar opciones de administración sobre los mismos.
+	\item La aplicación será realizada sobre la plataforma Android, utilizando como mínima versión la 4.4 \textit{(KitKat)}, ya que asegura compatibilidad con los distintos requerimientos de hardware como pueden ser conexión a Internet y utilización del sensor de geoposicionamiento (GPS), además de ser una de las versiones mayormente soportadas en la actualidad.
+	\item El Web Service debe tener alta disponibilidad y poder obtener de él respuestas en forma inmediata. Por lo tanto, el mismo será del tipo REST y será importante llevar a cabo buenas prácticas a la hora de su realización para no cargar el mismo.
+	\item Los denominados ``usuarios específicos'' obtendrán el rol de administrador en su registro, mediante la utilización de un código de seguridad que será provisto por superiores de la Facultad de Ciencias Médicas en el contexto que lo requiera.
+	\item Las encuestas permitidas a realizar serán solamente las correspondidas al ámbito de salud, siendo creadas únicamente por ``usuarios específicos''.
+	\item La aplicación contará con una sección de ``Noticias \& Información'' que informará sobre epidemiologías o distintas cuestiones importantes relacionadas a la salud. Los ABMs de ésta sección estarán a cargo de los ``usuarios específicos''.
+	\item Las encuestas podrán ser resuelta indefinidamente por ``usuarios específicos'' y en una sola ocasión por los ``usuarios comunes''.
+	\item Se aplicarán mecanismos de control en cuanto a la geolocalización y ``usuarios comunes'', con la finalidad de obtener los datos correctos. Más allá de ésto, se estima una colaboración por parte de los encuestados que responderán los formularios con la seriedad que ellos merecen.
+	\item Se presentarán gráficos y estadísticas inmediatas sobre las encuestas respondidas, hacia los ``usuarios específicos''.
+	\item No se realizará el análisis de la información obtenida, los mismos serán exportados de la base de datos para la utilización posterior por otros profesionales.
+	\item Dentro del proyecto no se realizará el despliegue del Web Service en un servidor que se encuentre disponible en todo momento y que pueda ser accedido mediante una IP pública. Por lo tanto, no se subirá la aplicación al PlayStore de Google.
 \end{itemize}
 
 %-------------------------------------------------------------------
 \section{Tecnologías utilizadas}
 %-------------------------------------------------------------------
 \label{cap1:sec:tecnologias}
-%-------------------------------------------------------------------
-\subsection{Restricciones}
-%-------------------------------------------------------------------
-\label{cap1:subsec:restricciones}
 
-Se realizó la documentación de la Especificación de Requisitos del Software (ERS) siguiendo el estándar IEEE 830-1998 (ver Anexo), y en la misma se encuentra la especificación completa de las tecnologías utilizadas. No obstante, se listan a continuación:
+En la presente sección se describen todas las tecnologías y recursos utilizados en el proyecto:
+%-------------------------------------------------------------------
+\subsection{Hardware}
+%-------------------------------------------------------------------
+\label{cap1:subsec:hardware}
+
 \begin{itemize}
-	\item \textbf{Sistema operativo}: Android
-	\item \textbf{Versiones}: Android KitKat (4.4) en adelante
-	\item \textbf{Lenguaje de programación}: JAVA 1.8.0
-	\item \textbf{Paradigmas de programación}: 
-	\begin{itemize}
-		\item Orientado a objetos
-		\item Funcional
-		\item Imperativo
-	\end{itemize}
-	\item \textbf{IDE}: Android Studio 3.0.1
-	\item \textbf{Dependencias externas}:
-	\begin{itemize}
-		\item TensorFlow Lite 0.1.7
-		\item Storage Chooser 2.0 ! \footnote{Repositorio oficial: \url{https://github.com/codekidX/storage-chooser}}
-		\item Apache Commons\footnote{Repositorio oficial: \url{http://commons.apache.org/}}:
-		\begin{itemize}
-			\item Maths 3.6.1
-			\item IO 2.4
-		\end{itemize}
-		\item Efficient Java Matrix Library\footnote{Repositorio oficial: \url{http://ejml.org/wiki/index.php}} 0.33
-		\item Snatik Storage\footnote{Repositorio oficial: \url{https://github.com/sromku/android-storage}} 2.1.0
-		\item ZGallery\footnote{Repositorio oficial: \url{https://github.com/mzelzoghbi/ZGallery}} 0.3
-		\item NumberProgressBar\footnote{Repositorio oficial: \url{https://github.com/daimajia/NumberProgressBar}} 1.4
-	\end{itemize}
-	\item \textbf{Interfaz de usuario}: XML 1.1
-	\item \textbf{Control de versiones}: Git v2.7.4
-
+	\item Computadora personal Lenovo Ideapad i5 4gb 1tb, en la cuál se llevó a cabo el desarrollo del Web Service y la aplicación móvil. A su vez, en ella se realizó el despliegue del servidor de manera local y se creó una instancia de la base de datos.
+	\item Dispositivos móviles Samsung J7 Prime y Motorola G3, los cuáles poseen distintas versiones de Android y se realizó en ellos despliegues de la aplicación para la realización de pruebas.
 \end{itemize}
 
 %-------------------------------------------------------------------
-\subsection{Evolución previsible}
+\subsection{Software}
 %-------------------------------------------------------------------
-\label{cap1:subsec:evolucion}
-
-Se prevén las siguientes cuestiones tecnológicas a mejorar o integrar en el futuro del producto:
+\label{cap1:subsec:software}
 
 \begin{itemize}
-	\item Incorporar otras características que complementen la descripción de las imágenes para el procesamiento, afín de que ayuden a obtener mejores resultados de agrupamiento. 
-	\item Agilizar la reorganización de imágenes en los grupos obtenidos, agregando nuevas funcionalidades a la hora de tratar el resultado final las cuales mejoren la experiencia de usuario.
-	\item Mejorar el proceso de la aplicación, con el objetivo de ahorrar espacio en disco mientras el usuario mantenga los resultados temporales sin confirmar (de momento, duplica las imágenes mientras no se confirmen o descarten los resultados temporales). 
-	\item Ofrecer al usuario la posibilidad de configurar ciertos parámetros que incidirán en el resultado del agrupamiento, según sus preferencias.
-	\item Implementar un proceso de integración continua para mejorar los mecanismos de pruebas y despliegue de la aplicación.
+	\item \textbf{Lenguaje de Programación}: Java 1.8.0
+	\item \textbf{IDE Aplicación Móvil}: Android Studio 3.1.14
+	\item \textbf{IDE Web Service}: IntelliJ IDEA 2018.3.2 (Community Edition)
+	\item \textbf{Versión mínima de Android}: Android 4.4 (KitKat)
+	\item \textbf{Contenedor de Servlets}: Apache Tomcat 8.0
+	\item \textbf{Sistema Operativo}: Ubuntu 18.04 LTS
+	\item \textbf{Base de Datos}: MySQL 5.7.23
+	\item \textbf{API Google Maps}: Versión 4.1.0
+	\item \textbf{Controlador de Versiones}: Git v2.7.4	
 \end{itemize}
 
 % TODO!!! Anexar el anteproyecto entregado.

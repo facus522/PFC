@@ -3,3 +3,26 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces CU001 Ingresar a la aplicaci\'on.\relax }}{9}{table.caption.9}
+\contentsline {table}{\numberline {2.2}{\ignorespaces CU002 Validar utilizaci\'on de propiedades del dispositivo.\relax }}{9}{table.caption.10}
+\contentsline {table}{\numberline {2.3}{\ignorespaces CU003 Crear Usuario\relax }}{9}{table.caption.11}
+\contentsline {table}{\numberline {2.4}{\ignorespaces CU004 Validar usuario espec\IeC {\'\i }fico.\relax }}{10}{table.caption.12}
+\contentsline {table}{\numberline {2.5}{\ignorespaces CU005 Almacenar Usuarios.\relax }}{10}{table.caption.13}
+\contentsline {table}{\numberline {2.6}{\ignorespaces CU006 Iniciar Sesi\'on.\relax }}{11}{table.caption.14}
+\contentsline {table}{\numberline {2.7}{\ignorespaces CU007 Buscar Usuarios.\relax }}{11}{table.caption.15}
+\contentsline {table}{\numberline {2.8}{\ignorespaces CU008 Consultar noticias e informaciones disponibles.\relax }}{11}{table.caption.16}
+\contentsline {table}{\numberline {2.9}{\ignorespaces CU009 Buscar noticias.\relax }}{11}{table.caption.17}
+\contentsline {table}{\numberline {2.10}{\ignorespaces CU010 Consultar encuestas disponibles.\relax }}{12}{table.caption.18}
+\contentsline {table}{\numberline {2.11}{\ignorespaces CU011 Buscar encuestas.\relax }}{12}{table.caption.19}
+\contentsline {table}{\numberline {2.12}{\ignorespaces CU012 Resolver encuestas.\relax }}{12}{table.caption.20}
+\contentsline {table}{\numberline {2.13}{\ignorespaces CU013 Controlar y validar resoluci\'on de encuestas.\relax }}{12}{table.caption.21}
+\contentsline {table}{\numberline {2.14}{\ignorespaces CU014 Obtener geoubicaci\'on del usuario.\relax }}{13}{table.caption.22}
+\contentsline {table}{\numberline {2.15}{\ignorespaces CU015 Almacenar Respuestas.\relax }}{13}{table.caption.23}
+\contentsline {table}{\numberline {2.16}{\ignorespaces CU016 Resolver encuestas indefinidamente.\relax }}{13}{table.caption.24}
+\contentsline {table}{\numberline {2.17}{\ignorespaces CU017 Administrar encuestas.\relax }}{13}{table.caption.25}
+\contentsline {table}{\numberline {2.18}{\ignorespaces CU018 Modificar encuestas.\relax }}{14}{table.caption.26}
+\contentsline {table}{\numberline {2.19}{\ignorespaces CU019 Eliminar encuestas.\relax }}{14}{table.caption.27}
+\contentsline {table}{\numberline {2.20}{\ignorespaces CU020 Crear encuestas.\relax }}{14}{table.caption.28}
+\contentsline {table}{\numberline {2.21}{\ignorespaces CU021 Ver estad\IeC {\'\i }sticas.\relax }}{14}{table.caption.29}
+\contentsline {table}{\numberline {2.22}{\ignorespaces CU022 Exportar datos.\relax }}{15}{table.caption.30}

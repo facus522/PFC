@@ -1,0 +1,27 @@
+2- ANALISIS Y MARCO TEORICO
+2-1 analisis de la propuesta: 
+2-1-1 Requerimientos funcionales
+2-1-2 Requerimientos no funcionales
+2-1-3 Enfoque de la solucion diseñada. muestra flujo principal de la aplicacion. una especie de caso de uso.
+
+2-2 Elecciones de implementacion.describe lenguaje y herramientas usadas y porque. Base de datos y web service.
+2-2-1 Lenguaje de programacion. del web service. Spring y hibernate. en el 3 menciona mejor porque elige cada uno.
+2-2-2 Visualizacion de mapas. porque usa el api de google maps.
+
+
+2-3 Conceptos del lado del servidor. cliente-servidor, peticiones
+2-3-1 Arquitectura. Web service REST y porque.
+2-3-2 Protocolo HTTP. explicacion, metodos (GET, POST), url.
+2-3-3 Formato de respuestas. Json y XML, diferencias.
+2-3-4 Paradigma orientado a objetos. explicacion.
+2-3-5 Grafos. Cosas específicas de su proyecto.
+2-3-6 Servlet. explicacion. Apache Tomcat.
+
+2-4 Conceptos del lado del cliente. plataforma android. aplicacion.
+2-4-1 Sistema operativo Android. historia, utilizacion.
+2-4-2 Interfaz de programacion de aplicaciones. (API) como google maps. que es un aapi.
+2-4-3 Codigo QR. explicacion (propia del proyecto)
+2-4-4 Sensores del smarthphone. tipos de sensores, cuales se usan y porque.
+
+=======================================================================================================================
+3- DISEÑO Y DESARROLLO DEL LADO DEL SERVIDOR.

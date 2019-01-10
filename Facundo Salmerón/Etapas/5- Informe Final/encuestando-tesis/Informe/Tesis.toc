@@ -16,6 +16,8 @@
 \contentsline {section}{\numberline {2.1}An\'alisis del problema}{8}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Diagramas de casos de uso}{8}{subsection.2.1.1}
 \contentsline {subsection}{\numberline {2.1.2}Definici\'on de casos de uso}{8}{subsection.2.1.2}
-\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{23}{appendix*.34}
-\contentsline {chapter}{Lista de acr\'onimos}{24}{appendix*.34}
-\contentsline {part}{I\hspace {1em}Anexos}{25}{part.1}
+\contentsline {subsection}{\numberline {2.1.3}Requerimientos funcionales}{9}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Requerimientos no funcionales}{11}{subsection.2.1.4}
+\contentsline {section}{\numberline {2.2}Elecciones de implementaci\'on}{11}{section.2.2}
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{13}{chapter*.9}
+\contentsline {chapter}{\numberline {A}Fichas de casos de uso}{14}{appendix.Alph1}

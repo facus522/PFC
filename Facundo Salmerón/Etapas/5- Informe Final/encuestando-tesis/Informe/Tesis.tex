@@ -151,19 +151,21 @@ constantes,guionado,Cascaras/bibliografia,config%
 %\include{...}
 %\include{...}
 
-% Apéndices
-\appendix
-%\include{Apendices/ParteApendices}
-%\include{Apendices/01ApendiceA}
-%\include{Apendices/01ApendiceB}
-%\include{Apendices/01ApendiceC}
-\backmatter
+
 
 %
 % Bibliografía
 %
 
 \include{Cascaras/bibliografia}
+
+% Apéndices
+\appendix
+%\include{Apendices/ParteApendices}
+\include{Apendices/01ApendiceA}
+%\include{Apendices/01ApendiceB}
+%\include{Apendices/01ApendiceC}
+\backmatter
 
 %
 % Índice de palabras
@@ -190,12 +192,12 @@ constantes,guionado,Cascaras/bibliografia,config%
 % TeXiS.sty para más información.
 
 
-\ifx\generaacronimos\undefined
-\else
-\include{TeXiS/TeXiS_acron}
-\fi
+%\ifx\generaacronimos\undefined
+%\else
+%\include{TeXiS/TeXiS_acron}
+%\fi
 
-\include{Apendices/ParteAnexos}
+%\include{Apendices/ParteAnexos}
 
 %
 % Final

@@ -75,7 +75,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Flujo principal} & \begin{tabular}{@{}l@{}}\textbf{1)-} El CU inicia cuando el actor presiona sobre el ícono de la \\aplicación. \\ \textbf{2)-} Se muestra la pantalla de logueo y finaliza el CU.\end{tabular} \\
 				\hline
 				
-				\textbf{Flujo alternativo} & \begin{tabular}{@{}l@{}}\textbf{2.1)-} La aplicación es abierta por primera vez en el dispositivo. \\ \textbf{2.2)-} El sistema invoca el CU002 ``Validar utilización de  \\propiedades del dispositivo''. \\ \textbf{2.3)-} El sistema retorna al paso 2 del flujo principal. \end{tabular} \\
+				\textbf{Flujo alternativo} & \begin{tabular}{@{}l@{}}\textbf{2.1)-} La aplicación es abierta por primera vez en el dispositivo. \\ \textbf{2.2)-} El sistema invoca el CU002 ``Validar utilización de  \\propiedades del dispositivo'' (Tabla \ref{tab:cu002}). \\ \textbf{2.3)-} El sistema retorna al paso 2 del flujo principal. \end{tabular} \\
 				\hline
 				
 			\end{tabular}
@@ -106,7 +106,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} & El dispositivo acepta o no que la aplicación consuma sus recursos. \\
 				\hline
 				
-				\textbf{Flujo principal} & \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando se abre la aplicación por primera vez \\ en el dispositivo (CU001 ``Ingresar a la aplicación''). \\ \textbf{2)-} Se muestra un popup informando los recursos del dispositivo \\ a consumir por parte de la aplicación. \\ \textbf{3)-} El usuario acepta que el dispositivo utilice los recursos. \\ \textbf{4)-} Se habilitan los recursos a utilizar. \\
+				\textbf{Flujo principal} & \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando se abre la aplicación por primera vez \\ en el dispositivo (CU001 ``Ingresar a la aplicación'' -Tabla \ref{tab:cu001}-). \\ \textbf{2)-} Se muestra un popup informando los recursos del dispositivo \\ a consumir por parte de la aplicación. \\ \textbf{3)-} El usuario acepta que el dispositivo utilice los recursos. \\ \textbf{4)-} Se habilitan los recursos a utilizar. \\
 					\textbf{5)-} Se presenta la pantalla de logueo de la aplicación y finaliza \\ el CU. \end{tabular} \\
 				\hline
 				
@@ -140,10 +140,10 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} &  \begin{tabular}{@{}l@{}} El actor posee un usuario para realizar actividades dentro de \\la app. \end{tabular}\\
 				\hline
 				
-				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el actor presiona sobre el botón \\``Registrarse''. \\\textbf{2)-} Se abre la pantalla de creación de usuario. \\\textbf{3)-} El usuario ingresa los datos para el registro. Entre ellos \\ el nombre de usuario, contraseña, mail, sexo y edad (datos \\importantes en la posterior resolución de encuestas).\\ \textbf{4)-} El usuario no selecciona ``Usuario de Medicina''. \\\textbf{5)-} El usuario presiona sobre el botón ``Crear cuenta''. \\\textbf{6)-} El sistema invoca el CU007 ``Buscar Usuarios'' donde se \\validan los datos ingresados por el usuario. \\\textbf{7)-} El sistema invoca el CU005 donde se almacenan los datos del \\usuario. \\\textbf{8)-} Se vuelve a la pantalla de logueo de la aplicación y \\ finaliza el CU. \end{tabular}\\
+				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el actor presiona sobre el botón \\``Registrarse''. \\\textbf{2)-} Se abre la pantalla de creación de usuario. \\\textbf{3)-} El usuario ingresa los datos para el registro. Entre ellos \\ el nombre de usuario, contraseña, mail, sexo y edad (datos \\importantes en la posterior resolución de encuestas).\\ \textbf{4)-} El usuario no selecciona ``Usuario de Medicina''. \\\textbf{5)-} El usuario presiona sobre el botón ``Crear cuenta''. \\\textbf{6)-} El sistema invoca el CU007 ``Buscar Usuarios'' (Tabla \ref{tab:cu007}) \\donde se validan los datos ingresados por el usuario. \\\textbf{7)-} El sistema invoca el CU005 (Tabla \ref{tab:cu005}) donde se \\almacenan los datos del usuario. \\\textbf{8)-} Se vuelve a la pantalla de logueo de la aplicación y \\ finaliza el CU. \end{tabular}\\
 				\hline
 				
-				\textbf{Flujo alternativo} & \begin{tabular}{@{}l@{}} \textbf{4.1)-} El usuario selecciona ``Usuario de Medicina'', es decir el \\denominado ``usuario específico''. \\\textbf{4.2.1)-} El sistema invoca el CU004 ``Validar usuario específico''. \\\textbf{4.2.2)-} El sistema retorna al paso 5 del flujo principal. \\\textbf{5.1)-} El usuario presiona sobre el botón ``Cancelar''. \\\textbf{5.2)-} El sistema informa que los datos nos fueron cargados y \\se retorna al paso 8 del flujo principal. \\\textbf{7.1)-} El sistema informa los datos que se encuentren incorrectos \\y se retorna al paso 3 del flujo principal. \end{tabular} \\
+				\textbf{Flujo alternativo} & \begin{tabular}{@{}l@{}} \textbf{4.1)-} El usuario selecciona ``Usuario de Medicina'', es decir el \\denominado ``usuario específico''. \\\textbf{4.2.1)-} El sistema invoca el CU004 ``Validar usuario específico'' \\(Tabla \ref{tab:cu004}). \\\textbf{4.2.2)-} El sistema retorna al paso 5 del flujo principal. \\\textbf{5.1)-} El usuario presiona sobre el botón ``Cancelar''. \\\textbf{5.2)-} El sistema informa que los datos nos fueron cargados y \\se retorna al paso 8 del flujo principal. \\\textbf{7.1)-} El sistema informa los datos que se encuentren incorrectos \\y se retorna al paso 3 del flujo principal. \end{tabular} \\
 				\hline
 				
 			\end{tabular}
@@ -174,7 +174,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} & \begin{tabular}{@{}l@{}} Creación de usuario específico y obtención de funcionalidades \\propias. \end{tabular}\\
 				\hline
 				
-				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el CU003 invoca el tipo de usuario \\específico. \\\textbf{2)-} El sistema presenta un campo como código de validación \\para el registro de dicho tipo de usuario. \\\textbf{3)-} El sistema valida el código ingresado por el usuario. \\\textbf{4)-} El sistema permite la creación del usuario específico. \\\textbf{5)-} Finaliza el CU. \end{tabular}\\
+				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el CU003 (Tabla \ref{tab:cu003}) invoca el tipo \\de usuario específico. \\\textbf{2)-} El sistema presenta un campo como código de validación \\para el registro de dicho tipo de usuario. \\\textbf{3)-} El sistema valida el código ingresado por el usuario. \\\textbf{4)-} El sistema permite la creación del usuario específico. \\\textbf{5)-} Finaliza el CU. \end{tabular}\\
 				\hline
 				
 				\textbf{Flujo alternativo} &  \begin{tabular}{@{}l@{}} \textbf{4.1)-} El sistema no permite la creación del usuario específico. \\\textbf{4.2)-} El sistema retorna al paso 2 del flujo principal. \end{tabular}\\
@@ -207,7 +207,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} &  \begin{tabular}{@{}l@{}} Los datos de los usuarios se encontrarán almacenados en la base \\de datos. \end{tabular}\\
 				\hline
 				
-				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario presiona ``Crear Usuario'' en el \\CU003. \\\textbf{2)-} Se comprueba la conexión a la web. \\\textbf{3)-} Se envían los datos a la base de datos mediante el Web Service. \\\textbf{4)-} Se almacenan los datos en la base de datos y finaliza el CU. \end{tabular}\\
+				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario presiona ``Crear Usuario'' en el \\CU003 (Tabla \ref{tab:cu003}). \\\textbf{2)-} Se comprueba la conexión a la web. \\\textbf{3)-} Se envían los datos a la base de datos mediante el Web Service. \\\textbf{4)-} Se almacenan los datos en la base de datos y finaliza el CU. \end{tabular}\\
 				\hline
 				
 				\textbf{Flujo alternativo} & \begin{tabular}{@{}l@{}} \textbf{3.1)-} Se informa sobre la no conexión a la web. \\\textbf{3.2)-} No se permite crear el usuario y por ende no se almacenan \\los datos retornando al paso 1 del flujo principal. \end{tabular} \\
@@ -240,7 +240,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} &  Acceder a la pantalla principal de la aplicación.\\
 				\hline
 				
-				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando usuario ingresa sus datos en los campos \\``Nombre de usuario'' y ``Contraseña''. \\\textbf{2)-} El usuario presiona sobre el botón ``Iniciar Sesión''. \\\textbf{3)-} El sistema invoca el CU007 ``Buscar usuarios'' para validar \\los datos ingresados. \\\textbf{4)-} Se presenta la pantalla principal de la aplicación y finaliza \\el CU. \end{tabular}\\
+				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando usuario ingresa sus datos en los campos \\``Nombre de usuario'' y ``Contraseña''. \\\textbf{2)-} El usuario presiona sobre el botón ``Iniciar Sesión''. \\\textbf{3)-} El sistema invoca el CU007 ``Buscar usuarios'' (Tabla \ref{tab:cu007}) \\para validar los datos ingresados. \\\textbf{4)-} Se presenta la pantalla principal de la aplicación y finaliza \\el CU. \end{tabular}\\
 				\hline
 				
 				\textbf{Flujo alternativo} & \begin{tabular}{@{}l@{}} \textbf{2.1)-} El usuario sale de la aplicación y finaliza el CU. \\\textbf{4.1)-} Se informan los datos errónes y se vuelve al paso 1 del \\flujo principal. \end{tabular}\\
@@ -273,7 +273,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} &  Permitir el inicio de sesión o creación de una nueva cuenta.\\
 				\hline
 				
-				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU comienza cuando un usuario crea una cuenta (CU003) o \\inicia sesión (CU006). \\\textbf{2)-} Mediante Web Service el sistema busca todos los usuarios \\almacenados en la base de datos. \\\textbf{3)-} Se valida que los datos ingresados sean correctos. \\\textbf{4)-} Finaliza el CU. \end{tabular}\\
+				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU comienza cuando un usuario crea una cuenta (CU003 \\-Tabla \ref{tab:cu003}-) o inicia sesión (CU006 -Tabla \ref{tab:cu006}-). \\\textbf{2)-} Mediante Web Service el sistema busca todos los usuarios \\almacenados en la base de datos. \\\textbf{3)-} Se valida que los datos ingresados sean correctos. \\\textbf{4)-} Finaliza el CU. \end{tabular}\\
 				\hline
 				
 				\textbf{Flujo alternativo} &  \begin{tabular}{@{}l@{}} \textbf{3.1)-} Los datos ingresados son incorrectos \\\textbf{3.2)-} El sistema retorna al paso 1 del flujo principal. \end{tabular}\\
@@ -306,7 +306,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} &  \begin{tabular}{@{}l@{}} Obtener información de interés sobre distintos tópicos relacionados \\a la medicina y la salud. \end{tabular}\\
 				\hline
 				
-				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario presiona sobre el campo ``Noticias \\\& Informaciones''. \\\textbf{2)-} El sistema invoca el CU009 ``Buscar Noticias'', donde mediante \\Web Service trae todas aquellas noticias e informaciones activas. \\\textbf{3)-} Se muestran las distintas noticias a modo de lista, presentadas \\por un título y una breve descripción, finalizando el CU. \end{tabular}\\
+				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario presiona sobre el campo ``Noticias \\\& Informaciones''. \\\textbf{2)-} El sistema invoca el CU009 ``Buscar Noticias'' (Tabla \ref{tab:cu009}), donde \\mediante Web Service trae todas aquellas noticias e informaciones \\activas. \\\textbf{3)-} Se muestran las distintas noticias a modo de lista, presentadas \\por un título y una breve descripción, finalizando el CU. \end{tabular}\\
 				\hline
 				
 				\textbf{Flujo alternativo} &  \begin{tabular}{@{}l@{}} \textbf{3.1)-} Se informa la falta de conectividad y la imposibilidad de \\cargar las noticias, volviendo al paso 1 del flujo principal. \end{tabular}\\
@@ -339,7 +339,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} &  Cargar noticias e información en la sección correspondiente.\\
 				\hline
 				
-				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a la sección ``Noticias \\\& informaciones'' del CU008. \\\textbf{2)-} Mediante Web Service se traen todas aquellas noticias \\disponibles para lectura. \\\textbf{3)-} Se cargan las noticias y finaliza el CU. \end{tabular}\\
+				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a la sección ``Noticias \\\& informaciones'' del CU008 (Tabla \ref{tab:cu008}). \\\textbf{2)-} Mediante Web Service se traen todas aquellas noticias \\disponibles para lectura. \\\textbf{3)-} Se cargan las noticias y finaliza el CU. \end{tabular}\\
 				\hline
 				
 				\textbf{Flujo alternativo} &  \begin{tabular}{@{}l@{}} \textbf{3.1)-} Se informa la falta de conectividad y se retorna al paso 1 \\del flujo principal. \end{tabular}\\
@@ -372,10 +372,10 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} & Conocer las encuestas que se encuentran activas y poder resolverlas.\\
 				\hline
 				
-				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario presiona sobre el campo \\``Encuestas Disponibles''. \\\textbf{2)-} Se invoca el CU011 ``Buscar encuestas'' que trae todas aquellas \\que se encuentren activas y habilitadas. \\\textbf{3)-} Se muestran las encuestas a modo de lista mediante su título, \\restricciones, geolocalización y una breve descripción de la misma. \\\textbf{4)-} El usuario visualiza las encuestas disponibles y finaliza el CU. \end{tabular}\\
+				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario presiona sobre el campo \\``Encuestas Disponibles''. \\\textbf{2)-} Se invoca el CU011 ``Buscar encuestas'' (Tabla \ref{tab:cu011}) que trae \\ todas aquellas que se encuentren activas y habilitadas. \\\textbf{3)-} Se muestran las encuestas a modo de lista mediante su título, \\restricciones, geolocalización y una breve descripción de la misma. \\\textbf{4)-} El usuario visualiza las encuestas disponibles y finaliza el CU. \end{tabular}\\
 				\hline
 				
-				\textbf{Flujo alternativo} &  \begin{tabular}{@{}l@{}} \textbf{3.1)-} Se informa la falta de conectividad y la imposibilidad de \\cargar las encuestas. Vuelve al paso 1 del flujo principal. \\\textbf{4.1)-} El usuario presiona sobre una encuesta. \\\textbf{4.2.1)-} El sistema invoca el CU012 ``Resolver encuesta''. \\\textbf{4.2.2)-} El sistema retorna al paso 4 del flujo principal. \end{tabular}\\
+				\textbf{Flujo alternativo} &  \begin{tabular}{@{}l@{}} \textbf{3.1)-} Se informa la falta de conectividad y la imposibilidad de \\cargar las encuestas. Vuelve al paso 1 del flujo principal. \\\textbf{4.1)-} El usuario presiona sobre una encuesta. \\\textbf{4.2.1)-} El sistema invoca el CU012 ``Resolver encuesta'' (Tabla \ref{tab:cu012}). \\\textbf{4.2.2)-} El sistema retorna al paso 4 del flujo principal. \end{tabular}\\
 				\hline
 				
 			\end{tabular}
@@ -405,7 +405,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} &  Cargar encuestas en la sección correspondiente.\\
 				\hline
 				
-				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU se invoca cuando el usuario ingresa a la sección \\``Encuestas Disponibles'' (CU010) o ``Administrar Encuestas'' \\(CU017). \\\textbf{2)-} Mediante Web Service se traen de la base de datos todas \\aquellas encuestas que se encuentren activas. \\\textbf{3)-} Se cargan las encuestas y finaliza el CU. \end{tabular}\\
+				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU se invoca cuando el usuario ingresa a la sección \\``Encuestas Disponibles'' (CU010 -Tabla \ref{tab:cu010}-) o ``Administrar \\ Encuestas'' (CU017 -Tabla \ref{tab:cu017}-). \\\textbf{2)-} Mediante Web Service se traen de la base de datos todas \\aquellas encuestas que se encuentren activas. \\\textbf{3)-} Se cargan las encuestas y finaliza el CU. \end{tabular}\\
 				\hline
 				
 				\textbf{Flujo alternativo} & \begin{tabular}{@{}l@{}} \textbf{3.1)-}  El sistema informa la falta de conectividad y retorna al \\paso 1 del flujo principal. \end{tabular}\\
@@ -438,10 +438,10 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} &  Aportar datos a la estadística, sobre la encuesta en cuestión.\\
 				\hline
 				
-				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario presiona sobre la encuesta a \\resolver en el CU010. \\\textbf{2)-} El sistema valida que el usuario esté habilitado para resolverla y \\que todavía no lo haya hecho, invocando al CU013 ``Controlar y \\validar resolución de encuestas''. \\\textbf{3)-} Se abre la encuesta a resolver y se presenta en pantalla. \\\textbf{4)-} El usuario responde las preguntas y selecciona la opción que \\informa que se no encuentra en su residencia habitual, ingresando  \\manualmente las coordenadas de residencia, mediante el Place \\Picker de Google. \\\textbf{5)-} El sistema obtiene automáticamente los datos de interés del \\usuario que se almacenaran junto a las respuestas. \\\textbf{6)-} El usuario presiona sobre el botón ``Enviar encuesta''. \\\textbf{7)-} El sistema valida que los campos de respuesta cumplan con las \\condiciones. \\\textbf{8)-} El sistema invoca al CU015 ``Almacenar respuestas''. \\\textbf{9)-} Se retorna a la pantalla principal de la aplicación y finaliza \\el CU. \end{tabular}\\
+				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario presiona sobre la encuesta a \\resolver en el CU010 (Tabla \ref{tab:cu010}). \\\textbf{2)-} El sistema valida que el usuario esté habilitado para resolverla y \\que todavía no lo haya hecho, invocando al CU013 ``Controlar y \\validar resolución de encuestas'' (Tabla \ref{tab:cu013}). \\\textbf{3)-} Se abre la encuesta a resolver y se presenta en pantalla. \\\textbf{4)-} El usuario responde las preguntas y selecciona la opción que \\informa que se no encuentra en su residencia habitual, ingresando  \\manualmente las coordenadas de residencia, mediante el Place \\Picker de Google. \\\textbf{5)-} El sistema obtiene automáticamente los datos de interés del \\usuario que se almacenaran junto a las respuestas. \\\textbf{6)-} El usuario presiona sobre el botón ``Enviar encuesta''. \\\textbf{7)-} El sistema valida que los campos de respuesta cumplan con las \\condiciones. \\\textbf{8)-} El sistema invoca al CU015 ``Almacenar respuestas'' (Tabla \ref{tab:cu015}). \\\textbf{9)-} Se retorna a la pantalla principal de la aplicación y finaliza \\el CU. \end{tabular}\\
 				\hline
 				
-				\textbf{Flujo alternativo} & \begin{tabular}{@{}l@{}} \textbf{4.1)-} El usuario responde las preguntas y selecciona la opción \\que se encuentra en su residencia habitual. \\\textbf{4.2.1)-} El sistema invoca el CU014 ``Obtener geoubicación del \\usuario''. \\\textbf{4.2.2)-} El sistema retorna al paso 5 del flujo principal. \\\textbf{6.1)-} El usuario presiona sobre el botón ``Cancelar''. \\\textbf{6.2)-} Se retorna al paso 1 del flujo principal. \\\textbf{8.1)-} El sistema informa los campos incorrectos. \\\textbf{8.2)-} Se vuelve al paso 4 del flujo principal. \end{tabular} \\
+				\textbf{Flujo alternativo} & \begin{tabular}{@{}l@{}} \textbf{4.1)-} El usuario responde las preguntas y selecciona la opción \\que se encuentra en su residencia habitual. \\\textbf{4.2.1)-} El sistema invoca el CU014 ``Obtener geoubicación del \\usuario'' (Tabla \ref{tab:cu014}). \\\textbf{4.2.2)-} El sistema retorna al paso 5 del flujo principal. \\\textbf{6.1)-} El usuario presiona sobre el botón ``Cancelar''. \\\textbf{6.2)-} Se retorna al paso 1 del flujo principal. \\\textbf{8.1)-} El sistema informa los campos incorrectos. \\\textbf{8.2)-} Se vuelve al paso 4 del flujo principal. \end{tabular} \\
 				\hline
 				
 			\end{tabular}
@@ -471,7 +471,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} & Se permite al usuario responder la encuesta.\\
 				\hline
 				
-				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a responder una encuesta, \\invocada por el CU012. \\\textbf{2)-} Se validan las precondiciones de la encuesta en relación a los \\datos del usuario. \\\textbf{3)-} El sistema habilita al usuario a responder la encuesta. \\\textbf{4)-} Se abre la pantalla de resolución de encuesta y finaliza el CU. \end{tabular}\\
+				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a responder una encuesta, \\invocada por el CU012 (Tabla \ref{tab:cu012}). \\\textbf{2)-} Se validan las precondiciones de la encuesta en relación a los \\datos del usuario. \\\textbf{3)-} El sistema habilita al usuario a responder la encuesta. \\\textbf{4)-} Se abre la pantalla de resolución de encuesta y finaliza el CU. \end{tabular}\\
 				\hline
 				
 				\textbf{Flujo alternativo} & \begin{tabular}{@{}l@{}} \textbf{3.1)-} El sistema no habilita al usuario a responder la encuesta \\por no cumplir alguna precondición o ya haberla realizado. \\\textbf{3.2)-} Se informa al usuario que no puede resolver la misma. \\\textbf{3.3)-} El sistema retorna al paso 1 del flujo principal. \end{tabular}\\
@@ -537,7 +537,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} &  Los datos de resolución son almacenados en la base de datos.\\
 				\hline
 				
-				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando un usuario responde una encuesta invocado \\por el CU012 y CU016. \\\textbf{2)-} Se comprueba la conexión a la web. \\\textbf{3)-} Se envían los datos a la base de datos mediante el Web Service. \\\textbf{4)-} Se almacenan los datos en la base de datos y finaliza el CU. \end{tabular}\\
+				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando un usuario responde una encuesta invocado \\por el CU012 (Tabla \ref{tab:cu012}) y CU016 (Tabla \ref{tab:cu016}). \\\textbf{2)-} Se comprueba la conexión a la web. \\\textbf{3)-} Se envían los datos a la base de datos mediante el Web Service. \\\textbf{4)-} Se almacenan los datos en la base de datos y finaliza el CU. \end{tabular}\\
 				\hline
 				
 				\textbf{Flujo alternativo} &  \begin{tabular}{@{}l@{}} \textbf{3.1)-} Se informa sobre la no conexión a la web. \\\textbf{3.2)-} No se permite responder la encuesta y por lo tanto no se \\almacenan los datos en la base de datos, volviendo al paso 1 del \\flujo principal. \end{tabular}\\
@@ -570,7 +570,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} &  Aportar datos sobre la encuesta en cuestión.\\
 				\hline
 				
-				\textbf{Flujo principal} & \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario presiona sobre una encuesta. \\\textbf{2)-} Se abre la encuesta a resolver. \\\textbf{3)-} El usuario responde las preguntas. \\\textbf{4)-} Se ingresan manualmente datos sobre la persona encuestada, \\junto a sus coordenadas de residencia. \\\textbf{5)-} El usuario presiona sobre el botón ``Enviar encuesta''. \\\textbf{6)-} Se invoca el CU015 ``Almacenar respuestas''. \\\textbf{7)-} El sistema informa la correcta resolución. \\\textbf{8)-} Finaliza el CU. \end{tabular}\\
+				\textbf{Flujo principal} & \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario presiona sobre una encuesta. \\\textbf{2)-} Se abre la encuesta a resolver. \\\textbf{3)-} El usuario responde las preguntas. \\\textbf{4)-} Se ingresan manualmente datos sobre la persona encuestada, \\junto a sus coordenadas de residencia. \\\textbf{5)-} El usuario presiona sobre el botón ``Enviar encuesta''. \\\textbf{6)-} Se invoca el CU015 ``Almacenar respuestas'' (Tabla \ref{tab:cu015}). \\\textbf{7)-} El sistema informa la correcta resolución. \\\textbf{8)-} Finaliza el CU. \end{tabular}\\
 				\hline
 				
 				\textbf{Flujo alternativo} & \begin{tabular}{@{}l@{}} \textbf{5.1)-} El usuario presiona sobre el botón ``Cancelar''. \\\textbf{5.2)-} Se retorna al paso 1 del flujo principal. \\\textbf{7.1)-} El sistema informa los campos incorrectos. \\\textbf{7.2)-} Se retorna al paso 3 del flujo principal. \end{tabular} \\
@@ -603,10 +603,10 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} & Llevar una administración sobre las encuestas.\\
 				\hline
 				
-				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a la sección de \\administración de encuestas. \\\textbf{2)-} Se invoca el CU011 ``Buscar encuestas'' que trae todas aquellas \\que se encuentren activas. \\\textbf{3)-} Se muestran todas las encuestas a modo de lista.\\\textbf{4)-} El usuario presiona sobre alguna de las encuestas. \\\textbf{5)-} El sistema muestra las opciones y el usuario escoge una.\\\textbf{6)-} Finaliza el CU. \end{tabular}\\
+				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a la sección de \\administración de encuestas. \\\textbf{2)-} Se invoca el CU011 ``Buscar encuestas'' (Tabla \ref{tab:cu011}) que trae \\todas aquellas que se encuentren activas. \\\textbf{3)-} Se muestran todas las encuestas a modo de lista.\\\textbf{4)-} El usuario presiona sobre alguna de las encuestas. \\\textbf{5)-} El sistema muestra las opciones y el usuario escoge una.\\\textbf{6)-} Finaliza el CU. \end{tabular}\\
 				\hline
 				
-				\textbf{Flujo alternativo} &  \begin{tabular}{@{}l@{}} \textbf{3.1)-} Se informa la falta de conectividad y la imposibilidad de \\ cargar las encuestas. Vuelve al paso 1 del flujo principal.\\\textbf{5.1)-} El usuario presiona sobre la opción ``Crear Encuestas''. \\\textbf{5.1.1)-} El sistema invoca el CU020 para crear las encuestas. \\\textbf{5.1.2)-} Se retorna al paso 2 del flujo principal. \\\textbf{5.2)-} El usuario presiona sobre la opción ``Modificar Encuesta''. \\\textbf{5.2.1)-} El sistema invoca el CU018 para la modificación. \\\textbf{5.2.2)-} Se retorna al paso 2 del flujo principal. \\\textbf{5.3)-} El usuario presiona sobre la opción ``Eliminar Encuesta''. \\\textbf{5.3.1)-} El sistema invoca el CU019 para la eliminación. \\\textbf{5.3.2)-} Se retorna al paso 2 del flujo principal. \\\textbf{5.4)-} El usuario presiona sobre la opción ``Exportar Resultados''. \\\textbf{5.4.1)-} El sistema invoca el CU022 para la exportación. \\\textbf{5.4.2)-} Se retorna al paso 2 del flujo principal. \end{tabular}\\
+				\textbf{Flujo alternativo} &  \begin{tabular}{@{}l@{}} \textbf{3.1)-} Se informa la falta de conectividad y la imposibilidad de \\ cargar las encuestas. Vuelve al paso 1 del flujo principal.\\\textbf{5.1)-} El usuario presiona sobre la opción ``Crear Encuestas''. \\\textbf{5.1.1)-} El sistema invoca el CU020 (Tabla \ref{tab:cu020}) para el alta. \\\textbf{5.1.2)-} Se retorna al paso 2 del flujo principal. \\\textbf{5.2)-} El usuario presiona sobre la opción ``Modificar Encuesta''. \\\textbf{5.2.1)-} El sistema invoca el CU018 (Tabla \ref{tab:cu018}) para la modificación. \\\textbf{5.2.2)-} Se retorna al paso 2 del flujo principal. \\\textbf{5.3)-} El usuario presiona sobre la opción ``Eliminar Encuesta''. \\\textbf{5.3.1)-} El sistema invoca el CU019 (Tabla \ref{tab:cu019}) para la baja. \\\textbf{5.3.2)-} Se retorna al paso 2 del flujo principal. \\\textbf{5.4)-} El usuario presiona sobre la opción ``Exportar Resultados''. \\\textbf{5.4.1)-} El sistema invoca el CU022 (Tabla \ref{tab:cu022}) para la exportación. \\\textbf{5.4.2)-} Se retorna al paso 2 del flujo principal. \end{tabular}\\
 				\hline
 				
 			\end{tabular}
@@ -637,7 +637,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} &  Modificar los datos de una encuesta.\\
 				\hline
 				
-				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a ``Modificar encuesta'' \\dentro del CU017. \\\textbf{2)-} Se carga el formulario de modificación. \\\textbf{3)-} El usuario corrige los datos y validaciones que considere \\necesario. \\\textbf{4)-} El usuario presiona sobre ``Guardar cambios''. \\\textbf{5)-} El sistema valida que todos los datos ingresados sean correctos. \\\textbf{6)-} El sistema se conecta con la base de datos mediante Web \\Service. \\\textbf{7)-} Se actualiza correctamente la encuesta modificada. \\\textbf{8)-} Finaliza el CU. \end{tabular}\\
+				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a ``Modificar encuesta'' \\dentro del CU017 (Tabla \ref{tab:cu017}). \\\textbf{2)-} Se carga el formulario de modificación. \\\textbf{3)-} El usuario corrige los datos y validaciones que considere \\necesario. \\\textbf{4)-} El usuario presiona sobre ``Guardar cambios''. \\\textbf{5)-} El sistema valida que todos los datos ingresados sean correctos. \\\textbf{6)-} El sistema se conecta con la base de datos mediante Web \\Service. \\\textbf{7)-} Se actualiza correctamente la encuesta modificada. \\\textbf{8)-} Finaliza el CU. \end{tabular}\\
 				\hline
 				
 				\textbf{Flujo alternativo} &  \begin{tabular}{@{}l@{}} \textbf{4.1)-} El usuario presiona en ``Cancelar''. \\\textbf{4.2)-} El sistema retorna al paso 1 del flujo principal. \\\textbf{5.1)-} Se informan los datos incorrectos. \\\textbf{5.2)-} El sistema retorna al paso 5 del flujo principal. \\\textbf{7.1)-} Se informa la falta de conectividad y la imposibilidad de \\almacenar las modificaciones sobre la encuesta. \\\textbf{7.2)-} El sistema retorna al paso 3 del flujo principal. \end{tabular}\\
@@ -670,7 +670,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} &  Eliminación de una encuesta específica.\\
 				\hline
 				
-				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a ``Eliminar encuesta'' \\dentro del CU017. \\\textbf{2)-} El sistema genera un mensaje informativo sobre la encuesta a \\eliminar. \\\textbf{3)-} El usuario presiona sobre ``Aceptar''. \\\textbf{4)-} El sistema se conecta con la base de datos mediante Web \\Service. \\\textbf{5)-} Se elimina correctamente la encuesta de la base de datos. \\\textbf{6)-} Finaliza el CU. \end{tabular}\\
+				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a ``Eliminar encuesta'' \\dentro del CU017 (Tabla \ref{tab:cu017}). \\\textbf{2)-} El sistema genera un mensaje informativo sobre la encuesta a \\eliminar. \\\textbf{3)-} El usuario presiona sobre ``Aceptar''. \\\textbf{4)-} El sistema se conecta con la base de datos mediante Web \\Service. \\\textbf{5)-} Se elimina correctamente la encuesta de la base de datos. \\\textbf{6)-} Finaliza el CU. \end{tabular}\\
 				\hline
 				
 				\textbf{Flujo alternativo} &  \begin{tabular}{@{}l@{}} \textbf{3.1)-} El usuario presiona en ``Cancelar''. \\\textbf{3.2)-} El sistema retorna al paso 1 del flujo principal. \\\textbf{5.1)-} Se informa la falta de conectividad y la imposibilidad de \\eliminar la encuesta. \\\textbf{5.2)-} El sistema retorna al paso 1 del flujo principal. \end{tabular}\\
@@ -703,7 +703,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} &  Nuevas encuestas almacenadas para ser resueltas.\\
 				\hline
 				
-				\textbf{Flujo principal} & \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a ``Crear nueva encuesta'' \\del CU017. \\\textbf{2)-} Se carga el formulario de alta. \\\textbf{3)-} El usuario ingresa un título, una descripción, distintas preguntas \\a realizar y tipos de respuestas en cada una de ellas (por ejemplo, \\ multiple choice, única, textual, numérica, etc.). \\\textbf{4)-} El usuario ingresa las distintas validaciones a tener en cuenta \\para que las mismas puedan ser resueltas. \\\textbf{5)-} El usuario presiona sobre el botón ``Guardar''. \\\textbf{6)-} El sistema valida que todos los datos ingresados sean correctos. \\\textbf{7)-} El sistema se conecta con la base de datos mediante Web \\Service. \\\textbf{8)-} Se almacena correctamente la nueva encuesta. \\\textbf{9)-} Finaliza el CU. \end{tabular}\\
+				\textbf{Flujo principal} & \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a ``Crear nueva encuesta'' \\del CU017 (Tabla \ref{tab:cu017}). \\\textbf{2)-} Se carga el formulario de alta. \\\textbf{3)-} El usuario ingresa un título, una descripción, distintas preguntas \\a realizar y tipos de respuestas en cada una de ellas (por ejemplo, \\ multiple choice, única, textual, numérica, etc.). \\\textbf{4)-} El usuario ingresa las distintas validaciones a tener en cuenta \\para que las mismas puedan ser resueltas. \\\textbf{5)-} El usuario presiona sobre el botón ``Guardar''. \\\textbf{6)-} El sistema valida que todos los datos ingresados sean correctos. \\\textbf{7)-} El sistema se conecta con la base de datos mediante Web \\Service. \\\textbf{8)-} Se almacena correctamente la nueva encuesta. \\\textbf{9)-} Finaliza el CU. \end{tabular}\\
 				\hline
 				
 				\textbf{Flujo alternativo} & \begin{tabular}{@{}l@{}} \textbf{5.1)-} El usuario presiona en ``Cancelar''. \\\textbf{5.2)-} El sistema retorna al paso 1 del flujo principal. \\\textbf{6.1)-} Se informan los datos incorrectos. \\\textbf{6.2)-} El sistema retorna al paso 3 del flujo principal. \\\textbf{8.1)-} Se informa la falta de conectividad y la imposibilidad de \\almacenar la nueva encuesta. \\\textbf{8.2)-} El sistema retorna al paso 1 del flujo principal. \end{tabular} \\
@@ -736,7 +736,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} &  Tener una tentativa de respuestas hasta el momento. \\
 				\hline
 				
-				\textbf{Flujo principal} & \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a la opción ver estadísticas \\del CU017. \\\textbf{2)-} El sistema se conecta a la base de datos mediante el Web \\Service para la obtención de los resultados de dicha encuesta. \\\textbf{3)-} El sistema genera las estadísticas correspondientes. \\\textbf{4)-} Se presentan las estadísticas generales de la encuesta, como \\promedio de edad y sexo, y luego se realizan promedios y gráficos \\por cada pregunta individual. \\\textbf{5)-} El usuario presiona sobre una respuesta determinada y visualiza \\un mapa que distribuye las respuestas mediante marcadores. \end{tabular}  \\
+				\textbf{Flujo principal} & \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a la opción ver estadísticas \\del CU017 (Tabla \ref{tab:cu017}). \\\textbf{2)-} El sistema se conecta a la base de datos mediante el Web \\Service para la obtención de los resultados de dicha encuesta. \\\textbf{3)-} El sistema genera las estadísticas correspondientes. \\\textbf{4)-} Se presentan las estadísticas generales de la encuesta, como \\promedio de edad y sexo, y luego se realizan promedios y gráficos \\por cada pregunta individual. \\\textbf{5)-} El usuario presiona sobre una respuesta determinada y visualiza \\un mapa que distribuye las respuestas mediante marcadores. \end{tabular}  \\
 				\hline
 				
 				\textbf{Flujo alternativo} &  \begin{tabular}{@{}l@{}} \textbf{2.1)-} El sistema informa la falta de conectividad hacia la base \\de datos. \\\textbf{2.2)-} El sistema retorna al paso 1 del flujo principal. \\\textbf{5-1)-} La encuesta no es geolocalizada, por lo que al presionar cada \\pregunta no se realiza ninguna acción. \end{tabular} \\
@@ -769,7 +769,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} &  Archivo generado con los datos de la base de datos.\\
 				\hline
 				
-				\textbf{Flujo principal} & \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a la opción exportar \\datos del CU017. \\\textbf{2)-} El sistema se conecta a la base de datos mediante el Web \\Service para la obtención de los resultados. \\\textbf{3)-} El sistema genera el archivo Excel en segundo plano. \\\textbf{4)-} El archivo se almacena en la sección descargas del dispositivo.\end{tabular}\\
+				\textbf{Flujo principal} & \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a la opción exportar \\datos del CU017 (Tabla \ref{tab:cu017}). \\\textbf{2)-} El sistema se conecta a la base de datos mediante el Web \\Service para la obtención de los resultados. \\\textbf{3)-} El sistema genera el archivo Excel en segundo plano. \\\textbf{4)-} El archivo se almacena en la sección descargas del dispositivo.\end{tabular}\\
 				\hline
 				
 				\textbf{Flujo alternativo} &  \begin{tabular}{@{}l@{}} \textbf{2.1)-} El sistema informa la falta de conectividad hacia la base \\de datos. \\\textbf{2.2)-} El sistema retorna al paso 1 del flujo principal. \end{tabular}\\
@@ -802,10 +802,10 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} & Llevar una administración sobre las noticias e informaciones.\\
 				\hline
 				
-				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a la sección de Noticias  \\\& Informaciones. \\\textbf{2)-} Se invoca el CU009 ``Buscar noticias'' que trae todas aquellas \\que se encuentren cargadas. \\\textbf{3)-} Se muestran todas las noticias a modo de lista. \\\textbf{4)-} El usuario presiona sobre alguna de las noticias. \\\textbf{5)-} El sistema muestra las opciones y el usuario escoge una. \\\textbf{6)-} Finaliza el CU. \end{tabular} \\
+				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a la sección de Noticias  \\\& Informaciones. \\\textbf{2)-} Se invoca el CU009 ``Buscar noticias'' (Tabla \ref{tab:cu009}) que trae \\todas aquellas que se encuentren cargadas. \\\textbf{3)-} Se muestran todas las noticias a modo de lista. \\\textbf{4)-} El usuario presiona sobre alguna de las noticias. \\\textbf{5)-} El sistema muestra las opciones y el usuario escoge una. \\\textbf{6)-} Finaliza el CU. \end{tabular} \\
 				\hline
 				
-				\textbf{Flujo alternativo} &  \begin{tabular}{@{}l@{}} \textbf{3.1)-} Se informa la falta de conectividad y la imposibilidad de \\cargar las noticias. Vuelve al paso 1 del flujo principal. \\\textbf{5.1)-} El usuario presiona sobre la opción ``Crear N\&I''. \\\textbf{5.1.1)-} El sistema invoca el CU024 para la creación. \\\textbf{5.1.2)-} Se retorna al paso 2 del flujo principal. \\\textbf{5.2)-} El usuario presiona sobre la opción ?Eliminar?. \\\textbf{5.2.1)-} El sistema invoca el CU025 para la eliminación. \end{tabular} \\
+				\textbf{Flujo alternativo} &  \begin{tabular}{@{}l@{}} \textbf{3.1)-} Se informa la falta de conectividad y la imposibilidad de \\cargar las noticias. Vuelve al paso 1 del flujo principal. \\\textbf{5.1)-} El usuario presiona sobre la opción ``Crear N\&I''. \\\textbf{5.1.1)-} El sistema invoca el CU024 (Tabla \ref{tab:cu024}) para el alta. \\\textbf{5.1.2)-} Se retorna al paso 2 del flujo principal. \\\textbf{5.2)-} El usuario presiona sobre la opción ``Eliminar''. \\\textbf{5.2.1)-} El sistema invoca el CU025 (Tabla \ref{tab:cu025}) para la baja. \end{tabular} \\
 				\hline
 				
 			\end{tabular}
@@ -835,7 +835,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} &  Nueva N\&I almacenada para ser accedida.\\
 				\hline
 				
-				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a ``Crear N\&I'' del CU023. \\\textbf{2)-} Se carga el formulario de alta. \\\textbf{3)-} El usuario ingresa un título, una descripción y la URL que aloja \\el contenido. \\\textbf{4)-} El usuario presiona sobre el botón ``Guardar''. \\\textbf{5)-} El sistema valida que todos los datos ingresados sean correctos. \\\textbf{6)-} El sistema se conecta con la base de datos mediante Web \\Service. \\\textbf{7)-} Se almacena correctamente la información. \\\textbf{8)-} Finaliza el CU. \end{tabular} \\
+				\textbf{Flujo principal} &  \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a ``Crear N\&I'' del \\CU023 (Tabla \ref{tab:cu023}). \\\textbf{2)-} Se carga el formulario de alta. \\\textbf{3)-} El usuario ingresa un título, una descripción y la URL que aloja \\el contenido. \\\textbf{4)-} El usuario presiona sobre el botón ``Guardar''. \\\textbf{5)-} El sistema valida que todos los datos ingresados sean correctos. \\\textbf{6)-} El sistema se conecta con la base de datos mediante Web \\Service. \\\textbf{7)-} Se almacena correctamente la información. \\\textbf{8)-} Finaliza el CU. \end{tabular} \\
 				\hline
 				
 				\textbf{Flujo alternativo} & \begin{tabular}{@{}l@{}} \textbf{4.1)-} El usuario presiona en ``Cancelar''. \\\textbf{4.2)-} El sistema retorna al paso 1 del flujo principal. \\\textbf{5.1)-} Se informan los datos incorrectos. \\\textbf{5.2)-} El sistema retorna al paso 3 del flujo principal. \\\textbf{7.1)-} Se informa la falta de conectividad y la imposibilidad de \\almacenar la nueva información. \\\textbf{7.2)-} El sistema retorna al paso 1 del flujo principal. \end{tabular}  \\
@@ -868,7 +868,7 @@ Desde la Tabla \ref{tab:cu001} a la \ref{tab:cu025} se presentan las fichas de l
 				\textbf{Postcondiciones} &  Eliminación de una noticia o información específica.\\
 				\hline
 				
-				\textbf{Flujo principal} & \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a ``Eliminar'' dentro del \\CU023. \\\textbf{2)-} El sistema genera un mensaje informativo sobre la N\&I a \\eliminar. \\\textbf{3)-} El usuario presiona sobre ``Aceptar''. \\\textbf{4)-} El sistema se conecta con la base de datos mediante Web \\Service. \\\textbf{5)-} Se elimina correctamente la N\&I de la base de datos. \\\textbf{6)-} Finaliza el CU. \end{tabular}  \\
+				\textbf{Flujo principal} & \begin{tabular}{@{}l@{}} \textbf{1)-} El CU inicia cuando el usuario ingresa a ``Eliminar'' dentro del \\CU023 (Tabla \ref{tab:cu023}). \\\textbf{2)-} El sistema genera un mensaje informativo sobre la N\&I a \\eliminar. \\\textbf{3)-} El usuario presiona sobre ``Aceptar''. \\\textbf{4)-} El sistema se conecta con la base de datos mediante Web \\Service. \\\textbf{5)-} Se elimina correctamente la N\&I de la base de datos. \\\textbf{6)-} Finaliza el CU. \end{tabular}  \\
 				\hline
 				
 				\textbf{Flujo alternativo} & \begin{tabular}{@{}l@{}} \textbf{3.1)-} El usuario presiona en ``Cancelar''. \\\textbf{3.2)-} El sistema retorna al paso 1 del flujo principal. \\\textbf{5.1)-} Se informa la falta de conectividad y la imposibilidad de \\eliminar la N\&I. \\\textbf{5.2)-} El sistema retorna al paso 1 del flujo principal. \end{tabular}  \\

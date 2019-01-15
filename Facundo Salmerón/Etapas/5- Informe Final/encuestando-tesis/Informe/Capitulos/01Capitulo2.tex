@@ -138,7 +138,26 @@ Con la finalidad de mantener un correcto orden, en el Apéndice \ref{ap1:fichas-c
 Una vez definidos todos los requerimientos que harán frente a la problemática mencionada, a continuación se mencionarán las decisiones de implementación que se tomaron en relación a los lenguajes de programación y herramientas utilizadas, para poder llevar a cabo los mismos cumpliendo la propuesta de solución adecuadamente.
 \\
 
-En lo que corresponde al desarrollo del proyecto, se decidió separar al mismo en dos grandes módulos: el Web Service y la aplicación móvil Android. Como la temática principal está centrada sobre los datos de almacenamiento, tanto para el manejo de usuarios como para las encuestas y resoluciones en general, 
+En lo que corresponde al desarrollo del proyecto, se decidió desde un comienzo separar al mismo en dos grandes módulos: el Web Service y la aplicación móvil Android. Como la temática principal está centrada sobre los datos de almacenamiento, tanto para el manejo de usuarios como para las encuestas y resoluciones en general, se consideró llevar a cabo el diseño y desarrollo de un Web Service que tendrá como funcionalidad montarse por encima de la base de datos y permitir acceder a ella, plasmando toda la lógica de negocio allí.
+\\
+
+Por parte de la aplicación Android, en éste tipo de proyecto no es posible montar una base de datos interna, es decir utilizando la memoria RAM del dispositivo, ya que los datos están fuertemente ligados a la interacción de los usuarios. Es necesario de disponer un servidor central para el almacenamiento de usuarios y login por ejemplo, pero principalmente para el manejo de encuestas y resultados, ya que las mismas poseen un carácter dinámico partiendo de la creación de un determinado usuario para luego ser distribuidas y resueltas por el resto de la comunidad. 
+\\
+
+Al poseer la lógica de negocios dentro del Web Service, la aplicación deberá consumir los servicios que el mismo expone para llevar adelante todas las funcionalidades establecidas, es por ello que sólo puede ser llevado a cabo por dispositivos que poseen acceso a Internet. De esta forma, la app queda abstraída de toda la lógica, haciendo que el día de mañana al querer realizar cambios sobre los mismos no sea necesario re-lanzar una nueva versión, la cual luego debería ser actualizada individualmente por cada usuario que la tenga instalada.
+
+%------------------------------------------------------------------
+\subsection{Lenguaje de programación}
+%-------------------------------------------------------------------
+\label{cap2:subsec:lenguaje-programacion}
+
+Para llevar adelante el desarrollo de la aplicación móvil se escogió el lenguaje de programación Java. Es muy conocido en el ambiente de programación Android, por ser un lenguaje que tiene una comunidad bastante grande y sobre todo una comunidad con bastante experiencia en el desarrollo de software. Java juega un papel sobre todo en la parte de soporte de casi para cualquier cosa.
+\\
+
+En los últimos años apareció el lenguaje de programación Kotlin, el cual fue adoptado por Google como lenguaje oficial de desarrollo Android. Para los fines prácticos del proyecto, los resultados podrían ser alcanzados utilizando tanto Java como Kotlin. Sin embargo, éste último al poseer pocos años dentro del mercado, la cantidad de información disponible en la web es muy escasa, haciendo que a la hora de escoger entre los mencionados la decisión se incline por Java.
+\\
+
+En cuanto al desarrollo del Web Service, la distribución de posibilidades a la hora de elegir un lenguaje de programación es más variada en relación a la aplicación móvil. Inicialmente se priorizó a los lenguajes compilados por sobre los interpretados, por poseer mayor velocidad de ejecución e implementaciones más robustas; y aquellos lenguajes orientados a objetos, ya que son más sencillos de mantener y se posee mayor fiabilidad al dividir el problema en pequeñas partes, pudiendo ser probadas de manera independiente.
 
 
 \newpage

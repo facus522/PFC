@@ -1,7 +1,7 @@
 \begin{thebibliography}{1}
 
 \bibitem{itemsImportancia}
-M.~P. C.~Cejas and D.~Ferrante.
+A.~M. C.~Cejas, M.~Pen{\'e} and D.~Ferrante.
 \newblock {\em Evaluar para seguir adelante: Resultados del Programa Redes}.
 \newblock Cobertura Universal de Salud, 2016.
 
@@ -11,6 +11,11 @@ Cronista.
   poblaci{\'o}n mundial.
 \newblock \url{https://bit.ly/2rWYLGr}.
 \newblock Accedido: 13/12/2018.
+
+\bibitem{javaLibro}
+J.~M.~L. de~Guevara.
+\newblock {\em Fundamentos de Programaci{\'o}n en Java}.
+\newblock Editorial EME, 2012.
 
 \bibitem{introduccionTICS}
 E.~Lizarralde.

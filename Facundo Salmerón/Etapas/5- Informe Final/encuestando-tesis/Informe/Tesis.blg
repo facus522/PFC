@@ -7,49 +7,49 @@ A level-1 auxiliary file: Cascaras/resumen.aux
 A level-1 auxiliary file: Cascaras/prefacio.aux
 A level-1 auxiliary file: TeXiS/TeXiS_toc.aux
 A level-1 auxiliary file: Capitulos/01Capitulo1.aux
+A level-1 auxiliary file: Capitulos/01Capitulo2.aux
 A level-1 auxiliary file: Cascaras/bibliografia.aux
 The style file: abbrv.bst
-A level-1 auxiliary file: TeXiS/TeXiS_acron.aux
-A level-1 auxiliary file: Apendices/ParteAnexos.aux
+A level-1 auxiliary file: Apendices/01ApendiceA.aux
 Database file #1: citasCapitulo1.bib
-You've used 6 entries,
+You've used 7 entries,
             2118 wiz_defined-function locations,
-            544 strings with 5041 characters,
-and the built_in function-call counts, 1422 in all, are:
-= -- 136
-> -- 48
+            550 strings with 5167 characters,
+and the built_in function-call counts, 1637 in all, are:
+= -- 155
+> -- 55
 < -- 0
-+ -- 20
-- -- 14
-* -- 59
-:= -- 248
-add.period$ -- 21
-call.type$ -- 6
-change.case$ -- 23
++ -- 23
+- -- 16
+* -- 67
+:= -- 286
+add.period$ -- 24
+call.type$ -- 7
+change.case$ -- 26
 chr.to.int$ -- 0
-cite$ -- 6
-duplicate$ -- 56
-empty$ -- 138
-format.name$ -- 14
-if$ -- 302
+cite$ -- 7
+duplicate$ -- 68
+empty$ -- 160
+format.name$ -- 16
+if$ -- 348
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 5
-newline$ -- 36
-num.names$ -- 12
-pop$ -- 49
+int.to.str$ -- 7
+missing$ -- 7
+newline$ -- 41
+num.names$ -- 14
+pop$ -- 57
 preamble$ -- 1
-purify$ -- 19
+purify$ -- 22
 quote$ -- 0
-skip$ -- 35
+skip$ -- 41
 stack$ -- 0
-substring$ -- 55
-swap$ -- 6
+substring$ -- 60
+swap$ -- 7
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 20
+type$ -- 22
 warning$ -- 0
-while$ -- 14
-width$ -- 7
-write$ -- 66
+while$ -- 16
+width$ -- 8
+write$ -- 76

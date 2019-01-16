@@ -6,23 +6,26 @@
 \BOOKMARK [1][-]{tabla de contenidos.1}{Tabla de contenidos}{indices.0}% 6
 \BOOKMARK [1][-]{indice de figuras.1}{\315ndice de figuras}{indices.0}% 7
 \BOOKMARK [1][-]{indice de tablas.1}{\315ndice de tablas}{indices.0}% 8
-\BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}% 9
-\BOOKMARK [1][-]{section.1.1}{Motivaci\363n}{chapter.1}% 10
-\BOOKMARK [1][-]{section.1.2}{Justificaci\363n}{chapter.1}% 11
-\BOOKMARK [1][-]{section.1.3}{Objetivos}{chapter.1}% 12
-\BOOKMARK [2][-]{subsection.1.3.1}{Objetivos generales}{section.1.3}% 13
-\BOOKMARK [2][-]{subsection.1.3.2}{Objetivos espec\355ficos}{section.1.3}% 14
-\BOOKMARK [1][-]{section.1.4}{Alcance}{chapter.1}% 15
-\BOOKMARK [1][-]{section.1.5}{Tecnolog\355as utilizadas}{chapter.1}% 16
-\BOOKMARK [2][-]{subsection.1.5.1}{Hardware}{section.1.5}% 17
-\BOOKMARK [2][-]{subsection.1.5.2}{Software}{section.1.5}% 18
-\BOOKMARK [0][-]{chapter.2}{An\341lisis y fundamentos te\363ricos}{}% 19
-\BOOKMARK [1][-]{section.2.1}{An\341lisis del problema}{chapter.2}% 20
-\BOOKMARK [2][-]{subsection.2.1.1}{Diagramas de casos de uso}{section.2.1}% 21
-\BOOKMARK [2][-]{subsection.2.1.2}{Definici\363n de casos de uso}{section.2.1}% 22
-\BOOKMARK [2][-]{subsection.2.1.3}{Requerimientos funcionales}{section.2.1}% 23
-\BOOKMARK [2][-]{subsection.2.1.4}{Requerimientos no funcionales}{section.2.1}% 24
-\BOOKMARK [1][-]{section.2.2}{Elecciones de implementaci\363n}{chapter.2}% 25
-\BOOKMARK [2][-]{subsection.2.2.1}{Lenguaje de programaci\363n}{section.2.2}% 26
-\BOOKMARK [0][-]{chapter*.9}{Bibliograf\355a}{}% 27
-\BOOKMARK [0][-]{appendix.Alph1}{Fichas de casos de uso}{}% 28
+\BOOKMARK [-1][-]{part.1}{I Conceptos b\341sicos}{}% 9
+\BOOKMARK [0][-]{chapter.1}{Introducci\363n}{part.1}% 10
+\BOOKMARK [1][-]{section.1.1}{Motivaci\363n}{chapter.1}% 11
+\BOOKMARK [1][-]{section.1.2}{Justificaci\363n}{chapter.1}% 12
+\BOOKMARK [1][-]{section.1.3}{Objetivos}{chapter.1}% 13
+\BOOKMARK [2][-]{subsection.1.3.1}{Objetivos generales}{section.1.3}% 14
+\BOOKMARK [2][-]{subsection.1.3.2}{Objetivos espec\355ficos}{section.1.3}% 15
+\BOOKMARK [1][-]{section.1.4}{Alcance}{chapter.1}% 16
+\BOOKMARK [1][-]{section.1.5}{Tecnolog\355as utilizadas}{chapter.1}% 17
+\BOOKMARK [2][-]{subsection.1.5.1}{Hardware}{section.1.5}% 18
+\BOOKMARK [2][-]{subsection.1.5.2}{Software}{section.1.5}% 19
+\BOOKMARK [0][-]{chapter.2}{An\341lisis y fundamentos te\363ricos}{part.1}% 20
+\BOOKMARK [1][-]{section.2.1}{An\341lisis del problema}{chapter.2}% 21
+\BOOKMARK [2][-]{subsection.2.1.1}{Diagramas de casos de uso}{section.2.1}% 22
+\BOOKMARK [2][-]{subsection.2.1.2}{Definici\363n de casos de uso}{section.2.1}% 23
+\BOOKMARK [2][-]{subsection.2.1.3}{Requerimientos funcionales}{section.2.1}% 24
+\BOOKMARK [2][-]{subsection.2.1.4}{Requerimientos no funcionales}{section.2.1}% 25
+\BOOKMARK [1][-]{section.2.2}{Elecciones de implementaci\363n}{chapter.2}% 26
+\BOOKMARK [2][-]{subsection.2.2.1}{Lenguaje de programaci\363n}{section.2.2}% 27
+\BOOKMARK [1][-]{section.2.3}{Conceptos del lado del servidor}{chapter.2}% 28
+\BOOKMARK [-1][-]{chapter*.10}{Bibliograf\355a}{}% 29
+\BOOKMARK [-1][-]{part.2}{II Ap\351ndices}{}% 30
+\BOOKMARK [0][-]{appendix.Alph1}{Fichas de casos de uso}{part.2}% 31

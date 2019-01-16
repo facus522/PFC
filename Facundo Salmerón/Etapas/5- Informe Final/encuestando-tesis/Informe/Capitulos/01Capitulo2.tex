@@ -151,13 +151,39 @@ Al poseer la lógica de negocios dentro del Web Service, la aplicación deberá con
 %-------------------------------------------------------------------
 \label{cap2:subsec:lenguaje-programacion}
 
-Para llevar adelante el desarrollo de la aplicación móvil se escogió el lenguaje de programación Java. Es muy conocido en el ambiente de programación Android, por ser un lenguaje que tiene una comunidad bastante grande y sobre todo una comunidad con bastante experiencia en el desarrollo de software. Java juega un papel sobre todo en la parte de soporte de casi para cualquier cosa.
+Para llevar adelante el desarrollo de la aplicación móvil se escogió el lenguaje de programación Java. Es muy conocido en el ambiente de programación Android, por ser un lenguaje que tiene una comunidad bastante grande y sobre todo una comunidad con bastante experiencia en el desarrollo de software. Java juega un papel muy importante, principalmente en el soporte ante casi cualquier eventualidad presentada.
 \\
 
 En los últimos años apareció el lenguaje de programación Kotlin, el cual fue adoptado por Google como lenguaje oficial de desarrollo Android. Para los fines prácticos del proyecto, los resultados podrían ser alcanzados utilizando tanto Java como Kotlin. Sin embargo, éste último al poseer pocos años dentro del mercado, la cantidad de información disponible en la web es muy escasa, haciendo que a la hora de escoger entre los mencionados la decisión se incline por Java.
 \\
 
-En cuanto al desarrollo del Web Service, la distribución de posibilidades a la hora de elegir un lenguaje de programación es más variada en relación a la aplicación móvil. Inicialmente se priorizó a los lenguajes compilados por sobre los interpretados, por poseer mayor velocidad de ejecución e implementaciones más robustas; y aquellos lenguajes orientados a objetos, ya que son más sencillos de mantener y se posee mayor fiabilidad al dividir el problema en pequeñas partes, pudiendo ser probadas de manera independiente.
+En cuanto al desarrollo del Web Service, la distribución de posibilidades a la hora de elegir un lenguaje de programación es más variada en relación a la aplicación móvil. Para partir de un análisis, inicialmente se priorizó aquellos lenguajes compilados por sobre los interpretados, por poseer mayor velocidad de ejecución e implementaciones más robustas; y aquellos lenguajes orientados a objetos, ya que son más sencillos de mantener y se posee mayor fiabilidad al dividir el problema en pequeñas partes, pudiendo ser probadas de manera independiente.
+\\
+
+Analizando la propuesta de solución establecida anteriormente, donde la aplicación móvil tiene como finalidad consumir los servicios de un Web Service y éste a su vez mantiene las conexiones pertinentes con la base de datos, el modelo correcto a implementar es del estilo MVC (Modelo Vista Controlador). En el controlador se presentarán todos los \textit{endpoints} que serán accedidos por la aplicación mediante peticiones HTTP, los cuáles a su vez están relacionados con los servicios y modelos de datos.
+\\
+
+Para llevar adelante el modelo establecido, mediante investigaciones previas y por experiencia personal del ejecutor del proyecto en trabajos anteriores, se determinó que mediante la integración de los frameworks Spring y Hibernate, es posible cubrir todo el ciclo de vida del modelo MVC (en capítulos posteriores se brindarán más detalles de dichas elecciones). Dentro de los lenguajes compilados y orientados a objetos, dichos frameworks son compatibles tanto para Java como .NET. En la actualidad, ambos lenguajes son altamente utilizados en el mercado para el desarrollo de aplicaciones web backend, por lo cual el soporte y la documentación no serían un inconveniente.
+\\
+
+Se estableció que la implementación del Web Service sea llevada adelante bajo el lenguaje de programación Java. Más allá de la experiencia del desarrollador del proyecto utilizando el mismo, lo cuál permite no consumir tiempo extra en el aprendizaje de una nueva tecnología, se determinó que posee mayor portabilidad. Es decir, Java puede ser utilizado desde varios entornos de desarrollo integrado (IDE), cualquier sistema operativo y puede ser compilado por cualquier contenedor de servlets. En este caso .NET cuenta solamente con el IDE Visual Studio como oficial, el cuál puede ser ejecutado únicamente en plataformas con sistema operativo Windows de forma nativa, haciendo que ciertas funcionalidades no se encuentren disponibles en forma gratuita. 
+\\
+
+Por lo tanto, la máquina virtual de Java (JVM) se sitúa en un nivel superior al hardware del sistema sobre el que se pretende ejecutar la aplicación, y éste actúa como puente que entiende tanto el bytecode (programa Java compilado) como el sistema sobre el que se pretende ejecutar (Figura \ref{fig:jvm}). Entonces, cuando se escribe una aplicación Java se hace pensando que será ejecutada en una máquina virtual Java en concreto, siendo ésta la que en última instancia convierte de código bytecode a código nativo del dispositivo final, es decir pudiendo ser interpretado por cualquier sistema operativo \cite{javaLibro}.
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/jvm}
+		\caption{Máquina virtual Java - JVM}
+		\label{fig:jvm}
+	\end{center}
+\end{figure}
+
+%------------------------------------------------------------------
+\section{Conceptos del lado del servidor}
+%-------------------------------------------------------------------
+\label{cap2:sec:conceptos-servidor}
 
 
 \newpage

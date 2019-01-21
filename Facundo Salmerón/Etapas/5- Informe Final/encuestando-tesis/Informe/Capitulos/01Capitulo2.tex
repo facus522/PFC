@@ -185,6 +185,71 @@ Por lo tanto, la máquina virtual de Java (JVM) se sitúa en un nivel superior al 
 %-------------------------------------------------------------------
 \label{cap2:sec:conceptos-servidor}
 
+Tal como se especificó anteriormente, desde la aplicación será necesaria la conexión a Internet para lograr el acceso a la base de datos. La propuesta de solución corresponde a una arquitectura cliente-servidor de 3 capas, la cuál se verá con más detalles en el capítulo posterior.
+\\
+
+La metodología de trabajo que posee ésta arquitectura, es un cliente realizando peticiones (mediante el dispositivo móvil) hacia un servidor (Web Service) que se encargará de enviar las respuestas (Figura \ref{fig:cliente-servidor}). Dichas peticiones serán bajo el protocolo \textit{HTTP} y el formato de respuestas \textit{JSON}, los cuales serán ampliados en el presente capítulo.
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/cliente_servidor}
+		\caption{Cliente - Servidor}
+		\label{fig:cliente-servidor}
+	\end{center}
+\end{figure}
+
+%------------------------------------------------------------------
+\subsection{Arquitectura}
+%-------------------------------------------------------------------
+\label{cap2:subsec:arquitectura-ws}
+
+Como se mencionó anteriormente, el servidor se encontrará desplegado en el Web Service. Dicho Web Service es un conjunto de protocolos y estándares que sirven para intercambiar datos entre aplicaciones. Éstas aplicaciones pueden estar desarrolladas en diferentes lenguajes de programación y siendo ejecutadas bajo cualquier plataforma de manera indiferente \cite{webServiceLibro}.
+\\
+
+Dentro de las ventajas que abarca la utilización de un Web Service, se mencionan las siguientes:
+\begin{itemize}
+	
+	\item Aportan interoperabilidad entre aplicaciones de software independientemente de sus propiedades o de las plataformas sobre las que se instalen.
+	
+	\item Brindan abstracción, siendo totalmente independiente de la base de datos y el cliente, por lo que un cambio en la lógica de negocios no afectaría a ninguno de ellos.
+	
+	\item Fomentan los estándares y protocolos basados en texto, que hacen más fácil acceder a su contenido y entender su funcionamiento.
+	
+	\item Al apoyarse en HTTP, los Web Service pueden aprovecharse de los sistemas de seguridad firewall sin necesidad de cambiar las reglas de filtrado.
+	
+\end{itemize}	
+
+Para su creación, es fundamental definir qué tipo de arquitectura será la más apropiada para la propuesta de solución. Dentro de las disyuntivas, tenemos los siguientes tipos:
+
+\begin{itemize}
+	
+	\item \textbf{\textit{SOAP}} (Simple Object Access Protocol): éste protocolo estándar define como dos objetos en diferentes procesos pueden comunicarse por medio de intercambios de datos XML. Los servicios SOAP funcionan por lo general bajo el protocolo HTTP (más común), aunque no está limitado solamente a éste, pudiendo trabajar con protocolos FTP, POP3, TCP, entre otros. SOAP es una arquitectura muy robusta y con gran seguridad, pero a su vez bastante pesada, tanto en tamaño como en procesamiento.
+	
+	\item \textbf{\textit{REST}} (Representational State Transfer): ésta arquitectura es más nueva en relación a la anterior. Se puede mencionar que la misma es mucho más flexible y transporta datos mediante el protocolo HTTP, pudiendo utilizar los distintos métodos que proporciona el mismo  para la comunicación como el GET, POST, PUT, etc. Gracias a su flexibilidad permite transportar cualquier tipo de datos, como pueden ser XML, JSON, binarios, etc.
+	
+\end{itemize}
+
+Por lo tanto, se estableció que el tipo de Web Service a implementar sea bajo la arquitectura REST, ya que se adapta a las necesidades del proyecto, es más sencillo y rápido de implementar.
+\\
+
+Como se mencionó, SOAP solamente permite el formato XML lo cual lo hace más pesado en relación a REST, donde en éste último se pueden enviar los datos mediante JSON (JavaScript Object Notation) por ejemplo. Brindando de ésta forma una mayor flexibilidad y mejor performance, ya que éstos tipos de datos son mucho más livianos en peso y más rápidos para su procesamiento por no requerir de etiquetas como en XML, además de poseer mayor soporte y ser de más fácil lectura.
+\\
+
+Una de las ventajas que posee el protocolo SOAP es su mayor seguridad para el transporte de datos, lo cual puede ser subsanado en gran parte por la arquitectura REST, mediante el protocolo de transferencia HTTPS (Protocolo seguro de transferencia de hipertexto). Como ya se mencionó anteriormente, al estar basados en este protocolo, se pueden utilizar los distintos métodos que proporciona para  el intercambio de datos, como por ejemplo, las peticiones GET realizando consultas al servidor y enviando las respuestas por el mismo canal, peticiones POST para almacenamientos, PUT para actualizaciones, entre otras, que van a ser de gran utilidad a lo largo del  proyecto. Cada mensaje HTTP contiene toda la información necesaria para ejecutar la petición por lo tanto no se requiere guardar ningún tipo de estado de la comunicación sino que todas son independientes entre sí.
+\\
+
+Sin tener que depender de una definición WSDL (Web Services Description Language), los WS REST proveen una sintaxis universal de modo tal que cada recurso que posee se pueda direccionar de forma unívoca a través de la URI, el cual es una combinación entre la URL y la URN (Uniform Resource Name), que identifica el nombre del recurso en la red en cuestión.
+
+%------------------------------------------------------------------
+\subsection{Protocolo HTTP}
+%-------------------------------------------------------------------
+\label{cap2:subsec:protocolo-HTTP}
+El Protocolo de Transferencia de Hipertexto (HTTP), es el protocolo de comunicación que permite las transferencias de información en la World Wide Web. Es un protocolo del tipo cliente-servidor, lo que significa que el cliente envía una petición al servidor y espera un mensaje de respuesta del mismo. Es un protocolo sin estado, lo que significa que el servidor no guarda información del cliente, cada petición es independiente de las demás.
+\\
+
+Un mensaje HTTP, sin importar si es 
+https://blog.makeitreal.camp/el-protocolo-http/
 
 \newpage
 \thispagestyle{empty}

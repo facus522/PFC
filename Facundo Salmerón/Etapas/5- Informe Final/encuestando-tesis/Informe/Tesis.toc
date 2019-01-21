@@ -1,7 +1,6 @@
 \babel@toc {spanish}{}
 \contentsline {chapter}{Agradecimientos}{\es@scroman {v}}{chapter*.1}
 \contentsline {chapter}{Resumen}{\es@scroman {vii}}{chapter*.2}
-\contentsline {chapter}{Prefacio}{\es@scroman {ix}}{chapter*.3}
 \contentsline {part}{I\hspace {1em}Conceptos b\'asicos}{1}{part.1}
 \contentsline {chapter}{\numberline {1}Introducci\'on}{2}{chapter.1}
 \contentsline {section}{\numberline {1.1}Motivaci\'on}{2}{section.1.1}
@@ -21,7 +20,9 @@
 \contentsline {subsection}{\numberline {2.1.4}Requerimientos no funcionales}{12}{subsection.2.1.4}
 \contentsline {section}{\numberline {2.2}Elecciones de implementaci\'on}{12}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Lenguaje de programaci\'on}{13}{subsection.2.2.1}
-\contentsline {section}{\numberline {2.3}Conceptos del lado del servidor}{14}{section.2.3}
-\contentsline {part}{Bibliograf\IeC {\'\i }a}{16}{chapter*.10}
-\contentsline {part}{II\hspace {1em}Ap\'endices}{17}{part.2}
-\contentsline {chapter}{\numberline {A}Fichas de casos de uso}{18}{appendix.Alph1}
+\contentsline {section}{\numberline {2.3}Conceptos del lado del servidor}{15}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Arquitectura}{15}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Protocolo HTTP}{16}{subsection.2.3.2}
+\contentsline {part}{Bibliograf\IeC {\'\i }a}{19}{chapter*.10}
+\contentsline {part}{II\hspace {1em}Ap\'endices}{20}{part.2}
+\contentsline {chapter}{\numberline {A}Fichas de casos de uso}{21}{appendix.Alph1}

@@ -4,52 +4,55 @@ The top-level auxiliary file: Tesis.aux
 A level-1 auxiliary file: Cascaras/cover.aux
 A level-1 auxiliary file: Cascaras/agradecimientos.aux
 A level-1 auxiliary file: Cascaras/resumen.aux
-A level-1 auxiliary file: Cascaras/prefacio.aux
 A level-1 auxiliary file: TeXiS/TeXiS_toc.aux
+A level-1 auxiliary file: Capitulos/Parte1.aux
 A level-1 auxiliary file: Capitulos/01Capitulo1.aux
 A level-1 auxiliary file: Capitulos/01Capitulo2.aux
 A level-1 auxiliary file: Cascaras/bibliografia.aux
 The style file: abbrv.bst
+A level-1 auxiliary file: Apendices/ParteApendices.aux
 A level-1 auxiliary file: Apendices/01ApendiceA.aux
 Database file #1: citasCapitulo1.bib
-You've used 7 entries,
+Warning--empty publisher in webServiceLibro
+You've used 8 entries,
             2118 wiz_defined-function locations,
-            550 strings with 5167 characters,
-and the built_in function-call counts, 1637 in all, are:
-= -- 155
-> -- 55
+            555 strings with 5275 characters,
+and the built_in function-call counts, 1889 in all, are:
+= -- 176
+> -- 68
 < -- 0
-+ -- 23
-- -- 16
-* -- 67
-:= -- 286
-add.period$ -- 24
-call.type$ -- 7
-change.case$ -- 26
++ -- 28
+- -- 20
+* -- 81
+:= -- 329
+add.period$ -- 27
+call.type$ -- 8
+change.case$ -- 30
 chr.to.int$ -- 0
-cite$ -- 7
-duplicate$ -- 68
-empty$ -- 160
-format.name$ -- 16
-if$ -- 348
+cite$ -- 9
+duplicate$ -- 80
+empty$ -- 182
+format.name$ -- 20
+if$ -- 400
 int.to.chr$ -- 0
-int.to.str$ -- 7
-missing$ -- 7
-newline$ -- 41
-num.names$ -- 14
-pop$ -- 57
+int.to.str$ -- 8
+missing$ -- 9
+newline$ -- 46
+num.names$ -- 16
+pop$ -- 67
 preamble$ -- 1
-purify$ -- 22
+purify$ -- 26
 quote$ -- 0
-skip$ -- 41
+skip$ -- 48
 stack$ -- 0
-substring$ -- 60
-swap$ -- 7
+substring$ -- 65
+swap$ -- 8
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 22
-warning$ -- 0
-while$ -- 16
-width$ -- 8
-write$ -- 76
+type$ -- 24
+warning$ -- 1
+while$ -- 18
+width$ -- 9
+write$ -- 85
+(There was 1 warning)

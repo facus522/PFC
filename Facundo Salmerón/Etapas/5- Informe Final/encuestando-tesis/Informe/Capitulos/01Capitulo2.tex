@@ -181,6 +181,21 @@ Por lo tanto, la máquina virtual de Java (JVM) se sitúa en un nivel superior al 
 \end{figure}
 
 %------------------------------------------------------------------
+\subsection{Lenguajes compilados}
+%-------------------------------------------------------------------
+\label{cap2:subsec:lenguajes-compilados}
+
+Como se especificó previamente, para llevar adelante el desarrollo del Web Service se optó por la utilización de un lenguaje compilado por sobre uno interpretado. Los lenguajes de programación compilados son aquellos cuyo código fuente, escrito en un lenguaje de alto nivel, es traducido por un compilador a un archivo ejecutable entendible para la máquina en determinada plataforma. Con ese archivo se puede ejecutar el programa cuantas veces sea necesario sin tener que repetir el proceso por lo que el tiempo de espera entre ejecución y ejecución es ínfimo.
+\\
+
+Se marca una diferencia por sobre los lenguajes interpretados, ya que éstos últimos ejecutan paso a paso el código fuente sin llevar a cabo ninguna traducción en la pre-ejecución. Ésto hace que se genere luego una sobrecarga en el proceso de traducción reduciendo la velocidad en tiempo de ejecución.
+
+%------------------------------------------------------------------
+\subsection{Paradigma orientado a objetos}
+%-------------------------------------------------------------------
+\label{cap2:subsec:orientado-objetos}
+
+%------------------------------------------------------------------
 \section{Conceptos del lado del servidor}
 %-------------------------------------------------------------------
 \label{cap2:sec:conceptos-servidor}
@@ -224,9 +239,9 @@ Para su creación, es fundamental definir qué tipo de arquitectura será la más ap
 
 \begin{itemize}
 	
-	\item \textbf{\textit{SOAP}} (Simple Object Access Protocol): éste protocolo estándar define como dos objetos en diferentes procesos pueden comunicarse por medio de intercambios de datos XML. Los servicios SOAP funcionan por lo general bajo el protocolo HTTP (más común), aunque no está limitado solamente a éste, pudiendo trabajar con protocolos FTP, POP3, TCP, entre otros. SOAP es una arquitectura muy robusta y con gran seguridad, pero a su vez bastante pesada, tanto en tamaño como en procesamiento.
+	\item \textbf{\textit{SOAP}} (Simple Object Access Protocol): éste protocolo estándar define como dos objetos en diferentes procesos pueden comunicarse por medio de intercambios de datos XML (Extensible Markup Language). Los servicios SOAP funcionan por lo general bajo el protocolo HTTP (más común), aunque no está limitado solamente a éste, pudiendo trabajar con protocolos FTP, POP3, TCP, entre otros. SOAP es una arquitectura muy robusta y con gran seguridad, pero a su vez bastante pesada, tanto en tamaño como en procesamiento.
 	
-	\item \textbf{\textit{REST}} (Representational State Transfer): ésta arquitectura es más nueva en relación a la anterior. Se puede mencionar que la misma es mucho más flexible y transporta datos mediante el protocolo HTTP, pudiendo utilizar los distintos métodos que proporciona el mismo  para la comunicación como el GET, POST, PUT, etc. Gracias a su flexibilidad permite transportar cualquier tipo de datos, como pueden ser XML, JSON, binarios, etc.
+	\item \textbf{\textit{REST}} (Representational State Transfer): ésta arquitectura es más nueva en relación a la anterior. Se puede mencionar que la misma es mucho más flexible y transporta datos mediante el protocolo HTTP, pudiendo utilizar los distintos métodos que proporciona el mismo  para la comunicación como el GET, POST, PUT, etc. Gracias a su flexibilidad permite transportar cualquier tipo de datos, como pueden ser XML, JSON (JavaScript Object Notation), binarios, etc.
 	
 \end{itemize}
 
@@ -245,11 +260,128 @@ Sin tener que depender de una definición WSDL (Web Services Description Language
 \subsection{Protocolo HTTP}
 %-------------------------------------------------------------------
 \label{cap2:subsec:protocolo-HTTP}
-El Protocolo de Transferencia de Hipertexto (HTTP), es el protocolo de comunicación que permite las transferencias de información en la World Wide Web. Es un protocolo del tipo cliente-servidor, lo que significa que el cliente envía una petición al servidor y espera un mensaje de respuesta del mismo. Es un protocolo sin estado, lo que significa que el servidor no guarda información del cliente, cada petición es independiente de las demás.
+El Protocolo de Transferencia de Hipertexto (HTTP), es el protocolo de comunicación que permite las transferencias de información en la World Wide Web. Es un protocolo del tipo cliente-servidor, lo que significa que el cliente envía una petición al servidor y espera un mensaje de respuesta del mismo, a través de una conexión TCP (Transmission Control Protocol). Es un protocolo sin estado, lo que significa que el servidor no guarda información del cliente, cada petición es independiente de las demás \cite{httpProtocolo}.
 \\
 
-Un mensaje HTTP, sin importar si es 
-https://blog.makeitreal.camp/el-protocolo-http/
+Un mensaje HTTP, sin importar si es una petición o una respuesta, está compuesto por tres partes (Figura \ref{fig:http-messages}):
+\begin{itemize}
+	
+	\item La primera línea (en éste caso varía para una petición o una respuesta).
+	
+	\item Los encabezados.
+	
+	\item El cuerpo.
+	
+\end{itemize}
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/http-messages}
+		\caption{Mensajes HTTP}
+		\label{fig:http-messages}
+	\end{center}
+\end{figure}
+
+En el caso de la primera línea en las peticiones está compuesto por el verbo, el recurso a consumir y la versión de HTTP. Mientras que en las respuestas se encuentran la versión de HTTP y el código de respuesta.
+\\
+
+Los verbos, también conocidos como métodos, son aquellos que definen la acción que se desea realizar sobre el recurso identificado. Hay un total de 8 métodos, de los cuáles será necesario utilizar 4 de ellos para llevar a cabo la propuesta de solución:
+
+\begin{itemize}
+	
+	\item \textbf{GET}: se utiliza para solicitar un recurso (traer datos de BD).
+	
+	\item \textbf{POST}: se utiliza para publicar un recurso (dar de alta en BD).
+	
+	\item \textbf{PUT}: se utiliza para reemplazar un recurso (modificar datos en BD).
+	
+	\item \textbf{DELETE}: se utiliza para eliminar un recurso (dar de baja en BD).
+	
+\end{itemize}
+
+Una vez ejecutada una petición, el servidor se encargará de enviar una respuesta, la cuál contendrá un código de estado y el tipo de dato MIME de la información de retorno, seguido de la propia información. Los códigos de estado le indican al cliente como interpretar la respuesta, teniendo en cuenta su categoría dependiendo del dígito con el que comienzan:
+
+\begin{itemize}
+	
+	\item 1xx: Información.
+
+	\item 2xx: Éxito.
+	
+	\item 3xx: Redirección.
+	
+	\item 4xx: Error en el cliente.
+	
+	\item 5xx: Error en el servidor.
+	
+\end{itemize}
+
+Las peticiones son enviadas mediante URLs (Uniform Resource Locator), las cuales se encargan de ubicar un recurso en Internet. Como se puede ver en el ejemplo de URL en la Figura \ref{fig:http-url}, la misma se compone por la siguiente información:
+
+\begin{itemize}
+	
+	\item \textit{Esquema}: define el protocolo a utilizar, el cual puede ser http o https (protocolo seguro de HTTP).
+	
+	\item \textit{Host}: La IP o el nombre del servidor que se quiere acceder. Para un entorno de prueba local el host será \textit{localhost}, aunque también podría ser la dirección de IP privada dentro de la red donde se está trabajando, y en el caso de una puesta en producción en Internet del Web Service, será la dirección de IP pública para ese host.
+	
+	\item \textit{Puerto}: el puerto en el que está escuchando el servidor HTTP. Si se omite se asume que es el 80. En el caso del proyecto el puerto será el 8080, utilizado por el contenedor de Servlets para el acceso al Web Service.
+	
+	\item \textit{Path}: la ruta al recurso que se quiere acceder. En el caso del proyecto será el nombre de los servicios que se desarrollaron en el Web Service.
+	
+	\item \textit{Query String}: Contiene información adicional para el servidor en forma de propiedades (atributo=valor). Las propiedades se separan por \&.
+	
+\end{itemize}
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/http-url}
+		\caption{URL HTTP}
+		\label{fig:http-url}
+	\end{center}
+\end{figure}
+
+En el caso de peticiones con métodos POST y PUT, gran parte de la información a almacenar será enviada en el cuerpo del mensaje y no como parámetros, con la finalidad de tener URLs más legibles y no ser extremadamente largas, además de seguir las buenas prácticas de programación.
+
+%------------------------------------------------------------------
+\subsection{Formato de respuestas}
+%-------------------------------------------------------------------
+\label{cap2:subsec:formato-respuestas}
+
+Como se mencionó anteriormente cuando el cliente realiza una petición hacia el servidor, éste se encarga de enviar una respuesta al mismo. Hay servicios en los cuáles simplemente se puede responder un código de estado, otorgándole de ésta manera información suficiente al cliente sobre la transacción realizada. Por ejemplo, confirmando el éxito de un ABM realizado. 
+\\
+
+A su vez, existe gran cantidad de situaciones en las cuáles es necesario enviar más información en la respuesta. Por lo tanto, es necesario determinar que formato tendrá dicha respuesta, logrando que ésta sea homogénea de forma que el cliente sepa anticipadamente como decodificar la misma.
+\\
+
+Tal como se explicó previamente, de acuerdo al tipo de arquitectura escogida para el Web Service, la respuesta se podía formatear como JSON o XML. Dentro de la arquitectura REST, se escogió el formato JSON que tiene como ventajas poseer mayor soporte, un formato sumamente simple, mayor velocidad de procesamiento y menor tamaño en los archivos. En tanto el formato XML, requiere el uso de etiquetas lo cual lleva a un formato más estricto y mayor uso de ancho de banda, haciendo que el tiempo de procesamiento sea mayor.
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/json_xml}
+		\caption{XML vs. JSON}
+		\label{fig:xml-json}
+	\end{center}
+\end{figure}
+
+En cuanto a la sintaxis de los JSON, los mismos están constituidos por una colección de pares nombre/valor. Los tipos de datos disponibles en éstos valores son los siguientes:
+
+\begin{itemize}
+	
+	\item \textit{Números}: se permiten números negativos y opcionalmente pueden contener parte fraccional separada por puntos.
+	
+	\item \textit{Cadenas}: secuencias de cero o más caracteres. Se ponen entre doble comilla y se permiten cadenas de escape.
+	
+	\item \textit{Booleanos}: true o false.
+	
+	\item \textit{Null}: representan el valor nulo.
+	
+	\item \textit{Array}: lista ordenada de cero o más valores los cuales pueden ser de cualquier tipo. Los valores se separan por comas y el vector se mete entre corchetes.
+	
+	\item \textit{Objetos}: colecciones no ordenadas de cero o más pares \{nombre: valor\} separados por comas y puestas entre llaves. El nombre tiene que ser una cadena y el valor puede ser de cualquier tipo.
+	
+\end{itemize}
 
 \newpage
 \thispagestyle{empty}

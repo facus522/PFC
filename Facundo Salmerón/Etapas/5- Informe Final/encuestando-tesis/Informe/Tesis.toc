@@ -20,9 +20,12 @@
 \contentsline {subsection}{\numberline {2.1.4}Requerimientos no funcionales}{12}{subsection.2.1.4}
 \contentsline {section}{\numberline {2.2}Elecciones de implementaci\'on}{12}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Lenguaje de programaci\'on}{13}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Lenguajes compilados}{14}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Paradigma orientado a objetos}{15}{subsection.2.2.3}
 \contentsline {section}{\numberline {2.3}Conceptos del lado del servidor}{15}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Arquitectura}{15}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Protocolo HTTP}{16}{subsection.2.3.2}
-\contentsline {part}{Bibliograf\IeC {\'\i }a}{19}{chapter*.10}
-\contentsline {part}{II\hspace {1em}Ap\'endices}{20}{part.2}
-\contentsline {chapter}{\numberline {A}Fichas de casos de uso}{21}{appendix.Alph1}
+\contentsline {subsection}{\numberline {2.3.2}Protocolo HTTP}{17}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Formato de respuestas}{19}{subsection.2.3.3}
+\contentsline {part}{Bibliograf\IeC {\'\i }a}{22}{chapter*.13}
+\contentsline {part}{II\hspace {1em}Ap\'endices}{23}{part.2}
+\contentsline {chapter}{\numberline {A}Fichas de casos de uso}{24}{appendix.Alph1}

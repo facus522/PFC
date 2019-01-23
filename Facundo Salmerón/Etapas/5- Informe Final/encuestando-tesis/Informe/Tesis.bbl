@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{webServiceLibro}
 M.~Besteiro and M.~Rodr{\'i}guez.
@@ -40,6 +40,13 @@ A.~Martinez.
 \newblock
   \url{http://www.abc.es/tecnologia/informatica/software/abci-google-android-sistemas-operativos-201604202207_noticia.html}.
 \newblock Accedido: 13/12/2018.
+
+\bibitem{poo}
+S.~Moreno.
+\newblock Programaci{\'o}n orientada a objetos.
+\newblock
+  \url{http://ferestrepoca.github.io/paradigmas-de-programacion/poo/poo_teoria/index.html}.
+\newblock Accedido: 20/01/2019.
 
 \bibitem{importanciaEncuestas}
 I.~Rohlfs.

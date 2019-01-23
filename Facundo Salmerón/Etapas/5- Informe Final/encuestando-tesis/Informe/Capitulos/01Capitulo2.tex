@@ -191,9 +191,23 @@ Como se especificó previamente, para llevar adelante el desarrollo del Web Servi
 Se marca una diferencia por sobre los lenguajes interpretados, ya que éstos últimos ejecutan paso a paso el código fuente sin llevar a cabo ninguna traducción en la pre-ejecución. Ésto hace que se genere luego una sobrecarga en el proceso de traducción reduciendo la velocidad en tiempo de ejecución.
 
 %------------------------------------------------------------------
-\subsection{Paradigma orientado a objetos}
+\subsection{Programación orientada a objetos}
 %-------------------------------------------------------------------
 \label{cap2:subsec:orientado-objetos}
+
+La programación orientada a objetos (POO) es un paradigma de programación que se basa en subdividir el problema principal en distintos actores o entidades individuales (objetos), denominados \textit{clases}, donde cada uno posee atributos, funcionalidades particulares e interactúan con los demás. Al instanciar una clase se obtiene un caso particular de la misma, es decir un objeto, el cual puede tener atributos distintos a otras instancias de la misma.
+\\
+
+Cada objeto posee particularmente estado (atributos), comportamiento (métodos) e identidad. La identidad es una propiedad de un objeto que lo diferencia del resto, dicho con otras palabras, es su identificador. Contiene toda la información que permite definirlo e identificarlo frente a otros objetos pertenecientes a otras clases e incluso frente a objetos de una misma clase, al poder tener valores bien diferenciados en sus atributos. A su vez, los objetos disponen de mecanismos de interacción llamados métodos, que favorecen la comunicación entre ellos. Esta comunicación favorece a su vez el cambio de estado en los propios objetos. Esta característica lleva a tratarlos como unidades indivisibles, en las que no se separa el estado y el comportamiento.
+\\
+
+Los métodos (comportamiento) y atributos (estado) están estrechamente relacionados por la propiedad de conjunto. Esta propiedad destaca que una clase requiere de métodos para poder tratar los atributos con los que cuenta.
+\\
+
+Dentro de las ventajas que posee la programación orientada a objetos, se puede obtener una buena abstracción del problema en clases, objetos y atributos, brindando una implementación más detallada, puntual y coherente \cite{poo}. Además permite una mejor reutilización de código, modificabilidad, encapsulamiento y fiabilidad, entre otras cosas.
+\\
+
+Como ya se ha especificado anteriormente Java se trata de un lenguaje de programación que soporta éste paradigma. En unidades posteriores se verá con mayor detalle como el problema principal fue abstraído, adaptándose al modelo de objetos y llevando adelante dicho mecanismo.
 
 %------------------------------------------------------------------
 \section{Conceptos del lado del servidor}
@@ -382,6 +396,37 @@ En cuanto a la sintaxis de los JSON, los mismos están constituidos por una colec
 	\item \textit{Objetos}: colecciones no ordenadas de cero o más pares \{nombre: valor\} separados por comas y puestas entre llaves. El nombre tiene que ser una cadena y el valor puede ser de cualquier tipo.
 	
 \end{itemize}
+
+%------------------------------------------------------------------
+\subsection{Servlet}
+%-------------------------------------------------------------------
+\label{cap2:subsec:servlet}
+
+Los Servlets son módulos Java que se utilizan en un servidor, para extender sus capacidades de respuesta a los clientes al utilizar las potencialidades de Java. Son para los servidores lo que los \textit{applets}\footnote{Pequeños programas que se ejecutan en el contexto de un navegador web} para los navegadores, aunque los servlets no tienen una interfaz gráfica.
+\\
+
+Esto quiere decir, que nos permite construir aplicaciones web que admiten peticiones a través del protocolo HTTP accediendo a ellos mediante un navegador web. La respuesta generalmente es enviada en formato HTML y representada por dicho navegador.
+\\
+
+Los Servlets son un reemplazo efectivo para los CGI en los servidores que los soporten ya que proporcionan una forma de generar documentos dinámicos utilizando las ventajas de la programación en Java como conexión a alguna base de datos, manejo de peticiones concurrentes, programación distribuida, etc. Por ejemplo, un servlet podría ser responsable de procesar los datos desde un formulario en HTML como registrar la transacción, actualizar una base de datos, contactar algún sistema remoto y retornar un documento dinámico o redirigir a otro servlet u alguna otra cosa.
+\\
+
+Un contenedor Servlet es un programa capaz de recibir peticiones de páginas web y redireccionar las mismas a un objeto Servlet, esto quiere decir también que podemos tener corriendo varias aplicaciones bajo un mismo contenedor (un mismo servidor). El Web Service desarrollado en el proyecto es un Servlet en particular, que está corriendo en un contenedor. Dicho contenedor, escogido para funcionar como servidor web por sí mismo es el Apache Tomcat. Éste se encuentra desarrollado en Java, por lo tanto es compatible con cualquier sistema operativo que soporte el JVM.
+\\
+
+Para acceder a una aplicación en particular, se realizará mediante la URL, como ya fue mencionado previamente. Dichas peticiones pueden ser enviadas desde cualquier browser, siempre y cuando se trate de métodos GET, caso contrario se puede utilizar cualquier aplicación encargada de enviar peticiones HTTP, como por ejemplo \textit{Postman}. Luego Tomcat se encarga de direccionar las peticiones de Servlet que llegan al puerto establecido por defecto (8080).
+\\
+
+Al realizar una petición HTTP, el contenedor de Servlets delega la misma a un Servlet en particular entre los que contiene. Éste se encarga de generar la respuesta para luego entregarla al contenedor, donde éste finalmente devuelve la misma al cliente en el formato adecuado (Figura \ref{fig:servlet}).
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/servlet}
+		\caption{Peticiones y manejo de Servlet}
+		\label{fig:servlet}
+	\end{center}
+\end{figure}
 
 \newpage
 \thispagestyle{empty}

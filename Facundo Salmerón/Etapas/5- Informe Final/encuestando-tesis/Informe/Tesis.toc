@@ -27,6 +27,8 @@
 \contentsline {subsection}{\numberline {2.3.2}Protocolo HTTP}{18}{subsection.2.3.2}
 \contentsline {subsection}{\numberline {2.3.3}Formato de respuestas}{20}{subsection.2.3.3}
 \contentsline {subsection}{\numberline {2.3.4}Servlet}{21}{subsection.2.3.4}
-\contentsline {part}{Bibliograf\IeC {\'\i }a}{24}{chapter*.14}
-\contentsline {part}{II\hspace {1em}Ap\'endices}{25}{part.2}
-\contentsline {chapter}{\numberline {A}Fichas de casos de uso}{26}{appendix.Alph1}
+\contentsline {section}{\numberline {2.4}Conceptos del lado del cliente}{22}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Sistema operativo Android}{22}{subsection.2.4.1}
+\contentsline {part}{Bibliograf\IeC {\'\i }a}{26}{chapter*.15}
+\contentsline {part}{II\hspace {1em}Ap\'endices}{27}{part.2}
+\contentsline {chapter}{\numberline {A}Fichas de casos de uso}{28}{appendix.Alph1}

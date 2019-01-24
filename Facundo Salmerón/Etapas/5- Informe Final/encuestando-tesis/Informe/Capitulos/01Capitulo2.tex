@@ -214,7 +214,7 @@ Como ya se ha especificado anteriormente Java se trata de un lenguaje de program
 %-------------------------------------------------------------------
 \label{cap2:sec:conceptos-servidor}
 
-Tal como se especificó anteriormente, desde la aplicación será necesaria la conexión a Internet para lograr el acceso a la base de datos. La propuesta de solución corresponde a una arquitectura cliente-servidor de 3 capas, la cuál se verá con más detalles en el capítulo posterior.
+Tal como se especificó anteriormente, desde la aplicación será necesaria la conexión a Internet para lograr el acceso a la base de datos. La propuesta de solución corresponde a una arquitectura cliente-servidor de 3 capas, la cuál se verá con más detalles en capítulos posteriores.
 \\
 
 La metodología de trabajo que posee ésta arquitectura, es un cliente realizando peticiones (mediante el dispositivo móvil) hacia un servidor (Web Service) que se encargará de enviar las respuestas (Figura \ref{fig:cliente-servidor}). Dichas peticiones serán bajo el protocolo \textit{HTTP} y el formato de respuestas \textit{JSON}, los cuales serán ampliados en el presente capítulo.
@@ -427,6 +427,44 @@ Al realizar una petición HTTP, el contenedor de Servlets delega la misma a un Se
 		\label{fig:servlet}
 	\end{center}
 \end{figure}
+
+\section{Conceptos del lado del cliente}
+%-------------------------------------------------------------------
+\label{cap2:sec:conceptos-cliente}
+
+Una vez definidos todos los aspectos relacionados al servidor, correspondiente a la arquitectura cliente-servidor, en la presente unidad se llevará a cabo una introducción sobre conceptos relacionados al sistema operativo Android (plataforma en la que se realizó el desarrollo y despliegue de la aplicación), posicionándonos del lado cliente.
+
+%------------------------------------------------------------------
+\subsection{Sistema operativo Android}
+%-------------------------------------------------------------------
+\label{cap2:subsec:sistema-android}
+
+Android es un sistema operativo diseñado fundamentalmente para trabajar dentro de dispositivos móviles, como smarthphones y tablets. A lo largo de los años, se ha ido incorporando el sistema operativo en distintas tecnologías como pueden ser relojes inteligentes (wear), televisores, autos y recientemente aplicable en productos de Internet de las cosas (Android things).
+\\
+
+Inicialmente fue desarrollado por la empresa \textit{Android Inc.}, posteriormente comprada por Google en el año 2005. Una de las particularidades más interesantes que posee Android, es que se basa en Linux, plataforma libre que a su vez se basa en Unix. Ésto hace que su uso sea totalmente gratuito tanto para llevar a cabo nuevos desarrollos, como para su utilización en dispositivos móviles.
+\\
+
+Cuenta con un entorno de desarrollo integrado (IDE) oficial totalmente Open Source, denominado Android Studio. El mismo fue lanzado en el año 2013, reemplazando a Eclipse como IDE oficial para el desarrollo de aplicaciones Android. Cuenta con gran cantidad de documentación en la web, así como también manuales y comunidades activas que facilitan el desarrollo y la utilización de todas las funcionalidades ofrecidas. Trae incluido la SDK (Software Development Kit) de Android, pudiendo obtener constantemente las actualizaciones propuestas por el sistema operativo. Posee como ventaja una compilación rápida, ejecución de la aplicación en tiempo real, ya sea a través del móvil como de emuladores propios, renderizado en tiempo real, etc.
+\\
+
+Hasta hace muy poco tiempo, todas las aplicaciones Android eran desarrolladas bajo el lenguaje de programación Java, ya que se trataba del lenguaje oficial para ésta plataforma. En el año 2017, Google adoptó a Kotlin como lenguaje oficial de desarrollo para la plataforma Android.
+\\
+
+En el año 2008 fue lanzada la primer versión de Android denominada \textit{Apple Pie}. Con el transcurso de los años, se han ido desarrollando gran cantidad de actualizaciones, las cuáles típicamente corrigen fallos e introducen nuevas funcionalidades. En la actualidad se encuentra disponible la versión 9.0 \textit{Pie} (decimosexta versión del sistema operativo).
+\\
+
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/android_version}
+		\caption{Versiones de Android}
+		\label{fig:android_version}
+	\end{center}
+\end{figure}
+
+Para el desarrollo del proyecto se utilizará como mínima versión la 4.4 \textit{(KitKat)}. La elección de la misma se debe a que las funcionalidades que presenta se encuentran acorde a los alcances del proyecto, además según las estadísticas brindadas por Android Studio (Figura \ref{fig:android_version}), aproximadamente el 95\% de los usuarios activos posee versiones superiores o iguales a la mencionada, logrando un mayor alcance de los usuarios a utilizar la aplicación.
 
 \newpage
 \thispagestyle{empty}

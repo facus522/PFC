@@ -428,6 +428,26 @@ Al realizar una petición HTTP, el contenedor de Servlets delega la misma a un Se
 	\end{center}
 \end{figure}
 
+%------------------------------------------------------------------
+\subsection{Framework}
+%-------------------------------------------------------------------
+\label{cap2:subsec:framework}
+
+Un \textit{framework} es un conjunto estandarizado de conceptos, prácticas y criterios para enfocar un tipo de problemática particular que sirve como referencia, para enfrentar y resolver nuevos problemas de índole similar.
+\\
+
+Tienen como objetivo principal ofrecer una funcionalidad definida, auto contenida, siendo construidos usando patrones de diseño, y su característica principal es su alta cohesión y bajo acoplamiento. Sirve de base para la organización y desarrollo de software. Típicamente, puede incluir soporte de programas, bibliotecas, y un lenguaje interpretado, entre otras herramientas, para así ayudar a desarrollar y unir los diferentes componentes de un proyecto \cite{framework}.
+\\
+
+Representa una arquitectura de software que modela las relaciones generales de las entidades del dominio, y provee una estructura y una especial metodología de trabajo, la cual extiende o utiliza las aplicaciones del dominio.
+\\
+
+Dentro del proyecto para el desarrollo del Web Service, se precisará de los frameworks \textit{Spring} y \textit{Hibernate}. A grandes rasgos, mediante el uso de los mismos se facilita la inversión de control e inyección de dependencias; y el mapeo objeto-relacional entre la base de datos y el modelo de objeto, respectivamente. 
+\\
+
+A su vez, se utilizará el framework \textit{JUnit}, que tiene como funcionalidad principal la realización de test unitarios sobre el el código Java del Web Service. En capítulos posteriores se analizarán más en detalle cada uno de los mencionados.
+ 
+
 \section{Conceptos del lado del cliente}
 %-------------------------------------------------------------------
 \label{cap2:sec:conceptos-cliente}
@@ -454,7 +474,6 @@ Hasta hace muy poco tiempo, todas las aplicaciones Android eran desarrolladas ba
 En el año 2008 fue lanzada la primer versión de Android denominada \textit{Apple Pie}. Con el transcurso de los años, se han ido desarrollando gran cantidad de actualizaciones, las cuáles típicamente corrigen fallos e introducen nuevas funcionalidades. En la actualidad se encuentra disponible la versión 9.0 \textit{Pie} (decimosexta versión del sistema operativo).
 \\
 
-
 \begin{figure}[h!]
 	\begin{center}
 		\includegraphics[width=0.8\textwidth]%
@@ -465,6 +484,35 @@ En el año 2008 fue lanzada la primer versión de Android denominada \textit{Apple
 \end{figure}
 
 Para el desarrollo del proyecto se utilizará como mínima versión la 4.4 \textit{(KitKat)}. La elección de la misma se debe a que las funcionalidades que presenta se encuentran acorde a los alcances del proyecto, además según las estadísticas brindadas por Android Studio (Figura \ref{fig:android_version}), aproximadamente el 95\% de los usuarios activos posee versiones superiores o iguales a la mencionada, logrando un mayor alcance de los usuarios a utilizar la aplicación.
+
+%------------------------------------------------------------------
+\subsection{Interfaz de programación de aplicaciones}
+%-------------------------------------------------------------------
+\label{cap2:subsec:apis}
+
+Una interfaz de programación de aplicaciones (API), es un conjunto de subrutinas, funciones y procedimientos que tienen la finalidad de ser utilizadas por otro software como una capa de abstracción, debido a que nos permite implementar las funciones y procedimientos que engloba en nuestro proyecto sin la necesidad de programarlas de nuevo.
+\\
+
+Representa la capacidad de comunicación entre componentes de software. Se trata del conjunto de llamadas a ciertas bibliotecas que ofrecen acceso a ciertos servicios desde los procesos y representa un método para conseguir abstracción en la programación. Uno de los principales propósitos de una API consiste en proporcionar un conjunto de funciones de uso general, donde los programadores se benefician de las ventajas del API haciendo uso de su funcionalidad, evitándose el trabajo de programar todo desde el principio.
+\\
+
+Para el desarrollo de la aplicación móvil en el presente proyecto, se utilizaron distintas APIs que facilitaron la resolución de distintas cuestiones, brindando la posibilidad de no tener que trabajar manualmente sobre cada una de ellas y de tal forma lograr un mejor producto en mejor tiempo de desarrollo.
+\\
+
+A continuación se enumeran las mismas junto a una breve descripción, teniendo en cuenta que en capítulos posteriores la información será ampliada:
+
+\begin{itemize}
+	
+	\item \textit{Firebase}: plataforma utilizada para el envío de notificaciones a dispositivos Android.
+	
+	\item \textit{Google Services y Maps}: facilita la geolocalización de los usuarios mediante el uso de los sensores del dispositivo móvil, selección de localización manual mediante mapas (\textit{PlacePicker}) y permite la creación de mapas interactivos con la colocación de marcadores para la visualización de estadísticas.
+	
+	\item \textit{MPAndroidChart}: API que brinda la posibilidad de crear gráficos para la visualización de estadísticas en los resultados de encuestas.
+	
+	\item \textit{OpenCsv}: brinda la posibilidad de mapear los resultados de base de datos en un archivo del tipo .csv, pudiendo exportar los datos.
+	
+\end{itemize}
+
 
 \newpage
 \thispagestyle{empty}

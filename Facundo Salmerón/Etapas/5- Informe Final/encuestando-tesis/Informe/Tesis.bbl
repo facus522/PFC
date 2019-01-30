@@ -10,6 +10,13 @@ A.~M. C.~Cejas, M.~Pen{\'e} and D.~Ferrante.
 \newblock {\em Evaluar para seguir adelante: Resultados del Programa Redes}.
 \newblock Cobertura Universal de Salud, 2016.
 
+\bibitem{sensoresSmart}
+L.~Crisol.
+\newblock ?`{{C}}onoces todos los sensores que tiene tu tel{\'e}fono y para
+  qu{\'e} sirven?
+\newblock \url{https://bit.ly/2hFIHXm}.
+\newblock Accedido: 28/01/2019.
+
 \bibitem{smarthphonesImportancia}
 Cronista.
 \newblock Efecto smartphone: las l{\'i}neas de celulares ya superan a la
@@ -30,7 +37,7 @@ G.~Escobar.
 
 \bibitem{framework}
 J.~Guti{\'e}rrez.
-\newblock {\em ?` {{Q}}u{\'e} es un framework?}
+\newblock {\em ?`{{Q}}u{\'e} es un framework?}
 \newblock Universidad de Sevilla, 2015.
 
 \bibitem{introduccionTICS}
@@ -64,5 +71,13 @@ E.~Trejo.
 \newblock ?` {{Q}}u{\'e} son las encuestas y para qu{\'e} sirven?
 \newblock \url{http://simomexico.com/encuestas/}.
 \newblock Accedido: 12/12/2018.
+
+\bibitem{sensoresSmart2}
+F.~Yubal.
+\newblock 12 sensores que encontrar{\'a}s en tu m{\'o}vil: c{\'o}mo funcionan y
+  para qu{\'e} sirven.
+\newblock
+  \url{https://www.xataka.com/basics/12-sensores-que-encontraras-tu-movil-sirven}.
+\newblock Accedido: 28/01/2019.
 
 \end{thebibliography}

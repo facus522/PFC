@@ -459,7 +459,7 @@ Una vez definidos todos los aspectos relacionados al servidor, correspondiente a
 %-------------------------------------------------------------------
 \label{cap2:subsec:sistema-android}
 
-Android es un sistema operativo diseñado fundamentalmente para trabajar dentro de dispositivos móviles, como smarthphones y tablets. A lo largo de los años, se ha ido incorporando el sistema operativo en distintas tecnologías como pueden ser relojes inteligentes (wear), televisores, autos y recientemente aplicable en productos de Internet de las cosas (Android things).
+Android es un sistema operativo diseñado fundamentalmente para trabajar dentro de dispositivos móviles, como smartphones y tablets. A lo largo de los años, se ha ido incorporando el sistema operativo en distintas tecnologías como pueden ser relojes inteligentes (wear), televisores, autos y recientemente aplicable en productos de Internet de las cosas (Android things).
 \\
 
 Inicialmente fue desarrollado por la empresa \textit{Android Inc.}, posteriormente comprada por Google en el año 2005. Una de las particularidades más interesantes que posee Android, es que se basa en Linux, plataforma libre que a su vez se basa en Unix. Ésto hace que su uso sea totalmente gratuito tanto para llevar a cabo nuevos desarrollos, como para su utilización en dispositivos móviles.
@@ -512,6 +512,47 @@ A continuación se enumeran las mismas junto a una breve descripción, teniendo en
 	\item \textit{OpenCsv}: brinda la posibilidad de mapear los resultados de base de datos en un archivo del tipo .csv, pudiendo exportar los datos.
 	
 \end{itemize}
+
+%------------------------------------------------------------------
+\subsection{Sensores de un smartphone}
+%-------------------------------------------------------------------
+\label{cap2:subsec:sensores-smart}
+
+A lo largo de los años los teléfonos móviles han ido evolucionando gradualmente, siendo una de las industrias de mayor crecimiento en los últimos tiempos. Con la aparición de los smartphones (teléfonos inteligentes), los dispositivos han dejado de ser simples teléfonos móviles para convertirse en computadoras de bolsillo \cite{sensoresSmart}.
+\\
+
+Ofrecen múltiples funcionalidades y características, que permiten interactuar con el entorno y producir respuestas para el usuario, como detectar nuestra ubicación, activar el brillo automático del teléfono, etc. Las aplicaciones móviles aprovechan el contexto en el que se ejecutan para acceder a todas las capacidades en hardware y sensores que presentan los dispositivos, siendo de gran utilidad para los usuarios finales.
+\\
+
+Dentro de los sensores más comunes que se pueden encontrar en los smartphones, se presentan los siguientes \cite{sensoresSmart2}:
+
+\begin{itemize}
+	
+	\item Acelerómetro: detecta el movimiento en los tres ejes diferentes, con la finalidad de obtener la orientación en la que se encuentra el dispositivo.
+	
+	\item Barómetro: mide la presión ambiental del aire, pudiendo obtener la altura a la que nos encontramos.
+	
+	\item Giroscopio: mide la aceleración no gravitacional, obteniendo dirección y movimiento angular. Sirve como complemento al acelerómetro.
+	
+	\item GPS: se encarga de leer continuamente la señal que le transmiten los satélites de GPS, utilizando por lo general la señal de varios de ellos para triangular la posición en la que nos encontramos.
+	
+	\item Lector de huella dactilar: sensor capaz de reconocer las líneas de nuestra huella dactilar y almacenar una imagen digital de la misma.
+	
+	\item Lector de Iris: similar al sensor de huellas, pero en éste caso es capaz de reconocer los patrones de nuestro iris.
+	
+	\item Podómetro: mide el número de pasos que realizamos cuando estamos caminando.
+	
+	\item Magnetómegro: mide y cuantifica fuerzas magnéticas, sirviendo como brújula electrónica.
+	
+	\item Sensor de proximidad: es una combinación de un sensor infrarrojo y un sensor de luz, para por ejemplo detectar cuando tenemos el dispositivo cercano al oído y de tal forma apagar la pantalla.
+	
+	\item Sensor de luz ambiental: detecta la cantidad de luz que se encuentra en el ambiente, pudiendo gestionar el brillo automático de la pantalla por ejemplo.
+	
+	\item Termómetro: mide la temperatura interna del dispositivo y la ambiental.
+	
+\end{itemize}
+
+A los fines prácticos del proyecto para alcanzar la solución propuesta, se utilizó el sensor de GPS. El mismo al ser consumido requiere previamente del permiso del usuario, para su correcto funcionamiento. Tal como fue descripto anteriormente, con dicho sensor es posible obtener la localización del usuario, donde los datos a recibir son la latitud y longitud. Con las presentes coordenadas geográficas, luego se podrá ubicar en el mapa al usuario para poder crear por ejemplo un mapa estadístico de respuestas, realizar un análisis zonal de las mismas, etc.
 
 
 \newpage

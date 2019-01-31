@@ -19,10 +19,34 @@ Finalmente, se presentarán todos los servicios (endpoints) que estarán disponibl
 %-------------------------------------------------------------------
 \label{cap4:sec:implementacion-db}
 
+En base a lo expuesto en secciones anteriores, es necesario el uso de un sistema de almacenamiento para poder manejar toda la información con la que la aplicación va a trabajar. Los datos a guardar serán relacionados a los usuarios que van a interactuar con el sistema y las encuestas en sí. Los mismos serán creados y accedidos por el Web Service.
+\\
+
+En esta sección se presentará todo lo relacionado al gestor de base de datos escogido, junto al diseño del mismo.
+
 %------------------------------------------------------------------
 \subsection{Gestor de la base de datos}
 %-------------------------------------------------------------------
 \label{cap2:subsec:gestor-db}
+
+Para llevar adelante la gestión de la base de datos se escogió \textit{MySQL}. Es un gestor de bases de datos relacional, considerado como la base de código abierto más popular en el mundo \cite{mysqlPopular} y la segunda más popular a nivel general, detrás de la licencia propietaria de \textit{Oracle} \cite{mysqlRanking}, sobre todo para entornos de desarrollo web.
+\\
+
+MySQL posee un esquema de doble licenciamiento, donde la base de datos se distribuye en varias versiones, una \textit{Community} distribuida bajo la licencia pública general de GNU y varias versiones \textit{Enterprise}, para aquellas empresas que quieran incorporarlo en productos privativos.
+\\
+
+Se posee gran cantidad de documentación, lo cual es de gran ayuda para resolver cualquier inconveniente que se presente. Este gestor brinda la posibilidad de desarrollar una base de datos de tipo \textit{OLTP} (On Line Transaction Processing), también llamadas bases de datos dinámicas, la cual es acorde al proyecto, ya que permite que la información sea modificada en tiempo real, pudiendo insertar, eliminar, modificar o consultar datos durante la operación del sistema, a diferencia de las bases de datos de tipo \textit{OLAP} (On Line Analytcal Processing) que son estáticas, es decir no se insertan, eliminan, ni modifican datos, sino que solamente se pueden realizar consultas sobre datos ya existentes \cite{tiposDB}.
+\\
+
+Dentro de las ventajas a mencionar en cuanto a la elección de éste gestor por sobre SQLServer u Oracle por ejemplo (dos de los gestores de base de datos más populares), MySQL es un software totalmente open source a diferencia de los mencionados y posee gran velocidad a la hora de realizar operaciones (siendo uno de los mejores rendimientos), posee bajos costos en los requerimientos para la elaboración de la base de datos, pudiendo ejecutarse en máquinas de escasos recursos gracias a su bajo consumo y existen diversos drivers para efectuar conexiones a la misma. Pero sin dudas, una de las mayores ventajas se debe a que por su conectividad, velocidad y seguridad es altamente apropiada para acceder a bases de datos a través de Internet como lo será en este proyecto.
+\\
+
+En este proyecto se trabajó con la versión Community, en los sistemas operativos Windows 10 y Ubuntu 18.04 LTS, aprovechando ésta ventaja multiplataforma que posee MySQL. Además, se utilizó \textit{MySQL Workbench}, una herramienta opcional dentro de la versión Community, con la cual se brinda un entorno visual que permite el diseño de la base de datos, administración y ejecución de consultas.
+
+%------------------------------------------------------------------
+\subsection{Modelado del problema}
+%-------------------------------------------------------------------
+\label{cap2:subsec:modelado-db}
 
 \newpage
 \thispagestyle{empty}

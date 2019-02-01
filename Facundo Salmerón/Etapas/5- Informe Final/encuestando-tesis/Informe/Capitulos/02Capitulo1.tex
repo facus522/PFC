@@ -48,6 +48,41 @@ En este proyecto se trabajó con la versión Community, en los sistemas operativos
 %-------------------------------------------------------------------
 \label{cap2:subsec:modelado-db}
 
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/modelo_db}
+		\caption{Diseño de la base de datos}
+		\label{fig:modelobd}
+	\end{center}
+\end{figure}
+
+Una vez definido e instalado el gestor de base de datos escogido, se prosiguió por diseñar el modelo del problema, en donde se desglosa el problema principal en distintas entidades las cuales van a ser representadas por tablas y poseen relaciones entre ellas. El diagrama de tablas de la base de datos se presenta en la Figura \ref{fig:modelobd}.
+\\
+
+Al tratarse de una base de datos del tipo relacional, se puede notar que todas las tablas poseen un \textit{ID} el cual realiza las tareas de clave primaria o primary key (PK). Su funcionalidad es la de identificar en forma única a cada fila de una tabla, por lo que cuenta con el carácter de unicidad. La tabla \textit{Resultado\_Respuesta} es la única que no posee un ID propio, ya que simplemente representa la relación entre dos entidades.
+\\
+
+Entrando más en detalle del modelo presentado, inicialmente es conveniente realizar una descripción del manejo de usuarios. Para ello se presentan tres tablas \textit{Sexo}, \textit{Tipo\_Usuario} y \textit{Usuario}. La primera resulta de carácter intuitivo, donde simplemente se describe el género de las personas. En la segunda tabla se representa el tipo de usuario que puede adquirir una persona, donde inicialmente se establecieron ``Usuarios Específicos'' y ``Usuarios Comunes'', dejando abierta la posibilidad de introducir un nuevo rol en un futuro. En cuanto a la tercer entidad, almacena todos los datos de los usuarios que van a interactuar con la aplicación. Más allá de poseer un ID como se especificó anteriormente, tiene además otros datos con carácter de unicidad como el DNI, nombre de usuario y mail para mayor seguridad y control de los registros establecidos. 
+\\
+
+Como se puede ver, ésta tabla se relaciona con las dos primeras, es decir cada usuario tiene un género y un tipo. Así es como posee dos claves foráneas o foreign key (FK), es decir una columna de la tabla que se corresponde exactamente con una columna de otra tabla donde está definida como PK para establecer la relación.
+\\
+
+Para el modelado de las encuestas que se van a llevar a cabo, se presenta la tabla denominada \textit{Encuesta}. Dentro de los atributos que posee, cabe destacar la diferencia entre ``Activa'' y ``Habilitada''. Al producirse el alta de una de ellas, la misma queda en estado activa (true), pero no estará disponible para ser resuelta por los usuarios hasta que se encuentre habilitada. Además, se llevará a cabo una auditoria de las mismas, registrando qué usuario y en qué fecha realizó algún ABM. Cabe destacar que las eliminaciones o bajas serán del tipo lógico (poniéndolas como activo = false), con la finalidad de no perder los registros y respaldar la auditoría propiamente dicha.
+\\
+
+A su vez, la tabla de encuestas se encuentra relacionada con la entidad \textit{Pregunta}, donde se van a almacenar todas aquellas que formen parte del formulario. Es por ello que la presente tabla contiene una FK contra las encuestas y otra con la entidad \textit{Tipo\_Pregunta}. Esta última determina de qué carácter es la pregunta en relación a su respuesta, es decir si se trata de una ``Múltiple Choice'', ``Respuesta Única'', ``Desarrollo'', etc. Por lo tanto, cada pregunta va a poseer una o más respuestas dependiendo del tipo. Esta última entidad se representa en la tabla \textit{Respuesta}.
+\\
+
+A la hora de responder las encuestas, los datos obtenidos serán almacenados en la tabla \textit{Resultado}. Presenta una FK con la entidad Usuario, para determinar quién fue el encargado de la resolución. Si se trata de un usuario común, los atributos edad y sexo serán completados automáticamente por dicha relación, mientras que si se trata de un usuario específico, los datos serán introducidos manualmente a la hora de resolver una determinada encuesta. En cuando al campo ``Descripción respuesta'', se almacenará el texto respondido, si se tratara de preguntas que no poseen respuestas predefinidas como las múltiple choice, por ejemplo.
+\\
+
+Es por ello que las tablas de resultados y respuestas se encuentran relacionadas. Al tratarse de una relación ``Muchos a muchos'' o ``Many to Many'', es decir un resultado puede tener N respuestas y una respuesta estar en M resultados, la relación se almacenará en la tabla \textit{Resultado\_Respuesta}. Dicha entidad contiene solamente un PK compuesto, es decir las FK correspondientes a las dos tablas relacionadas.
+\\
+
+Finalmente, se encuentra aislada la tabla \textit{Informacion\_Noticia} en la que se almacenarán todas aquellas noticias e informaciones que se consideren de interés para el resto de los usuarios. Como atributos presentará un título y una descripción (ésta última opcional) y una URL que hará referencia al sitio donde se aloja la noticia en sí.
+
 \newpage
 \thispagestyle{empty}
 \mbox{ }

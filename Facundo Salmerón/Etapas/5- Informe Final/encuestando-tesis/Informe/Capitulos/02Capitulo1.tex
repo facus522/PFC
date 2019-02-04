@@ -15,7 +15,7 @@ Finalmente, se presentarán todos los servicios (endpoints) que estarán disponibl
 \end{resumen}
 
 %-------------------------------------------------------------------
-\section{Implementación de la base de datos}
+\section{Base de datos}
 %-------------------------------------------------------------------
 \label{cap4:sec:implementacion-db}
 
@@ -81,7 +81,80 @@ A la hora de responder las encuestas, los datos obtenidos serán almacenados en l
 Es por ello que las tablas de resultados y respuestas se encuentran relacionadas. Al tratarse de una relación ``Muchos a muchos'' o ``Many to Many'', es decir un resultado puede tener N respuestas y una respuesta estar en M resultados, la relación se almacenará en la tabla \textit{Resultado\_Respuesta}. Dicha entidad contiene solamente un PK compuesto, es decir las FK correspondientes a las dos tablas relacionadas.
 \\
 
-Finalmente, se encuentra aislada la tabla \textit{Informacion\_Noticia} en la que se almacenarán todas aquellas noticias e informaciones que se consideren de interés para el resto de los usuarios. Como atributos presentará un título y una descripción (ésta última opcional) y una URL que hará referencia al sitio donde se aloja la noticia en sí.
+Por último, se encuentra aislada la tabla \textit{Informacion\_Noticia} en la que se almacenarán todas aquellas noticias e informaciones que se consideren de interés para el resto de los usuarios. Como atributos presentará un título y una descripción (ésta última opcional) y una URL que hará referencia al sitio donde se aloja la noticia en sí.
+\\
+
+Cabe aclarar que una vez creadas las tablas en la base de datos, se realizó una carga inicial mediante sentencias SQL sobre las entidades Sexo y Tipo de Usuario, ya que son datos predefinidos independientes de la aplicación móvil. El resto de las tablas se irán poblando mediante los consumos que realice la app sobre Web Service.
+
+%-------------------------------------------------------------------
+\section{Web Service}
+%-------------------------------------------------------------------
+\label{cap4:sec:implementacion-ws}
+
+Una vez definida e implementada la base de datos, en la presente sección se detallarán todos los aspectos relacionados al desarrollo del Web Service. Se incluye una descripción del proyecto Java, el modelado de objetos junto a los diagramas de clase, la arquitectura escogida para la resolución, frameworks utilizados y demás conceptos relacionados.
+
+%------------------------------------------------------------------
+\subsection{Proyecto Maven}
+%-------------------------------------------------------------------
+\label{cap2:subsec:maven}
+
+A la hora de crear el proyecto Java encargado de realizar las funciones de Web Service, se desarrolló el mismo bajo un proyecto del tipo \textit{Maven}. Maven es una herramienta de software para la gestión y construcción de proyectos Java, desarrollada y mantenida por Apache Software Foundation al igual que Tomcat (el contenedor de servlets escogido mencionado anteriormente).
+\\
+
+Tiene un modelo de configuración de construcción basado en un archivo con formato XML. Se trata del \textit{Project Object Model} (POM) que se encarga de describir el proyecto de software a construir, sus dependencias de otros módulos y componentes externos (como por ejemplo la utilización de librerías y frameworks), y el orden de construcción de los elementos.
+\\
+
+Una de las principales características que posee Maven es su capacidad de trabajar en red. El motor incluido en su núcleo puede dinámicamente descargar plugins de un repositorio (Maven Central), el mismo repositorio que provee acceso a muchas versiones de diferentes proyectos Open Source en Java, de Apache y otras organizaciones y desarrolladores \cite{maven1}\cite{maven2}.
+\\
+
+Mediante las anotaciones realizadas en el POM, Maven automáticamente detecta los cambios y realizan descargas dinámicas de los repositorios, permitiendo no tener que instalar manualmente cada dependencia a utilizar. Como se puede ver en la Figura \ref{fig:estructura-maven}, la cual posee una estructura básica de éstos tipos de proyectos, los JAR (Java Archive) se presentan dentro del paquete \textit{Maven Dependencies}, además de ser descargados en una carpeta local oculta.
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/estructura_maven}
+		\caption{Estructura de proyecto Maven}
+		\label{fig:estructura-maven}
+	\end{center}
+\end{figure}
+
+En el proyecto, ésta herramienta sirvió de gran utilidad a la hora de descargar e instalar dependencias externas como frameworks o librerías. Permitió automatizar tareas que desde el punto de vista del desarrollador pueden llegar a demandar mayor tiempo y resultar tediosas. En la figura \ref{fig:maven-pom} se presenta un ejemplo de anotación incluido en el pom.xml para la descarga de un framework.
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/anotacion_pom}
+		\caption{Dependencia en pom.xml}
+		\label{fig:maven-pom}
+	\end{center}
+\end{figure}
+
+Dentro de las dependencias utilizadas para el desarrollo del Web Service se destacan las siguientes (las dos primeras serán explicadas con mayor detalle posteriormente):
+
+\begin{itemize}
+	
+	\item Spring Framework.
+	
+	\item Hibernate.
+	
+	\item Apache Commons DBCP: permite la interacción con una base de datos relacional, por ejemplo creando conexiones para los usuarios, realizando transacciones, etc.
+	
+	\item Log4J: permite a la aplicación mostrar mensajes de información de lo que está sucediendo en ella, lo que habitualmente se conoce como log.
+	
+	\item Servlet: distribución de contenedores servlet como por ejemplo Tomcat, ya descriptos anteriormente.
+	
+	\item JUnit: conjunto de bibliotecas que facilitan la realización de pruebas unitarias dentro del proyecto Java.
+	
+	\item Gson: biblioteca que permite la serialización y deserialización entre objetos Java y su representación en notación Json.
+	
+	\item Json: librería para la creación de objetos Json.
+	
+	\item MySQL Connector: librería que permite conectar nuestro código Java con la base de datos MySQL, de forma que se puedan realizar consultas a la misma.
+	
+	\item Apache Commons: conjunto de proyectos de Apache Software Foundation que provee componentes de software Java reutilizables. Por ejemplo la codificación de contraseñas bajo la encriptación en Base 64.
+	
+	
+\end{itemize}
 
 \newpage
 \thispagestyle{empty}

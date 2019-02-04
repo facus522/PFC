@@ -18,45 +18,45 @@ Database file #1: citasCapitulo1.bib
 Database file #2: citasCapitulo2.bib
 Warning--to sort, need author or key in mysqlRanking
 Warning--empty publisher in webServiceLibro
-You've used 16 entries,
+You've used 18 entries,
             2118 wiz_defined-function locations,
-            599 strings with 6457 characters,
-and the built_in function-call counts, 3552 in all, are:
-= -- 338
-> -- 118
+            608 strings with 6639 characters,
+and the built_in function-call counts, 3978 in all, are:
+= -- 380
+> -- 132
 < -- 0
-+ -- 50
-- -- 34
-* -- 124
-:= -- 604
-add.period$ -- 57
-call.type$ -- 16
-change.case$ -- 60
++ -- 56
+- -- 38
+* -- 134
+:= -- 676
+add.period$ -- 65
+call.type$ -- 18
+change.case$ -- 68
 chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 141
-empty$ -- 359
-format.name$ -- 34
-if$ -- 770
+cite$ -- 20
+duplicate$ -- 155
+empty$ -- 403
+format.name$ -- 38
+if$ -- 864
 int.to.chr$ -- 0
-int.to.str$ -- 16
+int.to.str$ -- 18
 missing$ -- 11
-newline$ -- 92
-num.names$ -- 30
-pop$ -- 145
+newline$ -- 104
+num.names$ -- 34
+pop$ -- 165
 preamble$ -- 1
-purify$ -- 49
+purify$ -- 55
 quote$ -- 0
-skip$ -- 88
+skip$ -- 98
 stack$ -- 0
-substring$ -- 105
-swap$ -- 16
+substring$ -- 115
+swap$ -- 18
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 54
+type$ -- 62
 warning$ -- 2
-while$ -- 32
-width$ -- 18
-write$ -- 170
+while$ -- 36
+width$ -- 20
+write$ -- 192
 (There were 2 warnings)

@@ -5,6 +5,12 @@ Db-engines ranking.
 \newblock \url{https://db-engines.com/en/ranking}.
 \newblock Accedido: 29/01/2019.
 
+\bibitem{maven1}
+C.~{\'A}lvarez.
+\newblock ?`{{Q}}u{\'e} es maven?
+\newblock \url{https://www.genbeta.com/desarrollo/que-es-maven}.
+\newblock Accedido: 31/01/2019.
+
 \bibitem{webServiceLibro}
 M.~Besteiro and M.~Rodr{\'i}guez.
 \newblock {\em Web Services}.
@@ -89,6 +95,12 @@ E.~Trejo.
 \newblock ?` {{Q}}u{\'e} son las encuestas y para qu{\'e} sirven?
 \newblock \url{http://simomexico.com/encuestas/}.
 \newblock Accedido: 12/12/2018.
+
+\bibitem{maven2}
+Wikipedia.
+\newblock Maven.
+\newblock \url{https://es.wikipedia.org/wiki/Maven}.
+\newblock Accedido: 31/01/2019.
 
 \bibitem{sensoresSmart2}
 F.~Yubal.

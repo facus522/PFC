@@ -84,7 +84,7 @@ Es por ello que las tablas de resultados y respuestas se encuentran relacionadas
 Por último, se encuentra aislada la tabla \textit{Informacion\_Noticia} en la que se almacenarán todas aquellas noticias e informaciones que se consideren de interés para el resto de los usuarios. Como atributos presentará un título y una descripción (ésta última opcional) y una URL que hará referencia al sitio donde se aloja la noticia en sí.
 \\
 
-Cabe aclarar que una vez creadas las tablas en la base de datos, se realizó una carga inicial mediante sentencias SQL sobre las entidades Sexo y Tipo de Usuario, ya que son datos predefinidos independientes de la aplicación móvil. El resto de las tablas se irán poblando mediante los consumos que realice la app sobre Web Service.
+Cabe aclarar que una vez creadas las tablas en la base de datos, se realizó una carga inicial mediante sentencias SQL sobre las entidades Sexo, Tipo de Usuario y Tipo de Preguntas, ya que son datos predefinidos independientes de la aplicación móvil. El resto de las tablas se irán poblando mediante los consumos que realice la app sobre Web Service.
 
 %-------------------------------------------------------------------
 \section{Web Service}
@@ -155,6 +155,61 @@ Dentro de las dependencias utilizadas para el desarrollo del Web Service se dest
 	
 	
 \end{itemize}
+
+%------------------------------------------------------------------
+\subsection{Mapeo objeto-relacional}
+%-------------------------------------------------------------------
+\label{cap2:subsec:mapeo-objetos}
+
+Ya con las tablas creadas en base de datos, es necesario llevar adelante el mapeo objeto-relacional o también conocido por su definición en inglés \textit{Object-Relational mapping (ORM)}. Es una técnica de programación cuya funcionalidad es la de mapear datos entre los objetos Java y la base de datos relacional utilizada como motor de persistencia. 
+\\
+
+Esto crea una base de datos orientada a objetos virtual, sobre la base de datos relacional, posibilitando el uso de las características propias de la orientación a objetos.
+\\
+
+Para llevar adelante dicho mapeo es necesario definir las clases objetivos. Por lo tanto, al igual que fue presentado en la sección anterior el modelado de la base de datos, en la Figura \ref{fig:diagrama-modelo} se presenta el modelo equivalente en diagrama de clases de Java.
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/modelo_datos}
+		\caption{Diagrama de clases del modelo}
+		\label{fig:diagrama-modelo}
+	\end{center}
+\end{figure}
+
+Tal como fue mencionado anteriormente, todas las entidades poseen un \textit{id} que hace las tareas de PK. Es por ello que se definió una clase \textit{Entity} de la que van a heredar todas las anteriores, la cual básicamente presenta un id genérico. El objetivo de la misma es abstraer el problema siguiendo las buenas prácticas de la programación orientada a objetos, indiferentemente al tipo de dato que la clase que hereda quiera manejar.
+\\
+
+A su vez, dicha entidad implementa la interfaz ``Serializable'' de Java. La serialización de un objeto consiste en convertir el mismo en una secuencia de bytes, pudiendo enviarlo a través de red, guardarlo en un fichero y después reconstruirlo al otro lado de la red.
+\\
+
+En el modelo se pueden ver las relaciones entre las distintas entidades, a través de asociaciones y composiciones según corresponda cada caso. Su análogo de representación en el modelo de base de datos eran las FK.
+
+%------------------------------------------------------------------
+\subsection{Hibernate y sus configuraciones}
+%-------------------------------------------------------------------
+\label{cap2:subsec:hibernate}
+
+Para llevar adelante el mapeo objeto-relacional, se utilizó el framework \textit{Hibernate}. Es una herramienta ORM para la plataforma Java, que facilita el mapeo de atributos entre una base de datos relacional tradicional y el modelo de objetos de una aplicación, mediante archivos declarativos (XML) o anotaciones en los beans de las entidades que permiten establecer éstas relaciones \cite{hibernate1}.
+\\
+
+Busca solucionar el problema de la diferencia entre los dos modelos de datos coexistentes en una aplicación: el usado en la memoria de la computadora (orientación a objetos) y el usado en las bases de datos (modelo relacional). Para lograr esto permite al desarrollador detallar cómo es su modelo de datos, qué relaciones existen y qué forma tienen. Con esta información Hibernate le permite a la aplicación manipular los datos en la base de datos operando sobre objetos, con todas las características de la POO. 
+\\
+
+Hibernate convertirá los datos entre los tipos utilizados por Java y los definidos por SQL. Genera las sentencias SQL y libera al desarrollador del manejo manual de los datos que resultan de la ejecución de dichas sentencias, manteniendo la portabilidad entre todos los motores de bases de datos con un ligero incremento en el tiempo de ejecución \cite{hibernate2}.
+\\
+
+Ofrece también un lenguaje de consulta de datos llamado \textit{HQL} (Hibernate Query Language), al mismo tiempo que una API para construir las consultas programáticamente, conocida como \textit{Criteria}.
+\\
+
+En cuanto a la configuración, inicialmente se debe establecer la conexión entre la base de datos y la aplicación mediante una URL. Dicha conexión se encarga de realizarla la librería Apache Commons DBCP, mencionada anteriormente. Al tratarse del gestor MySQL corriendo de manera local, la URL a establecer es: \textit{http://localhost:3306/pfc\_encuestas}. Donde \textit{pfc\_encuestas} es el nombre de la base de datos y 3306 el puerto por defecto que ocupa MySQL. En adición, se debe definir el usuario, contraseña y el driver de conexión que depende del tipo de base de datos, en este caso \textit{com.mysql.jdbc.Driver}.
+\\
+
+Es necesario establecer el paquete Java que contiene todas las clases a mapear, mediante la propiedad \textit{packagesToScan}. Por lo tanto, dentro de la subdivisión de paquetes (de la cual se hablará en secciones posteriores), todas las clases que representan el modelo se encuentran en \textit{com.fsalmeron.encuestasfcm.model}.
+\\
+
+Todas éstas configuraciones y muchas más \footnote{http://hibernate.org/} son llevadas a cabo en un archivo del tipo XML denominado \textit{servlet-context}. 
 
 \newpage
 \thispagestyle{empty}

@@ -17,7 +17,7 @@ M.~Besteiro and M.~Rodr{\'i}guez.
 \newblock 2016.
 
 \bibitem{itemsImportancia}
-A.~M. C.~Cejas, M.~Pen{\'e} and D.~Ferrante.
+C.~Cejas, M.~Pen{\'e}, A.~Macchia, and D.~Ferrante.
 \newblock {\em Evaluar para seguir adelante: Resultados del Programa Redes}.
 \newblock Cobertura Universal de Salud, 2016.
 
@@ -46,10 +46,21 @@ G.~Escobar.
 \newblock \url{https://blog.makeitreal.camp/el-protocolo-http/}.
 \newblock Accedido: 20/01/2019.
 
+\bibitem{hibernate1}
+N.~Guerrero.
+\newblock ?`{{Q}}u{\'e} es java hibernate?
+\newblock \url{http://programaenlinea.net/que-es-java-hibernate/}.
+\newblock Accedido: 03/02/2019.
+
 \bibitem{framework}
 J.~Guti{\'e}rrez.
 \newblock {\em ?`{{Q}}u{\'e} es un framework?}
 \newblock Universidad de Sevilla, 2015.
+
+\bibitem{hibernate2}
+G.~King, C.~Bauer, M.~R. Andersen, E.~Bernard, S.~Ebersole, and H.~Ferentschik.
+\newblock {\em Hibernate - Persistencia relacional para Java idiom{\'a}tico}.
+\newblock 2016.
 
 \bibitem{introduccionTICS}
 E.~Lizarralde.

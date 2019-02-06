@@ -209,7 +209,69 @@ En cuanto a la configuración, inicialmente se debe establecer la conexión entre 
 Es necesario establecer el paquete Java que contiene todas las clases a mapear, mediante la propiedad \textit{packagesToScan}. Por lo tanto, dentro de la subdivisión de paquetes (de la cual se hablará en secciones posteriores), todas las clases que representan el modelo se encuentran en \textit{com.fsalmeron.encuestasfcm.model}.
 \\
 
-Todas éstas configuraciones y muchas más \footnote{http://hibernate.org/} son llevadas a cabo en un archivo del tipo XML denominado \textit{servlet-context}. 
+Todas éstas configuraciones y muchas más \footnote{http://hibernate.org/} son llevadas a cabo en un archivo del tipo XML denominado \textit{servlet-context}.
+\\
+
+Para realizar el mapeo ORM, se escogió la técnica de anotaciones en lugar de archivos de mapeos XML, la cual es proporcionada por el framework y denominada ``Hibernate Annotations''.
+\\
+
+Inicialmente se colocan dos anotaciones a nivel clase muy importantes: en primer lugar se especifica \textbf{\textit{@Entity}}, la cual indica que la clase es una entidad, es decir un objeto Java que puede ser persistido. Seguido a ella se coloca la anotación \textbf{\textit{@Table}}, la cual especifica el nombre de la tabla en base de datos que se debe apuntar.
+
+\begin{lstlisting}
+	@Entity(name = "TIPO_USUARIO")
+	@Table(name = "TIPO_USUARIO")
+	public class TipoUsuario extends Entity<Integer>
+\end{lstlisting}
+
+A continuación, se especifican todas las anotaciones de carácter individual, es decir todas aquellas que se realizan sobre un determinado atributo o sobre la función \textit{get()} del mismo.
+\\
+
+Para indicar cuál atributo de la clase será el identificador, es decir el Primary Key, se utiliza la anotación \textbf{\textit{@Id}}. Seguido a ella, se puede personalizar la forma en que se generará el valor del identificador mediante la anotación \textbf{\textit{@GeneratedValue}}. Existen cuatro estrategias de generación: AUTO, IDENTITY, SEQUENCE y TABLE\footnote{http://docs.jboss.org/hibernate/jpa/2.2/api/javax/persistence/GeneratedValue.html}, donde la primer opción fue la escogida en el proyecto, ya que utiliza la estrategia por defecto de la base de datos. Además, es necesario agregar la anotación \textbf{\textit{@SequenceGenerator}} la cual define un generador de clave primaria que es referenciado por el GeneratedValue.
+
+\begin{lstlisting}
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, 
+			generator = "Sexo_Generator")
+	@SequenceGenerator(name = "Sexo_Generator", 
+			sequenceName = "Sexo_Generator")
+	public Integer getId() {
+		return id;
+	}
+\end{lstlisting}
+
+Todos aquellos atributos que no estén marcados como \textbf{\textit{@Transient}}, serán persistidos. Para llevar adelante la personalización de la columna de la tabla en un determinado atributo se utiliza la anotación \textbf{\textit{@Column}}. Dentro de ella se puede especificar por ejemplo el nombre de la columna en base de datos, si es una clave única, si puede ser null, etc\footnote{http://docs.jboss.org/hibernate/jpa/2.2/api/javax/persistence/Column.html}.
+
+\begin{lstlisting}
+	@Column(name = "DNI", nullable = false, unique = true)
+	public Integer getDni() {
+		return dni;
+	}
+\end{lstlisting}
+
+A la hora de mapear las relaciones que se producen entre las entidades, hay que tener en cuenta como se dá la misma para escoger la anotación adecuada. Por ejemplo, en la relación que se encuentra entre la entidad Respuesta y Pregunta, donde la primera tiene una FK sobre la segunda, el mapeo de la misma estará dado mediante la anotación \textbf{\textit{@ManyToOne}}. Dentro de ella se puede especificar entre otras cosas la estrategia para obtener datos de la base de datos, en este caso LAZY, es decir trae la información cuando la necesita. Seguido a ésta anotación, se debe colocar \textbf{\textit{@JoinColumn}}, la cual permite unir dos columnas de una tabla con las FK correspondientes.
+
+\begin{lstlisting}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "IDPREGUNTA")
+	public Pregunta getPregunta() {
+		return pregunta;
+	}
+\end{lstlisting}
+
+En este caso se realizó un mapeo unidireccional, es decir se introdujo la anotación solamente en la entidad Respuesta. También se podría haber especificado desde el lado de Preguntas, aunque en éste caso la relación sería con \textbf{\textit{@OneToMany}}. Si se presentan las anotaciones de ambos lados se dice que el mapeo es bidireccional.
+\\
+
+Por último, para la asociación entre Respuesta y Resultados, la cual presentaba una tabla extra por tratarse de una relación muchos a muchos, es mapeada bajo la anotación \textbf{\textit{@ManyToMany}}. En este caso se agregará la anotación \textbf{\textit{@JoinTable}} para ésta tabla extra, y dentro de ella se encuentra el \textbf{\textit{@JoinColumn}} especificado anteriormente.
+
+\begin{lstlisting}
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "RESULTADO_RESPUESTA"), 
+		joinColumns = {@JoinColumn(name = "RESULTADO") }, 
+		inverseJoinColumns = {JoinColumn(name = "RESPUESTA")})
+	public List<Respuesta> getRespuestas(){
+		return respuestas;
+	}
+\end{lstlisting}
 
 \newpage
 \thispagestyle{empty}

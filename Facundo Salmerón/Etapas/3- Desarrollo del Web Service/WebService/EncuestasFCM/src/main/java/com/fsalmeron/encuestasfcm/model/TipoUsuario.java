@@ -26,7 +26,8 @@ public class TipoUsuario extends com.fsalmeron.encuestasfcm.base.Entity<Integer>
 	@Override
 	@Id
 	@Column(name = "IDTIPOUSUARIO", nullable = false, unique = true)
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "Tipo_Usuario_Generator")
+	@GeneratedValue(strategy = GenerationType.AUTO,
+			generator = "Tipo_Usuario_Generator")
 	@SequenceGenerator(name = "Tipo_Usuario_Generator", sequenceName = "Tipo_Usuario_Generator")
 	public Integer getId() {
 		return id;

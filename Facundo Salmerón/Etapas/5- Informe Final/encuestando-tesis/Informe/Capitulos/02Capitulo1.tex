@@ -3,6 +3,17 @@
 %                          Capítulo 3
 %
 %---------------------------------------------------------------------
+\lstset{
+	escapeinside={<@}{@>},
+	frame = single, 
+	language=Java}
+\definecolor{mygray}{RGB}{118, 118, 118}
+\definecolor{myblue}{RGB}{27, 6, 215}
+\definecolor{mypurple}{RGB}{128, 75, 119}
+\def\graycolor{\color{mygray}}
+\def\blackcolor{\color{black}}
+\def\bluecolor{\color{myblue}}
+\def\purplecolor{\color{mypurple}}
 
 \chapter{Diseño y desarrollo del lado del servidor}
 
@@ -217,10 +228,10 @@ Para realizar el mapeo ORM, se escogió la técnica de anotaciones en lugar de arc
 
 Inicialmente se colocan dos anotaciones a nivel clase muy importantes: en primer lugar se especifica \textbf{\textit{@Entity}}, la cual indica que la clase es una entidad, es decir un objeto Java que puede ser persistido. Seguido a ella se coloca la anotación \textbf{\textit{@Table}}, la cual especifica el nombre de la tabla en base de datos que se debe apuntar.
 
-\begin{lstlisting}
-	@Entity(name = "TIPO_USUARIO")
-	@Table(name = "TIPO_USUARIO")
-	public class TipoUsuario extends Entity<Integer>
+\begin{lstlisting}[escapechar=¿]
+	¿\aftergroup\graycolor¿@Entity¿\aftergroup\blackcolor¿ (name = ¿\aftergroup\bluecolor¿"TIPO_USUARIO"¿\aftergroup\blackcolor¿)
+	¿\aftergroup\graycolor¿@Table¿\aftergroup\blackcolor¿ (name = ¿\aftergroup\bluecolor¿"TIPO_USUARIO"¿\aftergroup\blackcolor¿)
+	¿\aftergroup\purplecolor¿public class¿\aftergroup\blackcolor¿ TipoUsuario ¿\aftergroup\purplecolor¿extends ¿\aftergroup\blackcolor¿Entity<Integer>
 \end{lstlisting}
 
 A continuación, se especifican todas las anotaciones de carácter individual, es decir todas aquellas que se realizan sobre un determinado atributo o sobre la función \textit{get()} del mismo.
@@ -228,33 +239,33 @@ A continuación, se especifican todas las anotaciones de carácter individual, es 
 
 Para indicar cuál atributo de la clase será el identificador, es decir el Primary Key, se utiliza la anotación \textbf{\textit{@Id}}. Seguido a ella, se puede personalizar la forma en que se generará el valor del identificador mediante la anotación \textbf{\textit{@GeneratedValue}}. Existen cuatro estrategias de generación: AUTO, IDENTITY, SEQUENCE y TABLE\footnote{http://docs.jboss.org/hibernate/jpa/2.2/api/javax/persistence/GeneratedValue.html}, donde la primer opción fue la escogida en el proyecto, ya que utiliza la estrategia por defecto de la base de datos. Además, es necesario agregar la anotación \textbf{\textit{@SequenceGenerator}} la cual define un generador de clave primaria que es referenciado por el GeneratedValue.
 
-\begin{lstlisting}
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, 
-			generator = "Sexo_Generator")
-	@SequenceGenerator(name = "Sexo_Generator", 
-			sequenceName = "Sexo_Generator")
-	public Integer getId() {
-		return id;
+\begin{lstlisting}[escapechar=¿]
+	¿\aftergroup\graycolor¿@Id
+	@GeneratedValue¿\aftergroup\blackcolor¿(strategy = GenerationType.¿\aftergroup\bluecolor¿AUTO¿\aftergroup\blackcolor¿, 
+			generator = ¿\aftergroup\bluecolor¿"Sexo_Generator"¿\aftergroup\blackcolor¿)
+	¿\aftergroup\graycolor¿@SequenceGenerator¿\aftergroup\blackcolor¿(name = ¿\aftergroup\bluecolor¿"Sexo_Generator"¿\aftergroup\blackcolor¿, 
+			sequenceName = ¿\aftergroup\bluecolor¿"Sexo_Generator"¿\aftergroup\blackcolor¿)
+	¿\aftergroup\purplecolor¿public¿\aftergroup\blackcolor¿ Integer getId() {
+		¿\aftergroup\purplecolor¿return¿\aftergroup\blackcolor¿ id;
 	}
 \end{lstlisting}
 
 Todos aquellos atributos que no estén marcados como \textbf{\textit{@Transient}}, serán persistidos. Para llevar adelante la personalización de la columna de la tabla en un determinado atributo se utiliza la anotación \textbf{\textit{@Column}}. Dentro de ella se puede especificar por ejemplo el nombre de la columna en base de datos, si es una clave única, si puede ser null, etc\footnote{http://docs.jboss.org/hibernate/jpa/2.2/api/javax/persistence/Column.html}.
 
-\begin{lstlisting}
-	@Column(name = "DNI", nullable = false, unique = true)
-	public Integer getDni() {
-		return dni;
+\begin{lstlisting}[escapechar=¿]
+	¿\aftergroup\graycolor¿@Column¿\aftergroup\blackcolor¿(name = ¿\aftergroup\bluecolor¿"DNI"¿\aftergroup\blackcolor¿, nullable = ¿\aftergroup\purplecolor¿false¿\aftergroup\blackcolor¿, unique = ¿\aftergroup\purplecolor¿true¿\aftergroup\blackcolor¿)
+	¿\aftergroup\purplecolor¿public¿\aftergroup\blackcolor¿ Integer getDni() {
+		¿\aftergroup\purplecolor¿return¿\aftergroup\blackcolor¿ dni;
 	}
 \end{lstlisting}
 
 A la hora de mapear las relaciones que se producen entre las entidades, hay que tener en cuenta como se dá la misma para escoger la anotación adecuada. Por ejemplo, en la relación que se encuentra entre la entidad Respuesta y Pregunta, donde la primera tiene una FK sobre la segunda, el mapeo de la misma estará dado mediante la anotación \textbf{\textit{@ManyToOne}}. Dentro de ella se puede especificar entre otras cosas la estrategia para obtener datos de la base de datos, en este caso LAZY, es decir trae la información cuando la necesita. Seguido a ésta anotación, se debe colocar \textbf{\textit{@JoinColumn}}, la cual permite unir dos columnas de una tabla con las FK correspondientes.
 
-\begin{lstlisting}
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IDPREGUNTA")
-	public Pregunta getPregunta() {
-		return pregunta;
+\begin{lstlisting}[escapechar=¿]
+	¿\aftergroup\graycolor¿@ManyToOne¿\aftergroup\blackcolor¿(fetch = FetchType.¿\aftergroup\bluecolor¿LAZY¿\aftergroup\blackcolor¿)
+	¿\aftergroup\graycolor¿@JoinColumn¿\aftergroup\blackcolor¿(name = ¿\aftergroup\bluecolor¿"IDPREGUNTA"¿\aftergroup\blackcolor¿)
+	¿\aftergroup\purplecolor¿public¿\aftergroup\blackcolor¿ Pregunta getPregunta() {
+		¿\aftergroup\purplecolor¿return¿\aftergroup\blackcolor¿ pregunta;
 	}
 \end{lstlisting}
 
@@ -263,13 +274,13 @@ En este caso se realizó un mapeo unidireccional, es decir se introdujo la anotac
 
 Por último, para la asociación entre Respuesta y Resultados, la cual presentaba una tabla extra por tratarse de una relación muchos a muchos, es mapeada bajo la anotación \textbf{\textit{@ManyToMany}}. En este caso se agregará la anotación \textbf{\textit{@JoinTable}} para ésta tabla extra, y dentro de ella se encuentra el \textbf{\textit{@JoinColumn}} especificado anteriormente.
 
-\begin{lstlisting}
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "RESULTADO_RESPUESTA"), 
-		joinColumns = {@JoinColumn(name = "RESULTADO") }, 
-		inverseJoinColumns = {JoinColumn(name = "RESPUESTA")})
-	public List<Respuesta> getRespuestas(){
-		return respuestas;
+\begin{lstlisting}[escapechar=¿]
+	¿\aftergroup\graycolor¿@ManyToMany¿\aftergroup\blackcolor¿(fetch = FetchType.¿\aftergroup\bluecolor¿LAZY¿\aftergroup\blackcolor¿)
+	¿\aftergroup\graycolor¿@JoinTable¿\aftergroup\blackcolor¿(name = ¿\aftergroup\bluecolor¿"RESULTADO_RESPUESTA"¿\aftergroup\blackcolor¿), 
+		joinColumns = {¿\aftergroup\graycolor¿@JoinColumn¿\aftergroup\blackcolor¿(name = ¿\aftergroup\bluecolor¿"RESULTADO"¿\aftergroup\blackcolor¿) }, 
+		inverseJoinColumns = {¿\aftergroup\graycolor¿@JoinColumn¿\aftergroup\blackcolor¿(name = ¿\aftergroup\bluecolor¿"RESPUESTA"¿\aftergroup\blackcolor¿)})
+	¿\aftergroup\purplecolor¿public¿\aftergroup\blackcolor¿ List<Respuesta> getRespuestas(){
+		¿\aftergroup\purplecolor¿return¿\aftergroup\blackcolor¿ respuestas;
 	}
 \end{lstlisting}
 

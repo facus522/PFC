@@ -10,47 +10,54 @@ A level-1 auxiliary file: Capitulos/01Capitulo1.aux
 A level-1 auxiliary file: Capitulos/01Capitulo2.aux
 A level-1 auxiliary file: Capitulos/Parte2.aux
 A level-1 auxiliary file: Capitulos/02Capitulo1.aux
-I found no \bibdata command---while reading file Tesis.aux
-I found no \bibstyle command---while reading file Tesis.aux
-You've used 20 entries,
-            0 wiz_defined-function locations,
-            126 strings with 1140 characters,
-and the built_in function-call counts, 0 in all, are:
-= -- 0
-> -- 0
+A level-1 auxiliary file: Cascaras/bibliografia.aux
+The style file: abbrv.bst
+A level-1 auxiliary file: Apendices/ParteApendices.aux
+A level-1 auxiliary file: Apendices/01ApendiceA.aux
+Database file #1: citasCapitulo1.bib
+Database file #2: citasCapitulo2.bib
+Warning--to sort, need author or key in mysqlRanking
+Warning--empty publisher in webServiceLibro
+Warning--empty publisher in hibernate2
+You've used 22 entries,
+            2118 wiz_defined-function locations,
+            626 strings with 7199 characters,
+and the built_in function-call counts, 5057 in all, are:
+= -- 474
+> -- 196
 < -- 0
-+ -- 0
-- -- 0
-* -- 0
-:= -- 0
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
++ -- 82
+- -- 60
+* -- 192
+:= -- 865
+add.period$ -- 79
+call.type$ -- 22
+change.case$ -- 89
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 0
-format.name$ -- 0
-if$ -- 0
+cite$ -- 25
+duplicate$ -- 193
+empty$ -- 491
+format.name$ -- 60
+if$ -- 1086
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 0
-num.names$ -- 0
-pop$ -- 0
-preamble$ -- 0
-purify$ -- 0
+int.to.str$ -- 22
+missing$ -- 15
+newline$ -- 126
+num.names$ -- 42
+pop$ -- 209
+preamble$ -- 1
+purify$ -- 74
 quote$ -- 0
-skip$ -- 0
+skip$ -- 119
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
+substring$ -- 135
+swap$ -- 22
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
-warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 0
-(There were 2 error messages)
+type$ -- 74
+warning$ -- 3
+while$ -- 44
+width$ -- 24
+write$ -- 233
+(There were 3 warnings)

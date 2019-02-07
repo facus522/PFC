@@ -284,6 +284,67 @@ Por último, para la asociación entre Respuesta y Resultados, la cual presentaba 
 	}
 \end{lstlisting}
 
+%------------------------------------------------------------------
+\subsection{Arquitectura}
+%-------------------------------------------------------------------
+\label{cap2:subsec:arquitectura}
+
+La arquitectura de sistema escogida para el desarrollo del Web Service, fue la de programación por capas. El principal objetivo de este modelo de desarrollo de software es la separación de las partes que componen una arquitectura del tipo cliente-servidor. 
+\\
+
+Con esta arquitectura el software se divide en tres niveles diferentes: capa de presentación, capa de negocio o servicios y capa de datos o persistencia (Figura \ref{fig:modelo_capas}). La principal ventaja que presenta este modelo, es que permite desarrollar y mantener en forma desacoplada cada nivel, sin afectar a las demás.
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/arquitectura_ws}
+		\caption{Arquitectura modelo de capas}
+		\label{fig:modelo_capas}
+	\end{center}
+\end{figure}
+
+\begin{itemize}
+	
+	\item \textbf{\textit{Capa de presentación:}} Es el nivel superior de la aplicación, básicamente con la que interactúa el usuario, por ello es también llamada ``capa de usuario''. Recibe la información por parte de la capa de negocio. Comúnmente al estar relacionada directamente con el usuario, se utilizan distintas tecnologías para presentar una interfaz de uso intuitivo sin mayores complejidades. Sin embargo, el objetivo de este proyecto es retornar la respuesta en formato JSON, donde el usuario final será la aplicación móvil. La capa de presentación en el Web Service estará implementada mediante Controladores, lo cuales serán detallados en secciones posteriores.
+	
+	\item \textbf{\textit{Capa de negocio:}} Es la capa intermedia que contiene toda la lógica de negocio necesaria. Se encuentra comunicada con la capa de presentación y la capa de persistencia. Trata todas las peticiones que el usuario ha realizado mediante la capa de presentación, aplica las reglas de negocio y se encarga de enviarle una respuesta de vuelta. A la hora de aplicar la lógica, es pertinente recuperar datos o persistirlos en la base de datos mediante la comunicación con la capa de persistencia.
+	
+	\item \textbf{\textit{Capa de persistencia:}} Es también denominada como ``capa de datos''. Es la última capa encargada de proporcionar una biblioteca de funcionalidades para el acceso a la base de datos, lugar en el que reside la información. Está formada por el gestor de base de datos, que permite el acceso a los mismos para su consulta, actualización, almacenamiento o eliminación. Se comunica con la capa de negocios facilitando datos o recibiéndolos.
+	
+\end{itemize}
+
+%------------------------------------------------------------------
+\subsection{Spring y diseño de las capas}
+%-------------------------------------------------------------------
+\label{cap2:subsec:spring}
+
+Para llevar adelante la división de capas de la arquitectura propuesta, se utilizó \textit{Spring Framework}. Es una herramienta de gran utilidad para el desarrollo de aplicaciones web, permitiendo entre otras cosas la \textit{inversión de control (IoC)}, es decir el flujo principal de ejecución está determinado por las respuestas que se deben dar ante un determinado suceso, a diferencia de la ejecución concurrente en la programación tradicional \cite{spring2}.
+\\
+
+La inversión de control es un patrón de diseño de software en el que el flujo de ejecución de un programa y vida de los objetos se invierte respecto a los métodos de programación tradicionales. Es el framework el que toma el control, encargándose de administrar los componentes (crearlos en orden correcto, conectarlos entre sí, configurarlos), es decir definir el flujo de actuación o el ciclo de vida de una petición.
+\\
+
+En los métodos de programación tradicionales la interacción se expresa de forma imperativa haciendo llamadas a procedimientos o funciones. Tradicionalmente el programador especifica la secuencia de decisiones y procedimientos que pueden darse durante el ciclo de vida de un programa mediante llamadas a funciones. En su lugar, en la inversión de control se especifican respuestas deseadas a sucesos o solicitudes de datos concretas, dejando que una entidad intermedia entre el controlador frontal y la lógica del problema lleve a cabo las acciones de control que se requieran en el orden necesario y para el conjunto de sucesos que tengan que ocurrir (Figura \ref{fig:ioc}) \cite{spring1}.
+\\
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]%
+		{Imagenes/Bitmap/ioc}
+		\caption{Inversión de control}
+		\label{fig:ioc}
+	\end{center}
+\end{figure}
+
+Esto favorece la modularización del código, al evitar la dependencia directa entre unos componentes y otros pero también favorece la reutilización del mismo, ya que permite la creación de módulos independientes del resto de la aplicación.
+\\
+
+Además, Spring provee la \textit{inyección de dependencias (DI)}, que es un tipo de inversión de control. Es un patrón de diseño orientado a objetos, donde en lugar de que cada clase tenga que instanciar los objetos que necesite, Spring se encarga de inyectar los mismos mediante los setters o el constructor en el momento que se cree la clase (en tiempo de ejecución) y cuando se quiera utilizar la misma ya estará lista. Para ello, dentro de Spring hay un contenedor que se encarga de inyectar a cada objeto, los objetos que necesita según se le indique, mediante un archivo de configuración XML o anotaciones sobre los beans (\textit{@Autowired}).
+\\
+
+Siguiendo con el modelo de capas establecido, se puede mencionar que Spring posee un módulo denominado \textit{WebMVC}, basado en el patrón modelo vista-controlador. Para ello presenta una serie de anotaciones que permiten diferenciar los elementos por cada capa: controladores, servicios y DAO (Data Access Object).
+
+
 \newpage
 \thispagestyle{empty}
 \mbox{ }

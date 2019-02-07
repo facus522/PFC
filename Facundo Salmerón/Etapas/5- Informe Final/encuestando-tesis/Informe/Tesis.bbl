@@ -1,0 +1,136 @@
+\begin{thebibliography}{10}
+
+\bibitem{mysqlRanking}
+Db-engines ranking.
+\newblock \url{https://db-engines.com/en/ranking}.
+\newblock Accedido: 29/01/2019.
+
+\bibitem{maven1}
+C.~{\'A}lvarez.
+\newblock ?`{{Q}}u{\'e} es maven?
+\newblock \url{https://www.genbeta.com/desarrollo/que-es-maven}.
+\newblock Accedido: 31/01/2019.
+
+\bibitem{webServiceLibro}
+M.~Besteiro and M.~Rodr{\'i}guez.
+\newblock {\em Web Services}.
+\newblock 2016.
+
+\bibitem{itemsImportancia}
+C.~Cejas, M.~Pen{\'e}, A.~Macchia, and D.~Ferrante.
+\newblock {\em Evaluar para seguir adelante: Resultados del Programa Redes}.
+\newblock Cobertura Universal de Salud, 2016.
+
+\bibitem{sensoresSmart}
+L.~Crisol.
+\newblock ?`{{C}}onoces todos los sensores que tiene tu tel{\'e}fono y para
+  qu{\'e} sirven?
+\newblock \url{https://bit.ly/2hFIHXm}.
+\newblock Accedido: 28/01/2019.
+
+\bibitem{smarthphonesImportancia}
+Cronista.
+\newblock Efecto smartphone: las l{\'i}neas de celulares ya superan a la
+  poblaci{\'o}n mundial.
+\newblock \url{https://bit.ly/2rWYLGr}.
+\newblock Accedido: 13/12/2018.
+
+\bibitem{javaLibro}
+J.~M.~L. de~Guevara.
+\newblock {\em Fundamentos de Programaci{\'o}n en Java}.
+\newblock Editorial EME, 2012.
+
+\bibitem{httpProtocolo}
+G.~Escobar.
+\newblock El protocolo http.
+\newblock \url{https://blog.makeitreal.camp/el-protocolo-http/}.
+\newblock Accedido: 20/01/2019.
+
+\bibitem{spring2}
+J.~C. Geeks.
+\newblock {\em Spring Framework Cookbook}.
+\newblock Exelixis Media P.C., 2017.
+
+\bibitem{hibernate1}
+N.~Guerrero.
+\newblock ?`{{Q}}u{\'e} es java hibernate?
+\newblock \url{http://programaenlinea.net/que-es-java-hibernate/}.
+\newblock Accedido: 03/02/2019.
+
+\bibitem{framework}
+J.~Guti{\'e}rrez.
+\newblock {\em ?`{{Q}}u{\'e} es un framework?}
+\newblock Universidad de Sevilla, 2015.
+
+\bibitem{hibernate2}
+G.~King, C.~Bauer, M.~R. Andersen, E.~Bernard, S.~Ebersole, and H.~Ferentschik.
+\newblock {\em Hibernate - Persistencia relacional para Java idiom{\'a}tico}.
+\newblock 2016.
+
+\bibitem{introduccionTICS}
+E.~Lizarralde.
+\newblock {\em Informe de vigilancia tecnol{\'o}gica. Tendencia en las
+  tecnolog{\'i}as m{\'o}viles y sus aplicaciones}.
+\newblock Clarke, Modet \& Co, Espa'na, 2014.
+
+\bibitem{androidImportancia}
+A.~Martinez.
+\newblock ?` {{P}}or qu{\'e} android es el rey de los sistemas operativos?
+\newblock
+  \url{http://www.abc.es/tecnologia/informatica/software/abci-google-android-sistemas-operativos-201604202207_noticia.html}.
+\newblock Accedido: 13/12/2018.
+
+\bibitem{tiposDB}
+J.~D.~A. Morales.
+\newblock Caracter{\'i}sticas y tipos de bases de datos.
+\newblock
+  \url{https://www.ibm.com/developerworks/ssa/data/library/tipos_bases_de_datos/index.html}.
+\newblock Accedido: 29/01/2019.
+
+\bibitem{poo}
+S.~Moreno.
+\newblock Programaci{\'o}n orientada a objetos.
+\newblock
+  \url{http://ferestrepoca.github.io/paradigmas-de-programacion/poo/poo_teoria/index.html}.
+\newblock Accedido: 20/01/2019.
+
+\bibitem{mysqlPopular}
+Oracle.
+\newblock World's most popular open source database.
+\newblock \url{https://www.oracle.com/mysql/}.
+\newblock Accedido: 29/01/2019.
+
+\bibitem{importanciaEncuestas}
+I.~Rohlfs.
+\newblock La importancia de la perspectiva de g{\'e}nero en las encuestas de
+  salud.
+\newblock {\em Gaceta Sanitaria}, 14(2):146--153, 2000.
+
+\bibitem{poblacionEncuestas}
+E.~Trejo.
+\newblock ?` {{Q}}u{\'e} son las encuestas y para qu{\'e} sirven?
+\newblock \url{http://simomexico.com/encuestas/}.
+\newblock Accedido: 12/12/2018.
+
+\bibitem{maven2}
+Wikipedia.
+\newblock Maven.
+\newblock \url{https://es.wikipedia.org/wiki/Maven}.
+\newblock Accedido: 31/01/2019.
+
+\bibitem{spring1}
+J.~Young.
+\newblock I finally get the point of inversion of control.
+\newblock
+  \url{http://www.ytechie.com/2008/06/i-finally-get-the-point-of-inversion-of-control/}.
+\newblock Accedido: 05/02/2019.
+
+\bibitem{sensoresSmart2}
+F.~Yubal.
+\newblock 12 sensores que encontrar{\'a}s en tu m{\'o}vil: c{\'o}mo funcionan y
+  para qu{\'e} sirven.
+\newblock
+  \url{https://www.xataka.com/basics/12-sensores-que-encontraras-tu-movil-sirven}.
+\newblock Accedido: 28/01/2019.
+
+\end{thebibliography}

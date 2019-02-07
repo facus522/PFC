@@ -2,9 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9bbd39a7-b4f6-4c32-b173-53b9b3ed066e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Apendices/01ApendiceA.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Apendices/01ApendiceA.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Apendices/ParteApendices.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Apendices/ParteApendices.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Capitulos/02Capitulo1.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Capitulos/02Capitulo1.aux" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Capitulos/02Capitulo1.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Capitulos/02Capitulo1.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Cascaras/bibliografia.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Cascaras/bibliografia.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.bbl" beforeDir="false" afterPath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.bbl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.blg" beforeDir="false" afterPath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.blg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.lof" beforeDir="false" afterPath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.lof" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.lot" beforeDir="false" afterPath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.lot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.out" beforeDir="false" afterPath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/Tesis.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/citasCapitulo2.bib" beforeDir="false" afterPath="$PROJECT_DIR$/../../../5- Informe Final/encuestando-tesis/Informe/citasCapitulo2.bib" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,7 +58,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fsalmeron/encuestasfcm/model/Respuesta.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="345">
               <caret line="34" column="62" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
             </state>
           </provider>
@@ -60,11 +73,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fsalmeron/encuestasfcm/model/TipoUsuario.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+              <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fsalmeron/encuestasfcm/dao/InformacionNoticiaDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fsalmeron/encuestasfcm/dao/impl/InformacionNoticiaDaoImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -119,6 +150,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -160,6 +192,25 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="encuestasfcm" type="462c0819:PsiDirectoryNode" />
               <item name="base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EncuestasFCM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EncuestasFCM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="encuestasfcm" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EncuestasFCM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EncuestasFCM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="encuestasfcm" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EncuestasFCM" type="b2602c69:ProjectViewProjectNode" />
@@ -256,7 +307,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -290,9 +340,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21947326" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22346368" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -407,6 +456,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fsalmeron/encuestasfcm/model/Respuesta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="34" column="62" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final-sources.jar!/javax/persistence/JoinColumn.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
@@ -414,17 +470,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fsalmeron/encuestasfcm/model/Respuesta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="34" column="62" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fsalmeron/encuestasfcm/model/TipoUsuario.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fsalmeron/encuestasfcm/dao/InformacionNoticiaDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fsalmeron/encuestasfcm/dao/impl/InformacionNoticiaDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>

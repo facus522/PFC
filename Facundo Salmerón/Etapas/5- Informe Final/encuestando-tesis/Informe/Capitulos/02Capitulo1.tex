@@ -61,7 +61,7 @@ En este proyecto se trabajó con la versión Community, en los sistemas operativos
 
 \begin{figure}[h!]
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]%
+		\includegraphics[width=1\textwidth]%
 		{Imagenes/Bitmap/modelo_db}
 		\caption{Diseño de la base de datos}
 		\label{fig:modelobd}
@@ -182,7 +182,7 @@ Para llevar adelante dicho mapeo es necesario definir las clases objetivos. Por 
 
 \begin{figure}[h!]
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]%
+		\includegraphics[width=1\textwidth]%
 		{Imagenes/Bitmap/modelo_datos}
 		\caption{Diagrama de clases del modelo}
 		\label{fig:diagrama-modelo}
@@ -339,11 +339,112 @@ En los métodos de programación tradicionales la interacción se expresa de forma 
 Esto favorece la modularización del código, al evitar la dependencia directa entre unos componentes y otros pero también favorece la reutilización del mismo, ya que permite la creación de módulos independientes del resto de la aplicación.
 \\
 
-Además, Spring provee la \textit{inyección de dependencias (DI)}, que es un tipo de inversión de control. Es un patrón de diseño orientado a objetos, donde en lugar de que cada clase tenga que instanciar los objetos que necesite, Spring se encarga de inyectar los mismos mediante los setters o el constructor en el momento que se cree la clase (en tiempo de ejecución) y cuando se quiera utilizar la misma ya estará lista. Para ello, dentro de Spring hay un contenedor que se encarga de inyectar a cada objeto, los objetos que necesita según se le indique, mediante un archivo de configuración XML o anotaciones sobre los beans (\textit{@Autowired}).
+Además, Spring provee la \textit{inyección de dependencias (DI)}, que es un tipo de inversión de control. Es un patrón de diseño orientado a objetos, donde en lugar de que cada clase tenga que instanciar los objetos que necesite, Spring se encarga de inyectar los mismos mediante los setters o el constructor en el momento que se cree la clase (en tiempo de ejecución) y cuando se quiera utilizar la misma ya estará lista. Para ello, dentro de Spring hay un contenedor que se encarga de inyectar a cada objeto, los objetos que necesita según se le indique, mediante un archivo de configuración XML o anotaciones sobre los beans (\textit{@Autowired}). La inyección de dependencias en este proyecto está basada en Interfaces de Java.
 \\
 
 Siguiendo con el modelo de capas establecido, se puede mencionar que Spring posee un módulo denominado \textit{WebMVC}, basado en el patrón modelo vista-controlador. Para ello presenta una serie de anotaciones que permiten diferenciar los elementos por cada capa: controladores, servicios y DAO (Data Access Object).
+\\
 
+\begin{figure}[h!]
+	\makebox[\textwidth][c]{\includegraphics[width=1.6\textwidth, height=1.3\textwidth]{Imagenes/Bitmap/diagrama_ws}}%
+	\caption{Diagrama de clases del Web Service}
+	\label{fig:diagramaws}
+\end{figure}
+
+En la Figura \ref{fig:diagramaws} se puede ver claramente la mencionada separación por capas, de acuerdo a la arquitectura establecida. Siguiendo un flujo de secuencia normal, el usuario ejecuta una consulta desde la aplicación móvil, la cual se encarga de enviar una petición HTTP (\textit{request}) al Web Service. La misma llega al controlador frontal o mejor conocido como \textit{Dispatcher Servlet} que se encarga de enrutarla hacia el controlador indicado, que se encuentra dentro de la capa de presentación. 
+\\
+
+Las clases que se encuentran en dicha capa presentan la anotación de carácter general \textbf{\textit{@Controller}}. Corresponde al framework de Spring y sirve para identificar a las clases como tal, ya que son detectadas automáticamente a través del escaneo classpath. Además, se encuentra la anotación \textbf{\textit{@RequestMapping}} que se encarga de definir la dirección del recurso.
+
+\begin{lstlisting}[escapechar=¿]
+	¿\aftergroup\graycolor¿@Controller
+	@RequestMapping¿\aftergroup\blackcolor¿(value = ¿\aftergroup\bluecolor¿"/usuarios"¿\aftergroup\blackcolor¿)
+	¿\aftergroup\purplecolor¿public class ¿\aftergroup\blackcolor¿UserController
+\end{lstlisting}
+
+Teniendo en cuenta que el nombre del proyecto es \textit{EncuestasFCM}, la URL a nivel local para acceder al controlador de usuarios por ejemplo es:
+\begin{center}
+	\textit{http://localhost:8080/EncuestasFCM/usuarios}
+\end{center}
+	
+Dentro de cada controlador se van a encontrar distintos endpoints (métodos) funcionando bajo su contexto. Cada uno de ellos, posee a su vez la anotación \textbf{\textit{@RequestMapping}}, la cual indica la dirección del recurso y el método de la request, entre otras cosas. Es decir, dentro de un controlador se pueden hallar métodos que tengan el mismo path, pero distinto tipo de request (por ejemplo uno GET y otro POST). También cuentan con la anotación \textbf{\textit{@ResponseBody}}, que indica que el tipo de devolución debe escribirse directamente en el cuerpo de respuesta HTTP.
+
+\begin{lstlisting}[escapechar=¿]
+	¿\aftergroup\graycolor¿@RequestMapping¿\aftergroup\blackcolor¿(value = ¿\aftergroup\bluecolor¿"/getAll"¿\aftergroup\blackcolor¿, 
+		method = RequestMethod.¿\aftergroup\bluecolor¿GET¿\aftergroup\blackcolor¿, 
+		produces = ¿\aftergroup\bluecolor¿"text/plain;charset=UTF-8"¿\aftergroup\blackcolor¿)
+	¿\aftergroup\graycolor¿@ResponseBody
+	¿\aftergroup\purplecolor¿public ¿\aftergroup\blackcolor¿String getEncuestas()
+\end{lstlisting}
+
+Para este método en específico, cuyo path es \textit{/getAll} y se trata de una request del tipo GET, la URL es la siguiente:
+
+\begin{center}
+	\textit{http://localhost:8080/EncuestasFCM/encuestas/getAll}
+\end{center}
+
+Existen situaciones en las que se envían parámetros en la petición HTTP, como por ejemplo el id de una encuesta a eliminar. Para ello se utiliza la anotación \textbf{\textit{@RequestParam}} junto a su nombre.
+
+\begin{lstlisting}[escapechar=¿]
+	¿\aftergroup\graycolor¿@RequestMapping¿\aftergroup\blackcolor¿(value = ¿\aftergroup\bluecolor¿"/removeEncuesta"¿\aftergroup\blackcolor¿, 
+		method = RequestMethod.¿\aftergroup\bluecolor¿PUT¿\aftergroup\blackcolor¿, 
+		produces = ¿\aftergroup\bluecolor¿"text/plain;charset=UTF-8"¿\aftergroup\blackcolor¿)
+	¿\aftergroup\graycolor¿@ResponseBody
+	¿\aftergroup\purplecolor¿public ¿\aftergroup\blackcolor¿String removeEncuesta(¿\aftergroup\graycolor¿@RequestParam¿\aftergroup\blackcolor¿(¿\aftergroup\bluecolor¿"idEncuesta"¿\aftergroup\blackcolor¿) 
+		Integer idEncuesta, ¿\aftergroup\graycolor¿@RequestParam¿\aftergroup\blackcolor¿(¿\aftergroup\bluecolor¿"idUsuario"¿\aftergroup\blackcolor¿) 
+		Integer idUsuario)
+\end{lstlisting}
+
+En este ejemplo puntual, se puede ver que el tipo de request es PUT y no DELETE, ya que como se mencionó anteriormente el borrado será lógico, es decir la base de datos se actualizará colocando a la encuesta como activa en falso y completando los campos de fecha de baja y usuario de baja para el control de auditorias. En estos casos, la URL de acceso estará formada por dichos parámetros. El primer de ellos es separado por el carácter ?, mientras que los siguientes serán por \&:
+
+\begin{center}
+	\textit{http://localhost:8080/EncuestasFCM/encuestas/removeEncuesta?idEncuesta=1}
+	\&\textit{idUsuario=1}
+\end{center}
+
+Para el caso de aquellos endpoints en los que se debe transportar gran cantidad de información, por lo cual enviar los mismos en parámetros no respetaría las buenas prácticas de la programación, ya que cargaría con mucha información la URL por ejemplo, se obtienen mediante un objeto denominado \textbf{\textit{HttpServletRequest}}. Proporciona acceso a los datos de cabecera HTTP, como cualquier cookie encontrada en la petición, y el método HTTP con el que se ha realizado la petición. Además, permite obtener los argumentos que el cliente envía como parte de la petición. De ésta forma los datos son enviados desde el cliente con un formato JSON y mediante la utilización de la biblioteca GSON mencionada anteriormente, se serializa el objeto correspondiente.
+
+\begin{lstlisting}[escapechar=¿]
+	¿\aftergroup\graycolor¿@RequestMapping¿\aftergroup\blackcolor¿(value = ¿\aftergroup\bluecolor¿"/saveUser"¿\aftergroup\blackcolor¿, 
+		method = RequestMethod.¿\aftergroup\bluecolor¿POST¿\aftergroup\blackcolor¿, 
+		produces = ¿\aftergroup\bluecolor¿"text/plain;charset=UTF-8"¿\aftergroup\blackcolor¿)
+	¿\aftergroup\graycolor¿@ResponseBody
+	¿\aftergroup\purplecolor¿public ¿\aftergroup\blackcolor¿String saveUser(HttpServletRequest http)
+\end{lstlisting}
+
+Teniendo en cuenta que se trata de una nueva persistencia en la base de datos, se trata de una request del tipo POST. Con toda la información enviada como argumentos la URL queda de la siguiente forma:
+
+\begin{center}
+	\textit{http://localhost:8080/EncuestasFCM/usuarios/saveUser}
+\end{center}
+
+La capa de presentación se encuentra comunicada con la de servicios, que es la encargada de aplicar toda la lógica de negocios correspondiente. Como se pudo ver en el diagrama de clases de la Figura \ref{fig:diagramaws}, por cada entidad creada se asocia un servicio, los cuales se encuentran anotados a nivel clase bajo \textbf{\textit{@Service}}. Dicha anotación de Spring indica que la clase es un bean de la capa de negocios. Además, se presenta la anotación \textbf{\textit{@Scope}} que indica el ámbito de los objetos creados. En nuestro caso siempre se tratará de \textbf{\textit{Scopes Singleton}}, esto significa que el contenedor solo instancia un objeto de la clase, y cada vez que se pide una instancia del bean en realidad se obtiene una referencia al mismo objeto, evitando tener múltiples objetos que accedan a la base de datos, implicando mayor cantidad de conexiones por ejemplo.
+\\
+
+\begin{lstlisting}[escapechar=¿]
+	¿\aftergroup\graycolor¿@Service
+	@Scope¿\aftergroup\blackcolor¿(ConfigurableBeanFactory.¿\aftergroup\bluecolor¿SCOPE_SINGLETON¿\aftergroup\blackcolor¿)
+	¿\aftergroup\purplecolor¿public class ¿\aftergroup\blackcolor¿PreguntaServiceImpl 
+		¿\aftergroup\purplecolor¿extends¿\aftergroup\blackcolor¿BaseServiceImpl<Pregunta, Integer> 
+		¿\aftergroup\purplecolor¿implements ¿\aftergroup\blackcolor¿PreguntaService
+\end{lstlisting}
+
+Todas las clases de servicio implementan una interfaz, por la inyección de dependencias propiamente dicha del framework. A su vez, tanto las clases como las interfaces extienden de otras genéricas denominadas base. Estas son \textbf{\textit{BaseServiceImpl}} y \textbf{\textit{BaseService}}, respectivamente. Esto permite abstraer y reutilizar código, ya que todos los servicios presentan funcionalidades similares: obtener un objeto por el id, traer todos los objetos de una clase, filtrarlos, guardarlos o modificarlos, eliminarlos, etc.
+\\
+
+Por último, la capa de servicios se encuentra comunicada con la de acceso a datos. Ésta es la capa de más bajo nivel, la cual posee acceso a la base de datos, por eso las entidades dentro de ella son denominados DAO (Objetos de acceso a datos). Al igual que las distintas capas, posee una anotación a nivel clase denominada \textbf{\textit{@Repository}}. La misma determina que se trata de una clase relacionada con la capa de persistencia y definida como Singleton.
+
+\begin{lstlisting}[escapechar=¿]
+	¿\aftergroup\graycolor¿@Repository
+	¿\aftergroup\purplecolor¿public class ¿\aftergroup\blackcolor¿RespuestaDaoImpl 
+		¿\aftergroup\purplecolor¿extends ¿\aftergroup\blackcolor¿BaseDaoImpl<Respuesta, Integer> 
+		¿\aftergroup\purplecolor¿implements¿\aftergroup\blackcolor¿ RespuestaDao{
+\end{lstlisting}
+
+De la misma forma que en los servicios, se definió genéricamente una clase y una interfaz base denominados \textbf{\textit{BaseDaoImpl}} y \textbf{\textit{BaseDao}}, respectivamente. Dicho DAO es inyectado dentro de la clase BaseServiceImpl para llevar adelante la comunicación entre las capas. Dentro de la clase se encuentra un objeto \textbf{\textit{SessionFactory}}, propio del framework Hibernate e inyectado por Spring, que se encarga de ir a la base de datos y ejecutar las consultas. Las mismas pueden ser ejecutadas mediante HQL (lenguaje SQL propio de Hibernate) o Criteria (API de consultas de Hibernate, mediante la manipulación de objetos).
+\\
+
+Finalmente, el DAO realiza la transacción y retorna un mensaje al servicio nuevamente, éste aplica las reglas de negocios que hagan falta y envía el mensaje al controlador. Éste último transforma la respuesta en formato JSON y lo entrega al Dispatcher que se encarga de enviar una respuesta HTTP (\textit{response}) al cliente.
 
 \newpage
 \thispagestyle{empty}

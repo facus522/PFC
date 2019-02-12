@@ -227,18 +227,19 @@ Para realizar el mapeo ORM, se escogió la técnica de anotaciones en lugar de arc
 \\
 
 Inicialmente se colocan dos anotaciones a nivel clase muy importantes: en primer lugar se especifica \textbf{\textit{@Entity}}, la cual indica que la clase es una entidad, es decir un objeto Java que puede ser persistido. Seguido a ella se coloca la anotación \textbf{\textit{@Table}}, la cual especifica el nombre de la tabla en base de datos que se debe apuntar.
-
+\\
 \begin{lstlisting}[escapechar=¿]
 	¿\aftergroup\graycolor¿@Entity¿\aftergroup\blackcolor¿ (name = ¿\aftergroup\bluecolor¿"TIPO_USUARIO"¿\aftergroup\blackcolor¿)
 	¿\aftergroup\graycolor¿@Table¿\aftergroup\blackcolor¿ (name = ¿\aftergroup\bluecolor¿"TIPO_USUARIO"¿\aftergroup\blackcolor¿)
 	¿\aftergroup\purplecolor¿public class¿\aftergroup\blackcolor¿ TipoUsuario ¿\aftergroup\purplecolor¿extends ¿\aftergroup\blackcolor¿Entity<Integer>
 \end{lstlisting}
+~\\
 
 A continuación, se especifican todas las anotaciones de carácter individual, es decir todas aquellas que se realizan sobre un determinado atributo o sobre la función \textit{get()} del mismo.
 \\
 
 Para indicar cuál atributo de la clase será el identificador, es decir el Primary Key, se utiliza la anotación \textbf{\textit{@Id}}. Seguido a ella, se puede personalizar la forma en que se generará el valor del identificador mediante la anotación \textbf{\textit{@GeneratedValue}}. Existen cuatro estrategias de generación: AUTO, IDENTITY, SEQUENCE y TABLE\footnote{http://docs.jboss.org/hibernate/jpa/2.2/api/javax/persistence/GeneratedValue.html}, donde la primer opción fue la escogida en el proyecto, ya que utiliza la estrategia por defecto de la base de datos. Además, es necesario agregar la anotación \textbf{\textit{@SequenceGenerator}} la cual define un generador de clave primaria que es referenciado por el GeneratedValue.
-
+\\
 \begin{lstlisting}[escapechar=¿]
 	¿\aftergroup\graycolor¿@Id
 	@GeneratedValue¿\aftergroup\blackcolor¿(strategy = GenerationType.¿\aftergroup\bluecolor¿AUTO¿\aftergroup\blackcolor¿, 
@@ -249,18 +250,20 @@ Para indicar cuál atributo de la clase será el identificador, es decir el Primar
 		¿\aftergroup\purplecolor¿return¿\aftergroup\blackcolor¿ id;
 	}
 \end{lstlisting}
+~\\
 
 Todos aquellos atributos que no estén marcados como \textbf{\textit{@Transient}}, serán persistidos. Para llevar adelante la personalización de la columna de la tabla en un determinado atributo se utiliza la anotación \textbf{\textit{@Column}}. Dentro de ella se puede especificar por ejemplo el nombre de la columna en base de datos, si es una clave única, si puede ser null, etc\footnote{http://docs.jboss.org/hibernate/jpa/2.2/api/javax/persistence/Column.html}.
-
+\\
 \begin{lstlisting}[escapechar=¿]
 	¿\aftergroup\graycolor¿@Column¿\aftergroup\blackcolor¿(name = ¿\aftergroup\bluecolor¿"DNI"¿\aftergroup\blackcolor¿, nullable = ¿\aftergroup\purplecolor¿false¿\aftergroup\blackcolor¿, unique = ¿\aftergroup\purplecolor¿true¿\aftergroup\blackcolor¿)
 	¿\aftergroup\purplecolor¿public¿\aftergroup\blackcolor¿ Integer getDni() {
 		¿\aftergroup\purplecolor¿return¿\aftergroup\blackcolor¿ dni;
 	}
 \end{lstlisting}
+~\\
 
 A la hora de mapear las relaciones que se producen entre las entidades, hay que tener en cuenta como se dá la misma para escoger la anotación adecuada. Por ejemplo, en la relación que se encuentra entre la entidad Respuesta y Pregunta, donde la primera tiene una FK sobre la segunda, el mapeo de la misma estará dado mediante la anotación \textbf{\textit{@ManyToOne}}. Dentro de ella se puede especificar entre otras cosas la estrategia para obtener datos de la base de datos, en este caso LAZY, es decir trae la información cuando la necesita. Seguido a ésta anotación, se debe colocar \textbf{\textit{@JoinColumn}}, la cual permite unir dos columnas de una tabla con las FK correspondientes.
-
+\\
 \begin{lstlisting}[escapechar=¿]
 	¿\aftergroup\graycolor¿@ManyToOne¿\aftergroup\blackcolor¿(fetch = FetchType.¿\aftergroup\bluecolor¿LAZY¿\aftergroup\blackcolor¿)
 	¿\aftergroup\graycolor¿@JoinColumn¿\aftergroup\blackcolor¿(name = ¿\aftergroup\bluecolor¿"IDPREGUNTA"¿\aftergroup\blackcolor¿)
@@ -268,12 +271,13 @@ A la hora de mapear las relaciones que se producen entre las entidades, hay que 
 		¿\aftergroup\purplecolor¿return¿\aftergroup\blackcolor¿ pregunta;
 	}
 \end{lstlisting}
+~\\
 
 En este caso se realizó un mapeo unidireccional, es decir se introdujo la anotación solamente en la entidad Respuesta. También se podría haber especificado desde el lado de Preguntas, aunque en éste caso la relación sería con \textbf{\textit{@OneToMany}}. Si se presentan las anotaciones de ambos lados se dice que el mapeo es bidireccional.
 \\
 
 Por último, para la asociación entre Respuesta y Resultados, la cual presentaba una tabla extra por tratarse de una relación muchos a muchos, es mapeada bajo la anotación \textbf{\textit{@ManyToMany}}. En este caso se agregará la anotación \textbf{\textit{@JoinTable}} para ésta tabla extra, y dentro de ella se encuentra el \textbf{\textit{@JoinColumn}} especificado anteriormente.
-
+\\
 \begin{lstlisting}[escapechar=¿]
 	¿\aftergroup\graycolor¿@ManyToMany¿\aftergroup\blackcolor¿(fetch = FetchType.¿\aftergroup\bluecolor¿LAZY¿\aftergroup\blackcolor¿)
 	¿\aftergroup\graycolor¿@JoinTable¿\aftergroup\blackcolor¿(name = ¿\aftergroup\bluecolor¿"RESULTADO_RESPUESTA"¿\aftergroup\blackcolor¿), 
@@ -283,7 +287,7 @@ Por último, para la asociación entre Respuesta y Resultados, la cual presentaba 
 		¿\aftergroup\purplecolor¿return¿\aftergroup\blackcolor¿ respuestas;
 	}
 \end{lstlisting}
-
+~\\
 %------------------------------------------------------------------
 \subsection{Arquitectura}
 %-------------------------------------------------------------------
@@ -351,24 +355,26 @@ Siguiendo con el modelo de capas establecido, se puede mencionar que Spring pose
 	\label{fig:diagramaws}
 \end{figure}
 
-En la Figura \ref{fig:diagramaws} se puede ver claramente la mencionada separación por capas, de acuerdo a la arquitectura establecida. Siguiendo un flujo de secuencia normal, el usuario ejecuta una consulta desde la aplicación móvil, la cual se encarga de enviar una petición HTTP (\textit{request}) al Web Service. La misma llega al controlador frontal o mejor conocido como \textit{Dispatcher Servlet} que se encarga de enrutarla hacia el controlador indicado, que se encuentra dentro de la capa de presentación. 
+En la Figura \ref{fig:diagramaws} se puede ver claramente la mencionada separación por capas, de acuerdo a la arquitectura establecida. Siguiendo un flujo de secuencia normal, el usuario ejecuta una consulta desde la aplicación móvil, la cual se encarga de enviar una petición HTTP (\textit{request}) al Web Service. La misma llega al controlador frontal o mejor conocido como \textit{Dispatcher Servlet} que se encarga de enrutarla hacia el controlador indicado, que se encuentra dentro de la capa de presentación. A su vez, el Dispatcher es el encargado de encapsular y abstraer muchas funcionalidades estandarizadas en Spring, mediante la declaración de beans específicos o el uso de anotaciones.
 \\
 
-Las clases que se encuentran en dicha capa presentan la anotación de carácter general \textbf{\textit{@Controller}}. Corresponde al framework de Spring y sirve para identificar a las clases como tal, ya que son detectadas automáticamente a través del escaneo classpath. Además, se encuentra la anotación \textbf{\textit{@RequestMapping}} que se encarga de definir la dirección del recurso.
-
+Las clases que se encuentran en dicha capa presentan la anotación de carácter general \textbf{\textit{@Controller}}. Corresponde al framework de Spring y sirve para identificar a las clases como tal, ya que son detectadas automáticamente a través del escaneo classpath. Además, se encuentra la anotación \textbf{\textit{@RequestMapping}} que se encarga de definir el path o dirección del recurso.
+\\
 \begin{lstlisting}[escapechar=¿]
 	¿\aftergroup\graycolor¿@Controller
 	@RequestMapping¿\aftergroup\blackcolor¿(value = ¿\aftergroup\bluecolor¿"/usuarios"¿\aftergroup\blackcolor¿)
 	¿\aftergroup\purplecolor¿public class ¿\aftergroup\blackcolor¿UserController
 \end{lstlisting}
+~\\
 
 Teniendo en cuenta que el nombre del proyecto es \textit{EncuestasFCM}, la URL a nivel local para acceder al controlador de usuarios por ejemplo es:
 \begin{center}
 	\textit{http://localhost:8080/EncuestasFCM/usuarios}
 \end{center}
-	
-Dentro de cada controlador se van a encontrar distintos endpoints (métodos) funcionando bajo su contexto. Cada uno de ellos, posee a su vez la anotación \textbf{\textit{@RequestMapping}}, la cual indica la dirección del recurso y el método de la request, entre otras cosas. Es decir, dentro de un controlador se pueden hallar métodos que tengan el mismo path, pero distinto tipo de request (por ejemplo uno GET y otro POST). También cuentan con la anotación \textbf{\textit{@ResponseBody}}, que indica que el tipo de devolución debe escribirse directamente en el cuerpo de respuesta HTTP.
+~\\
 
+Dentro de cada controlador se van a encontrar distintos endpoints (métodos) funcionando bajo su contexto. Cada uno de ellos, posee a su vez la anotación \textbf{\textit{@RequestMapping}}, la cual indica la dirección del recurso y el método de la request, entre otras cosas. Es decir, dentro de un controlador se pueden hallar métodos que tengan el mismo path, pero distinto tipo de request (por ejemplo uno GET y otro POST). También cuentan con la anotación \textbf{\textit{@ResponseBody}}, que indica que el tipo de devolución debe escribirse directamente en el cuerpo de respuesta HTTP.
+\\
 \begin{lstlisting}[escapechar=¿]
 	¿\aftergroup\graycolor¿@RequestMapping¿\aftergroup\blackcolor¿(value = ¿\aftergroup\bluecolor¿"/getAll"¿\aftergroup\blackcolor¿, 
 		method = RequestMethod.¿\aftergroup\bluecolor¿GET¿\aftergroup\blackcolor¿, 
@@ -376,15 +382,17 @@ Dentro de cada controlador se van a encontrar distintos endpoints (métodos) func
 	¿\aftergroup\graycolor¿@ResponseBody
 	¿\aftergroup\purplecolor¿public ¿\aftergroup\blackcolor¿String getEncuestas()
 \end{lstlisting}
+~\\
 
-Para este método en específico, cuyo path es \textit{/getAll} y se trata de una request del tipo GET, la URL es la siguiente:
+Para este método en específico, cuyo path es \textit{/getAll} y una request del tipo GET, la URL es la siguiente:
 
 \begin{center}
 	\textit{http://localhost:8080/EncuestasFCM/encuestas/getAll}
 \end{center}
+~\\
 
 Existen situaciones en las que se envían parámetros en la petición HTTP, como por ejemplo el id de una encuesta a eliminar. Para ello se utiliza la anotación \textbf{\textit{@RequestParam}} junto a su nombre.
-
+\\
 \begin{lstlisting}[escapechar=¿]
 	¿\aftergroup\graycolor¿@RequestMapping¿\aftergroup\blackcolor¿(value = ¿\aftergroup\bluecolor¿"/removeEncuesta"¿\aftergroup\blackcolor¿, 
 		method = RequestMethod.¿\aftergroup\bluecolor¿PUT¿\aftergroup\blackcolor¿, 
@@ -394,16 +402,17 @@ Existen situaciones en las que se envían parámetros en la petición HTTP, como po
 		Integer idEncuesta, ¿\aftergroup\graycolor¿@RequestParam¿\aftergroup\blackcolor¿(¿\aftergroup\bluecolor¿"idUsuario"¿\aftergroup\blackcolor¿) 
 		Integer idUsuario)
 \end{lstlisting}
+~\\
 
-En este ejemplo puntual, se puede ver que el tipo de request es PUT y no DELETE, ya que como se mencionó anteriormente el borrado será lógico, es decir la base de datos se actualizará colocando a la encuesta como activa en falso y completando los campos de fecha de baja y usuario de baja para el control de auditorias. En estos casos, la URL de acceso estará formada por dichos parámetros. El primer de ellos es separado por el carácter ?, mientras que los siguientes serán por \&:
-
+En este ejemplo puntual, se puede ver que el tipo de request es PUT y no DELETE, ya que como se mencionó anteriormente el borrado será lógico, es decir la base de datos se actualizará colocando a la encuesta como activa en falso y completando los campos de fecha de baja y usuario de baja para el control de auditorias. En estos casos, la URL de acceso estará formada por dichos parámetros. El primero de ellos es separado por el carácter ?, mientras que los siguientes serán por \&:
 \begin{center}
 	\textit{http://localhost:8080/EncuestasFCM/encuestas/removeEncuesta?idEncuesta=1}
 	\&\textit{idUsuario=1}
 \end{center}
+~\\
 
 Para el caso de aquellos endpoints en los que se debe transportar gran cantidad de información, por lo cual enviar los mismos en parámetros no respetaría las buenas prácticas de la programación, ya que cargaría con mucha información la URL por ejemplo, se obtienen mediante un objeto denominado \textbf{\textit{HttpServletRequest}}. Proporciona acceso a los datos de cabecera HTTP, como cualquier cookie encontrada en la petición, y el método HTTP con el que se ha realizado la petición. Además, permite obtener los argumentos que el cliente envía como parte de la petición. De ésta forma los datos son enviados desde el cliente con un formato JSON y mediante la utilización de la biblioteca GSON mencionada anteriormente, se serializa el objeto correspondiente.
-
+\\
 \begin{lstlisting}[escapechar=¿]
 	¿\aftergroup\graycolor¿@RequestMapping¿\aftergroup\blackcolor¿(value = ¿\aftergroup\bluecolor¿"/saveUser"¿\aftergroup\blackcolor¿, 
 		method = RequestMethod.¿\aftergroup\bluecolor¿POST¿\aftergroup\blackcolor¿, 
@@ -411,16 +420,17 @@ Para el caso de aquellos endpoints en los que se debe transportar gran cantidad 
 	¿\aftergroup\graycolor¿@ResponseBody
 	¿\aftergroup\purplecolor¿public ¿\aftergroup\blackcolor¿String saveUser(HttpServletRequest http)
 \end{lstlisting}
+~\\
 
 Teniendo en cuenta que se trata de una nueva persistencia en la base de datos, se trata de una request del tipo POST. Con toda la información enviada como argumentos la URL queda de la siguiente forma:
 
 \begin{center}
 	\textit{http://localhost:8080/EncuestasFCM/usuarios/saveUser}
 \end{center}
+~\\
 
 La capa de presentación se encuentra comunicada con la de servicios, que es la encargada de aplicar toda la lógica de negocios correspondiente. Como se pudo ver en el diagrama de clases de la Figura \ref{fig:diagramaws}, por cada entidad creada se asocia un servicio, los cuales se encuentran anotados a nivel clase bajo \textbf{\textit{@Service}}. Dicha anotación de Spring indica que la clase es un bean de la capa de negocios. Además, se presenta la anotación \textbf{\textit{@Scope}} que indica el ámbito de los objetos creados. En nuestro caso siempre se tratará de \textbf{\textit{Scopes Singleton}}, esto significa que el contenedor solo instancia un objeto de la clase, y cada vez que se pide una instancia del bean en realidad se obtiene una referencia al mismo objeto, evitando tener múltiples objetos que accedan a la base de datos, implicando mayor cantidad de conexiones por ejemplo.
 \\
-
 \begin{lstlisting}[escapechar=¿]
 	¿\aftergroup\graycolor¿@Service
 	@Scope¿\aftergroup\blackcolor¿(ConfigurableBeanFactory.¿\aftergroup\bluecolor¿SCOPE_SINGLETON¿\aftergroup\blackcolor¿)
@@ -428,23 +438,182 @@ La capa de presentación se encuentra comunicada con la de servicios, que es la e
 		¿\aftergroup\purplecolor¿extends¿\aftergroup\blackcolor¿BaseServiceImpl<Pregunta, Integer> 
 		¿\aftergroup\purplecolor¿implements ¿\aftergroup\blackcolor¿PreguntaService
 \end{lstlisting}
+~\\
 
 Todas las clases de servicio implementan una interfaz, por la inyección de dependencias propiamente dicha del framework. A su vez, tanto las clases como las interfaces extienden de otras genéricas denominadas base. Estas son \textbf{\textit{BaseServiceImpl}} y \textbf{\textit{BaseService}}, respectivamente. Esto permite abstraer y reutilizar código, ya que todos los servicios presentan funcionalidades similares: obtener un objeto por el id, traer todos los objetos de una clase, filtrarlos, guardarlos o modificarlos, eliminarlos, etc.
 \\
 
 Por último, la capa de servicios se encuentra comunicada con la de acceso a datos. Ésta es la capa de más bajo nivel, la cual posee acceso a la base de datos, por eso las entidades dentro de ella son denominados DAO (Objetos de acceso a datos). Al igual que las distintas capas, posee una anotación a nivel clase denominada \textbf{\textit{@Repository}}. La misma determina que se trata de una clase relacionada con la capa de persistencia y definida como Singleton.
-
+\\
 \begin{lstlisting}[escapechar=¿]
 	¿\aftergroup\graycolor¿@Repository
 	¿\aftergroup\purplecolor¿public class ¿\aftergroup\blackcolor¿RespuestaDaoImpl 
 		¿\aftergroup\purplecolor¿extends ¿\aftergroup\blackcolor¿BaseDaoImpl<Respuesta, Integer> 
 		¿\aftergroup\purplecolor¿implements¿\aftergroup\blackcolor¿ RespuestaDao{
 \end{lstlisting}
+~\\
 
 De la misma forma que en los servicios, se definió genéricamente una clase y una interfaz base denominados \textbf{\textit{BaseDaoImpl}} y \textbf{\textit{BaseDao}}, respectivamente. Dicho DAO es inyectado dentro de la clase BaseServiceImpl para llevar adelante la comunicación entre las capas. Dentro de la clase se encuentra un objeto \textbf{\textit{SessionFactory}}, propio del framework Hibernate e inyectado por Spring, que se encarga de ir a la base de datos y ejecutar las consultas. Las mismas pueden ser ejecutadas mediante HQL (lenguaje SQL propio de Hibernate) o Criteria (API de consultas de Hibernate, mediante la manipulación de objetos).
 \\
 
 Finalmente, el DAO realiza la transacción y retorna un mensaje al servicio nuevamente, éste aplica las reglas de negocios que hagan falta y envía el mensaje al controlador. Éste último transforma la respuesta en formato JSON y lo entrega al Dispatcher que se encarga de enviar una respuesta HTTP (\textit{response}) al cliente.
+
+%------------------------------------------------------------------
+\subsection{Puesta en funcionamiento del Web Service}
+%-------------------------------------------------------------------
+\label{cap2:subsec:instalacionws}
+
+Tal como se había especificado en secciones anteriores, el Web Service es un Servlet particular funcionando dentro del contenedor de Servlets Apache Tomcat. Este se encarga de direccionar las peticiones que le llegan a través del puerto 8080.
+\\
+
+Existe gran cantidad de contenedores disponibles para su elección, como por ejemplo Glassfish, JBoss, Wildfly, JOnAS, entre otros. Dentro de las razones que llevaron a escoger Tomcat se puede mencionar que es sumamente ligero, open source, flexible, presenta mayor estabilidad por su instalación independiente de Apache, y ofrece un nivel extra de seguridad \cite{tomcat}.
+\\
+
+Mediante la utilización del entorno local de prueba, se llevó adelante la instalación de la aplicación en el contenedor bajo el IDE Eclipse. Este soporta la inclusión de múltiples contenedores de Servlets. Para el caso de entornos productivos, la instalación puede llevarse a cabo mediante Tomcat Monitor, una herramienta especial de Tomcat para éstas situaciones.
+
+%------------------------------------------------------------------
+\subsection{Estructura del proyecto}
+%-------------------------------------------------------------------
+\label{cap2:subsec:estructuraWs}
+
+Anteriormente se presentó la estructura básica de un proyecto Maven. En ésta sección, con la finalidad de mantener separadas todas las clases de acuerdo a sus utilidades y siguiendo las buenas prácticas de programación, se crearon distintos paquetes en el proyecto, como se puede ver en la Figura \ref{fig:paquetes_ws}.
+\\
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]%
+		{Imagenes/Bitmap/paquetes_ws}
+		\caption{División de funcionalidades por paquetes}
+		\label{fig:paquetes_ws}
+	\end{center}
+\end{figure}
+
+De acuerdo al diagrama de Web Service presentado en secciones previas, las distintas capas de la arquitectura fueron separadas en relación al patrón MVC mencionado. Es decir, el paquete \textit{controller} está asociado a la capa de presentación, el \textit{dao} (interfaces) y sus implementaciones a la capa de datos, y por último el \textit{service} (interfaces) junto a sus implementaciones, \textit{filter} y \textit{utils} con la capa de servicios.
+\\
+
+Dentro del paquete base se encuentran todas aquellas interfaces y clases genéricas que serán extendidas según correspondan (Figura \ref{fig:paquete_base}). Cabe destacar que la clase Persistence representa una entidad del dominio que puede ser persistida, la cual es extendida por las demás ``bases''. Como ya se mencionó, dentro del BaseDao se encuentran funciones genéricas como filtros, traer objetos por id, guardar o eliminar objetos en base de datos, etc.
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]%
+		{Imagenes/Bitmap/paquete_base}
+		\caption{Paquete base}
+		\label{fig:paquete_base}
+	\end{center}
+\end{figure}
+
+Por su parte, en el paquete \textit{model} se encuentran todas las clases Java que representan el mapeo de objetos en relación a la base de datos, con sus respectivas anotaciones Hibernate. Las mismas extienden de la clase base \textit{Entity}.
+\\
+
+Cabe aclarar que dentro del paquete \textit{utils}, se desarrolló una clase denominada \textit{EncryptionUtils}. La misma contiene dos funciones para llevar a cabo la codificación y decodificación de un determinado String bajo el sistema \textit{Base64}. Éste sistema numérico, utiliza 64 como base que es la mayor potencia de dos que puede ser representada usando únicamente los caracteres imprimibles de ASCII, a la hora de encriptar códigos. Por lo tanto, a la hora de crear un nuevo usuario, cuando se pasa la contraseña a almacenar por el parámetro de la petición, se procede a encriptar la misma como un mecanismo de seguridad a nivel base de datos.
+
+%------------------------------------------------------------------
+\subsection{Servicios}
+%-------------------------------------------------------------------
+\label{cap2:subsec:serviciosWs}
+
+En la presente sección se describirán todos los servicios pertenecientes al Web Service, su direccionamiento y tipo de respuesta.
+\\
+
+Inicialmente se presentan los endpoints disponibles en el controlador de usuarios:
+
+\begin{itemize}
+	
+	\item \textbf{\textit{Alta de un usuario}}:
+	
+	\textit{http://localhost:8080/EncuestasFCM/usuarios/saveUser}
+	
+	Es una request del tipo POST y como se mencionó anteriormente, todos los datos correspondientes al Usuario son enviados como argumentos en formato JSON dentro del objeto HttpServletRequest. El servicio relacionado al controlador valida que todos los datos sean correctos y devuelve una respuesta. Dentro de las validaciones que realiza, comprueba que el nombre de usuario, mail y DNI no estén en uso, que no haya caracteres especiales, longitud de los campos, etc. Como respuesta envía un JSON indicando el éxito o no de la transacción y el error en caso de tenerlo. 
+	
+	A continuación se presenta un ejemplo de respuesta cuando no se cumplen las validaciones y un ejemplo de creación exitosa:
+	\\
+	
+	\begin{lstlisting}[escapechar=¿]
+	{
+		¿\aftergroup\bluecolor¿"exito"¿\aftergroup\blackcolor¿:false,
+		¿\aftergroup\bluecolor¿"error"¿\aftergroup\blackcolor¿:"El nombre de usuario escogido ya se 
+			encuentra en uso."
+	}
+	\end{lstlisting}
+	
+	\begin{lstlisting}[escapechar=¿]
+	{
+		¿\aftergroup\bluecolor¿"exito"¿\aftergroup\blackcolor¿:true
+	}
+	\end{lstlisting}
+
+	\item \textbf{\textit{Login de un usuario}}:
+	
+	\textit{http://localhost:8080/EncuestasFCM/usuarios/loginUser}?\textit{nombre=...}\&
+	\textit{password=...}
+	
+	Request del tipo GET, que envía como parámetros el nombre de usuario y la password encriptada. Se verifica que los datos sean correctos, es decir usuario existente y contraseña correcta, retornando un JSON con el éxito o no de la transacción, y los datos del usuario o el error en caso de que suceda.
+	
+	Al igual que en el caso anterior, se presenta un ejemplo de respuesta con un logueo incorrecto y otro correcto:
+	\\
+	
+	\begin{lstlisting}[escapechar=¿]
+	{
+		¿\aftergroup\bluecolor¿"exito"¿\aftergroup\blackcolor¿:false,
+		¿\aftergroup\bluecolor¿"error"¿\aftergroup\blackcolor¿:"La contraseña ingresada es incorrecta"
+	}
+	\end{lstlisting}
+	
+	\begin{lstlisting}[escapechar=¿]
+	{
+		¿\aftergroup\bluecolor¿"exito"¿\aftergroup\blackcolor¿:true,
+		¿\aftergroup\bluecolor¿"tipoUsuario"¿\aftergroup\blackcolor¿:...,
+		¿\aftergroup\bluecolor¿"id"¿\aftergroup\blackcolor¿:...,
+		¿\aftergroup\bluecolor¿"sexo"¿\aftergroup\blackcolor¿:...,
+		¿\aftergroup\bluecolor¿"nombreUsuario"¿\aftergroup\blackcolor¿:"...",
+		¿\aftergroup\bluecolor¿"edad"¿\aftergroup\blackcolor¿: ...,
+		¿\aftergroup\bluecolor¿"nombre"¿\aftergroup\blackcolor¿: "...",
+		¿\aftergroup\bluecolor¿"apellido"¿\aftergroup\blackcolor¿: "..."
+	}
+	\end{lstlisting}
+\end{itemize}
+
+La mayor cantidad de servicios se presentan en el controlador de encuestas, ya que se trata del núcleo del proyecto:
+
+\begin{itemize}
+	
+	\item \textbf{\textit{Traer todas las encuestas}}: 
+	
+	\textit{http://localhost:8080/EncuestasFCM/encuestas/getAll}
+	
+	Se trata de una request del tipo GET que retorna un JSON con un arreglo de todas las encuestas que se encuentran activas en base de datos (estén habilitadas o no). Trae sólo los datos suficientes para ser presentadas dentro de la sección ``Administración de encuestas'' en la aplicación móvil (como se verá más adelante).
+	\\
+	
+	\begin{lstlisting}[escapechar=¿]
+	{
+		¿\aftergroup\bluecolor¿"response"¿\aftergroup\blackcolor¿:[
+			{
+				¿\aftergroup\bluecolor¿"descripcion"¿\aftergroup\blackcolor¿:"...",
+				¿\aftergroup\bluecolor¿"titulo"¿\aftergroup\blackcolor¿:"...",
+				¿\aftergroup\bluecolor¿"id"¿\aftergroup\blackcolor¿:...,
+				¿\aftergroup\bluecolor¿"usuario"¿\aftergroup\blackcolor¿: "...",
+				¿\aftergroup\bluecolor¿"fecha"¿\aftergroup\blackcolor¿: ...,
+				¿\aftergroup\bluecolor¿"geolocalizada"¿\aftergroup\blackcolor¿: ...,
+				¿\aftergroup\bluecolor¿"resoluciones"¿\aftergroup\blackcolor¿: ...,
+				¿\aftergroup\bluecolor¿"isSexoRestriccion"¿\aftergroup\blackcolor¿: ...,
+				¿\aftergroup\bluecolor¿"isEdadRestriccion"¿\aftergroup\blackcolor¿: ...,
+				¿\aftergroup\bluecolor¿"habilitada"¿\aftergroup\blackcolor¿: ...
+				
+			},
+			{
+				...
+			}
+		]
+	}
+	\end{lstlisting}
+	
+	\item \textbf{\textit{Traer solamente encuestas habilitadas}}: 
+	
+	\textit{http://localhost:8080/EncuestasFCM/encuestas/getAllHabilitadas}
+	
+	Se trata de una request del tipo GET que retorna un JSON con un arreglo de todas las encuestas que se encuentran activas y habilitadas en base de datos. Que se encuentren habilitadas significa que ya están disponibles para ser resueltas. Al igual que el endpoint anterior, trae los mismos datos de respuesta suficientes para ser presentadas dentro de la sección ``Encuestas Disponibles''.
+	
+\end{itemize}
 
 \newpage
 \thispagestyle{empty}

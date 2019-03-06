@@ -547,7 +547,7 @@ Inicialmente se presentan los endpoints disponibles en el controlador de usuario
 	\textit{http://localhost:8080/EncuestasFCM/usuarios/loginUser}?\textit{nombre=...}\&
 	\textit{password=...}
 	
-	Request del tipo GET, que envía como parámetros el nombre de usuario y la password encriptada. Se verifica que los datos sean correctos, es decir usuario existente y contraseña correcta, retornando un JSON con el éxito o no de la transacción, y los datos del usuario o el error en caso de que suceda.
+	Request del tipo GET, que recibe como parámetros el nombre de usuario y la password encriptada. Se descifra la misma y se verifica que los datos sean correctos, es decir usuario existente y contraseña correcta, retornando un JSON con el éxito de la transacción y los datos del usuario o el error sucedido en caso contrario.
 	
 	Al igual que en el caso anterior, se presenta un ejemplo de respuesta con un logueo incorrecto y otro correcto:
 	\\
@@ -612,6 +612,168 @@ La mayor cantidad de servicios se presentan en el controlador de encuestas, ya q
 	\textit{http://localhost:8080/EncuestasFCM/encuestas/getAllHabilitadas}
 	
 	Se trata de una request del tipo GET que retorna un JSON con un arreglo de todas las encuestas que se encuentran activas y habilitadas en base de datos. Que se encuentren habilitadas significa que ya están disponibles para ser resueltas. Al igual que el endpoint anterior, trae los mismos datos de respuesta suficientes para ser presentadas dentro de la sección ``Encuestas Disponibles''.
+	
+	
+	\item \textbf{\textit{Alta de una encuesta}}: 
+	
+	\textit{http://localhost:8080/EncuestasFCM/encuestas/saveEncuesta}
+	
+	Request del tipo POST, en el cual se manda un JSON con todos los datos de la encuesta, preguntas y respuestas dentro del objeto HttpServletRequest. La misma será dada de alta, quedando como activa e inhabilitada (no disponible para resolución, pero sí para ser modificada). En este caso no requiere validaciones por parte del servicio, ya que las mismas serán realizadas desde la misma aplicación.
+	
+	Como respuesta se envía un booleano indicando el éxito de la transacción y el id asignado a la encuesta:
+	
+	\begin{lstlisting}[escapechar=¿]
+	{
+		¿\aftergroup\bluecolor¿"exito"¿\aftergroup\blackcolor¿:true,
+		¿\aftergroup\bluecolor¿"idAsignado"¿\aftergroup\blackcolor¿:...
+	}
+	\end{lstlisting}
+	
+	\item \textbf{\textit{Modificación de una encuesta}}: 
+	
+	\textit{http://localhost:8080/EncuestasFCM/encuestas/updateEncuesta}
+	
+	Se trata de una request del tipo PUT, en donde se envían todos los datos de la encuesta, junto a las preguntas y respuestas en formato JSON dentro del objeto HttpServletRequest. En este caso se llevará adelante una verificación sobre las preguntas y respuestas para tener en cuenta cuales fueron modificadas, eliminadas o agregadas, realizando las acciones pertinentes. Este endpoint será accedido solamente cuando la encuesta se encuentre en estado activa e inhabilitada, aunque dicha validación será llevada a cabo en la aplicación como se verá posteriormente. 
+	
+	Como respuesta se envía un booleano indicando el éxito de la transacción.
+	
+	\item \textbf{\textit{Eliminación de una encuesta}}: 
+	
+	\textit{http://localhost:8080/EncuestasFCM/encuestas/removeEncuesta}
+	?\textit{idEncuesta=...}\& \textit{idUsuario=...}
+	
+	Se trata de una request del tipo PUT, ya que como se mencionó anteriormente la baja será lógica y no se tratará de un DELETE físico de los datos. Recibe como parámetros el id de la encuesta a eliminar y el id del usuario encargado de la transacción. Internamente el servicio se encarga de completar los datos de auditoría como fecha y usuario de baja, y la setea como inactiva e inhabilitada. El JSON de retorno indicará el éxito de la transacción.
+	
+	\item \textbf{\textit{Habilitación de una encuesta}}: 
+	
+	\textit{http://localhost:8080/EncuestasFCM/encuestas/enableEncuesta}
+	?\textit{idEncuesta=...}\& \textit{idUsuario=...}
+	
+	Request del tipo PUT que recibe como parámetros el id de la encuesta y del usuario encargado. En este caso coloca a la encuesta como habilitada, haciendo que la misma quede disponible para su resolución.
+	
+	\item \textbf{\textit{Inhabilitación de una encuesta}}: 
+	
+	\textit{http://localhost:8080/EncuestasFCM/encuestas/disableEncuesta}
+	?\textit{idEncuesta=...}\& \textit{idUsuario=...}
+	
+	Request del tipo PUT que recibe como parámetros el id de la encuesta y del usuario encargado. En este caso coloca a la encuesta como inhabilitada, haciendo que la misma no se encuentre disponible para su resolución.
+	
+	\item \textbf{\textit{Abrir una encuesta}}: 
+	
+	\textit{http://localhost:8080/EncuestasFCM/encuestas/openEncuesta}
+	?\textit{idEncuesta=...}
+	
+	Se trata de una request del tipo GET que recibe como parámetro el id de la encuesta a abrir. Como ya se especificó en servicios anteriores, las encuestas se presentan en la sección que correspondan con la cantidad mínima de datos. Cuando una de ellas es accedida para ser modificada o resuelta, se invoca el presente servicio que se encarga de traer todos los datos de la misma.
+	
+	Como respuesta se obtendrá un JSON con todos los datos de la encuesta, preguntas y respuestas:
+	
+	\begin{lstlisting}[escapechar=¿]
+	{
+		¿\aftergroup\bluecolor¿"id"¿\aftergroup\blackcolor¿:...,
+		¿\aftergroup\bluecolor¿"descripcion"¿\aftergroup\blackcolor¿:...,
+		¿\aftergroup\bluecolor¿"titulo"¿\aftergroup\blackcolor¿:...,
+		¿\aftergroup\bluecolor¿"preguntas"¿\aftergroup\blackcolor¿:[
+			{
+				¿\aftergroup\bluecolor¿"idPregunta"¿\aftergroup\blackcolor¿:...,
+				¿\aftergroup\bluecolor¿"descripcionPregunta"¿\aftergroup\blackcolor¿:...,
+				¿\aftergroup\bluecolor¿"tipoPregunta"¿\aftergroup\blackcolor¿:...,
+				¿\aftergroup\bluecolor¿"respuestas"¿\aftergroup\blackcolor¿:[
+					{
+						¿\aftergroup\bluecolor¿"idRespuesta"¿\aftergroup\blackcolor¿:...,
+						¿\aftergroup\bluecolor¿"descripcion"¿\aftergroup\blackcolor¿:...
+					},
+					{
+						...
+					}
+				]
+			},
+			{
+				...
+			}
+		]
+	}
+	\end{lstlisting}
+	
+\end{itemize}
+
+A la hora de resolver las encuestas y obtener las estadísticas de las mismas se utilizan los servicios disponibles en el controlador de Resultado:
+
+\begin{itemize}
+	
+	\item \textbf{\textit{Resolver una encuesta}}:
+	
+	\textit{http://localhost:8080/EncuestasFCM/resultados/saveResultado}
+	
+	Se trata de una request del tipo POST, la cual recibe como argumento un JSON con los resultados de resolución de una encuesta dentro del objeto HttpServletRequest. Las validaciones de las respuestas serán realizadas dentro de la aplicación móvil. Retorna como respuesta un JSON informando el éxito de la transacción.
+	
+	\item \textbf{\textit{Obtener resultados de una encuesta}}:
+	
+	\textit{http://localhost:8080/EncuestasFCM/resultados/getResultado}
+	?\textit{idEncuesta=...}
+	
+	Se trata de una request del tipo GET que recibe como parámetro el id de la encuesta a analizar. Se envían todas las resoluciones pertinentes a dicha encuesta, para que de ésta forma la aplicación móvil realice todas las estadísticas necesarias para presentar en pantalla.
+	
+	Como respuesta se envía un JSON que posee un arreglo de resoluciones, como se puede ver a continuación:
+	
+	\begin{lstlisting}[escapechar=¿]
+	{
+		¿\aftergroup\bluecolor¿"response"¿\aftergroup\blackcolor¿:[
+			{
+				¿\aftergroup\bluecolor¿"latitud"¿\aftergroup\blackcolor¿:...,
+				¿\aftergroup\bluecolor¿"longitud"¿\aftergroup\blackcolor¿:...,
+				¿\aftergroup\bluecolor¿"idRespuesta"¿\aftergroup\blackcolor¿:...,
+				¿\aftergroup\bluecolor¿"descripcion"¿\aftergroup\blackcolor¿:...,
+				¿\aftergroup\bluecolor¿"sexo"¿\aftergroup\blackcolor¿:...,
+				¿\aftergroup\bluecolor¿"edad"¿\aftergroup\blackcolor¿:...
+			},
+			{
+				...
+			}
+		]
+	}
+	\end{lstlisting}
+	
+\end{itemize}
+
+Finalmente, se presentan todos los servicios correspondientes al controlador de Información y Noticias:
+
+\begin{itemize}
+	
+	\item \textbf{\textit{Crear información o noticia}}:
+	
+	\textit{http://localhost:8080/EncuestasFCM/infoNoticias/saveInfo}
+	
+	Request del tipo POST, que recibe como argumento un JSON con los datos de la información a dar de alta dentro del objeto HttpServletRequest. Las validaciones de los mismos serán llevadas a cabo dentro de la aplicación. Retorna como respuesta un JSON informando el éxito de la transacción.
+	
+	\item \textbf{\textit{Traer todas las informaciones}}:
+	
+	\textit{http://localhost:8080/EncuestasFCM/infoNoticias/getAll}
+	
+	Request del tipo GET que tiene por finalidad retornar un JSON con un arreglo de todas las informaciones y noticias disponibles en base de datos.
+	
+	\begin{lstlisting}[escapechar=¿]
+	{
+		¿\aftergroup\bluecolor¿"response"¿\aftergroup\blackcolor¿:[
+			{
+				¿\aftergroup\bluecolor¿"id"¿\aftergroup\blackcolor¿:...,
+				¿\aftergroup\bluecolor¿"titulo"¿\aftergroup\blackcolor¿:...,
+				¿\aftergroup\bluecolor¿"descripcion"¿\aftergroup\blackcolor¿:...,
+				¿\aftergroup\bluecolor¿"url"¿\aftergroup\blackcolor¿:...
+			},
+			{
+				...
+			}
+		]
+	}
+	\end{lstlisting}
+	
+	\item \textbf{\textit{Eliminar una información}}:
+	
+	\textit{http://localhost:8080/EncuestasFCM/infoNoticias/removeInfo}
+	?\textit{idInfo=...}
+	
+	Se trata de una request del tipo DELETE, que recibe como parámetro el id de la info. En este caso la baja será del tipo física, ya que no se trata de información sensible como pueden ser las encuestas, las cuáles son el núcleo del proyecto. Como respuesta se envía un JSON informando el éxito de la transacción.
+	
 	
 \end{itemize}
 

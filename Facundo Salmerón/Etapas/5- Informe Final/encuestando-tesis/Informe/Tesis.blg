@@ -20,45 +20,45 @@ Database file #2: citasCapitulo2.bib
 Warning--to sort, need author or key in mysqlRanking
 Warning--empty publisher in webServiceLibro
 Warning--empty publisher in hibernate2
-You've used 26 entries,
+You've used 29 entries,
             2118 wiz_defined-function locations,
-            646 strings with 7805 characters,
-and the built_in function-call counts, 5909 in all, are:
-= -- 558
-> -- 224
+            661 strings with 8128 characters,
+and the built_in function-call counts, 6548 in all, are:
+= -- 621
+> -- 245
 < -- 0
-+ -- 94
-- -- 68
-* -- 212
-:= -- 1009
-add.period$ -- 95
-call.type$ -- 26
-change.case$ -- 105
++ -- 103
+- -- 74
+* -- 227
+:= -- 1117
+add.period$ -- 107
+call.type$ -- 29
+change.case$ -- 117
 chr.to.int$ -- 0
-cite$ -- 29
-duplicate$ -- 221
-empty$ -- 579
-format.name$ -- 68
-if$ -- 1274
+cite$ -- 32
+duplicate$ -- 242
+empty$ -- 645
+format.name$ -- 74
+if$ -- 1415
 int.to.chr$ -- 0
-int.to.str$ -- 26
+int.to.str$ -- 29
 missing$ -- 15
-newline$ -- 150
-num.names$ -- 50
-pop$ -- 249
+newline$ -- 168
+num.names$ -- 56
+pop$ -- 279
 preamble$ -- 1
-purify$ -- 86
+purify$ -- 95
 quote$ -- 0
-skip$ -- 139
+skip$ -- 154
 stack$ -- 0
-substring$ -- 155
-swap$ -- 26
+substring$ -- 170
+swap$ -- 29
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 90
+type$ -- 102
 warning$ -- 3
-while$ -- 52
-width$ -- 28
-write$ -- 277
+while$ -- 58
+width$ -- 31
+write$ -- 310
 (There were 3 warnings)

@@ -107,7 +107,13 @@ Luego nos encontramos con el directorio \textit{res}, es decir los recursos. Com
 	
 	\item \textbf{\textit{Mipmap}}: contiene los íconos de la aplicación y al igual que en el caso anterior, se divide en subdirectorios de acuerdo a la resolución y densidad de pantalla. 
 	
-	\item \textbf{\textit{Layout}}: contiene los archivos XML relacionados a los Activities Java para la definición de la interfaz gráfica. 
+	\item \textbf{\textit{Layout}}: contiene los archivos XML relacionados a los Activities Java para la definición de la interfaz gráfica. En dichos contenedores se puede definir la estructura básica de una pantalla y agregar componentes de interacción con el usuario como ser botones, menú desplegable, campos de texto, entre otros. 
+	
+	De todas formas, solo es necesario definir el contenedor layout, ya que que dichos componentes también pueden ser agregados dinámicamente en los Activities (programáticamente en Java).
+	
+	Cada Activity se relaciona con un layout y mediante el método \textit{onCreate()} se levanta dicho archivo y se genera la pantalla, pudiendo acceder a los componentes de la misma para setear funcionalidades extra. Por ejemplo, así como dijimos que existe un \textit{MainActivity}, existe un \textit{activity\_main.xml} que es el layout asociado a esa Activity. 
+	
+	Cada componente posee un id, por lo tanto si se quisiera referenciar alguno de ellos para manipularlo, simplemente se debería invocarlo con el mismo.
 	
 	\item \textbf{\textit{Values}}: contiene otros archivos XML de importancia para la aplicación en los que se pueden definir todo tipo de valores, como por ejemplo cadenas de texto (\textit{strings.xml}), estilos (\textit{styles.xml}), colores (\textit{colours.xml}), etc. Estos valores luego pueden ser llamados desde cualquier punto de la aplicación, utilizando siempre el mismo recurso, sin necesidad de volver a redefinirlo cada vez que se lo requiera. Y si se desea realizar un cambio sobre alguno de ellos, simplemente se modifica el recurso de la carpeta value y el cambio se replica en toda la aplicación.
 	
@@ -147,6 +153,78 @@ A su vez, como se visualiza en la Figura \ref{fig:conf-librerias}, se encuentran
 		\label{fig:conf-librerias}
 	\end{center}
 \end{figure}
+
+%------------------------------------------------------------------
+\subsection{Actividades y ciclo de vida de una aplicación}
+%-------------------------------------------------------------------
+\label{cap4:subsec:ciclovida}
+
+Todas las aplicaciones Android corren dentro de su propio proceso, el cual es creado junto a la aplicación y el sistema operativo es el encargado de eliminarlo cuando lo cree necesario, como por ejemplo para liberar su memoria. Tal como se puede ver, en Android el tiempo de vida de las aplicaciones se encuentra controlado por el sistema operativo y no por el usuario.
+\\
+
+Tal como se mencionó en secciones posteriores, las actividades se gestionan mediante métodos implementados en los Activity. Una aplicación contiene múltiples actividades vinculadas entre sí, donde una de ellas es especificada como principal dentro del \textit{AndroidManifest.xml}. Es decir, cuando la aplicación inicie esta será la pantalla que el usuario verá. 
+\\
+
+Cuando se inicia un Activity se coloca en el tope de una pila que contiene todas las actividades de la aplicación (``pila de actividades''), haciendo que la anterior se detenga pero sin perder sus datos. El ciclo de vida de una actividad se ve directamente afectado por su asociación con otras actividades, con sus tareas y con la pila de actividades. Tal como funcionan las pilas (mecanismo LIFO - ``Last in first out''), la última actividad en entrar será la primera en salir, por lo tanto cuando el usuario termina de interactuar con la actividad actual y presiona el botón ``Atrás'', la misma es destruida de la pila y es reanudada la actividad anterior \cite{cicloVida}.
+\\
+
+Una actividad puede existir básicamente en tres estados:
+
+\begin{itemize}
+	
+	\item \textbf{\textit{Reanudada}}: La actividad se encuentra en el primer plano de la pantalla y tiene la atención del usuario. También denominada ``En Ejecución''.
+	
+	\item \textbf{\textit{Pausada}}: Otra actividad se encuentra en el primer plano y tiene la atención del usuario, pero esta todavía está visible. Es decir, otra actividad está por encima de esta y esa actividad es parcialmente transparente o no cubre toda la pantalla. El objeto Activity pausado se conserva en la memoria, mantiene toda la información de estado y miembro y continúa anexado al administrador de ventanas, pero el sistema puede eliminarla en situaciones en que la memoria sea extremadamente baja.
+	
+	\item \textbf{\textit{Detenida}}: La actividad está completamente opacada por otra actividad (ahora la actividad se encuentra en ``segundo plano''). En este caso, el objeto Activity también se conserva en memoria, mantiene toda la información de estado y miembro, pero no está anexado al administrador de ventanas. Sin embargo, ya no está visible para el usuario y el sistema puede eliminarla cuando necesite memoria en alguna otra parte.
+	 
+\end{itemize}
+
+Cuando una actividad entra y sale de los diferentes estados mencionados, se notifica a través de diferentes métodos callbacks. En conjunto, estos métodos definen el ciclo de vida completo de una actividad, como se puede observar en la Figura \ref{fig:cicloVida}. Los métodos mencionados en dicha figura se explican a continuación:
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=1\textwidth]%
+		{Imagenes/Bitmap/cicloVida}
+		\caption{Ciclo de vida de una actividad}
+		\label{fig:cicloVida}
+	\end{center}
+\end{figure}
+
+\begin{itemize}
+	
+	\item \textbf{\textit{onCreate}}: Recibe una llamada cuando se crea la actividad por primera vez. Siempre seguido por \textit{onStart}.
+	
+	\item \textbf{\textit{onRestart}}: Recibe una llamada después de que se detiene la actividad, junto antes de que vuelva a iniciarse. Siempre seguido por \textit{onStart}.
+	
+	\item \textbf{\textit{onStart}}: Recibe una llamada justo antes de que la actividad se vuelva visible para el usuario. Seguido por \textit{onResume} si la actividad pasa a primer plano, o por \textit{onStop}.
+	
+	\item \textbf{\textit{onResume}}: Recibe una llamada justo antes de que la actividad comience a interactuar con el usuario. En este momento la actividad se encuentra en la parte superior de la pila de actividades, y recibe las entradas del usuario. Siempre seguido por \textit{onPause}.
+	
+	\item \textbf{\textit{onPause}}: Recibe una llamada cuando el sistema está a punto de reanudar otra actividad. Seguido por \textit{onResume} si la actividad vuelve al primer plano, o por \textit{onStop} si se vuelve invisible para el usuario.
+	
+	\item \textbf{\textit{onStop}}: Recibe una llamada cuando la actividad ya no es visible para el usuario. Esto puede ocurrir porque se la destruyó o porque se reanudó otra actividad (ya sea una actividad existente o una nueva) y la está cubriendo. Seguido por \textit{onRestart} si la actividad vuelve a interactuar con el usuario, o por \textit{onDestroy} si la actividad desaparece.
+	
+	\item \textbf{\textit{onDestroy}}: Recibe una llamada antes de que se destruya la actividad. Esta es la última llamada que recibirá la actividad. Se lo puede llamar porque la actividad está finalizando (alguien llamó a finish() para esa actividad), o porque el sistema destruye temporalmente esa instancia de la actividad para ahorrar espacio.
+	
+\end{itemize}
+
+%------------------------------------------------------------------
+\subsection{Conexión Web Service - Aplicación}
+%-------------------------------------------------------------------
+\label{cap4:subsec:comunicacionwsapp}
+
+Para llevar adelante la comunicación entre la aplicación Android y el Web Service Java, se utilizó la librería \textit{HttpComponents} de la fundación Apache, la cual es agregada al proyecto con la herramienta Gradle, como todas las dependencias externas.
+\\
+
+Es un un conjunto de herramientas de componentes Java de bajo nivel centrado en HTTP y los protocolos asociados \cite{conexionws}. Brindan servicios del tipo cliente-servidor con un mínimo nivel de abstracción ya que muchas cuestiones básicas están resueltas, HttpClient y HttpCore (el primero de ellos de interés para nuestro proyecto).
+\\
+
+Aunque el paquete de java.net proporciona la funcionalidad básica para los recursos que tienen acceso vía HTTP, no proporciona flexibilidad o funcionalidad completa necesitada por muchos usos \cite{httpComponents}. En cambio, el componente HttpComponents proporciona abundantes características que pone el lado del cliente en ejecución de los estándares más recientes y de las recomendaciones del HTTP.
+\\
+
+A partir de una URL válida (visto en la sección de servicios disponibles del Web Service), la librería establece una conexión asíncrona con el servidor, esto quiere decir que las solicitudes HTTP suceden fuera del hilo de la interfaz de usuario y su respuesta se procesa una vez que llega al dispositivo en segundo plano. Esto es importante ya que no bloquea la pantalla ni la interacción con la misma.
+
 
 \newpage
 \thispagestyle{empty}

@@ -33,7 +33,7 @@
 \contentsline {subsection}{\numberline {2.4.2}Interfaz de programaci\'on de aplicaciones}{24}{subsection.2.4.2}
 \contentsline {subsection}{\numberline {2.4.3}Sensores de un smartphone}{25}{subsection.2.4.3}
 \contentsline {part}{II\hspace {1em}Encuestando FCM}{28}{part.2}
-\contentsline {chapter}{\numberline {3}Dise\~no y desarrollo del lado del servidor}{29}{chapter.3}
+\contentsline {chapter}{\numberline {3}Dise\~no y desarrollo del servidor}{29}{chapter.3}
 \contentsline {section}{\numberline {3.1}Base de datos}{29}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Gestor de la base de datos}{29}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}Modelado del problema}{30}{subsection.3.1.2}
@@ -46,6 +46,10 @@
 \contentsline {subsection}{\numberline {3.2.6}Puesta en funcionamiento del Web Service}{45}{subsection.3.2.6}
 \contentsline {subsection}{\numberline {3.2.7}Estructura del proyecto}{45}{subsection.3.2.7}
 \contentsline {subsection}{\numberline {3.2.8}Servicios}{47}{subsection.3.2.8}
-\contentsline {part}{Bibliograf\IeC {\'\i }a}{54}{chapter*.25}
-\contentsline {part}{III\hspace {1em}Ap\'endices}{56}{part.3}
-\contentsline {chapter}{\numberline {A}Fichas de casos de uso}{57}{appendix.Alph1}
+\contentsline {chapter}{\numberline {4}Dise\~no y desarrollo de la aplicaci\'on m\'ovil}{54}{chapter.4}
+\contentsline {section}{\numberline {4.1}Proyecto Android}{54}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Componentes b\'asicos de una aplicaci\'on Android}{54}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Estructura del proyecto}{55}{subsection.4.1.2}
+\contentsline {part}{Bibliograf\IeC {\'\i }a}{60}{chapter*.28}
+\contentsline {part}{III\hspace {1em}Ap\'endices}{62}{part.3}
+\contentsline {chapter}{\numberline {A}Fichas de casos de uso}{63}{appendix.Alph1}

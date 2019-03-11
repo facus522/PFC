@@ -79,7 +79,7 @@ Tal como se puede ver en la Figura \ref{fig:estructura_proyecto}, inicialmente n
 	
 	\item Activity principal al iniciar.
 	
-	\item Nivel mínimo de la API que Android requiere para la aplicación.
+	\item Nivel mínimo del API que Android requiere para la aplicación.
 	
 	\item Nombre e ícono de la aplicación.
 	
@@ -225,6 +225,106 @@ Aunque el paquete de java.net proporciona la funcionalidad básica para los recur
 
 A partir de una URL válida (visto en la sección de servicios disponibles del Web Service), la librería establece una conexión asíncrona con el servidor, esto quiere decir que las solicitudes HTTP suceden fuera del hilo de la interfaz de usuario y su respuesta se procesa una vez que llega al dispositivo en segundo plano. Esto es importante ya que no bloquea la pantalla ni la interacción con la misma.
 
+%-------------------------------------------------------------------
+\section{Servicios externos}
+%-------------------------------------------------------------------
+\label{cap4:sec:servicios-externas}
+
+Para llevar adelante todas las peticiones establecidas en el proyecto, fue necesaria la integración de distintos componentes encargados de complementar todos los servicios prestados por el IDE Android Studio. 
+\\
+
+De esta forma, las distintas librerías y/o APIs utilizadas fueron anotadas en el \textit{build.gradle}, tal como se mencionó previamente. Obteniendo de esta forma la resolución de distintas cuestiones relacionadas al proyecto, sin tener que desarrollar manualmente cada una de ellas, lo cual incrementaría el tiempo de trabajo.
+\\
+
+En la ésta sección se hará una presentación más amplia sobre cada una de ellas, en relación a lo presentado en la Sección \ref{cap2:subsec:apis}.
+
+%------------------------------------------------------------------
+\subsection{API Firebase}
+%-------------------------------------------------------------------
+\label{cap4:subsec:firebase}
+
+Firebase es una plataforma móvil creada por Google, cuya principal función es desarrollar y facilitar la creación de aplicaciones de alta calidad, con la finalidad de poder aumentar la cantidad de usuarios e ingresos de dinero \cite{firebase1}. Se encuentra subida en la nube y esta disponible para diferentes plataformas como iOS, Android y web.
+\\
+
+Dentro de las principales características que posee, en cuanto al desarrollo podemos mencionar que permite la creación de mejores aplicaciones, minimizando el tiempo de optimización y desarrollo, mediante diferentes funciones, entre las que destacan la detección de errores y de testeo. Además, permite almacenar todo en la nube, testear la app o poder configurarla de manera remota.
+\\
+
+Desde el punto de vista analítico, permite llevar un control de rendimiento de la aplicación mediante distintas métricas, ofrecidas en un panel web de forma gratuita. Estos datos analíticos que ofrece Firebase, facilitan la toma de decisiones basadas y fundamentadas en datos reales \cite{firebase3}.
+\\
+
+Como se puede ver, ésta API presenta una gran variedad de servicios que facilitan el desarrollo de aplicaciones móviles. Entre las más destacadas se presentan las siguientes \cite{firebase2}:
+
+\begin{itemize}
+	
+	\item Base de datos Realtime.
+	
+	\item Autenticación con redes sociales.
+	
+	\item Almacenamiento.
+	
+	\item Hosting.
+	
+	\item Testing para Android.
+	
+	\item Notificaciones.
+	
+	\item Informes sobre fallos.
+	
+	\item Monitoreo de rendimientos.
+	
+\end{itemize}
+
+Dentro de las funcionalidades ofrecidas, la de notificaciones fue de interés en este proyecto. Para ello, Firebase presenta de manera muy sencilla un servicio de mensajería, donde a la hora de enviar notificaciones, el administrador de la aplicación debe ingresar a la web de desarrollo \textit{https://console.firebase.google.com} y configurar la misma. 
+\\
+
+Luego, en la sección \textit{Cloud Messaging} como se puede ver en la Figura \ref{fig:notifirebase}, se le debe dar el formato a la notificación colocando un título y una descripción, entre otras configuraciones opcionales. Finalmente, la misma es enviada de forma inmediata hacia todos los dispositivos que tengan instalada la aplicación. 
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=1\textwidth]%
+		{Imagenes/Bitmap/notifirebase}
+		\caption{Envío de notificación con API Firebase}
+		\label{fig:notifirebase}
+	\end{center}
+\end{figure}
+
+Además, se puede configurar el envío de notificaciones hacia determinados dispositivos, programar horarios y enviarlas de manera automática.
+
+%------------------------------------------------------------------
+\subsection{API Google Maps y Picker}
+%-------------------------------------------------------------------
+\label{cap4:subsec:googleapi}
+
+Google provee una serie de servicios de gran utildad para llevar adelante el desarrollo de aplicaciones Android. Para poder acceder a las distintas herramientas como pueden ser Google Maps y Picker, se debe contar con una key provista por Google. Esta es una cadena de caracteres alfanuméricos provista a un desarrollador para poder incluirlas en sus productos.
+\\
+
+Para poder utilizar ambas APIs en Android, es necesario definir en el \textit{AndroidManifest.xml} la API Key obtenida y la versión de Google Play Services que se está utilizando. Además, se debe agregar un permiso para recibir mapas a través de Internet.
+\\
+
+El API Picker, presenta un SDK para Android denominado \textit{Place Picker} (selector de lugares) \cite{picker}. Es un widget simple y flexible, que presenta mediante interfaz de usuario un mapa interactivo y una lista de lugares cercanos. Los usuarios pueden elegir una ubicación presionando sobre el mapa, lo cual creará un marcador y el API se encargará de recuperar los detalles del mismo, como dirección, latitud, longitud, etc (Figura \ref{fig:placepicker}). A su vez, tiene integrada una barra de búsqueda que permite ingresar manualmente una dirección y el API se encarga de localizarla en el mapa y colocar un marcador sobre ella.
+\\
+
+Los \textit{markers} (marcadores), indican ubicaciones únicas en el mapa y se posicionan a partir de la latitud y longitud. Los mismos pueden contener un título e imágenes. 
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.35\textwidth]%
+		{Imagenes/Bitmap/placepicker}
+		\caption{Selección de ubicación en Place Picker}
+		\label{fig:placepicker}
+	\end{center}
+\end{figure}
+
+Esta funcionalidad es de utilidad en el proyecto, ya que las encuestas tendrán la posibilidad de ser geolocalizadas. Cuando los usuarios al responder las mismas se encuentran en sus residencias habituales, mediante los servicios de Google y el componente GPS del dispositivo móvil se obtienen los datos de localización. En cambio, cuando no se encuentren en ellas, se les pedirá que introduzcan manualmente sus datos de residencia para mayor integridad en los datos, y es ahí que se utilizará el servicio presentado para resolver dicha cuestión.
+\\
+
+En cuanto al API de Google Maps, permite al desarrollador agregar un mapa basado en los datos de Google Maps en la pantalla de la aplicación e interactuar con él de la misma forma que se realiza en una computadora. El API controla automáticamente el acceso a los servidores de Google, la descarga de datos, visualización del mapa y respuestas \cite{maps}.
+\\
+
+Así como se permite la interacción del usuario con el mapa, pudiendo desplazarse, realizar zoom y cambiar la clase de mapa (normal, satélite o tierra), se permite agregar ciertos elementos dentro del mapa, como por ejemplo marcadores (markers), polilíneas, polígonos y superposiciones de mapas (overlays).
+\\
+
+En relación al proyecto, se aprovechan las facilidades ofrecidas por el API de Google Maps para la presentación de estadísticas interactivas. Todas aquellas encuestas geolocalizadas que hayan sido resueltas en al menos una oportunidad, brindarán una sección de estadísticas instantáneas para los ``Usuario Específicos''. Gracias a la latitud y longitud recopilada durante su resolución, es posible crear marcadores dentro de los mapas ubicando las respuestas de los usuarios. A simple vista las respuestas del mismo tipo serán agrupadas con marcadores del mismo color y dentro de la descripción en cada uno de ellos se presentará el sexo y edad del encuestado.
 
 \newpage
 \thispagestyle{empty}

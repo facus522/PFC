@@ -47,6 +47,13 @@ M.~Besteiro and M.~Rodr{\'i}guez.
 \newblock {\em Web Services}.
 \newblock 2016.
 
+\bibitem{firebase3}
+M.~Cardona.
+\newblock Firebase, qu{\'e} es y para qu{\'e} sirve la plataforma de google.
+\newblock
+  \url{https://www.iebschool.com/blog/firebase-que-es-para-que-sirve-la-plataforma-desarroladores-google-seo-sem/}.
+\newblock Accedido: 18/02/2019.
+
 \bibitem{itemsImportancia}
 C.~Cejas, M.~Pen{\'e}, A.~Macchia, and D.~Ferrante.
 \newblock {\em Evaluar para seguir adelante: Resultados del Programa Redes}.
@@ -84,10 +91,30 @@ G.~Escobar.
 \newblock \url{https://blog.makeitreal.camp/el-protocolo-http/}.
 \newblock Accedido: 20/01/2019.
 
+\bibitem{firebase1}
+Firebase.
+\newblock Firebase documentation.
+\newblock \url{https://firebase.google.com/docs/}.
+\newblock Accedido: 18/02/2019.
+
 \bibitem{spring2}
 J.~C. Geeks.
 \newblock {\em Spring Framework Cookbook}.
 \newblock Exelixis Media P.C., 2017.
+
+\bibitem{picker}
+Google.
+\newblock Api picker.
+\newblock
+  \url{https://developers.google.com/places/android-sdk/placepicker?hl=es}.
+\newblock Accedido: 18/02/2019.
+
+\bibitem{maps}
+Google.
+\newblock Maps sdk for android.
+\newblock
+  \url{https://developers.google.com/maps/documentation/android-sdk/intro}.
+\newblock Accedido: 18/02/2019.
 
 \bibitem{hibernate1}
 N.~Guerrero.
@@ -150,6 +177,12 @@ I.~Rohlfs.
 \newblock La importancia de la perspectiva de g{\'e}nero en las encuestas de
   salud.
 \newblock {\em Gaceta Sanitaria}, 14(2):146--153, 2000.
+
+\bibitem{firebase2}
+M.~Ruiz.
+\newblock ?`{{Q}}u{\'e} es firebase de google?
+\newblock \url{https://openwebinars.net/blog/que-es-firebase-de-google/}.
+\newblock Accedido: 18/02/2019.
 
 \bibitem{poblacionEncuestas}
 E.~Trejo.

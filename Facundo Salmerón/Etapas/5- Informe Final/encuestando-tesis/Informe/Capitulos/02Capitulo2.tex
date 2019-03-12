@@ -225,6 +225,29 @@ Aunque el paquete de java.net proporciona la funcionalidad básica para los recur
 
 A partir de una URL válida (visto en la sección de servicios disponibles del Web Service), la librería establece una conexión asíncrona con el servidor, esto quiere decir que las solicitudes HTTP suceden fuera del hilo de la interfaz de usuario y su respuesta se procesa una vez que llega al dispositivo en segundo plano. Esto es importante ya que no bloquea la pantalla ni la interacción con la misma.
 
+%------------------------------------------------------------------
+\subsection{Interfaz de usuario}
+%-------------------------------------------------------------------
+\label{cap4:subsec:interfaz-usuario}
+
+La interfaz de usuario (UI) es una parte fundamental de las aplicaciones Android. Es el conjunto de elementos que permiten al usuario comunicarse e interaccionar con la app.  Al igual que cualquier otro componente, la UI puede ser definida en XML y levantada por el MainActivity.
+\\
+
+Android Studio brinda la posibilidad de desarrollar aplicaciones en base a plantillas predefinidas, como por ejemplo pantallas de login, pantallas fullscreen, scrolleables, mapas, etc. A las cuales se les pueden agregar distintos controles de selección ofrecidos por el IDE, ya sea para mostrar o interactuar con la información, como pueden ser listas, tablas, checks, botones, listas desplegables, galerías, etc.
+\\
+
+Además, tal como fue mencionado anteriormente, cada vez que se desee crear una nueva pantalla se generará el archivo \textit{.xml} y el Activity \textit{.Java}, ambos relacionados. Para llevar adelante el diseño de la misma, Android Studio brinda la posibilidad de realizarlo mediante código xml y presentando una ventana de actualización automática \textit{Preview} para ir verificando visualmente lo realizado. O puede diseñarse mediante un panel de construcción, donde es posible ir arrastrando y ubicando manualmente los componentes a utilizar, lo cual es mucho más sencillo.
+
+%-------------------------------------------------------------------
+\section{Geo posicionamiento}
+%-------------------------------------------------------------------
+\label{cap4:sec:geoposicionamiento}
+
+Para todas aquellas encuestas que sean del tipo ``Geolocalizadas'', cuando el usuario de resolución se encuentra en su residencia habitual, es necesario obtener los datos de su ubicación mediante el componente GPS del dispositivo móvil. Inicialmente es necesario que el usuario acepte los permisos que se presentarán para la utilización del mismo.
+\\
+
+Para ello se utilizó la funcionalidad \textit{LocationServices}, brindada por Google Services \cite{locationservice}. Esta se encarga de monitorear la posición del móvil a través del sensor GPS y la conexión a redes. Al momento de responder la encuesta tiene que estar activado el sensor y los permisos aceptados, donde finalmente se podrán obtener los datos en relación a la localización, principalmente la latitud y longitud que serán persistidos.
+
 %-------------------------------------------------------------------
 \section{Servicios externos}
 %-------------------------------------------------------------------
@@ -315,7 +338,7 @@ Los \textit{markers} (marcadores), indican ubicaciones únicas en el mapa y se po
 	\end{center}
 \end{figure}
 
-Esta funcionalidad es de utilidad en el proyecto, ya que las encuestas tendrán la posibilidad de ser geolocalizadas. Cuando los usuarios al responder las mismas se encuentran en sus residencias habituales, mediante los servicios de Google y el componente GPS del dispositivo móvil se obtienen los datos de localización. En cambio, cuando no se encuentren en ellas, se les pedirá que introduzcan manualmente sus datos de residencia para mayor integridad en los datos, y es ahí que se utilizará el servicio presentado para resolver dicha cuestión.
+Esta funcionalidad es de utilidad en el proyecto, ya que las encuestas tendrán la posibilidad de ser geolocalizadas. Cuando los usuarios al responder las mismas se encuentran en sus residencias habituales, mediante los servicios de Google y el componente GPS del dispositivo móvil mencionado anteriormente, se obtienen los datos de localización. En cambio, cuando no se encuentren en ellas, se les pedirá que introduzcan manualmente sus datos de residencia para mayor integridad en los datos, y es ahí que se utilizará el servicio presentado para resolver dicha cuestión.
 \\
 
 En cuanto al API de Google Maps, permite al desarrollador agregar un mapa basado en los datos de Google Maps en la pantalla de la aplicación e interactuar con él de la misma forma que se realiza en una computadora. El API controla automáticamente el acceso a los servidores de Google, la descarga de datos, visualización del mapa y respuestas \cite{maps}.
@@ -325,6 +348,46 @@ Así como se permite la interacción del usuario con el mapa, pudiendo desplazarse
 \\
 
 En relación al proyecto, se aprovechan las facilidades ofrecidas por el API de Google Maps para la presentación de estadísticas interactivas. Todas aquellas encuestas geolocalizadas que hayan sido resueltas en al menos una oportunidad, brindarán una sección de estadísticas instantáneas para los ``Usuario Específicos''. Gracias a la latitud y longitud recopilada durante su resolución, es posible crear marcadores dentro de los mapas ubicando las respuestas de los usuarios. A simple vista las respuestas del mismo tipo serán agrupadas con marcadores del mismo color y dentro de la descripción en cada uno de ellos se presentará el sexo y edad del encuestado.
+
+%------------------------------------------------------------------
+\subsection{Librería MPAndroidChart}
+%-------------------------------------------------------------------
+\label{cap4:subsec:mpandroidchart}
+
+MPAndroidChart es una librería que nos permite mostrar de forma fácil y personalizada grandes conjuntos de datos en formas gráficas \cite{mpandroidchart}. Permite además, arrastrar, escalados y animaciones en los gráficos, los cuales pueden ser de varios tipos, dependiendo de las necesidades y tipos de datos.
+\\
+
+Para realizar su integración con el proyecto Android, es necesario descargar la librería desde el repositorio oficial obteniendo un archivo \textit{.jar}. El mismo es añadido mediante la opción \textit{Add as Library} de Android Studio, y finalmente debe compilarse mediante su anotación en el \textit{build.gradle}.
+\\
+
+En relación al proyecto, dentro de la sección de estadísticas por encuesta brindada a los ``Usuario Específicos'', se preparan distintos gráficos para todas aquellas preguntas del tipo \textit{Múltiple Choice} o  \textit{Respuesta Única}, por ejemplo. De esta forma, nos permite conocer, analizar y comparar visual y rápidamente los distintos resultados obtenidos hasta el momento.
+
+%------------------------------------------------------------------
+\subsection{Librería OpenCsv}
+%-------------------------------------------------------------------
+\label{cap4:subsec:opencsv}
+
+OpenCsv es una librería Java gratuita de parseos en CSV, tanto para lecturas como escrituras \cite{opencsv}. Los archivos CSV (comma-separated values) son un tipo de documento en formato abierto sencillo para representar datos en forma de tabla, en las cuales las columnas son separadas por comas (o punto y coma). 
+\\
+
+La librería ofrece principalmente las clases \textit{CSVReader} y \textit{CSVWriter}, las cuales dan operaciones para leer el fichero CSV como un arreglo de String o para escribir sobre uno de ellos, respectivamente. Tanto en la lectura como la escritura presentan las siguientes metodologías de parseo:
+
+\begin{itemize}
+	
+	\item Desde y hacia un arreglo de Strings.
+	
+	\item Desde y hacia un Bean, mediante la clase \textit{CsvToBean} que realiza el parseo conforme a un \textit{MappingStrategy}, interfaz que define el mapeo entre los datos CSV y la clase Java.
+	
+	\item Desde una base de datos.
+	
+\end{itemize}
+
+En este caso, gracias a las facilidades aportadas por OpenCsv, es posible llevar adelante la exportación de resultados para una determinada encuesta en el presente proyecto. Así como los ``Usuario Específicos'' pueden visualizar todas las estadíticas presentadas por cada encuesta, tienen disponible la opción de exportar resultados, la cual mediante la solicitud de un permiso extra para utilizar el almacenamiento interno del dispotivo móvil, guarda el archivo \textit{.csv} pudiendo ser accedido cuando se requiera. El mismo puede ser abierto con cualquier planilla de cálculos como por ejemplo Excel.
+
+%-------------------------------------------------------------------
+\section{Modelado de la aplicación}
+%-------------------------------------------------------------------
+\label{cap4:sec:modelado-aplicacion}
 
 \newpage
 \thispagestyle{empty}

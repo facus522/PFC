@@ -109,6 +109,13 @@ Google.
   \url{https://developers.google.com/places/android-sdk/placepicker?hl=es}.
 \newblock Accedido: 18/02/2019.
 
+\bibitem{locationservice}
+Google.
+\newblock Locationservices.
+\newblock
+  \url{https://developers.google.com/android/reference/com/google/android/gms/location/LocationServices}.
+\newblock Accedido: 16/02/2019.
+
 \bibitem{maps}
 Google.
 \newblock Maps sdk for android.
@@ -126,6 +133,12 @@ N.~Guerrero.
 J.~Guti{\'e}rrez.
 \newblock {\em ?`{{Q}}u{\'e} es un framework?}
 \newblock Universidad de Sevilla, 2015.
+
+\bibitem{mpandroidchart}
+P.~Jahoda.
+\newblock Mpandroidchart.
+\newblock \url{https://github.com/PhilJay/MPAndroidChart#quick-start}.
+\newblock Accedido: 19/02/2019.
 
 \bibitem{hibernate2}
 G.~King, C.~Bauer, M.~R. Andersen, E.~Bernard, S.~Ebersole, and H.~Ferentschik.
@@ -165,6 +178,12 @@ S.~Oliver.
 \newblock
   \url{http://www.sgoliver.net/blog/estructura-de-un-proyecto-android-android-studio/}.
 \newblock Accedido: 13/02/2019.
+
+\bibitem{opencsv}
+OpenCSV.
+\newblock Opencsv.
+\newblock \url{http://opencsv.sourceforge.net/}.
+\newblock Accedido: 19/02/2019.
 
 \bibitem{mysqlPopular}
 Oracle.

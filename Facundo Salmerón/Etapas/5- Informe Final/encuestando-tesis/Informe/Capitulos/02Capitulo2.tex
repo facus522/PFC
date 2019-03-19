@@ -389,6 +389,240 @@ En este caso, gracias a las facilidades aportadas por OpenCsv, es posible llevar
 %-------------------------------------------------------------------
 \label{cap4:sec:modelado-aplicacion}
 
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=1\textwidth]%
+		{Imagenes/Bitmap/modelo_aplicacion}
+		\caption{Diagrama de clases de la aplicación}
+		\label{fig:modelo-app}
+	\end{center}
+\end{figure}
+
+En la Figura \ref{fig:modelo-app} se presenta el diagrama de clases que se encarga de modelar la aplicación Android, presentando en detalle cada uno de sus componentes.
+\\
+
+Se tiene una clase \textit{MainActivity} la cual Android escoge para manejar la actividad principal de la aplicación. Dicha clase se encarga de instanciar los métodos específicos correspondientes a las distintas funcionalidades que presenta el proyecto y de gestionar la identificación del usuario. Tal como se mencionó anteriormente, todos los ``Activities'' se encuentran embebidos dentro de éste Activity principal, lo cual permite la manipulación independiente de cada uno de ellos, teniendo su propio layout y ciclo de vida. 
+\\
+
+Inicialmente cabe aclarar que en la mayoria de las clases presentadas del modelo se encuentran atributos y funcionalidades similares, los cuales se explicarán a continuación. Dentro de los atributos, a modo de resumen se detalló como ``Fields \& Buttons'' a todos aquellos componentes gráficos que presenta el layout, para poder manipularlos individualmente y reaccionar ante determinados eventos sobre ellos. En cuanto a funcionalidades, las más utilizadas son las siguientes:
+
+\begin{itemize}
+	
+	\item \textit{onCreate()}: es el primer método que se llama cuando se crea el Activity, donde se setea el layout (setContentView) correspondiente. Además se inicializan todos los componentes presentes en la vista y se pueden determinar reacciones ante determinados eventos sobre ellos.
+	
+	\item \textit{onBackPressed()}: vuelve al Activity anterior del que te encuentras en el momento. Dentro de este método se pueden configurar mensajes de alerta por ejemplo, para no perder los datos cargados en un retroceso involuntario. Es invocado por el botón ``Volver'' del dispositivo móvil y fue configurado para un botón propio de la aplicación ubicado en un \textit{toolbar} superior.
+	
+	\item \textit{onActivityResult()}: cuando se termina de utilizar un Activity y vuelve al anterior, el sistema llama este método. Dentro de él se puede definir como recuperar la información resultante de la actividad recientemente finalizada, el cual proporciona los parámetros necesarios para saber qué lanzó dicha actividad y el resultado (\textit{resultCode}), si es OK, CANCELED, etc.
+	
+	\item \textit{onSaveInstanceState()}: este método se encarga de guardar datos acerca del estado de un Activity. Por ejemplo, en la rotación de pantalla (cuando se gira el móvil de vertical a horizontal y viceversa), el sistema vuelve a crear la actividad haciendo que todos los datos presentados en un texto editable se pierdan. Por lo tanto este método los guarda y vuelve a crear correctamente.
+	
+\end{itemize}
+
+El MainActivity se encuentra directamente relacionado con dos activities a tener en cuenta. El primero de ellos es el \textit{RegisterActivity}, el cual se encarga de llevar a cabo del registro de usuarios, y el \textit{MenuActivity} que presenta las funcionalidades principales de la aplicación, dependiendo el tipo de usuario que inició sesión. Dichas funcionalidades son:
+
+\begin{itemize}
+	
+	\item \textit{AdminEncuestasActivity}: disponible solamente para un tipo de usuario, donde se podrá llevar a cabo toda la administración relacionada a las encuestas: alta, baja, modificación, habilitación e inhabilitación. A su vez se relaciona con \textit{CrearModificarEncuestaActivity}, el cual presenta toda la lógica para el alta y modificación de encuestas, con sus preguntas, respuestas, restricciones, etc.
+	
+	\item \textit{NoticiasActivity}: activity relacionado a la visualización y/o administración de noticias e informaciones, dependiendo el tipo de usuario logueado. Al igual que en las encuestas, se relaciona con \textit{CrearNoticiaActivity} para llevar adelante la lógica de creación de noticias.
+	
+	\item \textit{EncuestasActivity}: este activity presenta todas las encuestas que se encuentran disponibles para resolver y/o información extra de las mismas, dependiendo el tipo de usuario logueado. Se encuentra relacionado con \textit{ResolverActivity}, el cual se encarga de presentar la encuesta para resolverla e invocar los métodos necesarios para su persistencia. Este último Activity contiene distintos métodos que valen la pena ampliar, como \textit{verifyLocationPermission} que se encarga de solicitar los permisos para utilizar el componente GPS al usuario, \textit{getLocationServices} que recupera los datos relacionados al geoposicionamiento del usuario a la hora de resolver la encuestas, y \textit{openPlacePicker} que invoca el servicio de Google explicado anteriormente para seleccionar manualmente la localización.
+	
+	Para aquellos usuarios que poseen los permisos adecuados, dentro de EncuestaActivity podrán exportar los resultados de la encuesta mediante su relación con la clase \textit{ExportCSVTask} y con la solicitud de permisos para almacenamiento de \textit{verifyStoragePermissions}.
+	
+	Además, estos usuarios podrán ver estadísticas de cada encuesta resuelta, por lo tanto se encuentra relacionado con \textit{ResultadosActivity}, el cual posee los servicios correspondientes a la librería MPAndroidChart para visualizar gráficos y relacionado con \textit{ResultMapsActivity} que se encarga de distribuir visualmente los resultados en un GoogleMaps. 
+	
+\end{itemize}
+
+Luego, como se puede ver en el modelo, la gran mayoría de los activities se encuentran relacionados con la clase \textit{HTTPAsyncTask}. Esta clase se encarga de la conexión a la red y de lanzar las distintas peticiones que se realizan sobre el Web Service. A la hora de ser invocado por un determinado Activity se tiene en cuenta que método invocar y el tipo de petición HTTP que se trata. 
+\\
+
+Finalmente, tal como fue mencionado anteriormente, se trabajará mediante JSONs para las distintas peticiones. Por lo tanto, se precisa de una clase \textit{JSONConverter} que realiza la conversión de objetos de dicho tipo (manipulados por la clase HTTPAsyncTask) en DTOS (Data transfer object), los cuales son objetos simples sin lógica de negocio, utilizados para representar los datos a nivel aplicación.
+
+%-------------------------------------------------------------------
+\section{Presentación de EncuestandoFCM}
+%-------------------------------------------------------------------
+\label{cap4:sec:presentacionapp}
+
+En esta sección, se llevará a cabo la presentación de la aplicación móvil \textit{EncuestandoFCM}, junto a todas las funcionalidades y librerías mencionadas anteriormente, que se encargaron de complementar el producto final.
+
+%------------------------------------------------------------------
+\subsection{Login y registro de usuario}
+%-------------------------------------------------------------------
+\label{cap4:subsec:loginregistro}
+
+Al instalar la aplicación y abrirla, se presentará hacia todos los usuarios una pantalla simple de logueo tal como se muestra en la Figura \ref{fig:login}. Si ya se posee un usuario creado, simplemente se debe ingresar el nombre, contraseña e \textit{Iniciar Sesión}. Se verificará consumiendo el servicio correspondiente en el WS si los datos ingresados son correctos y de esta forma redirigir a la pantalla principal adecuada (teniendo en cuenta el tipo de usuario del mismo), como ya se verá más adelante, caso contrario, se informarán los errores de logueo en la misma pantalla.
+\\
+
+Si no se posee un usuario para ingresar, se debe presionar sobre el botón \textit{Registrarse}, el cual va a redirigir hacia la pantalla de registro de usuario que se presenta en la Figura \ref{fig:registro}. Aquí se deben colocar todos los datos personales y para el caso de aquellos ``Usuarios de Medicina'', que serán los denominados anteriormente como ``Usuarios Específicos'', se debe tildar el checkbox correspondiente y luego ingresar el código de validación, el cual debe ser solicitado a un superior de la facultad de medicina para obtener las funcionalidades de dicho tipo de usuario.
+\\
+
+Al presionar guardar, inicialmente se verificará que todos los datos se encuentren cargados, ya que los mismos son de carácter obligatorio, caso contrario se informará. Una vez completados los mismos se envían al WS para su registro, éste devolverá un \textit{response} en formato JSON informando el éxito de la transacción o aquellos campos que se deben corregir. Por ejemplo: nombre de usuario o email ya en uso, password que no cumple la longitud, código de validación incorrecto, etc.
+\\
+
+\begin{figure}
+	\centering
+	\subfloat[Pantalla de Login]{
+		\label{fig:login}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/2_app.png}}
+	\subfloat[Pantalla de Registro de Usuarios]{
+		\label{fig:registro}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/3_app.png}}
+	\caption{Login \& Registro}
+	\label{fig:loginregistro}
+\end{figure}
+
+%------------------------------------------------------------------
+\subsection{Menú principal}
+%-------------------------------------------------------------------
+\label{cap4:subsec:menuprincipal}
+
+Como se mencionó anteriormente, al iniciar sesión se presenta un menú principal. Éste varía de acuerdo al tipo de usuario logueado. En el caso de los usuarios ``comunes'', como se muestra en la Figura \ref{fig:menunormal}, se tendrán las opciones de \textit{Encuestas Disponibles} e \textit{Información \& Noticias}. Como se verá más adelante, en ellas se podrán responder encuestas en una sola ocasión (siempre y cuando cumpla con las validaciones previas) y leer las noticias agregadas respectivamente. 
+\\
+
+Cuando los usuarios son del tipo ``específicos'', se presentará una pantalla como en la Figura \ref{fig:menuespecial}. Aquí se tienen las mismas opciones que el otro tipo de usuario, con la diferencia de que se pueden responder ilimitadamente las encuestas, ver estadísticas sobre las mismas, exportar resultados, realizar AMBs de Informaciones, etc. Además, se haya la opción de \textit{Administrar Encuestas}, para realizar los ABMs, habilitación e inhabilitación de ellas.
+\\
+
+\begin{figure}
+	\centering
+	\subfloat[Menú principal Usuario común]{
+		\label{fig:menunormal}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/4_app.png}}
+	\subfloat[Menú principal Usuario Especial]{
+		\label{fig:menuespecial}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/5_app.png}}
+	\caption{Menú principal}
+	\label{fig:menuprincipal}
+\end{figure}
+
+%------------------------------------------------------------------
+\subsection{Sección noticias e informaciones (I\&N)}
+%-------------------------------------------------------------------
+\label{cap4:subsec:noticiasinfoseccion}
+
+Esta sección fue pensada para que los usuarios de la aplicación además de responder las encuestas, puedan informarse e instruirse acerca de distintas enfermedades, epidemiologías, informaciones relevantes, etc. 
+\\
+
+Para aquellos usuarios comunes que ingresan a la sección, se presentará en un \textit{ListView} con un título y una breve descripción, las distintas I\&N cargadas en base de datos (Figura \ref{fig:infocomun}). Para ello, se consumirá el correspondiente endpoint del WS al cargar las mismas. Al presionar sobre una de ellas, se abrirá un \textit{WebView} sobre la misma aplicación, con el contenido de la URL correspondiente (Figura \ref{fig:ejemploinfol}).
+\\
+
+Para aquellos usuarios de tipo específico, como se puede ver en la Figura \ref{fig:infoespeciall}, se presentan las distintas opciones de ABM. Se encuentra disponible un botón para agregar I\&N, el cual direcciona hacia la pantalla de alta (Figura \ref{fig:altainfol}). Aquí se debe colocar el título de la I\&N, una breve descripción informativa y la URL a la que apuntará la misma. Al presionar sobre un ítem de la \textit{ListView}, se abrirá un pop up que posee las opciones de eliminar y ver. Todas éstas opciones, consumen sus correspondientes servicios del WS para llevarlo a cabo.
+\\
+
+\begin{figure}
+	\centering
+	\subfloat[I\&N U. común]{
+		\label{fig:infocomun}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/6_app.png}}
+	\subfloat[I\&N U. específico]{
+		\label{fig:infoespeciall}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/7_app.png}}
+	\subfloat[Alta de I\&N]{
+		\label{fig:altainfol}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/8_app.png}}
+	\subfloat[Ejemplo I\&N]{
+		\label{fig:ejemploinfol}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/9_app.png}}
+	\caption{Noticias e informaciones}
+	\label{fig:noticiasinfo}
+\end{figure}
+
+%------------------------------------------------------------------
+\subsection{Sección administrar encuestas}
+%-------------------------------------------------------------------
+\label{cap4:subsec:adminseccion}
+
+Como se mencionó anteriormente, esta sección solamente estará disponible para aquellos usuarios de tipo específico. Al ingresar, se presentará un \textit{ListView} de las encuestas existentes (con \textit{activo = true}) traídas por WS. Cada ítem estará formado por un título y una descripción (Figura \ref{fig:listaencuestasadmin}). Como se puede ver en la actual pantalla y en subsiguientes, se presenta un icono de ayuda (arriba a la derecha), el cual despliega un pop up informativo acerca de todas las funcionalidades presentadas, con la finalidad de colaborar en la experiencia de usuario.
+\\
+
+Presionando sobre el botón rojo \textbf{(+)}, se direcciona hacia la pantalla de \textit{Nueva Encuesta} como se puede ver en la Figura \ref{fig:altaencuesta}. Aquí se deberá completar de carácter obligatorio el título y poseer al menos una pregunta. Luego se presentan una serie de validaciones opcionales en forma de \textit{CheckBox}. Por ejemplo, si se requiere que la encuesta sea \textit{Geolocalizada} se debe tildar el mismo. Esto significa que cuando se resuelva la misma se almacenará la latitud y longitud de los encuestados, a modo de poseer referencias zonales para posteriores análisis. A su vez, se pueden agregar restricciones sobre los encuestados, es decir que los mismos sean de un sexo determinado y/o mayores a determinada edad (Figura \ref{fig:validacionesl}). 
+\\
+
+Para agregar preguntas a la encuesta, se debe presionar sobre el botón verde \textbf{(?)} (Figura \ref{fig:tiporespuestasl}). El mismo despliega una serie de opciones en relación al tipo de respuesta que tendrá y presionando sobre uno de ellos, se direccionará a la correspondiente alta.
+\\
+
+\begin{figure}
+	\centering
+	\subfloat[Lista Encuestas]{
+		\label{fig:listaencuestasadmin}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/10_app.png}}
+	\subfloat[Nueva Encuesta]{
+		\label{fig:altaencuesta}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/11_app.png}}
+	\subfloat[Tipos Respuestas]{
+		\label{fig:tiporespuestasl}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/12_app.png}}
+	\subfloat[Validaciones]{
+		\label{fig:validacionesl}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/13_app.png}}
+	\caption{Administración de encuestas}
+	\label{fig:admin1}
+\end{figure}
+
+Para aquellas preguntas que tendrán una serie de respuestas predefinidas, como por ejemplo las \textit{Múltiple Choice} y \textit{Respuesta Única}, se presenta un campo editable para ingresar la pregunta y un botón que despliega un pop up para ir ingresando las respuestas (Figura \ref{fig:choice} y \ref{fig:unicarta}). Luego, al presionar sobre cada respuesta se presentará un \textit{AlertDialog} (Figura \ref{fig:opcionesrtas}) que permite modificar o eliminar la misma.
+\\
+
+\begin{figure}
+	\centering
+	\subfloat[Múltiple Choice]{
+		\label{fig:choice}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/14_app.png}}
+	\subfloat[Respuesta Única]{
+		\label{fig:unicarta}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/15_app.png}}
+	\subfloat[Opciones sobre respuesta]{
+		\label{fig:opcionesrtas}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/16_app.png}}
+	\caption{Alta y modificación de encuesta}
+	\label{fig:admin2}
+\end{figure}
+
+Para aquellas preguntas que poseen una respuesta de tipo \textit{Numérica} o \textit{Textual}, el formato de alta es similar, donde el mismo presenta un campo editable para ingresar la pregunta en cuestión (Figura \ref{fig:numericas} y \ref{fig:textual}). La diferencia entre ellas, es visible a la hora de responder la encuesta, ya que el teclado solamente habilitará los caracteres numéricos o alfanuméricos respectivamente.
+\\
+
+En el caso de las preguntas con tipo de respuesta \textit{Escala}, además de ingresar la pregunta en cuestión en el campo editable, posee otro campo que despliega un \textit{NumberPicker}, eligiendo de ésta forma la escala máxima a responder, partiendo desde el 1 (Figura \ref{fig:escala} y \ref{fig:valoresescala}).
+\\
+
+\begin{figure}
+	\centering
+	\subfloat[Numéricas]{
+		\label{fig:numericas}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/17_app.png}}
+	\subfloat[Textual]{
+		\label{fig:textual}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/18_app.png}}
+	\subfloat[Escala]{
+		\label{fig:escala}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/19_app.png}}
+	\subfloat[Valores Escala]{
+		\label{fig:valoresescala}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/20_app.png}}
+	\caption{Tipos de preguntas}
+	\label{fig:admin3}
+\end{figure}
+
+Al ir agregando las preguntas como se mencionó anteriormente, aparecerán en la pantalla de nueva encuesta con su formato correspondiente, dependiendo del tipo de respuesta que contengan (Figura \ref{fig:altaencuesta} y \ref{fig:validacionesl}). Finalmente al presionar \textit{Agregar}, se validará que todos los datos ingresados sean correctos y se procederá a persistir en base de datos consumiendo el WS, caso contrario se informarán los errores para corregirlos.
+\\
+
+Nuevamente sobre la pantalla de \textit{Administración de Encuestas}, como se presentó en la Figura \ref{fig:listaencuestasadmin}, al presionar sobre un ítem específico se desplegará en un pop up las diferentes opciones a realizar, que se describirán a continuación:
+
+\begin{itemize}
+	
+	\item \textbf{\textit{Eliminar}}: procede a realizar una ``baja lógica'' de la encuesta. Es decir, la misma no será eliminada de la base de datos, sino que modificará los campos correspondientes para no ser cargada en la aplicación, es decir se colocará como \textit{false} el campo ``activo'' y se completarán los campos ``usuario de baja'' y ``fecha de baja''. Ésta metodología fue desarrollada a fin de tener una auditoría de la base de datos y mayor control sobre la misma.
+	
+	\item \textbf{\textit{Modificar}}: esta opción solamente estará visible para aquellas encuestas que aún no han sido resueltas. Se determinó esta metodología, para mantener integridad en los datos y no obtener resultados incorrectos o desactualizados. Al presionar sobre ésta opción, se abrirá una pantalla similar a la Figura \ref{fig:altaencuesta}, con todos los datos cargados correctamente, pudiendo eliminar, modificar o agregar preguntas y respuestas, cambiar validaciones, etc.
+	
+	\item \textbf{\textit{Habilitar}}: al crear una encuesta, la misma queda en estado activa pero pendiente de habilitación. Es decir, para que ella quede disponible para responder, previamente debe ser habilitada. Esta metodología está relacionada con la opción de modificar, ya que evitando que una encuesta quede automáticamente disponible de resolución, la misma puede modificarse cuantas veces quiera y cuando se considere que la misma está acorde para responderse, así habilitarla y empezar a recabar resultados.
+	
+	\item \textbf{\textit{Inhabilitar}}: cuando se considere que una encuesta quedó desactualizada o no se necesiten más resultados de la misma, simplemente se inhabilita, haciendo que su resolución ya no esté más disponible en la correspondiente sección.
+	
+\end{itemize}
+
+%------------------------------------------------------------------
+\subsection{Sección encuestas disponibles}
+%-------------------------------------------------------------------
+\label{cap4:subsec:encuestasseccion}
+
 \newpage
 \thispagestyle{empty}
 \mbox{ }

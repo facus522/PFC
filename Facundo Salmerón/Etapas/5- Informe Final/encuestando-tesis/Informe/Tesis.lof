@@ -30,4 +30,30 @@
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Ciclo de vida de una actividad\relax }}{60}{figure.caption.28}
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Env\IeC {\'\i }o de notificaci\'on con API Firebase\relax }}{64}{figure.caption.29}
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Selecci\'on de ubicaci\'on en Place Picker\relax }}{65}{figure.caption.30}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Diagrama de clases de la aplicaci\'on\relax }}{67}{figure.caption.31}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Login \& Registro\relax }}{70}{figure.caption.32}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Pantalla de Login}}}{70}{subfigure.8.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Pantalla de Registro de Usuarios}}}{70}{subfigure.8.2}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Men\'u principal\relax }}{71}{figure.caption.33}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Men\'u principal Usuario com\'un}}}{71}{subfigure.9.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Men\'u principal Usuario Especial}}}{71}{subfigure.9.2}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Noticias e informaciones\relax }}{72}{figure.caption.34}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {I\&N U. com\'un}}}{72}{subfigure.10.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {I\&N U. espec\IeC {\'\i }fico}}}{72}{subfigure.10.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Alta de I\&N}}}{72}{subfigure.10.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Ejemplo I\&N}}}{72}{subfigure.10.4}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Administraci\'on de encuestas\relax }}{73}{figure.caption.35}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Lista Encuestas}}}{73}{subfigure.11.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Nueva Encuesta}}}{73}{subfigure.11.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Tipos Respuestas}}}{73}{subfigure.11.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Validaciones}}}{73}{subfigure.11.4}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Alta y modificaci\'on de encuesta\relax }}{73}{figure.caption.36}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {M\'ultiple Choice}}}{73}{subfigure.12.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Respuesta \'Unica}}}{73}{subfigure.12.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Opciones sobre respuesta}}}{73}{subfigure.12.3}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Tipos de preguntas\relax }}{74}{figure.caption.37}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Num\'ericas}}}{74}{subfigure.13.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Textual}}}{74}{subfigure.13.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Escala}}}{74}{subfigure.13.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Valores Escala}}}{74}{subfigure.13.4}
 \addvspace {10\p@ }

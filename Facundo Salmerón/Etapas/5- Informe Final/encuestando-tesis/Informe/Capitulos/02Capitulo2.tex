@@ -458,9 +458,8 @@ Si no se posee un usuario para ingresar, se debe presionar sobre el botón \texti
 \\
 
 Al presionar guardar, inicialmente se verificará que todos los datos se encuentren cargados, ya que los mismos son de carácter obligatorio, caso contrario se informará. Una vez completados los mismos se envían al WS para su registro, éste devolverá un \textit{response} en formato JSON informando el éxito de la transacción o aquellos campos que se deben corregir. Por ejemplo: nombre de usuario o email ya en uso, password que no cumple la longitud, código de validación incorrecto, etc.
-\\
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\subfloat[Pantalla de Login]{
 		\label{fig:login}
@@ -481,9 +480,8 @@ Como se mencionó anteriormente, al iniciar sesión se presenta un menú principal.
 \\
 
 Cuando los usuarios son del tipo ``específicos'', se presentará una pantalla como en la Figura \ref{fig:menuespecial}. Aquí se tienen las mismas opciones que el otro tipo de usuario, con la diferencia de que se pueden responder ilimitadamente las encuestas, ver estadísticas sobre las mismas, exportar resultados, realizar AMBs de Informaciones, etc. Además, se haya la opción de \textit{Administrar Encuestas}, para realizar los ABMs, habilitación e inhabilitación de ellas.
-\\
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\subfloat[Menú principal Usuario común]{
 		\label{fig:menunormal}
@@ -504,12 +502,8 @@ Esta sección fue pensada para que los usuarios de la aplicación además de respon
 \\
 
 Para aquellos usuarios comunes que ingresan a la sección, se presentará en un \textit{ListView} con un título y una breve descripción, las distintas I\&N cargadas en base de datos (Figura \ref{fig:infocomun}). Para ello, se consumirá el correspondiente endpoint del WS al cargar las mismas. Al presionar sobre una de ellas, se abrirá un \textit{WebView} sobre la misma aplicación, con el contenido de la URL correspondiente (Figura \ref{fig:ejemploinfol}).
-\\
 
-Para aquellos usuarios de tipo específico, como se puede ver en la Figura \ref{fig:infoespeciall}, se presentan las distintas opciones de ABM. Se encuentra disponible un botón para agregar I\&N, el cual direcciona hacia la pantalla de alta (Figura \ref{fig:altainfol}). Aquí se debe colocar el título de la I\&N, una breve descripción informativa y la URL a la que apuntará la misma. Al presionar sobre un ítem de la \textit{ListView}, se abrirá un pop up que posee las opciones de eliminar y ver. Todas éstas opciones, consumen sus correspondientes servicios del WS para llevarlo a cabo.
-\\
-
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\subfloat[I\&N U. común]{
 		\label{fig:infocomun}
@@ -527,6 +521,9 @@ Para aquellos usuarios de tipo específico, como se puede ver en la Figura \ref{f
 	\label{fig:noticiasinfo}
 \end{figure}
 
+Para aquellos usuarios de tipo específico, como se puede ver en la Figura \ref{fig:infoespeciall}, se presentan las distintas opciones de ABM. Se encuentra disponible un botón para agregar I\&N, el cual direcciona hacia la pantalla de alta (Figura \ref{fig:altainfol}). Aquí se debe colocar el título de la I\&N, una breve descripción informativa y la URL a la que apuntará la misma. Al presionar sobre un ítem de la \textit{ListView}, se abrirá un pop up que posee las opciones de eliminar y ver. Todas éstas opciones, consumen sus correspondientes servicios del WS para llevarlo a cabo.
+
+
 %------------------------------------------------------------------
 \subsection{Sección administrar encuestas}
 %-------------------------------------------------------------------
@@ -536,12 +533,8 @@ Como se mencionó anteriormente, esta sección solamente estará disponible para aq
 \\
 
 Presionando sobre el botón rojo \textbf{(+)}, se direcciona hacia la pantalla de \textit{Nueva Encuesta} como se puede ver en la Figura \ref{fig:altaencuesta}. Aquí se deberá completar de carácter obligatorio el título y poseer al menos una pregunta. Luego se presentan una serie de validaciones opcionales en forma de \textit{CheckBox}. Por ejemplo, si se requiere que la encuesta sea \textit{Geolocalizada} se debe tildar el mismo. Esto significa que cuando se resuelva la misma se almacenará la latitud y longitud de los encuestados, a modo de poseer referencias zonales para posteriores análisis. A su vez, se pueden agregar restricciones sobre los encuestados, es decir que los mismos sean de un sexo determinado y/o mayores a determinada edad (Figura \ref{fig:validacionesl}). 
-\\
 
-Para agregar preguntas a la encuesta, se debe presionar sobre el botón verde \textbf{(?)} (Figura \ref{fig:tiporespuestasl}). El mismo despliega una serie de opciones en relación al tipo de respuesta que tendrá y presionando sobre uno de ellos, se direccionará a la correspondiente alta.
-\\
-
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\subfloat[Lista Encuestas]{
 		\label{fig:listaencuestasadmin}
@@ -559,10 +552,12 @@ Para agregar preguntas a la encuesta, se debe presionar sobre el botón verde \te
 	\label{fig:admin1}
 \end{figure}
 
-Para aquellas preguntas que tendrán una serie de respuestas predefinidas, como por ejemplo las \textit{Múltiple Choice} y \textit{Respuesta Única}, se presenta un campo editable para ingresar la pregunta y un botón que despliega un pop up para ir ingresando las respuestas (Figura \ref{fig:choice} y \ref{fig:unicarta}). Luego, al presionar sobre cada respuesta se presentará un \textit{AlertDialog} (Figura \ref{fig:opcionesrtas}) que permite modificar o eliminar la misma.
+Para agregar preguntas a la encuesta, se debe presionar sobre el botón verde \textbf{(?)} (Figura \ref{fig:tiporespuestasl}). El mismo despliega una serie de opciones en relación al tipo de respuesta que tendrá y presionando sobre uno de ellos, se direccionará a la correspondiente alta.
 \\
 
-\begin{figure}
+Para aquellas preguntas que tendrán una serie de respuestas predefinidas, como por ejemplo las \textit{Múltiple Choice} y \textit{Respuesta Única}, se presenta un campo editable para ingresar la pregunta y un botón que despliega un pop up para ir ingresando las respuestas (Figura \ref{fig:choice} y \ref{fig:unicarta}). Luego, al presionar sobre cada respuesta se presentará un \textit{AlertDialog} (Figura \ref{fig:opcionesrtas}) que permite modificar o eliminar la misma.
+
+\begin{figure}[h!]
 	\centering
 	\subfloat[Múltiple Choice]{
 		\label{fig:choice}
@@ -578,12 +573,8 @@ Para aquellas preguntas que tendrán una serie de respuestas predefinidas, como p
 \end{figure}
 
 Para aquellas preguntas que poseen una respuesta de tipo \textit{Numérica} o \textit{Textual}, el formato de alta es similar, donde el mismo presenta un campo editable para ingresar la pregunta en cuestión (Figura \ref{fig:numericas} y \ref{fig:textual}). La diferencia entre ellas, es visible a la hora de responder la encuesta, ya que el teclado solamente habilitará los caracteres numéricos o alfanuméricos respectivamente.
-\\
 
-En el caso de las preguntas con tipo de respuesta \textit{Escala}, además de ingresar la pregunta en cuestión en el campo editable, posee otro campo que despliega un \textit{NumberPicker}, eligiendo de ésta forma la escala máxima a responder, partiendo desde el 1 (Figura \ref{fig:escala} y \ref{fig:valoresescala}).
-\\
-
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\subfloat[Numéricas]{
 		\label{fig:numericas}
@@ -600,6 +591,9 @@ En el caso de las preguntas con tipo de respuesta \textit{Escala}, además de ing
 	\caption{Tipos de preguntas}
 	\label{fig:admin3}
 \end{figure}
+
+En el caso de las preguntas con tipo de respuesta \textit{Escala}, además de ingresar la pregunta en cuestión en el campo editable, posee otro campo que despliega un \textit{NumberPicker}, eligiendo de ésta forma la escala máxima a responder, partiendo desde el 1 (Figura \ref{fig:escala} y \ref{fig:valoresescala}).
+\\
 
 Al ir agregando las preguntas como se mencionó anteriormente, aparecerán en la pantalla de nueva encuesta con su formato correspondiente, dependiendo del tipo de respuesta que contengan (Figura \ref{fig:altaencuesta} y \ref{fig:validacionesl}). Finalmente al presionar \textit{Agregar}, se validará que todos los datos ingresados sean correctos y se procederá a persistir en base de datos consumiendo el WS, caso contrario se informarán los errores para corregirlos.
 \\
@@ -622,6 +616,160 @@ Nuevamente sobre la pantalla de \textit{Administración de Encuestas}, como se pr
 \subsection{Sección encuestas disponibles}
 %-------------------------------------------------------------------
 \label{cap4:subsec:encuestasseccion}
+
+Al ingresar a la opción de encuestas disponibles desde el menú principal, se direcciona hacia una pantalla que presenta una lista de las mismas con una vista de tipo \textit{RecyclerView} por item. Como se mencionó anteriormente, aquí se cargarán todas aquellas encuestas que se encuentren en estado \textbf{activas} y \textbf{habilitadas}. Para ambos tipos de usuarios cada Recycler está compuesto por el título de la encuesta, descripción, una etiqueta que solamente será visible en encuestas geolocalizadas y las restricciones de resolución en caso de tenerlas. Únicamente para los usuarios de tipo especial se presentará un \textit{TextView} que indicará el usuario creador y fecha, y otro indicando el número actual de resoluciones (Figura \ref{fig:encuestaespecial} y \ref{fig:encuestacomun}).
+\\
+
+Al presionar sobre un ítem para responder se abrirá una pantalla con todos los datos de la encuesta. Si la misma tiene la característica de ser geolocalizada, previamente se le solicitarán los permisos al usuario para utilizar la ubicación del dispositivo (Figura \ref{fig:permisosubicacion}). Éstos permisos serán requeridos solamente una vez en caso de aceptarse.
+\\
+
+Cuando es resuelta por un usuario especial, al comienzo se presenta un campo para indicar la edad del encuestado y otro para indicar el sexo del mismo (Figura \ref{fig:resolucionencuesta}). Esto es para las denominadas ``salidas a terreno'', cuando se encuesta a terceros. Para el caso de resolución en usuarios comunes, éstos campos no estarán presentes, ya que se obtendrán automáticamente desde el inicio de sesión.
+
+\begin{figure}[h!]
+	\centering
+	\subfloat[Encuestas especial]{
+		\label{fig:encuestaespecial}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/21_app.png}}
+	\subfloat[Encuestas común]{
+		\label{fig:encuestacomun}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/22_app.png}}
+	\subfloat[Permisos ubicación]{
+		\label{fig:permisosubicacion}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/23_app.png}}
+	\subfloat[Resolución]{
+		\label{fig:resolucionencuesta}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/24_app.png}}
+	\caption{Encuestas disponibles de resolución}
+	\label{fig:seccionencuestas1}
+\end{figure}
+
+Luego por cada pregunta a responder, se presentará una vista diferente dependiendo del tipo de respuesta de la misma, es decir:
+
+\begin{itemize}
+	
+	\item \textbf{\textit{Múltiple Choice}}: respuestas como \textit{Checkbox} pudiendo escoger una o más.
+	
+	\item \textbf{\textit{Respuestas Únicas}}: respuestas como \textit{RadioButton} pudiendo escoger solamente una.
+	
+	\item \textbf{\textit{Numéricas}}: teclado numérico disponible, plasmando la respuesta en un campo editable.
+	
+	\item \textbf{\textit{Textuales}}: teclado alfanumérico libre de desarrollo, plasmando la respuesta en un campo editable.
+	
+	\item \textbf{\textit{Escala}}: la respuesta debe ser elegida sobre un \textit{NumberPicker} que presenta las escalas disponibles.
+	
+\end{itemize}
+
+Al finalizar la resolución si la misma no fuera de carácter geolocalizada, simplemente se presiona enviar y se evaluará que todos los ítems hayan sido respondidos y no queden campos sin completar. Si hubiere algún tipo de error, se presentará en pantalla, caso contrario se almacenarán las respuestas en base de datos, consumiendo el correspondiente servicio del WS. 
+\\
+
+Para el caso de aquellas encuestas de tipo \textbf{geolocalizadas}, se encontrará visible al final de la encuesta un checkbox para definir el lugar de residencia (Figura \ref{fig:envioresolucion}). Con el fin de obtener correctos datos de geolocalización sobre los usuarios encuestados, se les pregunta si al responder la encuesta se encuentran en su residencia habitual. Al tildar el checkbox y presionar enviar, se validarán que todos los datos sean correctos y se obtendrá la ubicación del encuestado (latitud y longitud) gracias a la funcionalidad de \textit{LocationServices} de Google. En el caso de no tener activada la ubicación del dispositivo móvil o no haber aceptado los permisos para utilizarla (Figura \ref{fig:permisosubicacion}), se informará al usuario como error y no se podrá responder la encuesta hasta realizar las habilitaciones correspondientes.
+\\
+
+Si el usuario no se encuentra en su residencia habitual (checkbox sin tildar), se abrirá un \textit{PlacePicker} (Figura \ref{fig:eleccionresidencia}), herramienta obtenida mediante la integración con el API de Google Maps, en donde se puede ingresar la dirección de residencia en la parte superior y luego buscar, o ir moviendo el \textit{marker} para obtener la ubicación correspondiente. Finalmente, al presionar ``Seleccionar ésta ubicación'', se mostrará un mensaje de comprobación (Figura \ref{fig:placepickerapp}) en donde se visualizará con mayor precisión la dirección escogida pudiendo volver a elegirla o confirmarla, invocando luego los servicios del WS para almacenar los resultados en base de datos.
+
+\begin{figure}[h!]
+	\centering
+	\subfloat[Envío de Resolución]{
+		\label{fig:envioresolucion}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/25_app.png}}
+	\subfloat[Elección de residencia]{
+		\label{fig:eleccionresidencia}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/26_app.png}}
+	\subfloat[Place Picker]{
+		\label{fig:placepickerapp}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/27_app.png}}
+	\caption{Resolución de encuestas}
+	\label{fig:seccionencuestas2}
+\end{figure}
+
+Para aquellos usuarios de tipo especial, todas aquellas restricciones escogidas inicialmente en la creación de las encuestas no serán tenidas en cuenta, así como también poder resolver las mismas de manera ilimitada. En cambio, para los usuarios comunes al momento de querer responder una encuesta, se tendrá en cuenta que cumpla con los requisitos y su resolución solamente estará disponible en una ocasión. En el caso de presentarse algún inconveniente se informará y no se dejará resolver, como se puede ver en la Figura \ref{fig:erroresvalidaciones}.
+
+\begin{figure}[h!]
+	\centering
+	\subfloat[Error de edad]{
+		\label{fig:error1}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/28_app.png}}
+	\subfloat[Error de sexo]{
+		\label{fig:error2}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/29_app.png}}
+	\subfloat[Encuesta ya resuelta]{
+		\label{fig:error3}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/30_app.png}}
+	\caption{Resolución de encuestas}
+	\label{fig:erroresvalidaciones}
+\end{figure}
+
+%------------------------------------------------------------------
+\subsection{Evaluación de resultados}
+%-------------------------------------------------------------------
+\label{cap4:subsec:evaluacionresultados}
+
+Con la finalidad de obtener resultados y estadísticas de manera inmediata, dentro del menú de encuestas disponibles, para los usuarios especiales se colocaron dos opciones extras (además de responder) al presionar sobre un ítem como se puede ver en la Figura \ref{fig:opcionesresultados}. Las mismas son: ver estadísticas de los resultados y exportar los mismos a un formato Excel.
+
+\begin{figure}[h!]
+	\centering
+	\subfloat{
+		\label{fig:opciones}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/31_app.png}}
+	\caption{Opciones sobre una encuesta}
+	\label{fig:opcionesresultados}
+\end{figure}
+
+Al presionar sobre la opción ``Ver estadísticas'', se cargará la encuesta donde se presentará el título y descripción de la misma, seguidos de un promedio de edad y sexo de los encuestados hasta el momento (Figura \ref{fig:estadistica1}).
+\\
+
+Una vez más, dependiendo del tipo de respuesta por cada pregunta, se renderizará la vista de manera distinta (Figura \ref{fig:estadistica2} y \ref{fig:estadistica3}):
+
+\begin{itemize}
+	
+	\item \textbf{\textit{Múltiple Choice}}: el promedio de resultados se presentará en gráficos de torta.
+	
+	\item \textbf{\textit{Respuestas Únicas}}: el porcentaje de respuestas será presentado en gráficos de barras.
+	
+	\item \textbf{\textit{Numéricas}}: se presentará el número promedio escogido por los encuestados en un \textit{TextView} circular.
+	
+	\item \textbf{\textit{Textuales}}: no presentarán estadística alguna, ya que al ser de libre desarrollo su análisis va más allá de resultados promediables.
+	
+	\item \textbf{\textit{Escala}}: se presentará el número promedio escogido por los encuestados en relación a la máxima escala posible en un \textit{TextView} circular.
+	
+\end{itemize}
+
+A su vez, presionando sobre una determinada respuesta, se mostrarán los resultados geolocalizados en caso de ser una encuesta de dicho tipo, mediante la integración con el API de Google Maps. Se distribuirán las respuestas en \textit{Google Maps} gracias a la latitud y longitud almacenada en base de datos, clasificando por colores aquellas respuestas iguales en el caso de Múltiple Choice y Respuestas Únicas. Además, presionando sobre los marcadores se presentará una breve descripción que indicará la respuesta, sexo y edad del encuestado (Figura \ref{fig:resultadosgeo}).
+
+\begin{figure}[h!]
+	\centering
+	\subfloat[Estadísticas]{
+		\label{fig:estadistica1}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/32_app.png}}
+	\subfloat[Estadísticas]{
+		\label{fig:estadistica2}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/33_app.png}}
+	\subfloat[Estadísticas]{
+		\label{fig:estadistica3}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/34_app.png}}
+	\subfloat[Resultados Geolocalizados]{
+		\label{fig:resultadosgeo}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/35_app.png}}
+	\caption{Visualización de resultados}
+	\label{fig:estadisticasencuestas}
+\end{figure}
+
+Por otro lado, si se escoge la opción de ``Exportar Resultados'', se le solicitará previamente al usuario aceptar los permisos de almacenamiento (Figura \ref{fig:permisosalmacenamiento}). En caso de rechazarlos, se denegará la exportación informando al usuario de la misma manera que con los permisos de ubicación. Al aceptarlos, se procederá a convertir los datos a un formato Excel gracias a la librería de \textit{OpenCSV}. Los mismos estarán disponibles para su posterior estudio por profesionales adecuados de la medicina, así como también bio-estadísticos. 
+\\
+
+La conversión de datos se realizará de manera asíncrona, es decir, en segundo plano para no entorpecer el funcionamiento normal de la aplicación. Es por ello, que puede tardar algunos segundos en producirse, para luego estar disponible dentro de las descargas del dispositivo móvil. En el archivo Excel se encuentran los datos principales de la encuesta como el título y descripción, y por cada pregunta se listan las respuestas obtenidas hasta el momento, con el sexo y edad del encuestado, latitud y longitud, etc (Figura \ref{fig:exportarapp}).
+
+\begin{figure}[h!]
+	\centering
+	\subfloat[Solicitud permisos almacenamiento]{
+		\label{fig:permisosalmacenamiento}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/36_app.png}}
+	\subfloat[Resultados exportados]{
+		\label{fig:exportarapp}
+		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/37_app.png}}
+	\caption{Exportar resultados}
+	\label{fig:exportar}
+\end{figure}
 
 \newpage
 \thispagestyle{empty}

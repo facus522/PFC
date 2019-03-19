@@ -11,6 +11,9 @@ A level-1 auxiliary file: Capitulos/01Capitulo2.aux
 A level-1 auxiliary file: Capitulos/Parte2.aux
 A level-1 auxiliary file: Capitulos/02Capitulo1.aux
 A level-1 auxiliary file: Capitulos/02Capitulo2.aux
+A level-1 auxiliary file: Capitulos/Parte3.aux
+A level-1 auxiliary file: Capitulos/03Capitulo0.aux
+A level-1 auxiliary file: Capitulos/03Capitulo1.aux
 A level-1 auxiliary file: Cascaras/bibliografia.aux
 The style file: abbrv.bst
 A level-1 auxiliary file: Apendices/ParteApendices.aux
@@ -20,45 +23,45 @@ Database file #2: citasCapitulo2.bib
 Warning--to sort, need author or key in mysqlRanking
 Warning--empty publisher in webServiceLibro
 Warning--empty publisher in hibernate2
-You've used 37 entries,
+You've used 39 entries,
             2118 wiz_defined-function locations,
-            692 strings with 9038 characters,
-and the built_in function-call counts, 8252 in all, are:
-= -- 789
-> -- 301
+            702 strings with 9227 characters,
+and the built_in function-call counts, 8678 in all, are:
+= -- 831
+> -- 315
 < -- 0
-+ -- 127
-- -- 90
-* -- 267
-:= -- 1405
-add.period$ -- 139
-call.type$ -- 37
-change.case$ -- 149
++ -- 133
+- -- 94
+* -- 277
+:= -- 1477
+add.period$ -- 147
+call.type$ -- 39
+change.case$ -- 157
 chr.to.int$ -- 0
-cite$ -- 40
-duplicate$ -- 298
-empty$ -- 821
-format.name$ -- 90
-if$ -- 1791
+cite$ -- 42
+duplicate$ -- 312
+empty$ -- 865
+format.name$ -- 94
+if$ -- 1885
 int.to.chr$ -- 0
-int.to.str$ -- 37
+int.to.str$ -- 39
 missing$ -- 15
-newline$ -- 216
-num.names$ -- 72
-pop$ -- 359
+newline$ -- 228
+num.names$ -- 76
+pop$ -- 379
 preamble$ -- 1
-purify$ -- 119
+purify$ -- 125
 quote$ -- 0
-skip$ -- 194
+skip$ -- 204
 stack$ -- 0
-substring$ -- 210
-swap$ -- 37
+substring$ -- 220
+swap$ -- 39
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 134
+type$ -- 142
 warning$ -- 3
-while$ -- 74
-width$ -- 39
-write$ -- 398
+while$ -- 78
+width$ -- 41
+write$ -- 420
 (There were 3 warnings)

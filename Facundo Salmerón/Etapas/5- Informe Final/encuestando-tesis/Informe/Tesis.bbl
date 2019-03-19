@@ -134,11 +134,23 @@ J.~Guti{\'e}rrez.
 \newblock {\em ?`{{Q}}u{\'e} es un framework?}
 \newblock Universidad de Sevilla, 2015.
 
+\bibitem{jacoco}
+Jacoco.
+\newblock Jacoco.
+\newblock \url{https://www.jacoco.org/jacoco/trunk/doc/}.
+\newblock Accedido: 24/02/2019.
+
 \bibitem{mpandroidchart}
 P.~Jahoda.
 \newblock Mpandroidchart.
 \newblock \url{https://github.com/PhilJay/MPAndroidChart#quick-start}.
 \newblock Accedido: 19/02/2019.
+
+\bibitem{junit}
+JUnit.
+\newblock Junit.
+\newblock \url{https://junit.org/junit5/}.
+\newblock Accedido: 24/02/2019.
 
 \bibitem{hibernate2}
 G.~King, C.~Bauer, M.~R. Andersen, E.~Bernard, S.~Ebersole, and H.~Ferentschik.

@@ -15,10 +15,49 @@
 %-------------------------------------------------------------------
 \label{cap5:sec:conclusiones}
 
+En este Proyecto Final de carrera se presenta el desarrollo de un sistema completo, tanto del lado del servidor como del cliente, para el diseño y procesamiento de encuestas públicas sobre salud, con la posibilidad de que las mismas puedan geolocalizar los resultados obtenidos. La aplicación desarrollada bajo el lenguaje Android consume los datos necesarios para llevar adelante todas las tareas relacionadas a las encuestas del Web Service Java, que es el encargado de implementar toda la lógica necesaria para atender las peticiones que a él lleguen.
+\\
+
+Previamente, se llevó adelante un estudio sobre las distintas tecnologías capaces de resolver la problemática planteada, y una vez definidas las mismas se evaluaron las distintas alternativas de diseño, modelos y servicios externos, en función de ellas y de las funcionalidades que se pretendían alcanzar, a partir de los objetivos planteados.
+\\
+
+Para la elección de las distintas tecnologías a utilizar, se tuvo en cuenta su repercusión actual en el mercado, para poseer un mayor aval a la hora de consultas en comunidades activas y documentaciones a través de Internet. Además, esto permite que el sistema sea fácilmente mantenible y escalable en un futuro.
+\\
+
+Respecto a los objetivos definidos en la Sección \ref{cap1:sec:objetivos}, se considera que se pudo cumplir con lo planificado, ya que la aplicación permite la confección de encuestas para luego ser respondidas y obtener inmediatamente los resultados. La aplicación es lo suficientemente robusta como para manejar excepciones y situaciones que son consideradas fuera de lo normal, informado al usuario cual es el error e indicándole que debe realizar para continuar. Se pudieron explotar los distintos beneficios que presentan los smartphones, como la utilización de sensores, conexión a Internet y almacenamiento, entre otras cosas.
+\\
+
+Si bien aún no fue llevado adelante la puesta en producción para su utilización en la Facultad de Ciencias Médicas, se verificó que la aplicación obtiene las respuestas de los usuarios sobre las encuestas en cuestión de segundos, pudiendo armar distintas estadísticas en forma inmediata. Además fue posible exportar los resultados en un formato legible para que los profesionales adecuados puedan trabajar sobre ellos. Gracias al sensor GPS de los dispositivos móviles y a los API de Google mencionados anteriormente, fue posible armar mapas estadísticos lo cual muestra la distribución zonal de respuestas, permitiendo un mejor análisis.
+\\
+
+Como punto importante a destacar, el desarrollo de este proyecto permitió el aprendizaje de nuevas tecnologías, lenguajes de programación y arquitecturas involucradas, así como también el refuerzo de conocimientos sobre aquellas ya estudiadas anteriormente. Además, se pasó por las distintas etapas necesarias para puesta en producción de un producto, como ser el diseño, desarrollo y despliegue en un servidor (aunque haya sido en forma local). Esto logra la obtención de una mayor experiencia que sirve como complemento en el desarrollo personal de la vida profesional.
+
+
 %-------------------------------------------------------------------
 \section{Desarrollos futuros}
 %-------------------------------------------------------------------
 \label{cap5:sec:futuro}
+
+A partir del trabajo realizado, con el fin de mejorar el desempeño general de la aplicación móvil y el Web Service, se proponen los siguientes trabajos futuros:
+
+\begin{itemize}
+	\item Introducir mejores protocolos de seguridad en el tráfico de datos producido entre el Web Service y la aplicación móvil.
+	
+	\item Integrar sección de información relevante o servicios relacionados a cátedras de la Facultad de Ciencias Médicas.
+	
+	\item Implementar un nuevo mecanismo de validación para el registro de los denominados ``usuarios específicos''.
+	
+	\item Creación de nuevo perfil de usuario, similar al de ``usuarios específicos'', en el que se pueda responder encuestas indefinidamente, sin restricciones, ver estadísticas, y exportar resultados, pero sin poder llevar adelante la ``administración'', es decir los ABMs.
+	
+	\item Aumentar la cantidad de pruebas unitarias y métodos de testing sobre la aplicación Android.
+	
+	\item Implementar un proceso de integración continua para mejorar los mecanismos de pruebas y despliegue de la aplicación.
+	
+	\item Llevar adelante el despliegue del Web Service en un servidor que se encuentre disponible todo el día y pueda ser accedido mediante una IP pública.
+	
+	\item Alojar la aplicación móvil sobre el Play Store de Google para poder ser descargada y utilizada por cualquier usuario. Este punto está directamente relacionado con el anterior para poder llevarse a cabo.
+	
+\end{itemize}
 
 \newpage
 \thispagestyle{empty}

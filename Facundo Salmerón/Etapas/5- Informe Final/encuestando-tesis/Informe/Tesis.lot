@@ -3,28 +3,33 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces CU001 Ingresar a la aplicaci\'on.\relax }}{7}{table.caption.7}
-\contentsline {table}{\numberline {A.2}{\ignorespaces CU002 Validar utilizaci\'on de propiedades del dispositivo.\relax }}{8}{table.caption.8}
-\contentsline {table}{\numberline {A.3}{\ignorespaces CU003 Crear Usuario\relax }}{9}{table.caption.9}
-\contentsline {table}{\numberline {A.4}{\ignorespaces CU004 Validar usuario espec\IeC {\'\i }fico.\relax }}{10}{table.caption.10}
-\contentsline {table}{\numberline {A.5}{\ignorespaces CU005 Almacenar Usuarios.\relax }}{10}{table.caption.11}
-\contentsline {table}{\numberline {A.6}{\ignorespaces CU006 Iniciar Sesi\'on.\relax }}{11}{table.caption.12}
-\contentsline {table}{\numberline {A.7}{\ignorespaces CU007 Buscar Usuarios.\relax }}{11}{table.caption.13}
-\contentsline {table}{\numberline {A.8}{\ignorespaces CU008 Consultar noticias e informaciones disponibles.\relax }}{12}{table.caption.14}
-\contentsline {table}{\numberline {A.9}{\ignorespaces CU009 Buscar noticias.\relax }}{12}{table.caption.15}
-\contentsline {table}{\numberline {A.10}{\ignorespaces CU010 Consultar encuestas disponibles.\relax }}{13}{table.caption.16}
-\contentsline {table}{\numberline {A.11}{\ignorespaces CU011 Buscar encuestas.\relax }}{13}{table.caption.17}
-\contentsline {table}{\numberline {A.12}{\ignorespaces CU012 Resolver encuestas.\relax }}{14}{table.caption.18}
-\contentsline {table}{\numberline {A.13}{\ignorespaces CU013 Controlar y validar resoluci\'on de encuestas.\relax }}{14}{table.caption.19}
-\contentsline {table}{\numberline {A.14}{\ignorespaces CU014 Obtener geoubicaci\'on del usuario.\relax }}{15}{table.caption.20}
-\contentsline {table}{\numberline {A.15}{\ignorespaces CU015 Almacenar Respuestas.\relax }}{15}{table.caption.21}
-\contentsline {table}{\numberline {A.16}{\ignorespaces CU016 Resolver encuestas indefinidamente.\relax }}{16}{table.caption.22}
-\contentsline {table}{\numberline {A.17}{\ignorespaces CU017 Administrar encuestas.\relax }}{16}{table.caption.23}
-\contentsline {table}{\numberline {A.18}{\ignorespaces CU018 Modificar encuesta.\relax }}{17}{table.caption.24}
-\contentsline {table}{\numberline {A.19}{\ignorespaces CU019 Eliminar encuesta.\relax }}{17}{table.caption.25}
-\contentsline {table}{\numberline {A.20}{\ignorespaces CU020 Crear encuesta.\relax }}{18}{table.caption.26}
-\contentsline {table}{\numberline {A.21}{\ignorespaces CU021 Ver estad\IeC {\'\i }sticas.\relax }}{18}{table.caption.27}
-\contentsline {table}{\numberline {A.22}{\ignorespaces CU022 Exportar datos.\relax }}{19}{table.caption.28}
-\contentsline {table}{\numberline {A.23}{\ignorespaces CU023 Administrar noticias e informaciones.\relax }}{19}{table.caption.29}
-\contentsline {table}{\numberline {A.24}{\ignorespaces CU024 Crear noticia e informaci\'on.\relax }}{20}{table.caption.30}
-\contentsline {table}{\numberline {A.25}{\ignorespaces CU025 Eliminar noticia e informaci\'on.\relax }}{20}{table.caption.31}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {A.1}{\ignorespaces CU001 Ingresar a la aplicaci\'on.\relax }}{94}{table.caption.46}
+\contentsline {table}{\numberline {A.2}{\ignorespaces CU002 Validar utilizaci\'on de propiedades del dispositivo.\relax }}{95}{table.caption.47}
+\contentsline {table}{\numberline {A.3}{\ignorespaces CU003 Crear Usuario\relax }}{96}{table.caption.48}
+\contentsline {table}{\numberline {A.4}{\ignorespaces CU004 Validar usuario espec\IeC {\'\i }fico.\relax }}{97}{table.caption.49}
+\contentsline {table}{\numberline {A.5}{\ignorespaces CU005 Almacenar Usuarios.\relax }}{97}{table.caption.50}
+\contentsline {table}{\numberline {A.6}{\ignorespaces CU006 Iniciar Sesi\'on.\relax }}{98}{table.caption.51}
+\contentsline {table}{\numberline {A.7}{\ignorespaces CU007 Buscar Usuarios.\relax }}{98}{table.caption.52}
+\contentsline {table}{\numberline {A.8}{\ignorespaces CU008 Consultar noticias e informaciones disponibles.\relax }}{99}{table.caption.53}
+\contentsline {table}{\numberline {A.9}{\ignorespaces CU009 Buscar noticias.\relax }}{99}{table.caption.54}
+\contentsline {table}{\numberline {A.10}{\ignorespaces CU010 Consultar encuestas disponibles.\relax }}{100}{table.caption.55}
+\contentsline {table}{\numberline {A.11}{\ignorespaces CU011 Buscar encuestas.\relax }}{100}{table.caption.56}
+\contentsline {table}{\numberline {A.12}{\ignorespaces CU012 Resolver encuestas.\relax }}{101}{table.caption.57}
+\contentsline {table}{\numberline {A.13}{\ignorespaces CU013 Controlar y validar resoluci\'on de encuestas.\relax }}{101}{table.caption.58}
+\contentsline {table}{\numberline {A.14}{\ignorespaces CU014 Obtener geoubicaci\'on del usuario.\relax }}{102}{table.caption.59}
+\contentsline {table}{\numberline {A.15}{\ignorespaces CU015 Almacenar Respuestas.\relax }}{102}{table.caption.60}
+\contentsline {table}{\numberline {A.16}{\ignorespaces CU016 Resolver encuestas indefinidamente.\relax }}{103}{table.caption.61}
+\contentsline {table}{\numberline {A.17}{\ignorespaces CU017 Administrar encuestas.\relax }}{103}{table.caption.62}
+\contentsline {table}{\numberline {A.18}{\ignorespaces CU018 Modificar encuesta.\relax }}{104}{table.caption.63}
+\contentsline {table}{\numberline {A.19}{\ignorespaces CU019 Eliminar encuesta.\relax }}{104}{table.caption.64}
+\contentsline {table}{\numberline {A.20}{\ignorespaces CU020 Crear encuesta.\relax }}{105}{table.caption.65}
+\contentsline {table}{\numberline {A.21}{\ignorespaces CU021 Ver estad\IeC {\'\i }sticas.\relax }}{105}{table.caption.66}
+\contentsline {table}{\numberline {A.22}{\ignorespaces CU022 Exportar datos.\relax }}{106}{table.caption.67}
+\contentsline {table}{\numberline {A.23}{\ignorespaces CU023 Administrar noticias e informaciones.\relax }}{106}{table.caption.68}
+\contentsline {table}{\numberline {A.24}{\ignorespaces CU024 Crear noticia e informaci\'on.\relax }}{107}{table.caption.69}
+\contentsline {table}{\numberline {A.25}{\ignorespaces CU025 Eliminar noticia e informaci\'on.\relax }}{107}{table.caption.70}

@@ -259,7 +259,7 @@ Para llevar adelante todas las peticiones establecidas en el proyecto, fue neces
 De esta forma, las distintas librerías y/o APIs utilizadas fueron anotadas en el \textit{build.gradle}, tal como se mencionó previamente. Obteniendo de esta forma la resolución de distintas cuestiones relacionadas al proyecto, sin tener que desarrollar manualmente cada una de ellas, lo cual incrementaría el tiempo de trabajo.
 \\
 
-En la ésta sección se hará una presentación más amplia sobre cada una de ellas, en relación a lo presentado en la Sección \ref{cap2:subsec:apis}.
+En la esta sección se hará una presentación más amplia sobre cada una de ellas, en relación a lo presentado en la Sección \ref{cap2:subsec:apis}.
 
 %------------------------------------------------------------------
 \subsection{API Firebase}
@@ -275,7 +275,7 @@ Dentro de las principales características que posee, en cuanto al desarrollo pod
 Desde el punto de vista analítico, permite llevar un control de rendimiento de la aplicación mediante distintas métricas, ofrecidas en un panel web de forma gratuita. Estos datos analíticos que ofrece Firebase, facilitan la toma de decisiones basadas y fundamentadas en datos reales \cite{firebase3}.
 \\
 
-Como se puede ver, ésta API presenta una gran variedad de servicios que facilitan el desarrollo de aplicaciones móviles. Entre las más destacadas se presentan las siguientes \cite{firebase2}:
+Como se puede ver, esta API presenta una gran variedad de servicios que facilitan el desarrollo de aplicaciones móviles. Entre las más destacadas se presentan las siguientes \cite{firebase2}:
 
 \begin{itemize}
 	
@@ -401,7 +401,7 @@ En este caso, gracias a las facilidades aportadas por OpenCsv, es posible llevar
 En la Figura \ref{fig:modelo-app} se presenta el diagrama de clases que se encarga de modelar la aplicación Android, presentando en detalle cada uno de sus componentes.
 \\
 
-Se tiene una clase \textit{MainActivity} la cual Android escoge para manejar la actividad principal de la aplicación. Dicha clase se encarga de instanciar los métodos específicos correspondientes a las distintas funcionalidades que presenta el proyecto y de gestionar la identificación del usuario. Tal como se mencionó anteriormente, todos los ``Activities'' se encuentran embebidos dentro de éste Activity principal, lo cual permite la manipulación independiente de cada uno de ellos, teniendo su propio layout y ciclo de vida. 
+Se tiene una clase \textit{MainActivity} la cual Android escoge para manejar la actividad principal de la aplicación. Dicha clase se encarga de instanciar los métodos específicos correspondientes a las distintas funcionalidades que presenta el proyecto y de gestionar la identificación del usuario. Tal como se mencionó anteriormente, todos los ``Activities'' se encuentran embebidos dentro de este Activity principal, lo cual permite la manipulación independiente de cada uno de ellos, teniendo su propio layout y ciclo de vida. 
 \\
 
 Inicialmente cabe aclarar que en la mayoria de las clases presentadas del modelo se encuentran atributos y funcionalidades similares, los cuales se explicarán a continuación. Dentro de los atributos, a modo de resumen se detalló como ``Fields \& Buttons'' a todos aquellos componentes gráficos que presenta el layout, para poder manipularlos individualmente y reaccionar ante determinados eventos sobre ellos. En cuanto a funcionalidades, las más utilizadas son las siguientes:
@@ -457,7 +457,7 @@ Al instalar la aplicación y abrirla, se presentará hacia todos los usuarios una 
 Si no se posee un usuario para ingresar, se debe presionar sobre el botón \textit{Registrarse}, el cual va a redirigir hacia la pantalla de registro de usuario que se presenta en la Figura \ref{fig:registro}. Aquí se deben colocar todos los datos personales y para el caso de aquellos ``Usuarios de Medicina'', que serán los denominados anteriormente como ``Usuarios Específicos'', se debe tildar el checkbox correspondiente y luego ingresar el código de validación, el cual debe ser solicitado a un superior de la facultad de medicina para obtener las funcionalidades de dicho tipo de usuario.
 \\
 
-Al presionar guardar, inicialmente se verificará que todos los datos se encuentren cargados, ya que los mismos son de carácter obligatorio, caso contrario se informará. Una vez completados los mismos se envían al WS para su registro, éste devolverá un \textit{response} en formato JSON informando el éxito de la transacción o aquellos campos que se deben corregir. Por ejemplo: nombre de usuario o email ya en uso, password que no cumple la longitud, código de validación incorrecto, etc.
+Al presionar guardar, inicialmente se verificará que todos los datos se encuentren cargados, ya que los mismos son de carácter obligatorio, caso contrario se informará. Una vez completados los mismos se envían al WS para su registro, este devolverá un \textit{response} en formato JSON informando el éxito de la transacción o aquellos campos que se deben corregir. Por ejemplo: nombre de usuario o email ya en uso, password que no cumple la longitud, código de validación incorrecto, etc.
 
 \begin{figure}[h!]
 	\centering
@@ -476,7 +476,7 @@ Al presionar guardar, inicialmente se verificará que todos los datos se encuentr
 %-------------------------------------------------------------------
 \label{cap4:subsec:menuprincipal}
 
-Como se mencionó anteriormente, al iniciar sesión se presenta un menú principal. Éste varía de acuerdo al tipo de usuario logueado. En el caso de los usuarios ``comunes'', como se muestra en la Figura \ref{fig:menunormal}, se tendrán las opciones de \textit{Encuestas Disponibles} e \textit{Información \& Noticias}. Como se verá más adelante, en ellas se podrán responder encuestas en una sola ocasión (siempre y cuando cumpla con las validaciones previas) y leer las noticias agregadas respectivamente. 
+Como se mencionó anteriormente, al iniciar sesión se presenta un menú principal. Este varía de acuerdo al tipo de usuario logueado. En el caso de los usuarios ``comunes'', como se muestra en la Figura \ref{fig:menunormal}, se tendrán las opciones de \textit{Encuestas Disponibles} e \textit{Información \& Noticias}. Como se verá más adelante, en ellas se podrán responder encuestas en una sola ocasión (siempre y cuando cumpla con las validaciones previas) y leer las noticias agregadas respectivamente. 
 \\
 
 Cuando los usuarios son del tipo ``específicos'', se presentará una pantalla como en la Figura \ref{fig:menuespecial}. Aquí se tienen las mismas opciones que el otro tipo de usuario, con la diferencia de que se pueden responder ilimitadamente las encuestas, ver estadísticas sobre las mismas, exportar resultados, realizar AMBs de Informaciones, etc. Además, se haya la opción de \textit{Administrar Encuestas}, para realizar los ABMs, habilitación e inhabilitación de ellas.
@@ -521,7 +521,7 @@ Para aquellos usuarios comunes que ingresan a la sección, se presentará en un \t
 	\label{fig:noticiasinfo}
 \end{figure}
 
-Para aquellos usuarios de tipo específico, como se puede ver en la Figura \ref{fig:infoespeciall}, se presentan las distintas opciones de ABM. Se encuentra disponible un botón para agregar I\&N, el cual direcciona hacia la pantalla de alta (Figura \ref{fig:altainfol}). Aquí se debe colocar el título de la I\&N, una breve descripción informativa y la URL a la que apuntará la misma. Al presionar sobre un ítem de la \textit{ListView}, se abrirá un pop up que posee las opciones de eliminar y ver. Todas éstas opciones, consumen sus correspondientes servicios del WS para llevarlo a cabo.
+Para aquellos usuarios de tipo específico, como se puede ver en la Figura \ref{fig:infoespeciall}, se presentan las distintas opciones de ABM. Se encuentra disponible un botón para agregar I\&N, el cual direcciona hacia la pantalla de alta (Figura \ref{fig:altainfol}). Aquí se debe colocar el título de la I\&N, una breve descripción informativa y la URL a la que apuntará la misma. Al presionar sobre un ítem de la \textit{ListView}, se abrirá un pop up que posee las opciones de eliminar y ver. Todas estas opciones, consumen sus correspondientes servicios del WS para llevarlo a cabo.
 
 
 %------------------------------------------------------------------
@@ -592,7 +592,7 @@ Para aquellas preguntas que poseen una respuesta de tipo \textit{Numérica} o \te
 	\label{fig:admin3}
 \end{figure}
 
-En el caso de las preguntas con tipo de respuesta \textit{Escala}, además de ingresar la pregunta en cuestión en el campo editable, posee otro campo que despliega un \textit{NumberPicker}, eligiendo de ésta forma la escala máxima a responder, partiendo desde el 1 (Figura \ref{fig:escala} y \ref{fig:valoresescala}).
+En el caso de las preguntas con tipo de respuesta \textit{Escala}, además de ingresar la pregunta en cuestión en el campo editable, posee otro campo que despliega un \textit{NumberPicker}, eligiendo de esta forma la escala máxima a responder, partiendo desde el 1 (Figura \ref{fig:escala} y \ref{fig:valoresescala}).
 \\
 
 Al ir agregando las preguntas como se mencionó anteriormente, aparecerán en la pantalla de nueva encuesta con su formato correspondiente, dependiendo del tipo de respuesta que contengan (Figura \ref{fig:altaencuesta} y \ref{fig:validacionesl}). Finalmente al presionar \textit{Agregar}, se validará que todos los datos ingresados sean correctos y se procederá a persistir en base de datos consumiendo el WS, caso contrario se informarán los errores para corregirlos.
@@ -602,9 +602,9 @@ Nuevamente sobre la pantalla de \textit{Administración de Encuestas}, como se pr
 
 \begin{itemize}
 	
-	\item \textbf{\textit{Eliminar}}: procede a realizar una ``baja lógica'' de la encuesta. Es decir, la misma no será eliminada de la base de datos, sino que modificará los campos correspondientes para no ser cargada en la aplicación, es decir se colocará como \textit{false} el campo ``activo'' y se completarán los campos ``usuario de baja'' y ``fecha de baja''. Ésta metodología fue desarrollada a fin de tener una auditoría de la base de datos y mayor control sobre la misma.
+	\item \textbf{\textit{Eliminar}}: procede a realizar una ``baja lógica'' de la encuesta. Es decir, la misma no será eliminada de la base de datos, sino que modificará los campos correspondientes para no ser cargada en la aplicación, es decir se colocará como \textit{false} el campo ``activo'' y se completarán los campos ``usuario de baja'' y ``fecha de baja''. Esta metodología fue desarrollada a fin de tener una auditoría de la base de datos y mayor control sobre la misma.
 	
-	\item \textbf{\textit{Modificar}}: esta opción solamente estará visible para aquellas encuestas que aún no han sido resueltas. Se determinó esta metodología, para mantener integridad en los datos y no obtener resultados incorrectos o desactualizados. Al presionar sobre ésta opción, se abrirá una pantalla similar a la Figura \ref{fig:altaencuesta}, con todos los datos cargados correctamente, pudiendo eliminar, modificar o agregar preguntas y respuestas, cambiar validaciones, etc.
+	\item \textbf{\textit{Modificar}}: esta opción solamente estará visible para aquellas encuestas que aún no han sido resueltas. Se determinó esta metodología, para mantener integridad en los datos y no obtener resultados incorrectos o desactualizados. Al presionar sobre esta opción, se abrirá una pantalla similar a la Figura \ref{fig:altaencuesta}, con todos los datos cargados correctamente, pudiendo eliminar, modificar o agregar preguntas y respuestas, cambiar validaciones, etc.
 	
 	\item \textbf{\textit{Habilitar}}: al crear una encuesta, la misma queda en estado activa pero pendiente de habilitación. Es decir, para que ella quede disponible para responder, previamente debe ser habilitada. Esta metodología está relacionada con la opción de modificar, ya que evitando que una encuesta quede automáticamente disponible de resolución, la misma puede modificarse cuantas veces quiera y cuando se considere que la misma está acorde para responderse, así habilitarla y empezar a recabar resultados.
 	
@@ -620,10 +620,10 @@ Nuevamente sobre la pantalla de \textit{Administración de Encuestas}, como se pr
 Al ingresar a la opción de encuestas disponibles desde el menú principal, se direcciona hacia una pantalla que presenta una lista de las mismas con una vista de tipo \textit{RecyclerView} por item. Como se mencionó anteriormente, aquí se cargarán todas aquellas encuestas que se encuentren en estado \textbf{activas} y \textbf{habilitadas}. Para ambos tipos de usuarios cada Recycler está compuesto por el título de la encuesta, descripción, una etiqueta que solamente será visible en encuestas geolocalizadas y las restricciones de resolución en caso de tenerlas. Únicamente para los usuarios de tipo especial se presentará un \textit{TextView} que indicará el usuario creador y fecha, y otro indicando el número actual de resoluciones (Figura \ref{fig:encuestaespecial} y \ref{fig:encuestacomun}).
 \\
 
-Al presionar sobre un ítem para responder se abrirá una pantalla con todos los datos de la encuesta. Si la misma tiene la característica de ser geolocalizada, previamente se le solicitarán los permisos al usuario para utilizar la ubicación del dispositivo (Figura \ref{fig:permisosubicacion}). Éstos permisos serán requeridos solamente una vez en caso de aceptarse.
+Al presionar sobre un ítem para responder se abrirá una pantalla con todos los datos de la encuesta. Si la misma tiene la característica de ser geolocalizada, previamente se le solicitarán los permisos al usuario para utilizar la ubicación del dispositivo (Figura \ref{fig:permisosubicacion}). Estos permisos serán requeridos solamente una vez en caso de aceptarse.
 \\
 
-Cuando es resuelta por un usuario especial, al comienzo se presenta un campo para indicar la edad del encuestado y otro para indicar el sexo del mismo (Figura \ref{fig:resolucionencuesta}). Esto es para las denominadas ``salidas a terreno'', cuando se encuesta a terceros. Para el caso de resolución en usuarios comunes, éstos campos no estarán presentes, ya que se obtendrán automáticamente desde el inicio de sesión.
+Cuando es resuelta por un usuario especial, al comienzo se presenta un campo para indicar la edad del encuestado y otro para indicar el sexo del mismo (Figura \ref{fig:resolucionencuesta}). Esto es para las denominadas ``salidas a terreno'', cuando se encuesta a terceros. Para el caso de resolución en usuarios comunes, estos campos no estarán presentes, ya que se obtendrán automáticamente desde el inicio de sesión.
 
 \begin{figure}[h!]
 	\centering
@@ -665,7 +665,7 @@ Al finalizar la resolución si la misma no fuera de carácter geolocalizada, simpl
 Para el caso de aquellas encuestas de tipo \textbf{geolocalizadas}, se encontrará visible al final de la encuesta un checkbox para definir el lugar de residencia (Figura \ref{fig:envioresolucion}). Con el fin de obtener correctos datos de geolocalización sobre los usuarios encuestados, se les pregunta si al responder la encuesta se encuentran en su residencia habitual. Al tildar el checkbox y presionar enviar, se validarán que todos los datos sean correctos y se obtendrá la ubicación del encuestado (latitud y longitud) gracias a la funcionalidad de \textit{LocationServices} de Google. En el caso de no tener activada la ubicación del dispositivo móvil o no haber aceptado los permisos para utilizarla (Figura \ref{fig:permisosubicacion}), se informará al usuario como error y no se podrá responder la encuesta hasta realizar las habilitaciones correspondientes.
 \\
 
-Si el usuario no se encuentra en su residencia habitual (checkbox sin tildar), se abrirá un \textit{PlacePicker} (Figura \ref{fig:eleccionresidencia}), herramienta obtenida mediante la integración con el API de Google Maps, en donde se puede ingresar la dirección de residencia en la parte superior y luego buscar, o ir moviendo el \textit{marker} para obtener la ubicación correspondiente. Finalmente, al presionar ``Seleccionar ésta ubicación'', se mostrará un mensaje de comprobación (Figura \ref{fig:placepickerapp}) en donde se visualizará con mayor precisión la dirección escogida pudiendo volver a elegirla o confirmarla, invocando luego los servicios del WS para almacenar los resultados en base de datos.
+Si el usuario no se encuentra en su residencia habitual (checkbox sin tildar), se abrirá un \textit{PlacePicker} (Figura \ref{fig:eleccionresidencia}), herramienta obtenida mediante la integración con el API de Google Maps, en donde se puede ingresar la dirección de residencia en la parte superior y luego buscar, o ir moviendo el \textit{marker} para obtener la ubicación correspondiente. Finalmente, al presionar ``Seleccionar esta ubicación'', se mostrará un mensaje de comprobación (Figura \ref{fig:placepickerapp}) en donde se visualizará con mayor precisión la dirección escogida pudiendo volver a elegirla o confirmarla, invocando luego los servicios del WS para almacenar los resultados en base de datos.
 
 \begin{figure}[h!]
 	\centering

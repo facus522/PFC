@@ -49,10 +49,10 @@ MySQL posee un esquema de doble licenciamiento, donde la base de datos se distri
 Se posee gran cantidad de documentación, lo cual es de gran ayuda para resolver cualquier inconveniente que se presente. Este gestor brinda la posibilidad de desarrollar una base de datos de tipo \textit{OLTP} (On Line Transaction Processing), también llamadas bases de datos dinámicas, la cual es acorde al proyecto, ya que permite que la información sea modificada en tiempo real, pudiendo insertar, eliminar, modificar o consultar datos durante la operación del sistema, a diferencia de las bases de datos de tipo \textit{OLAP} (On Line Analytcal Processing) que son estáticas, es decir no se insertan, eliminan, ni modifican datos, sino que solamente se pueden realizar consultas sobre datos ya existentes \cite{tiposDB}.
 \\
 
-Dentro de las ventajas a mencionar en cuanto a la elección de éste gestor por sobre SQLServer u Oracle por ejemplo (dos de los gestores de base de datos más populares), MySQL es un software totalmente open source a diferencia de los mencionados y posee gran velocidad a la hora de realizar operaciones (siendo uno de los mejores rendimientos), posee bajos costos en los requerimientos para la elaboración de la base de datos, pudiendo ejecutarse en máquinas de escasos recursos gracias a su bajo consumo y existen diversos drivers para efectuar conexiones a la misma. Pero sin dudas, una de las mayores ventajas se debe a que por su conectividad, velocidad y seguridad es altamente apropiada para acceder a bases de datos a través de Internet como lo será en este proyecto.
+Dentro de las ventajas a mencionar en cuanto a la elección de este gestor por sobre SQLServer u Oracle por ejemplo (dos de los gestores de base de datos más populares), MySQL es un software totalmente open source a diferencia de los mencionados y posee gran velocidad a la hora de realizar operaciones (siendo uno de los mejores rendimientos), posee bajos costos en los requerimientos para la elaboración de la base de datos, pudiendo ejecutarse en máquinas de escasos recursos gracias a su bajo consumo y existen diversos drivers para efectuar conexiones a la misma. Pero sin dudas, una de las mayores ventajas se debe a que por su conectividad, velocidad y seguridad es altamente apropiada para acceder a bases de datos a través de Internet como lo será en este proyecto.
 \\
 
-En este proyecto se trabajó con la versión Community, en los sistemas operativos Windows 10 y Ubuntu 18.04 LTS, aprovechando ésta ventaja multiplataforma que posee MySQL. Además, se utilizó \textit{MySQL Workbench}, una herramienta opcional dentro de la versión Community, con la cual se brinda un entorno visual que permite el diseño de la base de datos, administración y ejecución de consultas.
+En este proyecto se trabajó con la versión Community, en los sistemas operativos Windows 10 y Ubuntu 18.04 LTS, aprovechando esta ventaja multiplataforma que posee MySQL. Además, se utilizó \textit{MySQL Workbench}, una herramienta opcional dentro de la versión Community, con la cual se brinda un entorno visual que permite el diseño de la base de datos, administración y ejecución de consultas.
 
 %------------------------------------------------------------------
 \subsection{Modelado del problema}
@@ -77,7 +77,7 @@ Al tratarse de una base de datos del tipo relacional, se puede notar que todas l
 Entrando más en detalle del modelo presentado, inicialmente es conveniente realizar una descripción del manejo de usuarios. Para ello se presentan tres tablas \textit{Sexo}, \textit{Tipo\_Usuario} y \textit{Usuario}. La primera resulta de carácter intuitivo, donde simplemente se describe el género de las personas. En la segunda tabla se representa el tipo de usuario que puede adquirir una persona, donde inicialmente se establecieron ``Usuarios Específicos'' y ``Usuarios Comunes'', dejando abierta la posibilidad de introducir un nuevo rol en un futuro. En cuanto a la tercer entidad, almacena todos los datos de los usuarios que van a interactuar con la aplicación. Más allá de poseer un ID como se especificó anteriormente, tiene además otros datos con carácter de unicidad como el DNI, nombre de usuario y mail para mayor seguridad y control de los registros establecidos. 
 \\
 
-Como se puede ver, ésta tabla se relaciona con las dos primeras, es decir cada usuario tiene un género y un tipo. Así es como posee dos claves foráneas o foreign key (FK), es decir una columna de la tabla que se corresponde exactamente con una columna de otra tabla donde está definida como PK para establecer la relación.
+Como se puede ver, esta tabla se relaciona con las dos primeras, es decir cada usuario tiene un género y un tipo. Así es como posee dos claves foráneas o foreign key (FK), es decir una columna de la tabla que se corresponde exactamente con una columna de otra tabla donde está definida como PK para establecer la relación.
 \\
 
 Para el modelado de las encuestas que se van a llevar a cabo, se presenta la tabla denominada \textit{Encuesta}. Dentro de los atributos que posee, cabe destacar la diferencia entre ``Activa'' y ``Habilitada''. Al producirse el alta de una de ellas, la misma queda en estado activa (true), pero no estará disponible para ser resuelta por los usuarios hasta que se encuentre habilitada. Además, se llevará a cabo una auditoria de las mismas, registrando qué usuario y en qué fecha realizó algún ABM. Cabe destacar que las eliminaciones o bajas serán del tipo lógico (poniéndolas como activo = false), con la finalidad de no perder los registros y respaldar la auditoría propiamente dicha.
@@ -92,7 +92,7 @@ A la hora de responder las encuestas, los datos obtenidos serán almacenados en l
 Es por ello que las tablas de resultados y respuestas se encuentran relacionadas. Al tratarse de una relación ``Muchos a muchos'' o ``Many to Many'', es decir un resultado puede tener N respuestas y una respuesta estar en M resultados, la relación se almacenará en la tabla \textit{Resultado\_Respuesta}. Dicha entidad contiene solamente un PK compuesto, es decir las FK correspondientes a las dos tablas relacionadas.
 \\
 
-Por último, se encuentra aislada la tabla \textit{Informacion\_Noticia} en la que se almacenarán todas aquellas noticias e informaciones que se consideren de interés para el resto de los usuarios. Como atributos presentará un título y una descripción (ésta última opcional) y una URL que hará referencia al sitio donde se aloja la noticia en sí.
+Por último, se encuentra aislada la tabla \textit{Informacion\_Noticia} en la que se almacenarán todas aquellas noticias e informaciones que se consideren de interés para el resto de los usuarios. Como atributos presentará un título y una descripción (esta última opcional) y una URL que hará referencia al sitio donde se aloja la noticia en sí.
 \\
 
 Cabe aclarar que una vez creadas las tablas en la base de datos, se realizó una carga inicial mediante sentencias SQL sobre las entidades Sexo, Tipo de Usuario y Tipo de Preguntas, ya que son datos predefinidos independientes de la aplicación móvil. El resto de las tablas se irán poblando mediante los consumos que realice la app sobre Web Service.
@@ -118,7 +118,7 @@ Tiene un modelo de configuración de construcción basado en un archivo con format
 Una de las principales características que posee Maven es su capacidad de trabajar en red. El motor incluido en su núcleo puede dinámicamente descargar plugins de un repositorio (Maven Central), el mismo repositorio que provee acceso a muchas versiones de diferentes proyectos Open Source en Java, de Apache y otras organizaciones y desarrolladores \cite{maven1}\cite{maven2}.
 \\
 
-Mediante las anotaciones realizadas en el POM, Maven automáticamente detecta los cambios y realizan descargas dinámicas de los repositorios, permitiendo no tener que instalar manualmente cada dependencia a utilizar. Como se puede ver en la Figura \ref{fig:estructura-maven}, la cual posee una estructura básica de éstos tipos de proyectos, los JAR (Java Archive) se presentan dentro del paquete \textit{Maven Dependencies}, además de ser descargados en una carpeta local oculta.
+Mediante las anotaciones realizadas en el POM, Maven automáticamente detecta los cambios y realizan descargas dinámicas de los repositorios, permitiendo no tener que instalar manualmente cada dependencia a utilizar. Como se puede ver en la Figura \ref{fig:estructura-maven}, la cual posee una estructura básica de estos tipos de proyectos, los JAR (Java Archive) se presentan dentro del paquete \textit{Maven Dependencies}, además de ser descargados en una carpeta local oculta.
 
 \begin{figure}[h!]
 	\begin{center}
@@ -129,7 +129,7 @@ Mediante las anotaciones realizadas en el POM, Maven automáticamente detecta los
 	\end{center}
 \end{figure}
 
-En el proyecto, ésta herramienta sirvió de gran utilidad a la hora de descargar e instalar dependencias externas como frameworks o librerías. Permitió automatizar tareas que desde el punto de vista del desarrollador pueden llegar a demandar mayor tiempo y resultar tediosas. En la figura \ref{fig:maven-pom} se presenta un ejemplo de anotación incluido en el pom.xml para la descarga de un framework.
+En el proyecto, esta herramienta sirvió de gran utilidad a la hora de descargar e instalar dependencias externas como frameworks o librerías. Permitió automatizar tareas que desde el punto de vista del desarrollador pueden llegar a demandar mayor tiempo y resultar tediosas. En la figura \ref{fig:maven-pom} se presenta un ejemplo de anotación incluido en el pom.xml para la descarga de un framework.
 
 \begin{figure}[h!]
 	\begin{center}
@@ -202,7 +202,7 @@ En el modelo se pueden ver las relaciones entre las distintas entidades, a travé
 %-------------------------------------------------------------------
 \label{cap2:subsec:hibernate}
 
-Para llevar adelante el mapeo objeto-relacional, se utilizó el framework \textit{Hibernate}. Es una herramienta ORM para la plataforma Java, que facilita el mapeo de atributos entre una base de datos relacional tradicional y el modelo de objetos de una aplicación, mediante archivos declarativos (XML) o anotaciones en los beans de las entidades que permiten establecer éstas relaciones \cite{hibernate1}.
+Para llevar adelante el mapeo objeto-relacional, se utilizó el framework \textit{Hibernate}. Es una herramienta ORM para la plataforma Java, que facilita el mapeo de atributos entre una base de datos relacional tradicional y el modelo de objetos de una aplicación, mediante archivos declarativos (XML) o anotaciones en los beans de las entidades que permiten establecer estas relaciones \cite{hibernate1}.
 \\
 
 Busca solucionar el problema de la diferencia entre los dos modelos de datos coexistentes en una aplicación: el usado en la memoria de la computadora (orientación a objetos) y el usado en las bases de datos (modelo relacional). Para lograr esto permite al desarrollador detallar cómo es su modelo de datos, qué relaciones existen y qué forma tienen. Con esta información Hibernate le permite a la aplicación manipular los datos en la base de datos operando sobre objetos, con todas las características de la POO. 
@@ -220,7 +220,7 @@ En cuanto a la configuración, inicialmente se debe establecer la conexión entre 
 Es necesario establecer el paquete Java que contiene todas las clases a mapear, mediante la propiedad \textit{packagesToScan}. Por lo tanto, dentro de la subdivisión de paquetes (de la cual se hablará en secciones posteriores), todas las clases que representan el modelo se encuentran en \textit{com.fsalmeron.encuestasfcm.model}.
 \\
 
-Todas éstas configuraciones y muchas más \footnote{http://hibernate.org/} son llevadas a cabo en un archivo del tipo XML denominado \textit{servlet-context}.
+Todas estas configuraciones y muchas más \footnote{http://hibernate.org/} son llevadas a cabo en un archivo del tipo XML denominado \textit{servlet-context}.
 \\
 
 Para realizar el mapeo ORM, se escogió la técnica de anotaciones en lugar de archivos de mapeos XML, la cual es proporcionada por el framework y denominada ``Hibernate Annotations''.
@@ -262,7 +262,7 @@ Todos aquellos atributos que no estén marcados como \textbf{\textit{@Transient}}
 \end{lstlisting}
 ~\\
 
-A la hora de mapear las relaciones que se producen entre las entidades, hay que tener en cuenta como se dá la misma para escoger la anotación adecuada. Por ejemplo, en la relación que se encuentra entre la entidad Respuesta y Pregunta, donde la primera tiene una FK sobre la segunda, el mapeo de la misma estará dado mediante la anotación \textbf{\textit{@ManyToOne}}. Dentro de ella se puede especificar entre otras cosas la estrategia para obtener datos de la base de datos, en este caso LAZY, es decir trae la información cuando la necesita. Seguido a ésta anotación, se debe colocar \textbf{\textit{@JoinColumn}}, la cual permite unir dos columnas de una tabla con las FK correspondientes.
+A la hora de mapear las relaciones que se producen entre las entidades, hay que tener en cuenta como se dá la misma para escoger la anotación adecuada. Por ejemplo, en la relación que se encuentra entre la entidad Respuesta y Pregunta, donde la primera tiene una FK sobre la segunda, el mapeo de la misma estará dado mediante la anotación \textbf{\textit{@ManyToOne}}. Dentro de ella se puede especificar entre otras cosas la estrategia para obtener datos de la base de datos, en este caso LAZY, es decir trae la información cuando la necesita. Seguido a esta anotación, se debe colocar \textbf{\textit{@JoinColumn}}, la cual permite unir dos columnas de una tabla con las FK correspondientes.
 \\
 \begin{lstlisting}[escapechar=¿]
 	¿\aftergroup\graycolor¿@ManyToOne¿\aftergroup\blackcolor¿(fetch = FetchType.¿\aftergroup\bluecolor¿LAZY¿\aftergroup\blackcolor¿)
@@ -273,10 +273,10 @@ A la hora de mapear las relaciones que se producen entre las entidades, hay que 
 \end{lstlisting}
 ~\\
 
-En este caso se realizó un mapeo unidireccional, es decir se introdujo la anotación solamente en la entidad Respuesta. También se podría haber especificado desde el lado de Preguntas, aunque en éste caso la relación sería con \textbf{\textit{@OneToMany}}. Si se presentan las anotaciones de ambos lados se dice que el mapeo es bidireccional.
+En este caso se realizó un mapeo unidireccional, es decir se introdujo la anotación solamente en la entidad Respuesta. También se podría haber especificado desde el lado de Preguntas, aunque en este caso la relación sería con \textbf{\textit{@OneToMany}}. Si se presentan las anotaciones de ambos lados se dice que el mapeo es bidireccional.
 \\
 
-Por último, para la asociación entre Respuesta y Resultados, la cual presentaba una tabla extra por tratarse de una relación muchos a muchos, es mapeada bajo la anotación \textbf{\textit{@ManyToMany}}. En este caso se agregará la anotación \textbf{\textit{@JoinTable}} para ésta tabla extra, y dentro de ella se encuentra el \textbf{\textit{@JoinColumn}} especificado anteriormente.
+Por último, para la asociación entre Respuesta y Resultados, la cual presentaba una tabla extra por tratarse de una relación muchos a muchos, es mapeada bajo la anotación \textbf{\textit{@ManyToMany}}. En este caso se agregará la anotación \textbf{\textit{@JoinTable}} para esta tabla extra, y dentro de ella se encuentra el \textbf{\textit{@JoinColumn}} especificado anteriormente.
 \\
 \begin{lstlisting}[escapechar=¿]
 	¿\aftergroup\graycolor¿@ManyToMany¿\aftergroup\blackcolor¿(fetch = FetchType.¿\aftergroup\bluecolor¿LAZY¿\aftergroup\blackcolor¿)
@@ -411,7 +411,7 @@ En este ejemplo puntual, se puede ver que el tipo de request es PUT y no DELETE,
 \end{center}
 ~\\
 
-Para el caso de aquellos endpoints en los que se debe transportar gran cantidad de información, por lo cual enviar los mismos en parámetros no respetaría las buenas prácticas de la programación, ya que cargaría con mucha información la URL por ejemplo, se obtienen mediante un objeto denominado \textbf{\textit{HttpServletRequest}}. Proporciona acceso a los datos de cabecera HTTP, como cualquier cookie encontrada en la petición, y el método HTTP con el que se ha realizado la petición. Además, permite obtener los argumentos que el cliente envía como parte de la petición. De ésta forma los datos son enviados desde el cliente con un formato JSON y mediante la utilización de la biblioteca GSON mencionada anteriormente, se serializa el objeto correspondiente.
+Para el caso de aquellos endpoints en los que se debe transportar gran cantidad de información, por lo cual enviar los mismos en parámetros no respetaría las buenas prácticas de la programación, ya que cargaría con mucha información la URL por ejemplo, se obtienen mediante un objeto denominado \textbf{\textit{HttpServletRequest}}. Proporciona acceso a los datos de cabecera HTTP, como cualquier cookie encontrada en la petición, y el método HTTP con el que se ha realizado la petición. Además, permite obtener los argumentos que el cliente envía como parte de la petición. De esta forma los datos son enviados desde el cliente con un formato JSON y mediante la utilización de la biblioteca GSON mencionada anteriormente, se serializa el objeto correspondiente.
 \\
 \begin{lstlisting}[escapechar=¿]
 	¿\aftergroup\graycolor¿@RequestMapping¿\aftergroup\blackcolor¿(value = ¿\aftergroup\bluecolor¿"/saveUser"¿\aftergroup\blackcolor¿, 
@@ -443,7 +443,7 @@ La capa de presentación se encuentra comunicada con la de servicios, que es la e
 Todas las clases de servicio implementan una interfaz, por la inyección de dependencias propiamente dicha del framework. A su vez, tanto las clases como las interfaces extienden de otras genéricas denominadas base. Estas son \textbf{\textit{BaseServiceImpl}} y \textbf{\textit{BaseService}}, respectivamente. Esto permite abstraer y reutilizar código, ya que todos los servicios presentan funcionalidades similares: obtener un objeto por el id, traer todos los objetos de una clase, filtrarlos, guardarlos o modificarlos, eliminarlos, etc.
 \\
 
-Por último, la capa de servicios se encuentra comunicada con la de acceso a datos. Ésta es la capa de más bajo nivel, la cual posee acceso a la base de datos, por eso las entidades dentro de ella son denominados DAO (Objetos de acceso a datos). Al igual que las distintas capas, posee una anotación a nivel clase denominada \textbf{\textit{@Repository}}. La misma determina que se trata de una clase relacionada con la capa de persistencia y definida como Singleton.
+Por último, la capa de servicios se encuentra comunicada con la de acceso a datos. Esta es la capa de más bajo nivel, la cual posee acceso a la base de datos, por eso las entidades dentro de ella son denominados DAO (Objetos de acceso a datos). Al igual que las distintas capas, posee una anotación a nivel clase denominada \textbf{\textit{@Repository}}. La misma determina que se trata de una clase relacionada con la capa de persistencia y definida como Singleton.
 \\
 \begin{lstlisting}[escapechar=¿]
 	¿\aftergroup\graycolor¿@Repository
@@ -456,7 +456,7 @@ Por último, la capa de servicios se encuentra comunicada con la de acceso a dato
 De la misma forma que en los servicios, se definió genéricamente una clase y una interfaz base denominados \textbf{\textit{BaseDaoImpl}} y \textbf{\textit{BaseDao}}, respectivamente. Dicho DAO es inyectado dentro de la clase BaseServiceImpl para llevar adelante la comunicación entre las capas. Dentro de la clase se encuentra un objeto \textbf{\textit{SessionFactory}}, propio del framework Hibernate e inyectado por Spring, que se encarga de ir a la base de datos y ejecutar las consultas. Las mismas pueden ser ejecutadas mediante HQL (lenguaje SQL propio de Hibernate) o Criteria (API de consultas de Hibernate, mediante la manipulación de objetos).
 \\
 
-Finalmente, el DAO realiza la transacción y retorna un mensaje al servicio nuevamente, éste aplica las reglas de negocios que hagan falta y envía el mensaje al controlador. Éste último transforma la respuesta en formato JSON y lo entrega al Dispatcher que se encarga de enviar una respuesta HTTP (\textit{response}) al cliente.
+Finalmente, el DAO realiza la transacción y retorna un mensaje al servicio nuevamente, este aplica las reglas de negocios que hagan falta y envía el mensaje al controlador. Este último transforma la respuesta en formato JSON y lo entrega al Dispatcher que se encarga de enviar una respuesta HTTP (\textit{response}) al cliente.
 
 %------------------------------------------------------------------
 \subsection{Puesta en funcionamiento del Web Service}
@@ -469,14 +469,14 @@ Tal como se había especificado en secciones anteriores, el Web Service es un Ser
 Existe gran cantidad de contenedores disponibles para su elección, como por ejemplo Glassfish, JBoss, Wildfly, JOnAS, entre otros. Dentro de las razones que llevaron a escoger Tomcat se puede mencionar que es sumamente ligero, open source, flexible, presenta mayor estabilidad por su instalación independiente de Apache, y ofrece un nivel extra de seguridad \cite{tomcat}.
 \\
 
-Mediante la utilización del entorno local de prueba, se llevó adelante la instalación de la aplicación en el contenedor bajo el IDE Eclipse. Este soporta la inclusión de múltiples contenedores de Servlets. Para el caso de entornos productivos, la instalación puede llevarse a cabo mediante Tomcat Monitor, una herramienta especial de Tomcat para éstas situaciones.
+Mediante la utilización del entorno local de prueba, se llevó adelante la instalación de la aplicación en el contenedor bajo el IDE Eclipse. Este soporta la inclusión de múltiples contenedores de Servlets. Para el caso de entornos productivos, la instalación puede llevarse a cabo mediante Tomcat Monitor, una herramienta especial de Tomcat para estas situaciones.
 
 %------------------------------------------------------------------
 \subsection{Estructura del proyecto}
 %-------------------------------------------------------------------
 \label{cap2:subsec:estructuraWs}
 
-Anteriormente se presentó la estructura básica de un proyecto Maven. En ésta sección, con la finalidad de mantener separadas todas las clases de acuerdo a sus utilidades y siguiendo las buenas prácticas de programación, se crearon distintos paquetes en el proyecto, como se puede ver en la Figura \ref{fig:paquetes_ws}.
+Anteriormente se presentó la estructura básica de un proyecto Maven. En esta sección, con la finalidad de mantener separadas todas las clases de acuerdo a sus utilidades y siguiendo las buenas prácticas de programación, se crearon distintos paquetes en el proyecto, como se puede ver en la Figura \ref{fig:paquetes_ws}.
 \\
 
 \begin{figure}[h!]
@@ -505,7 +505,7 @@ Dentro del paquete base se encuentran todas aquellas interfaces y clases genéric
 Por su parte, en el paquete \textit{model} se encuentran todas las clases Java que representan el mapeo de objetos en relación a la base de datos, con sus respectivas anotaciones Hibernate. Las mismas extienden de la clase base \textit{Entity}.
 \\
 
-Cabe aclarar que dentro del paquete \textit{utils}, se desarrolló una clase denominada \textit{EncryptionUtils}. La misma contiene dos funciones para llevar a cabo la codificación y decodificación de un determinado String bajo el sistema \textit{Base64}. Éste sistema numérico, utiliza 64 como base que es la mayor potencia de dos que puede ser representada usando únicamente los caracteres imprimibles de ASCII, a la hora de encriptar códigos. Por lo tanto, a la hora de crear un nuevo usuario, cuando se pasa la contraseña a almacenar por el parámetro de la petición, se procede a encriptar la misma como un mecanismo de seguridad a nivel base de datos.
+Cabe aclarar que dentro del paquete \textit{utils}, se desarrolló una clase denominada \textit{EncryptionUtils}. La misma contiene dos funciones para llevar a cabo la codificación y decodificación de un determinado String bajo el sistema \textit{Base64}. Este sistema numérico, utiliza 64 como base que es la mayor potencia de dos que puede ser representada usando únicamente los caracteres imprimibles de ASCII, a la hora de encriptar códigos. Por lo tanto, a la hora de crear un nuevo usuario, cuando se pasa la contraseña a almacenar por el parámetro de la petición, se procede a encriptar la misma como un mecanismo de seguridad a nivel base de datos.
 
 %------------------------------------------------------------------
 \subsection{Servicios}
@@ -711,7 +711,7 @@ A la hora de resolver las encuestas y obtener las estadísticas de las mismas se 
 	\textit{http://localhost:8080/EncuestasFCM/resultados/getResultado}
 	?\textit{idEncuesta=...}
 	
-	Se trata de una request del tipo GET que recibe como parámetro el id de la encuesta a analizar. Se envían todas las resoluciones pertinentes a dicha encuesta, para que de ésta forma la aplicación móvil realice todas las estadísticas necesarias para presentar en pantalla.
+	Se trata de una request del tipo GET que recibe como parámetro el id de la encuesta a analizar. Se envían todas las resoluciones pertinentes a dicha encuesta, para que de esta forma la aplicación móvil realice todas las estadísticas necesarias para presentar en pantalla.
 	
 	Como respuesta se envía un JSON que posee un arreglo de resoluciones, como se puede ver a continuación:
 	

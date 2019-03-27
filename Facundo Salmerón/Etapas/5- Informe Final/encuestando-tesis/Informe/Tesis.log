@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.1)  20 MAR 2019 20:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.1)  26 MAR 2019 21:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6785,59 +6785,59 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 37.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 37.
-LaTeX Info: Redefining \. on input line 62.
-LaTeX Info: Redefining \% on input line 62.
+LaTeX Info: Redefining \. on input line 61.
+LaTeX Info: Redefining \% on input line 61.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 61.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 61.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 61.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 61.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 61.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 61.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 61.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 61.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 61.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 61.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 61.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 61.
 [87]
-LaTeX Info: Redefining \. on input line 62.
-LaTeX Info: Redefining \% on input line 62.
+LaTeX Info: Redefining \. on input line 64.
+LaTeX Info: Redefining \% on input line 64.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 64.
  [88])
 Package babel Info: Redefining spanish shorthand <<
 (babel)             in language  on input line 145.
@@ -6900,36 +6900,19 @@ Underfull \hbox (badness 1242) in paragraph at lines 34--38
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--56
-[]\T1/cmr/m/n/10 M. Car-do-na.  Fi-re-ba-se, qué es y pa-ra qué sir-ve la pla-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 51--56
-\T1/cmr/m/n/10 ta-for-ma de goo-gle.  []$\T1/cmtt/m/n/10 https : / / www . iebs
-chool . com / blog /
- []
-
-
-Overfull \hbox (77.48273pt too wide) in paragraph at lines 51--56
-\T1/cmtt/m/n/10 firebase-[]que-[]es-[]para-[]que-[]sirve-[]la-[]plataforma-[]de
-sarroladores-[]google-[]seo-[]sem/$[]\T1/cmr/m/n/10 .
- []
-
-
-Underfull \hbox (badness 1748) in paragraph at lines 77--82
+Underfull \hbox (badness 1748) in paragraph at lines 76--81
 []\T1/cmr/m/n/10 M. Da-vis.  Fi-ve reasons you should use tom-cat.  []$\T1/cmtt
 /m/n/10 https : / / www .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 77--82
+Underfull \hbox (badness 10000) in paragraph at lines 76--81
 \T1/cmtt/m/n/10 futurehosting . com / blog / five-[]reasons-[]you-[]should-[]us
 e-[]tomcat/$[]\T1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 1127) in paragraph at lines 89--93
+Underfull \hbox (badness 1127) in paragraph at lines 88--92
 []\T1/cmr/m/n/10 G. Es-co-bar.  El pro-to-co-lo http.  []$\T1/cmtt/m/n/10 https
  : / / blog . makeitreal . camp /
  []
@@ -6963,102 +6946,102 @@ Package babel Info: Redefining spanish shorthand "?
 
 
 ]
-Underfull \hbox (badness 4242) in paragraph at lines 106--111
+Underfull \hbox (badness 4242) in paragraph at lines 105--110
 []\T1/cmr/m/n/10 Google.  Api pic-ker.  []$\T1/cmtt/m/n/10 https : / / develope
 rs . google . com / places /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--118
+Underfull \hbox (badness 10000) in paragraph at lines 112--117
 \T1/cmtt/m/n/10 reference / com / google / android / gms / location / LocationS
 ervices$[]\T1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--148
+Underfull \hbox (badness 10000) in paragraph at lines 143--147
 []\T1/cmr/m/n/10 P. Jaho-da.  Mpan-droid-chart.  []$\T1/cmtt/m/n/10 https : / /
  github . com / PhilJay /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--172
+Underfull \hbox (badness 10000) in paragraph at lines 166--171
 \T1/cmr/m/n/10 ti-vos?  []$\T1/cmtt/m/n/10 http : / / www . abc . es / tecnolog
 ia / informatica / software /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--172
+Underfull \hbox (badness 10000) in paragraph at lines 166--171
 \T1/cmtt/m/n/10 abci-[]google-[]android-[]sistemas-[]operativos-[]201604202207 
 _ noticia .
  []
 
 
-Underfull \hbox (badness 5578) in paragraph at lines 174--179
+Underfull \hbox (badness 5578) in paragraph at lines 173--178
 []\T1/cmr/m/n/10 J. D. A. Mo-ra-les.  Ca-rac-te-rís-ti-cas y ti-pos de ba-ses d
 e da-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--186
+Underfull \hbox (badness 10000) in paragraph at lines 180--185
 \T1/cmtt/m/n/10 github . io / paradigmas-[]de-[]programacion / poo / poo _ teor
 ia / index .
  []
 
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 205.
+(babel)             in language  on input line 210.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 205.
+(babel)             in language  on input line 210.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 205.
+(babel)             in language  on input line 210.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 205.
+(babel)             in language  on input line 210.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 205.
+(babel)             in language  on input line 210.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 205.
+(babel)             in language  on input line 210.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 205.
+(babel)             in language  on input line 210.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 205.
+(babel)             in language  on input line 210.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 205.
+(babel)             in language  on input line 210.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 205.
+(babel)             in language  on input line 210.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 205.
+(babel)             in language  on input line 210.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 205.
+(babel)             in language  on input line 210.
 [91]
-Underfull \hbox (badness 10000) in paragraph at lines 231--236
+Underfull \hbox (badness 10000) in paragraph at lines 230--235
 []\T1/cmr/m/n/10 J. Young.  I fi-nally get the point of in-ver-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--236
+Underfull \hbox (badness 10000) in paragraph at lines 230--235
 \T1/cmr/m/n/10 sion of con-trol.  []$\T1/cmtt/m/n/10 http : / / www . ytechie .
  com / 2008 / 06 /
  []
 
 
-Underfull \hbox (badness 5667) in paragraph at lines 231--236
+Underfull \hbox (badness 5667) in paragraph at lines 230--235
 \T1/cmtt/m/n/10 i-[]finally-[]get-[]the-[]point-[]of-[]inversion-[]of-[]control
 /$[]\T1/cmr/m/n/10 .  Ac-ce-di-do:
  []
 
 
-Underfull \hbox (badness 2103) in paragraph at lines 238--244
+Underfull \hbox (badness 2103) in paragraph at lines 237--243
 []\T1/cmr/m/n/10 F. Yu-bal.  12 sen-so-res que en-con-tra-rás en tu mó-vil: có-
 mo fun-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 238--244
+Underfull \hbox (badness 10000) in paragraph at lines 237--243
 \T1/cmr/m/n/10 cio-nan y pa-ra qué sir-ven.  []$\T1/cmtt/m/n/10 https : / / www
  . xataka . com / basics /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 238--244
+Underfull \hbox (badness 10000) in paragraph at lines 237--243
 \T1/cmtt/m/n/10 12-[]sensores-[]que-[]encontraras-[]tu-[]movil-[]sirven$[]\T1/c
 mr/m/n/10 .  Ac-ce-di-do:
  []
@@ -7599,7 +7582,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 206.
 Here is how much of TeX's memory you used:
  45328 strings out of 492649
  1007489 string characters out of 6129623
- 1243902 words of memory out of 5000000
+ 1243870 words of memory out of 5000000
  47570 multiletter control sequences out of 15000+600000
  556773 words of font info for 86 fonts, out of 8000000 for 9000
  1381 hyphenation exceptions out of 8191
@@ -7625,10 +7608,10 @@ ist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2018/texmf-dist/
 fonts/type1/public/cm-super/sfxc0900.pfb></usr/local/texlive/2018/texmf-dist/fo
 nts/type1/public/cm-super/sfxc1000.pfb>
-Output written on Tesis.pdf (121 pages, 15083243 bytes).
+Output written on Tesis.pdf (121 pages, 15082685 bytes).
 PDF statistics:
- 1812 PDF objects out of 2073 (max. 8388607)
- 1571 compressed objects within 16 object streams
+ 1811 PDF objects out of 2073 (max. 8388607)
+ 1570 compressed objects within 16 object streams
  527 named destinations out of 1000 (max. 500000)
  997 words of extra memory for PDF output out of 10000 (max. 10000000)
 

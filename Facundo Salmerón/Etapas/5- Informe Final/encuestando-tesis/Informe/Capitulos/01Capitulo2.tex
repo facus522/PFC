@@ -23,7 +23,7 @@ Según lo mencionado en el Capítulo 1 y en función del objetivo general del proye
 \subsection{Diagramas de casos de uso}
 %-------------------------------------------------------------------
 \label{cap2:subsec:diagramas-casouso}
-Mediante el diagrama de casos de uso que se presenta a continuación (Figura \ref{fig:cu1} \& Figura \ref{fig:cu2}), se describe en forma gráfica la secuencia de operaciones que son llevadas a cabo por el sistema en respuesta a los eventos ejecutados por los distintos actores. Ésta técnica fue utilizada para la recolección de requerimientos funcionales de la aplicación.
+Mediante el diagrama de casos de uso que se presenta a continuación (Figura \ref{fig:cu1} \& Figura \ref{fig:cu2}), se describe en forma gráfica la secuencia de operaciones que son llevadas a cabo por el sistema en respuesta a los eventos ejecutados por los distintos actores. Esta técnica fue utilizada para la recolección de requerimientos funcionales de la aplicación.
 
 \begin{figure}[h!]
 	\begin{center}
@@ -141,7 +141,7 @@ Una vez definidos todos los requerimientos que harán frente a la problemática me
 En lo que corresponde al desarrollo del proyecto, se decidió desde un comienzo separar al mismo en dos grandes módulos: el Web Service y la aplicación móvil Android. Como la temática principal está centrada sobre los datos de almacenamiento, tanto para el manejo de usuarios como para las encuestas y resoluciones en general, se consideró llevar a cabo el diseño y desarrollo de un Web Service que tendrá como funcionalidad montarse por encima de la base de datos y permitir acceder a ella, plasmando toda la lógica de negocio allí.
 \\
 
-Por parte de la aplicación Android, en éste tipo de proyecto no es posible montar una base de datos interna, es decir utilizando la memoria RAM del dispositivo, ya que los datos están fuertemente ligados a la interacción de los usuarios. Es necesario de disponer un servidor central para el almacenamiento de usuarios y login por ejemplo, pero principalmente para el manejo de encuestas y resultados, ya que las mismas poseen un carácter dinámico partiendo de la creación de un determinado usuario para luego ser distribuidas y resueltas por el resto de la comunidad. 
+Por parte de la aplicación Android, en este tipo de proyecto no es posible montar una base de datos interna, es decir utilizando la memoria interna del dispositivo, ya que los datos están fuertemente ligados a la interacción de los usuarios. Es necesario de disponer un servidor central para el almacenamiento de usuarios y login por ejemplo, pero principalmente para el manejo de encuestas y resultados, ya que las mismas poseen un carácter dinámico partiendo de la creación de un determinado usuario para luego ser distribuidas y resueltas por el resto de la comunidad. 
 \\
 
 Al poseer la lógica de negocios dentro del Web Service, la aplicación deberá consumir los servicios que el mismo expone para llevar adelante todas las funcionalidades establecidas, es por ello que sólo puede ser llevado a cabo por dispositivos que poseen acceso a Internet. De esta forma, la app queda abstraída de toda la lógica, haciendo que el día de mañana al querer realizar cambios sobre los mismos no sea necesario re-lanzar una nueva versión, la cual luego debería ser actualizada individualmente por cada usuario que la tenga instalada.
@@ -154,13 +154,13 @@ Al poseer la lógica de negocios dentro del Web Service, la aplicación deberá con
 Para llevar adelante el desarrollo de la aplicación móvil se escogió el lenguaje de programación Java. Es muy conocido en el ambiente de programación Android, por ser un lenguaje que tiene una comunidad bastante grande y sobre todo una comunidad con bastante experiencia en el desarrollo de software. Java juega un papel muy importante, principalmente en el soporte ante casi cualquier eventualidad presentada.
 \\
 
-En los últimos años apareció el lenguaje de programación Kotlin, el cual fue adoptado por Google como lenguaje oficial de desarrollo Android. Para los fines prácticos del proyecto, los resultados podrían ser alcanzados utilizando tanto Java como Kotlin. Sin embargo, éste último al poseer pocos años dentro del mercado, la cantidad de información disponible en la web es muy escasa, haciendo que a la hora de escoger entre los mencionados la decisión se incline por Java.
+En los últimos años apareció el lenguaje de programación Kotlin, el cual fue adoptado por Google como lenguaje oficial de desarrollo Android. Para los fines prácticos del proyecto, los resultados podrían ser alcanzados utilizando tanto Java como Kotlin. Sin embargo, este último al poseer pocos años dentro del mercado, la cantidad de información disponible en la web es muy escasa, haciendo que a la hora de escoger entre los mencionados la decisión se incline por Java.
 \\
 
 En cuanto al desarrollo del Web Service, la distribución de posibilidades a la hora de elegir un lenguaje de programación es más variada en relación a la aplicación móvil. Para partir de un análisis, inicialmente se priorizó aquellos lenguajes compilados por sobre los interpretados, por poseer mayor velocidad de ejecución e implementaciones más robustas; y aquellos lenguajes orientados a objetos, ya que son más sencillos de mantener y se posee mayor fiabilidad al dividir el problema en pequeñas partes, pudiendo ser probadas de manera independiente.
 \\
 
-Analizando la propuesta de solución establecida anteriormente, donde la aplicación móvil tiene como finalidad consumir los servicios de un Web Service y éste a su vez mantiene las conexiones pertinentes con la base de datos, el modelo correcto a implementar es del estilo MVC (Modelo Vista Controlador). En el controlador se presentarán todos los \textit{endpoints} que serán accedidos por la aplicación mediante peticiones HTTP, los cuáles a su vez están relacionados con los servicios y modelos de datos.
+Analizando la propuesta de solución establecida anteriormente, donde la aplicación móvil tiene como finalidad consumir los servicios de un Web Service y este a su vez mantiene las conexiones pertinentes con la base de datos, el modelo correcto a implementar es del estilo MVC (Modelo Vista Controlador). En el controlador se presentarán todos los \textit{endpoints} que serán accedidos por la aplicación mediante peticiones HTTP, los cuáles a su vez están relacionados con los servicios y modelos de datos.
 \\
 
 Para llevar adelante el modelo establecido, mediante investigaciones previas y por experiencia personal del ejecutor del proyecto en trabajos anteriores, se determinó que mediante la integración de los frameworks Spring y Hibernate, es posible cubrir todo el ciclo de vida del modelo MVC (en capítulos posteriores se brindarán más detalles de dichas elecciones). Dentro de los lenguajes compilados y orientados a objetos, dichos frameworks son compatibles tanto para Java como .NET. En la actualidad, ambos lenguajes son altamente utilizados en el mercado para el desarrollo de aplicaciones web backend, por lo cual el soporte y la documentación no serían un inconveniente.
@@ -169,7 +169,7 @@ Para llevar adelante el modelo establecido, mediante investigaciones previas y p
 Se estableció que la implementación del Web Service sea llevada adelante bajo el lenguaje de programación Java. Más allá de la experiencia del desarrollador del proyecto utilizando el mismo, lo cuál permite no consumir tiempo extra en el aprendizaje de una nueva tecnología, se determinó que posee mayor portabilidad. Es decir, Java puede ser utilizado desde varios entornos de desarrollo integrado (IDE), cualquier sistema operativo y puede ser compilado por cualquier contenedor de servlets. En este caso .NET cuenta solamente con el IDE Visual Studio como oficial, el cuál puede ser ejecutado únicamente en plataformas con sistema operativo Windows de forma nativa, haciendo que ciertas funcionalidades no se encuentren disponibles en forma gratuita. 
 \\
 
-Por lo tanto, la máquina virtual de Java (JVM) se sitúa en un nivel superior al hardware del sistema sobre el que se pretende ejecutar la aplicación, y éste actúa como puente que entiende tanto el bytecode (programa Java compilado) como el sistema sobre el que se pretende ejecutar (Figura \ref{fig:jvm}). Entonces, cuando se escribe una aplicación Java se hace pensando que será ejecutada en una máquina virtual Java en concreto, siendo ésta la que en última instancia convierte de código bytecode a código nativo del dispositivo final, es decir pudiendo ser interpretado por cualquier sistema operativo \cite{javaLibro}.
+Por lo tanto, la máquina virtual de Java (JVM) se sitúa en un nivel superior al hardware del sistema sobre el que se pretende ejecutar la aplicación, y este actúa como puente que entiende tanto el bytecode (programa Java compilado) como el sistema sobre el que se pretende ejecutar (Figura \ref{fig:jvm}). Entonces, cuando se escribe una aplicación Java se hace pensando que será ejecutada en una máquina virtual Java en concreto, siendo esta la que en última instancia convierte de código bytecode a código nativo del dispositivo final, es decir pudiendo ser interpretado por cualquier sistema operativo \cite{javaLibro}.
 
 \begin{figure}[h!]
 	\begin{center}
@@ -188,7 +188,7 @@ Por lo tanto, la máquina virtual de Java (JVM) se sitúa en un nivel superior al 
 Como se especificó previamente, para llevar adelante el desarrollo del Web Service se optó por la utilización de un lenguaje compilado por sobre uno interpretado. Los lenguajes de programación compilados son aquellos cuyo código fuente, escrito en un lenguaje de alto nivel, es traducido por un compilador a un archivo ejecutable entendible para la máquina en determinada plataforma. Con ese archivo se puede ejecutar el programa cuantas veces sea necesario sin tener que repetir el proceso por lo que el tiempo de espera entre ejecución y ejecución es ínfimo.
 \\
 
-Se marca una diferencia por sobre los lenguajes interpretados, ya que éstos últimos ejecutan paso a paso el código fuente sin llevar a cabo ninguna traducción en la pre-ejecución. Ésto hace que se genere luego una sobrecarga en el proceso de traducción reduciendo la velocidad en tiempo de ejecución.
+Se marca una diferencia por sobre los lenguajes interpretados, ya que estos últimos ejecutan paso a paso el código fuente sin llevar a cabo ninguna traducción en la pre-ejecución. Esto hace que se genere luego una sobrecarga en el proceso de traducción reduciendo la velocidad en tiempo de ejecución.
 
 %------------------------------------------------------------------
 \subsection{Programación orientada a objetos}
@@ -207,7 +207,7 @@ Los métodos (comportamiento) y atributos (estado) están estrechamente relacionad
 Dentro de las ventajas que posee la programación orientada a objetos, se puede obtener una buena abstracción del problema en clases, objetos y atributos, brindando una implementación más detallada, puntual y coherente \cite{poo}. Además permite una mejor reutilización de código, modificabilidad, encapsulamiento y fiabilidad, entre otras cosas.
 \\
 
-Como ya se ha especificado anteriormente Java se trata de un lenguaje de programación que soporta éste paradigma. En unidades posteriores se verá con mayor detalle como el problema principal fue abstraído, adaptándose al modelo de objetos y llevando adelante dicho mecanismo.
+Como ya se ha especificado anteriormente Java se trata de un lenguaje de programación que soporta este paradigma. En unidades posteriores se verá con mayor detalle como el problema principal fue abstraído, adaptándose al modelo de objetos y llevando adelante dicho mecanismo.
 
 %------------------------------------------------------------------
 \section{Conceptos del lado del servidor}
@@ -217,7 +217,7 @@ Como ya se ha especificado anteriormente Java se trata de un lenguaje de program
 Tal como se especificó anteriormente, desde la aplicación será necesaria la conexión a Internet para lograr el acceso a la base de datos. La propuesta de solución corresponde a una arquitectura cliente-servidor de 3 capas, la cuál se verá con más detalles en capítulos posteriores.
 \\
 
-La metodología de trabajo que posee ésta arquitectura, es un cliente realizando peticiones (mediante el dispositivo móvil) hacia un servidor (Web Service) que se encargará de enviar las respuestas (Figura \ref{fig:cliente-servidor}). Dichas peticiones serán bajo el protocolo \textit{HTTP} y el formato de respuestas \textit{JSON}, los cuales serán ampliados en el presente capítulo.
+La metodología de trabajo que posee esta arquitectura, es un cliente realizando peticiones (mediante el dispositivo móvil) hacia un servidor (Web Service) que se encargará de enviar las respuestas (Figura \ref{fig:cliente-servidor}). Dichas peticiones serán bajo el protocolo \textit{HTTP} y el formato de respuestas \textit{JSON}, los cuales serán ampliados en el presente capítulo.
 
 \begin{figure}[h!]
 	\begin{center}
@@ -233,7 +233,7 @@ La metodología de trabajo que posee ésta arquitectura, es un cliente realizando 
 %-------------------------------------------------------------------
 \label{cap2:subsec:arquitectura-ws}
 
-Como se mencionó anteriormente, el servidor se encontrará desplegado en el Web Service. Dicho Web Service es un conjunto de protocolos y estándares que sirven para intercambiar datos entre aplicaciones. Éstas aplicaciones pueden estar desarrolladas en diferentes lenguajes de programación y siendo ejecutadas bajo cualquier plataforma de manera indiferente \cite{webServiceLibro}.
+Como se mencionó anteriormente, el servidor se encontrará desplegado en el Web Service. Dicho Web Service es un conjunto de protocolos y estándares que sirven para intercambiar datos entre aplicaciones. Estas aplicaciones pueden estar desarrolladas en diferentes lenguajes de programación y siendo ejecutadas bajo cualquier plataforma de manera indiferente \cite{webServiceLibro}.
 \\
 
 Dentro de las ventajas que abarca la utilización de un Web Service, se mencionan las siguientes:
@@ -253,16 +253,16 @@ Para su creación, es fundamental definir qué tipo de arquitectura será la más ap
 
 \begin{itemize}
 	
-	\item \textbf{\textit{SOAP}} (Simple Object Access Protocol): éste protocolo estándar define como dos objetos en diferentes procesos pueden comunicarse por medio de intercambios de datos XML (Extensible Markup Language). Los servicios SOAP funcionan por lo general bajo el protocolo HTTP (más común), aunque no está limitado solamente a éste, pudiendo trabajar con protocolos FTP, POP3, TCP, entre otros. SOAP es una arquitectura muy robusta y con gran seguridad, pero a su vez bastante pesada, tanto en tamaño como en procesamiento.
+	\item \textbf{\textit{SOAP}} (Simple Object Access Protocol): este protocolo estándar define como dos objetos en diferentes procesos pueden comunicarse por medio de intercambios de datos XML (Extensible Markup Language). Los servicios SOAP funcionan por lo general bajo el protocolo HTTP (más común), aunque no está limitado solamente a este, pudiendo trabajar con protocolos FTP, POP3, TCP, entre otros. SOAP es una arquitectura muy robusta y con gran seguridad, pero a su vez bastante pesada, tanto en tamaño como en procesamiento.
 	
-	\item \textbf{\textit{REST}} (Representational State Transfer): ésta arquitectura es más nueva en relación a la anterior. Se puede mencionar que la misma es mucho más flexible y transporta datos mediante el protocolo HTTP, pudiendo utilizar los distintos métodos que proporciona el mismo  para la comunicación como el GET, POST, PUT, etc. Gracias a su flexibilidad permite transportar cualquier tipo de datos, como pueden ser XML, JSON (JavaScript Object Notation), binarios, etc.
+	\item \textbf{\textit{REST}} (Representational State Transfer): esta arquitectura es más nueva en relación a la anterior. Se puede mencionar que la misma es mucho más flexible y transporta datos mediante el protocolo HTTP, pudiendo utilizar los distintos métodos que proporciona el mismo  para la comunicación como el GET, POST, PUT, etc. Gracias a su flexibilidad permite transportar cualquier tipo de datos, como pueden ser XML, JSON (JavaScript Object Notation), binarios, etc.
 	
 \end{itemize}
 
 Por lo tanto, se estableció que el tipo de Web Service a implementar sea bajo la arquitectura REST, ya que se adapta a las necesidades del proyecto, es más sencillo y rápido de implementar.
 \\
 
-Como se mencionó, SOAP solamente permite el formato XML lo cual lo hace más pesado en relación a REST, donde en éste último se pueden enviar los datos mediante JSON (JavaScript Object Notation) por ejemplo. Brindando de ésta forma una mayor flexibilidad y mejor performance, ya que éstos tipos de datos son mucho más livianos en peso y más rápidos para su procesamiento por no requerir de etiquetas como en XML, además de poseer mayor soporte y ser de más fácil lectura.
+Como se mencionó, SOAP solamente permite el formato XML lo cual lo hace más pesado en relación a REST, donde en este último se pueden enviar los datos mediante JSON (JavaScript Object Notation) por ejemplo. Brindando de esta forma una mayor flexibilidad y mejor performance, ya que estos tipos de datos son mucho más livianos en peso y más rápidos para su procesamiento por no requerir de etiquetas como en XML, además de poseer mayor soporte y ser de más fácil lectura.
 \\
 
 Una de las ventajas que posee el protocolo SOAP es su mayor seguridad para el transporte de datos, lo cual puede ser subsanado en gran parte por la arquitectura REST, mediante el protocolo de transferencia HTTPS (Protocolo seguro de transferencia de hipertexto). Como ya se mencionó anteriormente, al estar basados en este protocolo, se pueden utilizar los distintos métodos que proporciona para  el intercambio de datos, como por ejemplo, las peticiones GET realizando consultas al servidor y enviando las respuestas por el mismo canal, peticiones POST para almacenamientos, PUT para actualizaciones, entre otras, que van a ser de gran utilidad a lo largo del  proyecto. Cada mensaje HTTP contiene toda la información necesaria para ejecutar la petición por lo tanto no se requiere guardar ningún tipo de estado de la comunicación sino que todas son independientes entre sí.
@@ -280,7 +280,7 @@ El Protocolo de Transferencia de Hipertexto (HTTP), es el protocolo de comunicac
 Un mensaje HTTP, sin importar si es una petición o una respuesta, está compuesto por tres partes (Figura \ref{fig:http-messages}):
 \begin{itemize}
 	
-	\item La primera línea (en éste caso varía para una petición o una respuesta).
+	\item La primera línea (en este caso varía para una petición o una respuesta).
 	
 	\item Los encabezados.
 	
@@ -362,10 +362,10 @@ En el caso de peticiones con métodos POST y PUT, gran parte de la información a 
 %-------------------------------------------------------------------
 \label{cap2:subsec:formato-respuestas}
 
-Como se mencionó anteriormente cuando el cliente realiza una petición hacia el servidor, éste se encarga de enviar una respuesta al mismo. Hay servicios en los cuáles simplemente se puede responder un código de estado, otorgándole de ésta manera información suficiente al cliente sobre la transacción realizada. Por ejemplo, confirmando el éxito de un ABM realizado. 
+Como se mencionó anteriormente cuando el cliente realiza una petición hacia el servidor, este se encarga de enviar una respuesta al mismo. Hay servicios en los cuáles simplemente se puede responder un código de estado, otorgándole de esta manera información suficiente al cliente sobre la transacción realizada. Por ejemplo, confirmando el éxito de un ABM realizado. 
 \\
 
-A su vez, existe gran cantidad de situaciones en las cuáles es necesario enviar más información en la respuesta. Por lo tanto, es necesario determinar que formato tendrá dicha respuesta, logrando que ésta sea homogénea de forma que el cliente sepa anticipadamente como decodificar la misma.
+A su vez, existe gran cantidad de situaciones en las cuáles es necesario enviar más información en la respuesta. Por lo tanto, es necesario determinar que formato tendrá dicha respuesta, logrando que esta sea homogénea de forma que el cliente sepa anticipadamente como decodificar la misma.
 \\
 
 Tal como se explicó previamente, de acuerdo al tipo de arquitectura escogida para el Web Service, la respuesta se podía formatear como JSON o XML. Dentro de la arquitectura REST, se escogió el formato JSON que tiene como ventajas poseer mayor soporte, un formato sumamente simple, mayor velocidad de procesamiento y menor tamaño en los archivos. En tanto el formato XML, requiere el uso de etiquetas lo cual lleva a un formato más estricto y mayor uso de ancho de banda, haciendo que el tiempo de procesamiento sea mayor.
@@ -379,7 +379,7 @@ Tal como se explicó previamente, de acuerdo al tipo de arquitectura escogida par
 	\end{center}
 \end{figure}
 
-En cuanto a la sintaxis de los JSON, los mismos están constituidos por una colección de pares nombre/valor. Los tipos de datos disponibles en éstos valores son los siguientes:
+En cuanto a la sintaxis de los JSON, los mismos están constituidos por una colección de pares nombre/valor. Los tipos de datos disponibles en estos valores son los siguientes:
 
 \begin{itemize}
 	
@@ -411,13 +411,13 @@ Esto quiere decir, que nos permite construir aplicaciones web que admiten petici
 Los Servlets son un reemplazo efectivo para los CGI en los servidores que los soporten ya que proporcionan una forma de generar documentos dinámicos utilizando las ventajas de la programación en Java como conexión a alguna base de datos, manejo de peticiones concurrentes, programación distribuida, etc. Por ejemplo, un servlet podría ser responsable de procesar los datos desde un formulario en HTML como registrar la transacción, actualizar una base de datos, contactar algún sistema remoto y retornar un documento dinámico o redirigir a otro servlet u alguna otra cosa.
 \\
 
-Un contenedor Servlet es un programa capaz de recibir peticiones de páginas web y redireccionar las mismas a un objeto Servlet, esto quiere decir también que podemos tener corriendo varias aplicaciones bajo un mismo contenedor (un mismo servidor). El Web Service desarrollado en el proyecto es un Servlet en particular, que está corriendo en un contenedor. Dicho contenedor, escogido para funcionar como servidor web por sí mismo es el Apache Tomcat. Éste se encuentra desarrollado en Java, por lo tanto es compatible con cualquier sistema operativo que soporte el JVM.
+Un contenedor Servlet es un programa capaz de recibir peticiones de páginas web y redireccionar las mismas a un objeto Servlet, esto quiere decir también que podemos tener corriendo varias aplicaciones bajo un mismo contenedor (un mismo servidor). El Web Service desarrollado en el proyecto es un Servlet en particular, que está corriendo en un contenedor. Dicho contenedor, escogido para funcionar como servidor web por sí mismo es el Apache Tomcat. Este se encuentra desarrollado en Java, por lo tanto es compatible con cualquier sistema operativo que soporte el JVM.
 \\
 
 Para acceder a una aplicación en particular, se realizará mediante la URL, como ya fue mencionado previamente. Dichas peticiones pueden ser enviadas desde cualquier browser, siempre y cuando se trate de métodos GET, caso contrario se puede utilizar cualquier aplicación encargada de enviar peticiones HTTP, como por ejemplo \textit{Postman}. Luego Tomcat se encarga de direccionar las peticiones de Servlet que llegan al puerto establecido por defecto (8080).
 \\
 
-Al realizar una petición HTTP, el contenedor de Servlets delega la misma a un Servlet en particular entre los que contiene. Éste se encarga de generar la respuesta para luego entregarla al contenedor, donde éste finalmente devuelve la misma al cliente en el formato adecuado (Figura \ref{fig:servlet}).
+Al realizar una petición HTTP, el contenedor de Servlets delega la misma a un Servlet en particular entre los que contiene. Este se encarga de generar la respuesta para luego entregarla al contenedor, donde este finalmente devuelve la misma al cliente en el formato adecuado (Figura \ref{fig:servlet}).
 
 \begin{figure}[h!]
 	\begin{center}
@@ -462,13 +462,13 @@ Una vez definidos todos los aspectos relacionados al servidor, correspondiente a
 Android es un sistema operativo diseñado fundamentalmente para trabajar dentro de dispositivos móviles, como smartphones y tablets. A lo largo de los años, se ha ido incorporando el sistema operativo en distintas tecnologías como pueden ser relojes inteligentes (wear), televisores, autos y recientemente aplicable en productos de Internet de las cosas (Android things).
 \\
 
-Inicialmente fue desarrollado por la empresa \textit{Android Inc.}, posteriormente comprada por Google en el año 2005. Una de las particularidades más interesantes que posee Android, es que se basa en Linux, plataforma libre que a su vez se basa en Unix. Ésto hace que su uso sea totalmente gratuito tanto para llevar a cabo nuevos desarrollos, como para su utilización en dispositivos móviles.
+Inicialmente fue desarrollado por la empresa \textit{Android Inc.}, posteriormente comprada por Google en el año 2005. Una de las particularidades más interesantes que posee Android, es que se basa en Linux, plataforma libre que a su vez se basa en Unix. Esto hace que su uso sea totalmente gratuito tanto para llevar a cabo nuevos desarrollos, como para su utilización en dispositivos móviles.
 \\
 
 Cuenta con un entorno de desarrollo integrado (IDE) oficial totalmente Open Source, denominado Android Studio. El mismo fue lanzado en el año 2013, reemplazando a Eclipse como IDE oficial para el desarrollo de aplicaciones Android. Cuenta con gran cantidad de documentación en la web, así como también manuales y comunidades activas que facilitan el desarrollo y la utilización de todas las funcionalidades ofrecidas. Trae incluido la SDK (Software Development Kit) de Android, pudiendo obtener constantemente las actualizaciones propuestas por el sistema operativo. Posee como ventaja una compilación rápida, ejecución de la aplicación en tiempo real, ya sea a través del móvil como de emuladores propios, renderizado en tiempo real, etc.
 \\
 
-Hasta hace muy poco tiempo, todas las aplicaciones Android eran desarrolladas bajo el lenguaje de programación Java, ya que se trataba del lenguaje oficial para ésta plataforma. En el año 2017, Google adoptó a Kotlin como lenguaje oficial de desarrollo para la plataforma Android.
+Hasta hace muy poco tiempo, todas las aplicaciones Android eran desarrolladas bajo el lenguaje de programación Java, ya que se trataba del lenguaje oficial para esta plataforma. En el año 2017, Google adoptó a Kotlin como lenguaje oficial de desarrollo para la plataforma Android.
 \\
 
 En el año 2008 fue lanzada la primer versión de Android denominada \textit{Apple Pie}. Con el transcurso de los años, se han ido desarrollando gran cantidad de actualizaciones, las cuáles típicamente corrigen fallos e introducen nuevas funcionalidades. En la actualidad se encuentra disponible la versión 9.0 \textit{Pie} (decimosexta versión del sistema operativo).
@@ -538,7 +538,7 @@ Dentro de los sensores más comunes que se pueden encontrar en los smartphones, s
 	
 	\item Lector de huella dactilar: sensor capaz de reconocer las líneas de nuestra huella dactilar y almacenar una imagen digital de la misma.
 	
-	\item Lector de Iris: similar al sensor de huellas, pero en éste caso es capaz de reconocer los patrones de nuestro iris.
+	\item Lector de Iris: similar al sensor de huellas, pero en este caso es capaz de reconocer los patrones de nuestro iris.
 	
 	\item Podómetro: mide el número de pasos que realizamos cuando estamos caminando.
 	

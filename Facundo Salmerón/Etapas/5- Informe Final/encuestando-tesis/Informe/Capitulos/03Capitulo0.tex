@@ -18,7 +18,7 @@
 En esta etapa se realizaron distintas pruebas de verificación y validación tanto para el Web Service como para la aplicación Android, poniendo mayor énfasis en el primero, teniendo en cuenta que es el componente primordial para realizar las principales funcionalidades dentro de la aplicación.
 \\
 
-Éste proceso de análisis y pruebas tienen las siguientes finalidades:
+Este proceso de análisis y pruebas tienen las siguientes finalidades:
 
 \begin{itemize}
 	
@@ -30,13 +30,13 @@ En esta etapa se realizaron distintas pruebas de verificación y validación tanto
 	
 \end{itemize}
 
-Logrando de ésta forma responder ¿Estamos construyendo el producto correcto? ¿Estamos construyendo el producto correctamente?
+Logrando de esta forma responder ¿Estamos construyendo el producto correcto? ¿Estamos construyendo el producto correctamente?
 \\
 
 Para ello se realizaron pruebas de software inicialmente sobre el Web Service, mediante la utilización de distintas tecnologías que permitan testear cada uno de las funcionalidades implementadas y posteriormente la correcta integración con la aplicación Android. 
 \\
 
-Se implementaron testing automatizados principalmente sobre los distintos controladores del WS, ya que por la arquitectura definida inicialmente, cada uno de ellos invocará internamente a un servicio correspondiente, y éste a su vez a un DAO (capa de datos). Mediante la utilización de los frameworks \textit{\textbf{JUnit}} y \textit{\textbf{Mockito}} se realizaron pruebas unitarias de los controladores, lo cual tiene como característica evaluar el correcto funcionamiento de un módulo en forma aislada, es decir se va probando de a pequeñas porciones de código donde la ejecución es más rápida. Para ello se establece un escenario posible con datos de entrada ejecutando las acciones de cada módulo en forma separada y corroborando el comportamiento esperado en las salidas de cada una de ellas \cite{junit}. 
+Se implementaron testing automatizados principalmente sobre los distintos controladores del WS, ya que por la arquitectura definida inicialmente, cada uno de ellos invocará internamente a un servicio correspondiente, y este a su vez a un DAO (capa de datos). Mediante la utilización de los frameworks \textit{\textbf{JUnit}} y \textit{\textbf{Mockito}} se realizaron pruebas unitarias de los controladores, lo cual tiene como característica evaluar el correcto funcionamiento de un módulo en forma aislada, es decir se va probando de a pequeñas porciones de código donde la ejecución es más rápida. Para ello se establece un escenario posible con datos de entrada ejecutando las acciones de cada módulo en forma separada y corroborando el comportamiento esperado en las salidas de cada una de ellas \cite{junit}. 
 \\
 
 La forma de trabajar que posee JUnit sobre cada prueba unitaria es mediante la anotación \textit{@Test}. Dentro de cada uno de ellos se invoca a una funcionalidad de un determinado controlador, pasándole \textbf{datos estáticos} de entrada en la request y simulando objetos gracias a Mockito. El valor de retorno esperado se evalúa mediante afirmaciones ``\textit{asserts...}'' (Ej. assertNull, assertFalse, assertThrows), informando si la clase cumple con la especificación y retornando JUnit si el método pasó el caso de prueba o falló. 
@@ -56,7 +56,7 @@ Como se puede ver en la Figura \ref{fig:coverage} se logró llegar a un 85\% de c
 	\end{center}
 \end{figure}
 
-Como ya se ha mencionado anteriormente, el SDK de Android está basado en Java, por lo tanto, también fue posible realizar pruebas unitarias mediante la utilización de JUnit. En éste caso el foco principal de testing se basó en la integración de los distintos componentes tanto para la comunicación interna de los eventos en la aplicación como para la externa (comunicación con el WS). La metodología de trabajo es exactamente igual que la realizada anteriormente, colocando distintas entradas en las ejecuciones y evaluando los distintos resultados.
+Como ya se ha mencionado anteriormente, el SDK de Android está basado en Java, por lo tanto, también fue posible realizar pruebas unitarias mediante la utilización de JUnit. En este caso el foco principal de testing se basó en la integración de los distintos componentes tanto para la comunicación interna de los eventos en la aplicación como para la externa (comunicación con el WS). La metodología de trabajo es exactamente igual que la realizada anteriormente, colocando distintas entradas en las ejecuciones y evaluando los distintos resultados.
 
 %-------------------------------------------------------------------
 \section{Pruebas de usuario}

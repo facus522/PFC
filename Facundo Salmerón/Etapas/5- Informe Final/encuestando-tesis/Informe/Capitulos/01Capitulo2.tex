@@ -154,7 +154,7 @@ Al poseer la lógica de negocios dentro del Web Service, la aplicación deberá con
 Para llevar adelante el desarrollo de la aplicación móvil se escogió el lenguaje de programación Java. Es muy conocido en el ambiente de programación Android, por ser un lenguaje que tiene una comunidad bastante grande y sobre todo una comunidad con bastante experiencia en el desarrollo de software. Java juega un papel muy importante, principalmente en el soporte ante casi cualquier eventualidad presentada.
 \\
 
-En los últimos años apareció el lenguaje de programación Kotlin, el cual fue adoptado por Google como lenguaje oficial de desarrollo Android. Para los fines prácticos del proyecto, los resultados podrían ser alcanzados utilizando tanto Java como Kotlin. Sin embargo, este último al poseer pocos años dentro del mercado, la cantidad de información disponible en la web es muy escasa, haciendo que a la hora de escoger entre los mencionados la decisión se incline por Java.
+En los últimos años apareció el lenguaje de programación Kotlin, el cual fue adoptado por Google como lenguaje oficial de desarrollo Android. Para los fines prácticos del proyecto, los resultados podrían ser alcanzados utilizando tanto Java como Kotlin. Sin embargo, este último al poseer pocos años dentro del mercado, la cantidad de información disponible en la web es muy escasa, haciendo que a la hora de escoger entre los mencionados la decisión sea Java.
 \\
 
 En cuanto al desarrollo del Web Service, la distribución de posibilidades a la hora de elegir un lenguaje de programación es más variada en relación a la aplicación móvil. Para partir de un análisis, inicialmente se priorizó aquellos lenguajes compilados por sobre los interpretados, por poseer mayor velocidad de ejecución e implementaciones más robustas; y aquellos lenguajes orientados a objetos, ya que son más sencillos de mantener y se posee mayor fiabilidad al dividir el problema en pequeñas partes, pudiendo ser probadas de manera independiente.
@@ -166,7 +166,7 @@ Analizando la propuesta de solución establecida anteriormente, donde la aplicaci
 Para llevar adelante el modelo establecido, mediante investigaciones previas y por experiencia personal del ejecutor del proyecto en trabajos anteriores, se determinó que mediante la integración de los frameworks Spring y Hibernate, es posible cubrir todo el ciclo de vida del modelo MVC (en capítulos posteriores se brindarán más detalles de dichas elecciones). Dentro de los lenguajes compilados y orientados a objetos, dichos frameworks son compatibles tanto para Java como .NET. En la actualidad, ambos lenguajes son altamente utilizados en el mercado para el desarrollo de aplicaciones web backend, por lo cual el soporte y la documentación no serían un inconveniente.
 \\
 
-Se estableció que la implementación del Web Service sea llevada adelante bajo el lenguaje de programación Java. Más allá de la experiencia del desarrollador del proyecto utilizando el mismo, lo cuál permite no consumir tiempo extra en el aprendizaje de una nueva tecnología, se determinó que posee mayor portabilidad. Es decir, Java puede ser utilizado desde varios entornos de desarrollo integrado (IDE), cualquier sistema operativo y puede ser compilado por cualquier contenedor de servlets. En este caso .NET cuenta solamente con el IDE Visual Studio como oficial, el cuál puede ser ejecutado únicamente en plataformas con sistema operativo Windows de forma nativa, haciendo que ciertas funcionalidades no se encuentren disponibles en forma gratuita. 
+Se estableció que la implementación del Web Service sea llevada adelante bajo el lenguaje de programación Java. Más allá de la experiencia del desarrollador del proyecto utilizando el mismo, lo cuál permite no consumir tiempo extra en el aprendizaje de una nueva tecnología, se determinó que posee mayor portabilidad. Es decir, Java puede ser utilizado desde varios entornos de desarrollo integrado (IDE), cualquier sistema operativo y puede ser compilado por cualquier contenedor de servlets. 
 \\
 
 Por lo tanto, la máquina virtual de Java (JVM) se sitúa en un nivel superior al hardware del sistema sobre el que se pretende ejecutar la aplicación, y este actúa como puente que entiende tanto el bytecode (programa Java compilado) como el sistema sobre el que se pretende ejecutar (Figura \ref{fig:jvm}). Entonces, cuando se escribe una aplicación Java se hace pensando que será ejecutada en una máquina virtual Java en concreto, siendo esta la que en última instancia convierte de código bytecode a código nativo del dispositivo final, es decir pudiendo ser interpretado por cualquier sistema operativo \cite{javaLibro}.
@@ -265,10 +265,10 @@ Por lo tanto, se estableció que el tipo de Web Service a implementar sea bajo la
 Como se mencionó, SOAP solamente permite el formato XML lo cual lo hace más pesado en relación a REST, donde en este último se pueden enviar los datos mediante JSON (JavaScript Object Notation) por ejemplo. Brindando de esta forma una mayor flexibilidad y mejor performance, ya que estos tipos de datos son mucho más livianos en peso y más rápidos para su procesamiento por no requerir de etiquetas como en XML, además de poseer mayor soporte y ser de más fácil lectura.
 \\
 
-Una de las ventajas que posee el protocolo SOAP es su mayor seguridad para el transporte de datos, lo cual puede ser subsanado en gran parte por la arquitectura REST, mediante el protocolo de transferencia HTTPS (Protocolo seguro de transferencia de hipertexto). Como ya se mencionó anteriormente, al estar basados en este protocolo, se pueden utilizar los distintos métodos que proporciona para  el intercambio de datos, como por ejemplo, las peticiones GET realizando consultas al servidor y enviando las respuestas por el mismo canal, peticiones POST para almacenamientos, PUT para actualizaciones, entre otras, que van a ser de gran utilidad a lo largo del  proyecto. Cada mensaje HTTP contiene toda la información necesaria para ejecutar la petición por lo tanto no se requiere guardar ningún tipo de estado de la comunicación sino que todas son independientes entre sí.
+Una de las ventajas que posee el protocolo SOAP es su mayor seguridad para el transporte de datos, lo cual puede ser subsanado en gran parte por la arquitectura REST mediante el protocolo de transferencia HTTPS (Protocolo seguro de transferencia de hipertexto). Como ya se mencionó anteriormente, al estar basados en este protocolo, se pueden utilizar los distintos métodos que proporciona para  el intercambio de datos, como por ejemplo, las peticiones GET realizando consultas al servidor y enviando las respuestas por el mismo canal, peticiones POST para almacenamientos, PUT para actualizaciones, entre otras, que van a ser de gran utilidad a lo largo del  proyecto. Cada mensaje HTTP contiene toda la información necesaria para ejecutar la petición por lo tanto no se requiere guardar ningún tipo de estado de la comunicación sino que todas son independientes entre sí.
 \\
 
-Sin tener que depender de una definición WSDL (Web Services Description Language), los WS REST proveen una sintaxis universal de modo tal que cada recurso que posee se pueda direccionar de forma unívoca a través de la URI, el cual es una combinación entre la URL y la URN (Uniform Resource Name), que identifica el nombre del recurso en la red en cuestión.
+Los servicios SOAP dependen de una definición WSDL (Web Services Description Language) que describe la interfaz pública a los servicios web. En cambio, los Web Service REST proveen una sintaxis universal de modo tal que cada recurso que posee se pueda direccionar de forma unívoca a través de la URI (Identificador de recursos uniforme). El mismo es una combinación entre la URL y la URN (Uniform Resource Name), que identifica el nombre del recurso en la red en cuestión.
 
 %------------------------------------------------------------------
 \subsection{Protocolo HTTP}
@@ -402,7 +402,7 @@ En cuanto a la sintaxis de los JSON, los mismos están constituidos por una colec
 %-------------------------------------------------------------------
 \label{cap2:subsec:servlet}
 
-Los Servlets son módulos Java que se utilizan en un servidor, para extender sus capacidades de respuesta a los clientes al utilizar las potencialidades de Java. Son para los servidores lo que los \textit{applets}\footnote{Pequeños programas que se ejecutan en el contexto de un navegador web} para los navegadores, aunque los servlets no tienen una interfaz gráfica.
+Los Servlets son módulos Java que se utilizan en un servidor, para extender sus capacidades de respuesta a los clientes al utilizar las potencialidades de Java. Son para los servidores lo que los \textit{applets}\footnote{Pequeños programas que se ejecutan en el contexto de un navegador web.} para los navegadores, aunque los servlets no tienen una interfaz gráfica.
 \\
 
 Esto quiere decir, que nos permite construir aplicaciones web que admiten peticiones a través del protocolo HTTP accediendo a ellos mediante un navegador web. La respuesta generalmente es enviada en formato HTML y representada por dicho navegador.
@@ -421,7 +421,7 @@ Al realizar una petición HTTP, el contenedor de Servlets delega la misma a un Se
 
 \begin{figure}[h!]
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]%
+		\includegraphics[width=1\textwidth]%
 		{Imagenes/Bitmap/servlet}
 		\caption{Peticiones y manejo de Servlet}
 		\label{fig:servlet}
@@ -433,7 +433,7 @@ Al realizar una petición HTTP, el contenedor de Servlets delega la misma a un Se
 %-------------------------------------------------------------------
 \label{cap2:subsec:framework}
 
-Un \textit{framework} es un conjunto estandarizado de conceptos, prácticas y criterios para enfocar un tipo de problemática particular que sirve como referencia, para enfrentar y resolver nuevos problemas de índole similar.
+Un \textit{framework} es un conjunto estandarizado de conceptos, prácticas y criterios para enfocar un tipo de problemática particular que sirve como referencias para enfrentar y resolver nuevos problemas de índole similar.
 \\
 
 Tienen como objetivo principal ofrecer una funcionalidad definida, auto contenida, siendo construidos usando patrones de diseño, y su característica principal es su alta cohesión y bajo acoplamiento. Sirve de base para la organización y desarrollo de software. Típicamente, puede incluir soporte de programas, bibliotecas, y un lenguaje interpretado, entre otras herramientas, para así ayudar a desarrollar y unir los diferentes componentes de un proyecto \cite{framework}.
@@ -465,7 +465,7 @@ Android es un sistema operativo diseñado fundamentalmente para trabajar dentro d
 Inicialmente fue desarrollado por la empresa \textit{Android Inc.}, posteriormente comprada por Google en el año 2005. Una de las particularidades más interesantes que posee Android, es que se basa en Linux, plataforma libre que a su vez se basa en Unix. Esto hace que su uso sea totalmente gratuito tanto para llevar a cabo nuevos desarrollos, como para su utilización en dispositivos móviles.
 \\
 
-Cuenta con un entorno de desarrollo integrado (IDE) oficial totalmente Open Source, denominado Android Studio. El mismo fue lanzado en el año 2013, reemplazando a Eclipse como IDE oficial para el desarrollo de aplicaciones Android. Cuenta con gran cantidad de documentación en la web, así como también manuales y comunidades activas que facilitan el desarrollo y la utilización de todas las funcionalidades ofrecidas. Trae incluido la SDK (Software Development Kit) de Android, pudiendo obtener constantemente las actualizaciones propuestas por el sistema operativo. Posee como ventaja una compilación rápida, ejecución de la aplicación en tiempo real, ya sea a través del móvil como de emuladores propios, renderizado en tiempo real, etc.
+Cuenta con un entorno de desarrollo integrado (IDE) oficial totalmente Open Source, denominado Android Studio. El mismo fue lanzado en el año 2013, reemplazando a Eclipse como IDE oficial para el desarrollo de aplicaciones Android. Cuenta con gran cantidad de documentación en la web, así como también manuales y comunidades activas que facilitan el desarrollo y la utilización de todas las funcionalidades ofrecidas. Trae incluido el SDK (Software Development Kit) de Android, pudiendo obtener constantemente las actualizaciones propuestas por el sistema operativo. Posee como ventaja una compilación rápida, ejecución de la aplicación en tiempo real, ya sea a través del móvil y de emuladores propios, renderizado en tiempo real, etc.
 \\
 
 Hasta hace muy poco tiempo, todas las aplicaciones Android eran desarrolladas bajo el lenguaje de programación Java, ya que se trataba del lenguaje oficial para esta plataforma. En el año 2017, Google adoptó a Kotlin como lenguaje oficial de desarrollo para la plataforma Android.
@@ -474,16 +474,16 @@ Hasta hace muy poco tiempo, todas las aplicaciones Android eran desarrolladas ba
 En el año 2008 fue lanzada la primer versión de Android denominada \textit{Apple Pie}. Con el transcurso de los años, se han ido desarrollando gran cantidad de actualizaciones, las cuáles típicamente corrigen fallos e introducen nuevas funcionalidades. En la actualidad se encuentra disponible la versión 9.0 \textit{Pie} (decimosexta versión del sistema operativo).
 \\
 
+Para el desarrollo del proyecto se utilizará como mínima versión la 4.4 \textit{(KitKat)}. La elección de la misma se debe a que las funcionalidades que presenta se encuentran acorde a los alcances del proyecto, además según las estadísticas brindadas por Android Studio (Figura \ref{fig:android_version}), aproximadamente el 95\% de los usuarios activos posee versiones superiores o iguales a la mencionada, logrando un mayor alcance de los usuarios a utilizar la aplicación.
+
 \begin{figure}[h!]
 	\begin{center}
 		\includegraphics[width=0.8\textwidth]%
 		{Imagenes/Bitmap/android_version}
-		\caption{Versiones de Android}
+		\caption{Versiones de Android. Estadística presentada por Android Studio siempre que se crea un nuevo proyecto desde el IDE}
 		\label{fig:android_version}
 	\end{center}
 \end{figure}
-
-Para el desarrollo del proyecto se utilizará como mínima versión la 4.4 \textit{(KitKat)}. La elección de la misma se debe a que las funcionalidades que presenta se encuentran acorde a los alcances del proyecto, además según las estadísticas brindadas por Android Studio (Figura \ref{fig:android_version}), aproximadamente el 95\% de los usuarios activos posee versiones superiores o iguales a la mencionada, logrando un mayor alcance de los usuarios a utilizar la aplicación.
 
 %------------------------------------------------------------------
 \subsection{Interfaz de programación de aplicaciones}

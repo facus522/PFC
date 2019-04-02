@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.1)  28 MAR 2019 21:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.1)  2 APR 2019 20:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1764,30 +1764,50 @@ Package babel Info: Redefining spanish shorthand "?
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
 less on input line 44.
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--48
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--51
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--54
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--57
+
+ []
+
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 60.
 [5
 
 
@@ -7578,7 +7598,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 206.
 Here is how much of TeX's memory you used:
  45328 strings out of 492649
  1007489 string characters out of 6129623
- 1244024 words of memory out of 5000000
+ 1244023 words of memory out of 5000000
  47570 multiletter control sequences out of 15000+600000
  556773 words of font info for 86 fonts, out of 8000000 for 9000
  1381 hyphenation exceptions out of 8191
@@ -7604,7 +7624,7 @@ ist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2018/texmf-dist/
 fonts/type1/public/cm-super/sfxc0900.pfb></usr/local/texlive/2018/texmf-dist/fo
 nts/type1/public/cm-super/sfxc1000.pfb>
-Output written on Tesis.pdf (121 pages, 15082768 bytes).
+Output written on Tesis.pdf (121 pages, 15084321 bytes).
 PDF statistics:
  1812 PDF objects out of 2073 (max. 8388607)
  1571 compressed objects within 16 object streams

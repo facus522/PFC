@@ -66,7 +66,7 @@ Hay cuatro tipos diferentes de componentes de una aplicación. Cada tipo tiene un
 %-------------------------------------------------------------------
 \label{cap4:subsec:estructura-android}
 
-Un proyecto desarrollado en Android Studio está formado por distintos directorios, los cuales contienen recursos que se utilizarán a medida que se va desarrollando la aplicación. Dentro de las características principales que posee, se realiza una modularización en directorios y utiliza el lenguaje de programación XML, evitando de esta forma el exceso de código inútil en los ficheros Java.
+Un proyecto desarrollado en Android Studio está formado por distintos directorios, los cuales contienen recursos que se utilizarán a medida que se va desarrollando la aplicación. Dentro de las características principales que posee, se realiza una modularización en directorios y utiliza archivos XML, evitando de esta forma el exceso de código inútil en los ficheros Java.
 \\
 
 Tal como se puede ver en la Figura \ref{fig:estructura_proyecto}, inicialmente nos encontramos con un archivo de configuración XML denominado \textit{AndroidManifest}. Se encuentra situado en la raíz de todos los proyectos, y sirve para aplicar configuraciones básicas en la aplicación. El sistema Android accede a él antes de compilar cualquier línea de código \cite{manifest}. Dentro de las configuraciones que contiene se destacan:
@@ -328,6 +328,7 @@ El API Picker, presenta un SDK para Android denominado \textit{Place Picker} (se
 \\
 
 Los \textit{markers} (marcadores), indican ubicaciones únicas en el mapa y se posicionan a partir de la latitud y longitud. Los mismos pueden contener un título e imágenes. 
+\\
 
 \begin{figure}[h!]
 	\begin{center}
@@ -338,7 +339,7 @@ Los \textit{markers} (marcadores), indican ubicaciones únicas en el mapa y se po
 	\end{center}
 \end{figure}
 
-Esta funcionalidad es de utilidad en el proyecto, ya que las encuestas tendrán la posibilidad de ser geolocalizadas. Cuando los usuarios al responder las mismas se encuentran en sus residencias habituales, mediante los servicios de Google y el componente GPS del dispositivo móvil mencionado anteriormente, se obtienen los datos de localización. En cambio, cuando no se encuentren en ellas, se les pedirá que introduzcan manualmente sus datos de residencia para mayor integridad en los datos, y es ahí que se utilizará el servicio presentado para resolver dicha cuestión.
+Esta funcionalidad fue utilizada en el proyecto, ya que las encuestas tendrán la posibilidad de ser geolocalizadas. Cuando los usuarios al responder las mismas se encuentran en sus residencias habituales, mediante los servicios de Google y el componente GPS del dispositivo móvil mencionado anteriormente, se obtienen los datos de localización. En cambio, cuando no se encuentren en ellas, se les pedirá que introduzcan manualmente sus datos de residencia para mayor integridad en los datos, y es ahí que se utilizará el servicio presentado para resolver dicha cuestión.
 \\
 
 En cuanto al API de Google Maps, permite al desarrollador agregar un mapa basado en los datos de Google Maps en la pantalla de la aplicación e interactuar con él de la misma forma que se realiza en una computadora. El API controla automáticamente el acceso a los servidores de Google, la descarga de datos, visualización del mapa y respuestas \cite{maps}.
@@ -367,7 +368,7 @@ En relación al proyecto, dentro de la sección de estadísticas por encuesta brind
 %-------------------------------------------------------------------
 \label{cap4:subsec:opencsv}
 
-OpenCsv es una librería Java gratuita de parseos en CSV, tanto para lecturas como escrituras \cite{opencsv}. Los archivos CSV (comma-separated values) son un tipo de documento en formato abierto sencillo para representar datos en forma de tabla, en las cuales las columnas son separadas por comas (o punto y coma). 
+OpenCsv es una librería Java gratuita de parseos en CSV (comma-separated values), tanto para lecturas como escrituras \cite{opencsv}. Los archivos CSV son un tipo de documento en formato abierto sencillo para representar datos en forma de tabla, en las cuales las columnas son separadas por comas (o punto y coma). 
 \\
 
 La librería ofrece principalmente las clases \textit{CSVReader} y \textit{CSVWriter}, las cuales dan operaciones para leer el fichero CSV como un arreglo de String o para escribir sobre uno de ellos, respectivamente. Tanto en la lectura como la escritura presentan las siguientes metodologías de parseo:
@@ -390,12 +391,9 @@ En este caso, gracias a las facilidades aportadas por OpenCsv, es posible llevar
 \label{cap4:sec:modelado-aplicacion}
 
 \begin{figure}[h!]
-	\begin{center}
-		\includegraphics[width=1\textwidth]%
-		{Imagenes/Bitmap/modelo_aplicacion}
-		\caption{Diagrama de clases de la aplicación}
-		\label{fig:modelo-app}
-	\end{center}
+	\makebox[\textwidth][c]{\includegraphics[width=1.5\textwidth, height=1.5\textwidth]{Imagenes/Bitmap/modelo_aplicacion}}%
+	\caption{Diagrama de clases de la aplicación}
+	\label{fig:modelo-app}
 \end{figure}
 
 En la Figura \ref{fig:modelo-app} se presenta el diagrama de clases que se encarga de modelar la aplicación Android, presentando en detalle cada uno de sus componentes.
@@ -502,6 +500,7 @@ Esta sección fue pensada para que los usuarios de la aplicación además de respon
 \\
 
 Para aquellos usuarios comunes que ingresan a la sección, se presentará en un \textit{ListView} con un título y una breve descripción, las distintas I\&N cargadas en base de datos (Figura \ref{fig:infocomun}). Para ello, se consumirá el correspondiente endpoint del WS al cargar las mismas. Al presionar sobre una de ellas, se abrirá un \textit{WebView} sobre la misma aplicación, con el contenido de la URL correspondiente (Figura \ref{fig:ejemploinfol}).
+\\
 
 \begin{figure}[h!]
 	\centering
@@ -532,7 +531,8 @@ Para aquellos usuarios de tipo específico, como se puede ver en la Figura \ref{f
 Como se mencionó anteriormente, esta sección solamente estará disponible para aquellos usuarios de tipo específico. Al ingresar, se presentará un \textit{ListView} de las encuestas existentes (con \textit{activo = true}) traídas por WS. Cada ítem estará formado por un título y una descripción (Figura \ref{fig:listaencuestasadmin}). Como se puede ver en la actual pantalla y en subsiguientes, se presenta un icono de ayuda (arriba a la derecha), el cual despliega un pop up informativo acerca de todas las funcionalidades presentadas, con la finalidad de colaborar en la experiencia de usuario.
 \\
 
-Presionando sobre el botón rojo \textbf{(+)}, se direcciona hacia la pantalla de \textit{Nueva Encuesta} como se puede ver en la Figura \ref{fig:altaencuesta}. Aquí se deberá completar de carácter obligatorio el título y poseer al menos una pregunta. Luego se presentan una serie de validaciones opcionales en forma de \textit{CheckBox}. Por ejemplo, si se requiere que la encuesta sea \textit{Geolocalizada} se debe tildar el mismo. Esto significa que cuando se resuelva la misma se almacenará la latitud y longitud de los encuestados, a modo de poseer referencias zonales para posteriores análisis. A su vez, se pueden agregar restricciones sobre los encuestados, es decir que los mismos sean de un sexo determinado y/o mayores a determinada edad (Figura \ref{fig:validacionesl}). 
+Presionando sobre el botón rojo con signo \textit{más}, se direcciona hacia la pantalla de \textit{Nueva Encuesta} como se puede ver en la Figura \ref{fig:altaencuesta}. Aquí se deberá completar de carácter obligatorio el título y poseer al menos una pregunta. Luego se presentan una serie de validaciones opcionales en forma de \textit{CheckBox}. Por ejemplo, si se requiere que la encuesta sea \textit{Geolocalizada} se debe tildar el mismo. Esto significa que cuando se resuelva la misma se almacenará la latitud y longitud de los encuestados, a modo de poseer referencias zonales para posteriores análisis. A su vez, se pueden agregar restricciones sobre los encuestados, es decir que los mismos sean de un sexo determinado y/o mayores a determinada edad (Figura \ref{fig:validacionesl}). 
+\\
 
 \begin{figure}[h!]
 	\centering
@@ -552,7 +552,7 @@ Presionando sobre el botón rojo \textbf{(+)}, se direcciona hacia la pantalla de
 	\label{fig:admin1}
 \end{figure}
 
-Para agregar preguntas a la encuesta, se debe presionar sobre el botón verde \textbf{(?)} (Figura \ref{fig:tiporespuestasl}). El mismo despliega una serie de opciones en relación al tipo de respuesta que tendrá y presionando sobre uno de ellos, se direccionará a la correspondiente alta.
+Para agregar preguntas a la encuesta, se debe presionar sobre el botón verde con un \textit{signo de pregunta} (Figura \ref{fig:tiporespuestasl}). El mismo despliega una serie de opciones en relación al tipo de respuesta que tendrá y presionando sobre uno de ellos, se direccionará a la correspondiente alta.
 \\
 
 Para aquellas preguntas que tendrán una serie de respuestas predefinidas, como por ejemplo las \textit{Múltiple Choice} y \textit{Respuesta Única}, se presenta un campo editable para ingresar la pregunta y un botón que despliega un pop up para ir ingresando las respuestas (Figura \ref{fig:choice} y \ref{fig:unicarta}). Luego, al presionar sobre cada respuesta se presentará un \textit{AlertDialog} (Figura \ref{fig:opcionesrtas}) que permite modificar o eliminar la misma.
@@ -573,6 +573,7 @@ Para aquellas preguntas que tendrán una serie de respuestas predefinidas, como p
 \end{figure}
 
 Para aquellas preguntas que poseen una respuesta de tipo \textit{Numérica} o \textit{Textual}, el formato de alta es similar, donde el mismo presenta un campo editable para ingresar la pregunta en cuestión (Figura \ref{fig:numericas} y \ref{fig:textual}). La diferencia entre ellas, es visible a la hora de responder la encuesta, ya que el teclado solamente habilitará los caracteres numéricos o alfanuméricos respectivamente.
+\\
 
 \begin{figure}[h!]
 	\centering
@@ -618,12 +619,6 @@ Nuevamente sobre la pantalla de \textit{Administración de Encuestas}, como se pr
 \label{cap4:subsec:encuestasseccion}
 
 Al ingresar a la opción de encuestas disponibles desde el menú principal, se direcciona hacia una pantalla que presenta una lista de las mismas con una vista de tipo \textit{RecyclerView} por item. Como se mencionó anteriormente, aquí se cargarán todas aquellas encuestas que se encuentren en estado \textbf{activas} y \textbf{habilitadas}. Para ambos tipos de usuarios cada Recycler está compuesto por el título de la encuesta, descripción, una etiqueta que solamente será visible en encuestas geolocalizadas y las restricciones de resolución en caso de tenerlas. Únicamente para los usuarios de tipo especial se presentará un \textit{TextView} que indicará el usuario creador y fecha, y otro indicando el número actual de resoluciones (Figura \ref{fig:encuestaespecial} y \ref{fig:encuestacomun}).
-\\
-
-Al presionar sobre un ítem para responder se abrirá una pantalla con todos los datos de la encuesta. Si la misma tiene la característica de ser geolocalizada, previamente se le solicitarán los permisos al usuario para utilizar la ubicación del dispositivo (Figura \ref{fig:permisosubicacion}). Estos permisos serán requeridos solamente una vez en caso de aceptarse.
-\\
-
-Cuando es resuelta por un usuario especial, al comienzo se presenta un campo para indicar la edad del encuestado y otro para indicar el sexo del mismo (Figura \ref{fig:resolucionencuesta}). Esto es para las denominadas ``salidas a terreno'', cuando se encuesta a terceros. Para el caso de resolución en usuarios comunes, estos campos no estarán presentes, ya que se obtendrán automáticamente desde el inicio de sesión.
 
 \begin{figure}[h!]
 	\centering
@@ -642,6 +637,12 @@ Cuando es resuelta por un usuario especial, al comienzo se presenta un campo par
 	\caption{Encuestas disponibles de resolución}
 	\label{fig:seccionencuestas1}
 \end{figure}
+
+Al presionar sobre un ítem para responder se abrirá una pantalla con todos los datos de la encuesta. Si la misma tiene la característica de ser geolocalizada, previamente se le solicitarán los permisos al usuario para utilizar la ubicación del dispositivo (Figura \ref{fig:permisosubicacion}). Estos permisos serán requeridos solamente una vez en caso de aceptarse.
+\\
+
+Cuando es resuelta por un usuario especial, al inicio se presenta un campo para indicar la edad del encuestado y otro para indicar el sexo del mismo (Figura \ref{fig:resolucionencuesta}). Esto es para las denominadas ``salidas a terreno'', cuando se encuesta a terceros. Para el caso de resolución en usuarios comunes, estos campos no estarán presentes, ya que se obtendrán automáticamente desde el inicio de sesión.
+\\
 
 Luego por cada pregunta a responder, se presentará una vista diferente dependiendo del tipo de respuesta de la misma, es decir:
 
@@ -666,13 +667,14 @@ Para el caso de aquellas encuestas de tipo \textbf{geolocalizadas}, se encontrar
 \\
 
 Si el usuario no se encuentra en su residencia habitual (checkbox sin tildar), se abrirá un \textit{PlacePicker} (Figura \ref{fig:eleccionresidencia}), herramienta obtenida mediante la integración con el API de Google Maps, en donde se puede ingresar la dirección de residencia en la parte superior y luego buscar, o ir moviendo el \textit{marker} para obtener la ubicación correspondiente. Finalmente, al presionar ``Seleccionar esta ubicación'', se mostrará un mensaje de comprobación (Figura \ref{fig:placepickerapp}) en donde se visualizará con mayor precisión la dirección escogida pudiendo volver a elegirla o confirmarla, invocando luego los servicios del WS para almacenar los resultados en base de datos.
+\\
 
 \begin{figure}[h!]
 	\centering
 	\subfloat[Envío de Resolución]{
 		\label{fig:envioresolucion}
 		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/25_app.png}}
-	\subfloat[Elección de residencia]{
+	\subfloat[Elección residencia]{
 		\label{fig:eleccionresidencia}
 		\includegraphics[width=0.25\textwidth]{Imagenes/Bitmap/26_app.png}}
 	\subfloat[Place Picker]{
@@ -705,6 +707,7 @@ Para aquellos usuarios de tipo especial, todas aquellas restricciones escogidas 
 \label{cap4:subsec:evaluacionresultados}
 
 Con la finalidad de obtener resultados y estadísticas de manera inmediata, dentro del menú de encuestas disponibles, para los usuarios especiales se colocaron dos opciones extras (además de responder) al presionar sobre un ítem como se puede ver en la Figura \ref{fig:opcionesresultados}. Las mismas son: ver estadísticas de los resultados y exportar los mismos a un formato Excel.
+\\
 
 \begin{figure}[h!]
 	\centering
@@ -735,6 +738,7 @@ Una vez más, dependiendo del tipo de respuesta por cada pregunta, se renderizará
 \end{itemize}
 
 A su vez, presionando sobre una determinada respuesta, se mostrarán los resultados geolocalizados en caso de ser una encuesta de dicho tipo, mediante la integración con el API de Google Maps. Se distribuirán las respuestas en \textit{Google Maps} gracias a la latitud y longitud almacenada en base de datos, clasificando por colores aquellas respuestas iguales en el caso de Múltiple Choice y Respuestas Únicas. Además, presionando sobre los marcadores se presentará una breve descripción que indicará la respuesta, sexo y edad del encuestado (Figura \ref{fig:resultadosgeo}).
+\\
 
 \begin{figure}[h!]
 	\centering

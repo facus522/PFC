@@ -8,7 +8,7 @@
 \contentsline {figure}{\numberline {2.3}{\ignorespaces M\'aquina virtual Java - JVM\relax }}{15}{figure.caption.8}
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Cliente - Servidor\relax }}{16}{figure.caption.9}
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Mensajes HTTP\relax }}{18}{figure.caption.10}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces URL HTTP\relax }}{19}{figure.caption.11}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces URL HTTP\relax }}{20}{figure.caption.11}
 \contentsline {figure}{\numberline {2.7}{\ignorespaces XML vs. JSON\relax }}{20}{figure.caption.12}
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Peticiones y manejo de Servlet\relax }}{22}{figure.caption.13}
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Versiones de Android. Estad\IeC {\'\i }stica presentada por Android Studio siempre que se crea un nuevo proyecto desde el IDE\relax }}{24}{figure.caption.14}
@@ -17,7 +17,7 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Dise\~no de la base de datos\relax }}{31}{figure.caption.16}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Estructura de proyecto Maven\relax }}{34}{figure.caption.17}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Dependencia en pom.xml\relax }}{34}{figure.caption.18}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagrama de clases del modelo\relax }}{35}{figure.caption.19}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagrama de clases del modelo\relax }}{36}{figure.caption.19}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Arquitectura modelo de capas\relax }}{39}{figure.caption.20}
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Inversi\'on de control\relax }}{40}{figure.caption.21}
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Diagrama de clases del Web Service\relax }}{42}{figure.caption.22}
@@ -37,44 +37,44 @@
 \contentsline {figure}{\numberline {4.9}{\ignorespaces Men\'u principal\relax }}{71}{figure.caption.33}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Men\'u principal Usuario com\'un}}}{71}{subfigure.9.1}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Men\'u principal Usuario Especial}}}{71}{subfigure.9.2}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Noticias e informaciones\relax }}{71}{figure.caption.34}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {I\&N U. com\'un}}}{71}{subfigure.10.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {I\&N U. espec\IeC {\'\i }fico}}}{71}{subfigure.10.2}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Alta de I\&N}}}{71}{subfigure.10.3}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Ejemplo I\&N}}}{71}{subfigure.10.4}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Administraci\'on de encuestas\relax }}{72}{figure.caption.35}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Lista Encuestas}}}{72}{subfigure.11.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Nueva Encuesta}}}{72}{subfigure.11.2}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Tipos Respuestas}}}{72}{subfigure.11.3}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Validaciones}}}{72}{subfigure.11.4}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Noticias e informaciones\relax }}{72}{figure.caption.34}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {I\&N U. com\'un}}}{72}{subfigure.10.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {I\&N U. espec\IeC {\'\i }fico}}}{72}{subfigure.10.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Alta de I\&N}}}{72}{subfigure.10.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Ejemplo I\&N}}}{72}{subfigure.10.4}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Administraci\'on de encuestas\relax }}{73}{figure.caption.35}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Lista Encuestas}}}{73}{subfigure.11.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Nueva Encuesta}}}{73}{subfigure.11.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Tipos Respuestas}}}{73}{subfigure.11.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Validaciones}}}{73}{subfigure.11.4}
 \contentsline {figure}{\numberline {4.12}{\ignorespaces Alta y modificaci\'on de encuesta\relax }}{73}{figure.caption.36}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {M\'ultiple Choice}}}{73}{subfigure.12.1}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Respuesta \'Unica}}}{73}{subfigure.12.2}
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Opciones sobre respuesta}}}{73}{subfigure.12.3}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Tipos de preguntas\relax }}{73}{figure.caption.37}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Num\'ericas}}}{73}{subfigure.13.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Textual}}}{73}{subfigure.13.2}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Escala}}}{73}{subfigure.13.3}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Valores Escala}}}{73}{subfigure.13.4}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Tipos de preguntas\relax }}{74}{figure.caption.37}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Num\'ericas}}}{74}{subfigure.13.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Textual}}}{74}{subfigure.13.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Escala}}}{74}{subfigure.13.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Valores Escala}}}{74}{subfigure.13.4}
 \contentsline {figure}{\numberline {4.14}{\ignorespaces Encuestas disponibles de resoluci\'on\relax }}{75}{figure.caption.38}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Encuestas especial}}}{75}{subfigure.14.1}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Encuestas com\'un}}}{75}{subfigure.14.2}
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Permisos ubicaci\'on}}}{75}{subfigure.14.3}
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Resoluci\'on}}}{75}{subfigure.14.4}
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Resoluci\'on de encuestas\relax }}{76}{figure.caption.39}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Env\IeC {\'\i }o de Resoluci\'on}}}{76}{subfigure.15.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Elecci\'on de residencia}}}{76}{subfigure.15.2}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Place Picker}}}{76}{subfigure.15.3}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Resoluci\'on de encuestas\relax }}{77}{figure.caption.39}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Env\IeC {\'\i }o de Resoluci\'on}}}{77}{subfigure.15.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Elecci\'on residencia}}}{77}{subfigure.15.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Place Picker}}}{77}{subfigure.15.3}
 \contentsline {figure}{\numberline {4.16}{\ignorespaces Resoluci\'on de encuestas\relax }}{77}{figure.caption.40}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Error de edad}}}{77}{subfigure.16.1}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Error de sexo}}}{77}{subfigure.16.2}
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Encuesta ya resuelta}}}{77}{subfigure.16.3}
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Opciones sobre una encuesta\relax }}{77}{figure.caption.41}
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Visualizaci\'on de resultados\relax }}{78}{figure.caption.42}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Estad\IeC {\'\i }sticas}}}{78}{subfigure.18.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Estad\IeC {\'\i }sticas}}}{78}{subfigure.18.2}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Estad\IeC {\'\i }sticas}}}{78}{subfigure.18.3}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Resultados Geolocalizados}}}{78}{subfigure.18.4}
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Opciones sobre una encuesta\relax }}{78}{figure.caption.41}
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Visualizaci\'on de resultados\relax }}{79}{figure.caption.42}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Estad\IeC {\'\i }sticas}}}{79}{subfigure.18.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Estad\IeC {\'\i }sticas}}}{79}{subfigure.18.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Estad\IeC {\'\i }sticas}}}{79}{subfigure.18.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Resultados Geolocalizados}}}{79}{subfigure.18.4}
 \contentsline {figure}{\numberline {4.19}{\ignorespaces Exportar resultados\relax }}{79}{figure.caption.43}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Solicitud permisos almacenamiento}}}{79}{subfigure.19.1}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Resultados exportados}}}{79}{subfigure.19.2}

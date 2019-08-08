@@ -187,6 +187,7 @@ Cuando una actividad entra y sale de los diferentes estados mencionados, se noti
 		\includegraphics[width=1\textwidth]%
 		{Imagenes/Bitmap/cicloVida}
 		\caption{Ciclo de vida de una actividad}
+		\small\textsuperscript{\textit{Imagen: https://developer.android.com/guide/components/activities}}
 		\label{fig:cicloVida}
 	\end{center}
 \end{figure}
@@ -391,7 +392,7 @@ En este caso, gracias a las facilidades aportadas por OpenCsv, es posible llevar
 \label{cap4:sec:modelado-aplicacion}
 
 \begin{figure}[h!]
-	\makebox[\textwidth][c]{\includegraphics[width=1.5\textwidth, height=1.5\textwidth]{Imagenes/Bitmap/modelo_aplicacion}}%
+	\makebox[\textwidth][c]{\includegraphics[width=1.5\textwidth, height=1.6\textwidth]{Imagenes/Bitmap/modelo_aplicacion}}%
 	\caption{Diagrama de clases de la aplicación}
 	\label{fig:modelo-app}
 \end{figure}
@@ -761,8 +762,6 @@ A su vez, presionando sobre una determinada respuesta, se mostrarán los resultad
 Por otro lado, si se escoge la opción de ``Exportar Resultados'', se le solicitará previamente al usuario aceptar los permisos de almacenamiento (Figura \ref{fig:permisosalmacenamiento}). En caso de rechazarlos, se denegará la exportación informando al usuario de la misma manera que con los permisos de ubicación. Al aceptarlos, se procederá a convertir los datos a un formato Excel gracias a la librería de \textit{OpenCSV}. Los mismos estarán disponibles para su posterior estudio por profesionales adecuados de la medicina, así como también bio-estadísticos. 
 \\
 
-La conversión de datos se realizará de manera asíncrona, es decir, en segundo plano para no entorpecer el funcionamiento normal de la aplicación. Es por ello, que puede tardar algunos segundos en producirse, para luego estar disponible dentro de las descargas del dispositivo móvil. En el archivo Excel se encuentran los datos principales de la encuesta como el título y descripción, y por cada pregunta se listan las respuestas obtenidas hasta el momento, con el sexo y edad del encuestado, latitud y longitud, etc (Figura \ref{fig:exportarapp}).
-
 \begin{figure}[h!]
 	\centering
 	\subfloat[Solicitud permisos almacenamiento]{
@@ -774,6 +773,8 @@ La conversión de datos se realizará de manera asíncrona, es decir, en segundo pl
 	\caption{Exportar resultados}
 	\label{fig:exportar}
 \end{figure}
+
+La conversión de datos se realizará de manera asíncrona, es decir, en segundo plano para no entorpecer el funcionamiento normal de la aplicación. Es por ello, que puede tardar algunos segundos en producirse, para luego estar disponible dentro de las descargas del dispositivo móvil. En el archivo Excel se encuentran los datos principales de la encuesta como el título y descripción, y por cada pregunta se listan las respuestas obtenidas hasta el momento, con el sexo y edad del encuestado, latitud y longitud, etc (Figura \ref{fig:exportarapp}).
 
 \newpage
 \thispagestyle{empty}

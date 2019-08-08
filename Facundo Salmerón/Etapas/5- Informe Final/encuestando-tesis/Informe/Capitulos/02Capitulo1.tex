@@ -15,7 +15,7 @@
 \def\bluecolor{\color{myblue}}
 \def\purplecolor{\color{mypurple}}
 
-\chapter{Diseño y desarrollo del servidor}
+\chapter{Diseño y desarrollo de software para el servidor}
 
 \begin{resumen}
 En este capítulo se describen todos los aspectos relacionados al diseño y desarrollo tanto de la base de datos como del Web Service, junto a los distintos modelados y diagramas. Se presentará la arquitectura escogida de resolución.
@@ -336,9 +336,10 @@ En los métodos de programación tradicionales la interacción se expresa de forma 
 
 \begin{figure}[h!]
 	\begin{center}
-		\includegraphics[width=0.76\textwidth]%
+		\includegraphics[width=0.70\textwidth]%
 		{Imagenes/Bitmap/ioc}
 		\caption{Inversión de control}
+		\small\textsuperscript{\textit{Imagen: http://www.ytechie.com/2008/06/i-finally-get-the-point-of-inversion-of-control/}}
 		\label{fig:ioc}
 	\end{center}
 \end{figure}
@@ -352,12 +353,6 @@ Además, Spring provee la \textit{inyección de dependencias (DI)}, que es un tipo
 Siguiendo con el modelo de capas establecido, se puede mencionar que Spring posee un módulo denominado \textit{WebMVC}, basado en el patrón modelo vista-controlador. Para ello presenta una serie de anotaciones que permiten diferenciar los elementos por cada capa: controladores, servicios y DAO (Data Access Object).
 \\
 
-\begin{figure}[h!]
-	\makebox[\textwidth][c]{\includegraphics[width=1.6\textwidth, height=1.3\textwidth]{Imagenes/Bitmap/diagrama_ws}}%
-	\caption{Diagrama de clases del Web Service}
-	\label{fig:diagramaws}
-\end{figure}
-
 En la Figura \ref{fig:diagramaws}\footnote{Para visualizar con mayor presición ingresar a: https://ibb.co/8xsw1Ch} se puede ver claramente la mencionada separación por capas, de acuerdo a la arquitectura establecida. Siguiendo un flujo de secuencia normal, el usuario ejecuta una consulta desde la aplicación móvil, la cual se encarga de enviar una petición HTTP (\textit{request}) al Web Service. La misma llega al controlador frontal o mejor conocido como \textit{Dispatcher Servlet} que se encarga de enrutarla hacia el controlador indicado, que se encuentra dentro de la capa de presentación. A su vez, el Dispatcher es el encargado de encapsular y abstraer muchas funcionalidades estandarizadas en Spring, mediante la declaración de beans específicos o el uso de anotaciones.
 \\
 
@@ -369,6 +364,12 @@ Las clases que se encuentran en dicha capa presentan la anotación de carácter ge
 	¿\aftergroup\purplecolor¿public class ¿\aftergroup\blackcolor¿UserController
 \end{lstlisting}
 ~\\
+
+\begin{figure}[h!]
+	\makebox[\textwidth][c]{\includegraphics[width=1.6\textwidth, height=1.6\textwidth]{Imagenes/Bitmap/diagrama_ws}}%
+	\caption{Diagrama de clases del Web Service}
+	\label{fig:diagramaws}
+\end{figure}
 
 Teniendo en cuenta que el nombre del proyecto es \textit{EncuestasFCM}, la URL a nivel local para acceder al controlador de usuarios por ejemplo es:
 \begin{center}
@@ -484,7 +485,7 @@ Anteriormente se presentó la estructura básica de un proyecto Maven. En esta sec
 
 \begin{figure}[h!]
 	\begin{center}
-		\includegraphics[width=0.6\textwidth]%
+		\includegraphics[width=0.5\textwidth]%
 		{Imagenes/Bitmap/paquetes_ws}
 		\caption{División de funcionalidades por paquetes}
 		\label{fig:paquetes_ws}
@@ -498,7 +499,7 @@ Dentro del paquete base se encuentran todas aquellas interfaces y clases genéric
 
 \begin{figure}[h!]
 	\begin{center}
-		\includegraphics[width=0.6\textwidth]%
+		\includegraphics[width=0.45\textwidth]%
 		{Imagenes/Bitmap/paquete_base}
 		\caption{Paquete base}
 		\label{fig:paquete_base}
